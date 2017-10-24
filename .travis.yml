@@ -1,0 +1,31 @@
+language: node_js
+
+node_js:
+  - "lts/*"
+
+cache:
+  yarn: true
+
+install:
+  - yarn global add codecov
+  - yarn install
+
+script:
+  - yarn eslint src
+  - yarn flow
+  - yarn build
+  - npm link
+  - cd demo/ && yarn install && yarn build && cd ../
+  - yarn eslint demo/src
+  - yarn test -- --coverage
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  local_dir: demo/build
+  on:
+    branch: master
+
+after_script:
+  - codecov
