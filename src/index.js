@@ -1,1 +1,2 @@
-export { default } from './HelloWorld';
+export { default as Slice } from './Slice';
+export { default } from './PieMenu.component';

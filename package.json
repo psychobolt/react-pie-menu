@@ -1,9 +1,9 @@
 {
-  "name": "react-rollup-boilerplate",
+  "name": "react-pie-menu",
   "version": "0.1.0",
-  "description": "A boilerplate for building React libraries",
+  "description": "A configurable radial context menu for React",
   "main": "dist/index.js",
-  "repository": "https://github.com/psychobolt/react-rollup-boilerplate.git",
+  "repository": "https://github.com/psychobolt/react-pie-menu.git",
   "author": "psychobolt",
   "license": "MIT",
   "scripts": {
