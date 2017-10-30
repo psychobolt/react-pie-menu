@@ -1,6 +1,6 @@
 # React Pie Menu
 
-[![npm](https://img.shields.io/npm/v/npm.svg)](https://www.npmjs.com/package/react-pie-menu)
+[![npm](https://img.shields.io/npm/v/react-pie-menu.svg)](https://www.npmjs.com/package/react-pie-menu)
 [![Build Status](https://travis-ci.org/psychobolt/react-pie-menu.svg?branch=master)](https://travis-ci.org/psychobolt/react-pie-menu)
 [![Dependencies Status](https://david-dm.org/psychobolt/react-pie-menu.svg)](https://david-dm.org/psychobolt/react-pie-menu)
 [![codecov](https://codecov.io/gh/psychobolt/react-pie-menu/branch/master/graph/badge.svg)](https://codecov.io/gh/psychobolt/react-pie-menu)
@@ -73,12 +73,12 @@ export class PieMenuContainer extends React.Component {
 
 ### Slice
 
-- containerStyle
-- focusStyle
-- contentStyle
-- onSelect
-- onMouseUp
-- onMouseOver
+- containerStyle: ```{ background: 'radial-gradient(transparent 60px, rgba(109, 109, 109, 0.925) 60px)' }```
+- focusStyle: ```{ color: 'white', background: 'radial-gradient(transparent 60px, #424242 60px)' }```
+- contentStyle: ```{ color: 'back' }```
+- onSelect: ```() => {}```
+- onMouseUp: ```() => {}```
+- onMouseOver: ```() => {}```
 
 
 ## Reference
