@@ -1,5 +1,6 @@
 # React Pie Menu
 
+[![npm](https://img.shields.io/npm/v/npm.svg)](https://www.npmjs.com/package/react-pie-menu)
 [![Build Status](https://travis-ci.org/psychobolt/react-pie-menu.svg?branch=master)](https://travis-ci.org/psychobolt/react-pie-menu)
 [![Dependencies Status](https://david-dm.org/psychobolt/react-pie-menu.svg)](https://david-dm.org/psychobolt/react-pie-menu)
 [![codecov](https://codecov.io/gh/psychobolt/react-pie-menu/branch/master/graph/badge.svg)](https://codecov.io/gh/psychobolt/react-pie-menu)
