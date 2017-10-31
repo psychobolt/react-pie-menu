@@ -11,6 +11,7 @@ type Props = {
   focusStyle: {},
   contentContainerStyle: {},
   contentStyle: {},
+  contentHeight: string,
   onSelect: Callback,
   onMouseUp: Callback,
   onMouseOver: Callback
@@ -21,6 +22,10 @@ type State = {
 };
 
 export default class Slice extends React.Component<Props, State> {
+  static defaultProps = {
+    contentHeight: '2em',
+  }
+
   constructor(props: Props) {
     super(props);
     this.state = {
@@ -54,6 +59,7 @@ export default class Slice extends React.Component<Props, State> {
       focusStyle,
       contentContainerStyle,
       contentStyle,
+      contentHeight,
     } = this.props;
     const { focused } = this.state;
     const { background, ...rest } = Object.assign({}, styles.focus, focusStyle);
@@ -71,7 +77,11 @@ export default class Slice extends React.Component<Props, State> {
         style={Object.assign({}, styles.container, containerStyle)}
       >
         <div style={focused ? Object.assign({}, styles.focus, focusedBgStyle) : {}}>
-          <div style={Object.assign({}, styles.contentContainer, contentContainerStyle)}>
+          <div
+            style={Object.assign({
+              height: contentHeight,
+            }, styles.contentContainer, contentContainerStyle)}
+          >
             <div style={Object.assign(
                 {},
                 styles.content,

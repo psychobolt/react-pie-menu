@@ -54,6 +54,7 @@ const PieMenu = ({ // eslint-disable-line object-curly-newline
                 background: `radial-gradient(transparent ${centerRadius}, #424242 ${centerRadius})`,
                 color: 'white',
               }, child.props.focusStyle),
+              contentHeight: child.props.contentHeight || contentHeight,
               contentContainerStyle: Object.assign({
                 top: `calc((${radius} - ${centerRadius}) / 2 - ${child.props.contentHeight || contentHeight || 0} / 2)`,
               }, child.props.contentContainerStyle),
