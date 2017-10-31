@@ -27,8 +27,7 @@ export class PieMenuContainer extends React.Component {
     const { mouseX, mouseY } = this.props;
     return (
       <PieMenu 
-        width='250px' 
-        height='250px' 
+        radius='125px' 
         centerRadius='30px'
         centerX={mouseX}
         centerY={mouseY}
@@ -64,17 +63,17 @@ export class PieMenuContainer extends React.Component {
 
 ### PieMenu
 
-- width: ```'300px'```
-- height: ```'300px'```
+- radius: ```'150px'```
 - centerX: ```'100px'```
 - centerY: ```'100px'```
-- centerRadius: ```'60px'```
+- centerRadius: ```'30px'```
 - centerStyle: ```{ background: '#00ff00 url("smiley.gif") no-repeat fixed center'  }```
 
 ### Slice
 
-- containerStyle: ```{ background: 'radial-gradient(transparent 60px, rgba(109, 109, 109, 0.925) 60px)' }```
-- focusStyle: ```{ color: 'white', background: 'radial-gradient(transparent 60px, #424242 60px)' }```
+- containerStyle: ```{ background: 'radial-gradient(transparent 30px, rgba(109, 109, 109, 0.925) 30px)' }```
+- focusStyle: ```{ color: 'white', background: 'radial-gradient(transparent 30px, #424242 60px)' }```
+- contentContainerStyle: ```{ top: '45px' }```
 - contentStyle: ```{ color: 'back' }```
 - onSelect: ```() => {}```
 - onMouseUp: ```() => {}```

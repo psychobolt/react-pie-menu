@@ -12,7 +12,6 @@ export default {
   },
   contentContainer: {
     position: 'absolute',
-    top: '10%',
     width: '100%',
     textAlign: 'center',
   },

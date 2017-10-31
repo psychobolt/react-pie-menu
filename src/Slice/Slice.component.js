@@ -9,6 +9,7 @@ type Props = {
   children: any,
   containerStyle: {},
   focusStyle: {},
+  contentContainerStyle: {},
   contentStyle: {},
   onSelect: Callback,
   onMouseUp: Callback,
@@ -27,7 +28,7 @@ export default class Slice extends React.Component<Props, State> {
     };
   }
 
-  onMouseOver = (event: SyntheticEvent<HTMLDivElement>) => {
+  onMouseOver = (event: SyntheticMouseEvent<HTMLDivElement>) => {
     const { onMouseOver } = this.props;
     if (onMouseOver) {
       onMouseOver();
@@ -36,7 +37,7 @@ export default class Slice extends React.Component<Props, State> {
     event.stopPropagation();
   }
 
-  onMouseOut = (event: SyntheticEvent<HTMLDivElement>) => {
+  onMouseOut = (event: SyntheticMouseEvent<HTMLDivElement>) => {
     const { onMouseUp } = this.props;
     if (onMouseUp) {
       onMouseUp();
@@ -46,7 +47,7 @@ export default class Slice extends React.Component<Props, State> {
   }
 
   render() {
-    const { children, onSelect, containerStyle, focusStyle, contentStyle } = this.props;
+    const { children, onSelect, containerStyle, focusStyle, contentContainerStyle, contentStyle } = this.props;
     const { focused } = this.state;
     const { background, ...rest } = Object.assign({}, styles.focus, focusStyle);
     const focusedBgStyle = { background };
@@ -63,7 +64,7 @@ export default class Slice extends React.Component<Props, State> {
         style={Object.assign({}, styles.container, containerStyle)}
       >
         <div style={focused ? Object.assign({}, styles.focus, focusedBgStyle) : {}}>
-          <div style={styles.contentContainer}>
+          <div style={Object.assign({}, styles.contentContainer, contentContainerStyle)}>
             <div style={Object.assign(
                 {},
                 styles.content,

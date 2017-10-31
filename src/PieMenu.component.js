@@ -5,8 +5,7 @@ import styles from './PieMenu.style';
 
 type Props = {
   children: any,
-  width: string,
-  height: string,
+  radius: string,
   centerX: string,
   centerY: string,
   centerRadius: string,
@@ -14,8 +13,7 @@ type Props = {
 };
 
 const PieMenu = ({ // eslint-disable-line object-curly-newline
-  width = '300px',
-  height = '300px',
+  radius = '150px',
   centerX,
   centerY,
   centerRadius = '50px',
@@ -31,13 +29,17 @@ const PieMenu = ({ // eslint-disable-line object-curly-newline
       style={
         Object.assign({
           position: (centerX || centerY) ? 'absolute' : 'relative',
-          top: `calc(${centerY} - ${height} / 2)`,
-          left: `calc(${centerX} - ${width} / 2)`,
+          top: `calc(${centerY} - 2 * ${radius} / 2)`,
+          left: `calc(${centerX} - 2 * ${radius} / 2)`,
         }, styles.container)
       }
     >
       <nav style={styles.nav}>
-        <ul style={Object.assign({ width, height }, styles.ul)}>
+        <ul style={Object.assign({
+            width: `calc(2 * ${radius})`,
+            height: `calc(2 * ${radius})`,
+          }, styles.ul)}
+        >
           {React.Children.map(children, (child, i) => {
             const rotate = startAngle + (centralAngle * i);
             const skew = polar ? 0 : deltaAngle;
@@ -50,6 +52,9 @@ const PieMenu = ({ // eslint-disable-line object-curly-newline
                 background: `radial-gradient(transparent ${centerRadius}, #424242 ${centerRadius})`,
                 color: 'white',
               }, child.props.focusStyle),
+              contentContainerStyle: Object.assign({
+                top: `calc(${radius} / 2 - ${centerRadius})`,
+              }, child.props.contentContainerStyle),
               contentStyle: Object.assign({
                 transform: `rotate(${-centralAngle * i}deg)`,
                 color: 'black',
