@@ -5,7 +5,7 @@
 [![Dependencies Status](https://david-dm.org/psychobolt/react-pie-menu.svg)](https://david-dm.org/psychobolt/react-pie-menu)
 [![codecov](https://codecov.io/gh/psychobolt/react-pie-menu/branch/master/graph/badge.svg)](https://codecov.io/gh/psychobolt/react-pie-menu)
 
-A configurable radial context menu for React.
+A configurable radial menu for React.
 
 ## Install
 
@@ -22,41 +22,36 @@ yarn add react-pie-menu
 import React from 'react';
 import PieMenu, { Slice } from 'react-pie-menu';
 
-export class PieMenuContainer extends React.Component {
-  render() {
-    const { mouseX, mouseY } = this.props;
-    return (
-      <PieMenu 
-        radius='125px' 
-        centerRadius='30px'
-        centerX={mouseX}
-        centerY={mouseY}
-      >
-        {/* Contents */}
-        <Slice><i className="fa fa-home fa-2x" /></Slice>
-        <Slice onSelect={() => window.open('https://www.facebook.com', '_blank')}>
-          <i className="fa fa-facebook fa-2x" />
-        </Slice>
-        <Slice onSelect={() => window.open('https://www.twitter.com', '_blank')}>
-          <i className="fa fa-twitter fa-2x" />
-        </Slice>
-        <Slice onSelect={() => window.open('https://www.linkedin.com', '_blank')}>
-          <i className="fa fa-linkedin fa-2x" />
-        </Slice>
-        <Slice onSelect={() => window.open('https://github.com/psychobolt/react-pie-menu', '_blank')}>
-          <i className="fa fa-github fa-2x" />
-        </Slice>
-        <Slice onSelect={() => window.open('https://en.wikipedia.org/wiki/RSS', '_blank')}>
-          <i className="fa fa-rss fa-2x" />
-        </Slice>
-        <Slice onSelect={() => window.open('https://www.pinterest.com/', '_blank')}>
-          <i className="fa fa-pinterest fa-2x" />
-        </Slice>
-        <Slice><i className="fa fa-asterisk fa-2x" /></Slice>
-      </PieMenu>
-    );
-  }
-}
+export default ({ mouseX, mouseY }) => (
+  <PieMenu 
+    radius='125px' 
+    centerRadius='30px'
+    centerX={mouseX}
+    centerY={mouseY}
+  >
+    {/* Contents */}
+    <Slice><i className="fa fa-home fa-2x" /></Slice>
+    <Slice onSelect={() => window.open('https://www.facebook.com', '_blank')}>
+      <i className="fa fa-facebook fa-2x" />
+    </Slice>
+    <Slice onSelect={() => window.open('https://www.twitter.com', '_blank')}>
+      <i className="fa fa-twitter fa-2x" />
+    </Slice>
+    <Slice onSelect={() => window.open('https://www.linkedin.com', '_blank')}>
+      <i className="fa fa-linkedin fa-2x" />
+    </Slice>
+    <Slice onSelect={() => window.open('https://github.com/psychobolt/react-pie-menu', '_blank')}>
+      <i className="fa fa-github fa-2x" />
+    </Slice>
+    <Slice onSelect={() => window.open('https://en.wikipedia.org/wiki/RSS', '_blank')}>
+      <i className="fa fa-rss fa-2x" />
+    </Slice>
+    <Slice onSelect={() => window.open('https://www.pinterest.com/', '_blank')}>
+      <i className="fa fa-pinterest fa-2x" />
+    </Slice>
+    <Slice><i className="fa fa-asterisk fa-2x" /></Slice>
+  </PieMenu>
+);
 ```
 
 ## Props
@@ -68,6 +63,7 @@ export class PieMenuContainer extends React.Component {
 - centerY: ```'100px'```
 - centerRadius: ```'30px'```
 - centerStyle: ```{ background: '#00ff00 url("smiley.gif") no-repeat fixed center'  }```
+- contentHeight: ```'2em'```
 
 ### Slice
 
@@ -75,6 +71,7 @@ export class PieMenuContainer extends React.Component {
 - focusStyle: ```{ color: 'white', background: 'radial-gradient(transparent 30px, #424242 60px)' }```
 - contentContainerStyle: ```{ top: '45px' }```
 - contentStyle: ```{ color: 'back' }```
+- contentHeight: ```'2em'```
 - onSelect: ```() => {}```
 - onMouseUp: ```() => {}```
 - onMouseOver: ```() => {}```

@@ -10,6 +10,7 @@ type Props = {
   centerY: string,
   centerRadius: string,
   centerStyle: {},
+  contentHeight: string,
 };
 
 const PieMenu = ({ // eslint-disable-line object-curly-newline
@@ -17,8 +18,9 @@ const PieMenu = ({ // eslint-disable-line object-curly-newline
   centerX,
   centerY,
   centerRadius = '50px',
-  children,
   centerStyle,
+  contentHeight = '2em',
+  children,
 }: Props) => {
   const centralAngle = children.length ? 360 / children.length : 360;
   const deltaAngle = 90 - centralAngle;
@@ -53,7 +55,7 @@ const PieMenu = ({ // eslint-disable-line object-curly-newline
                 color: 'white',
               }, child.props.focusStyle),
               contentContainerStyle: Object.assign({
-                top: `calc(${radius} / 2 - ${centerRadius})`,
+                top: `calc((${radius} - ${centerRadius}) / 2 - ${child.props.contentHeight || contentHeight || 0} / 2)`,
               }, child.props.contentContainerStyle),
               contentStyle: Object.assign({
                 transform: `rotate(${-centralAngle * i}deg)`,

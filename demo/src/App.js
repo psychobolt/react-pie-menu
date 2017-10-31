@@ -57,8 +57,8 @@ class App extends Component {
         </p>
         <canvas width="300" height="300" ref={ref => this.canvas = ref} />
         {showMenu && <PieMenu 
-          radius='125px' 
-          centerRadius='30px'
+          radius="125px"
+          centerRadius="30px"
           centerX={mouseX}
           centerY={mouseY}
         >
