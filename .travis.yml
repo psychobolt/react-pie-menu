@@ -13,17 +13,17 @@ install:
 script:
   - yarn eslint src
   - yarn flow
-  - yarn build
-  - npm link
-  - cd demo/ && yarn install && yarn build && cd ../
-  - yarn eslint demo/src
   - yarn test -- --coverage
+  - yarn build
+
+before_deploy:
+  - yarn build-storybook
 
 deploy:
   provider: pages
   skip_cleanup: true
   github_token: $GITHUB_TOKEN
-  local_dir: demo/build
+  local_dir: storybook-static
   on:
     branch: master
 
