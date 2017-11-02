@@ -54,7 +54,29 @@ export default ({ mouseX, mouseY }) => (
 );
 ```
 
+<<<<<<< HEAD
 ## Props
+=======
+## Including NPM packages
+
+This project uses two package.json structure.
+
+### Library dependencies -- <root_dir>/package.json
+
+```sh
+yarn add [package-name] --dev # for dev tools
+yarn add [package-name] # for app
+```
+
+### Storybook dependencies -- <root_dir>/stories/package.json
+
+```sh
+cd stories/
+yarn add [package-name]
+```
+
+## Static Types
+>>>>>>> e1812e5d50b75a8132a6a60dab52761cbc7fc68c
 
 ### PieMenu
 
