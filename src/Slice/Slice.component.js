@@ -62,7 +62,7 @@ export default class Slice extends React.Component<Props, State> {
       contentHeight,
     } = this.props;
     const { focused } = this.state;
-    const { background, ...rest } = Object.assign({}, styles.focus, focusStyle);
+    const { background, ...rest } = Object.assign({}, focusStyle);
     const focusedBgStyle = { background };
     const focusedStyle = rest;
     return (
