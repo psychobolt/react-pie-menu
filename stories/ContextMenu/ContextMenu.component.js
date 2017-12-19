@@ -25,11 +25,11 @@ class App extends Component {
     img.src = logo;
   }
 
-  onContextMenu = (e) => {
+  onContextMenu = e => {
     e.preventDefault();
   }
 
-  onMouseDown = (e) => {
+  onMouseDown = e => {
     if (e.nativeEvent.which === MOUSE_RIGHT_CODE) {
       this.setState({
         mouseX: `${e.pageX}px`,
@@ -39,7 +39,7 @@ class App extends Component {
     }
   }
 
-  onMouseUp = (e) => {
+  onMouseUp = e => {
     if (e.nativeEvent.which === MOUSE_RIGHT_CODE) {
       this.setState({ showMenu: false });
       e.preventDefault();
