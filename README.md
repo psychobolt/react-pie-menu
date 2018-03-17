@@ -81,34 +81,5 @@ export default ({ mouseX, mouseY }) => (
 
 
 ## Reference
-
-<<<<<<< HEAD
 https://tympanus.net/codrops/2013/08/09/building-a-circular-navigation-with-css-transforms/
 https://stackoverflow.com/questions/14184494/segments-in-a-circle-using-css3
-=======
-```sh
-yarn flow # performs type checking on files
-```
-
-## Lint
-
-```sh
-yarn lint # runs linter to detect any style issues (css & js)
-yarn lint:css # lint only css
-yarn lint:js # lint only js
-yarn lint:js --fix # tries to fix js lint issues
-```
-
-## Test
-
-```sh
-yarn test # runs functional/unit tests using Jest
-yarn test --coverage # with coverage
-```
-
-## Build
-
-```sh
-yarn build # builds sources at src/
-```
->>>>>>> 32e35e47f44ab7570687fe53a05ba5b64a629640
