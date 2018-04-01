@@ -1,99 +1,89 @@
 // @flow
 import React from 'react';
+import { compose, getContext } from 'recompose';
+import PropTypes from 'prop-types';
 
-import styles from './Slice.style';
+import { withTheme } from '../utils';
 
-export type Callback = () => void;
+type Callback = (event: SyntheticEvent<*>) => any;
+
+export type Context = {
+  radius: number,
+  centerRadius: string,
+  centralAngle: number,
+  polar: boolean, // eslint-disable-line react/no-unused-prop-types
+};
 
 type Props = {
-  children: any,
-  containerStyle: {},
-  focusStyle: {},
-  contentContainerStyle: {},
-  contentStyle: {},
+  className: string,
+  endAngle: number,
   contentHeight: string,
+  onMouseOver: Callback,
+  onMouseOut: Callback,
   onSelect: Callback,
-  onMouseUp: Callback,
-  onMouseOver: Callback
+  onFocus: Callback,
+  onBlur: Callback,
+  attrs: {},
+  children: any,
+} & Context;
+
+export const propTypes = {
+  radius: PropTypes.string,
+  centerRadius: PropTypes.string,
+  centralAngle: PropTypes.number,
+  polar: PropTypes.bool,
 };
 
-type State = {
-  focused: boolean
+export const itemTypes = {
+  startAngle: PropTypes.number,
+  endAngle: PropTypes.number,
+  skew: PropTypes.number,
 };
 
-export default class Slice extends React.Component<Props, State> {
-  static defaultProps = {
-    contentHeight: '2em',
-  }
+const ContentContainer = withTheme('slice', 'contentContainer')('div');
 
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      focused: false,
-    };
-  }
+const Content = withTheme('slice', 'content')('div');
 
-  onMouseOver = (event: SyntheticMouseEvent<HTMLDivElement>) => {
-    const { onMouseOver } = this.props;
-    if (onMouseOver) {
-      onMouseOver();
-    }
-    this.setState({ focused: true });
-    event.stopPropagation();
-  }
+const Slice = ({
+  className,
+  radius,
+  centerRadius,
+  contentHeight = '2em',
+  centralAngle,
+  endAngle,
+  onMouseOver,
+  onMouseOut,
+  onSelect,
+  onFocus,
+  onBlur,
+  children,
+  attrs = {},
+}: Props) => (
+  <div
+    role="button"
+    className={className}
+    onMouseOver={onMouseOver}
+    onMouseOut={onMouseOut}
+    onMouseUp={onSelect}
+    onFocus={onFocus}
+    onBlur={onBlur}
+    tabIndex={-1}
+    {...attrs}
+  >
+    <ContentContainer
+      radius={radius}
+      centralAngle={centralAngle}
+      centerRadius={centerRadius}
+      contentHeight={contentHeight}
+    >
+      <Content angle={endAngle}>
+        {children}
+      </Content>
+    </ContentContainer>
+  </div>
+);
 
-  onMouseOut = (event: SyntheticMouseEvent<HTMLDivElement>) => {
-    const { onMouseUp } = this.props;
-    if (onMouseUp) {
-      onMouseUp();
-    }
-    this.setState({ focused: false });
-    event.stopPropagation();
-  }
-
-  render() {
-    const {
-      children,
-      onSelect,
-      containerStyle,
-      focusStyle,
-      contentContainerStyle,
-      contentStyle,
-      contentHeight,
-    } = this.props;
-    const { focused } = this.state;
-    const { background, ...rest } = Object.assign({}, focusStyle);
-    const focusedBgStyle = { background };
-    const focusedStyle = rest;
-    return (
-      <div
-        role="button"
-        onMouseOver={this.onMouseOver}
-        onMouseOut={this.onMouseOut}
-        onMouseUp={onSelect}
-        onFocus={() => {}}
-        onBlur={() => {}}
-        tabIndex={-1}
-        style={Object.assign({}, styles.container, containerStyle)}
-      >
-        <div style={focused ? Object.assign({}, styles.focus, focusedBgStyle) : {}}>
-          <div
-            style={Object.assign({
-              height: contentHeight,
-            }, styles.contentContainer, contentContainerStyle)}
-          >
-            <div style={Object.assign(
-                {},
-                styles.content,
-                contentStyle,
-                focused ? focusedStyle : {},
-              )}
-            >
-              {children}
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-}
+export default compose(
+  getContext({ ...propTypes, ...itemTypes }),
+  withTheme('slice', 'container'),
+)(Slice);

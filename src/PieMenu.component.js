@@ -1,90 +1,103 @@
 // @flow
 import React from 'react';
+import { isFragment, isElement } from 'react-is';
+import { compose, withProps, withContext, getContext } from 'recompose';
 
-import styles from './PieMenu.style';
+import type Slice from './Slice';
+import { itemTypes, propTypes, type Context } from './Slice';
+import { withTheme } from './utils';
 
+/* eslint-disable no-use-before-define */
 type Props = {
-  children: any,
-  radius: string,
-  centerX: string,
-  centerY: string,
-  centerRadius: string,
-  centerStyle: {},
-  contentHeight: string,
+  className: string,
+  slices: Slice[],
+  Center: typeof PieCenter,
+  attrs: {}
+} & Context;
+/* eslint-enable no-use-before-define */
+
+const List = withTheme('pieMenu', 'list')('ul');
+
+const Item = compose(
+  withContext(
+    itemTypes,
+    ({ startAngle, endAngle, skew }) => ({ startAngle, endAngle, skew }),
+  ),
+  withTheme('pieMenu', 'item'),
+)('li');
+
+export const PieCenter = withTheme('pieMenu', 'center')('div');
+
+const getSlices = (child, index) => {
+  let slices = [];
+  if (isFragment(child)) {
+    React.Children.forEach(child.props.children, (slice, i) => {
+      slices = [...slices, ...getSlices(slice, index + i)];
+    });
+  } else if (isElement(child)) {
+    return [child];
+  }
+  return slices;
 };
 
-const PieMenu = ({ // eslint-disable-line object-curly-newline
-  radius = '150px',
-  centerX,
-  centerY,
-  centerRadius = '50px',
-  centerStyle,
-  contentHeight = '2em',
-  children,
+const computeSlices = compose(
+  withProps(({ children }) => {
+    let slices = [];
+    let index = 0;
+    React.Children.forEach(children, (child, i) => {
+      slices = [
+        ...slices,
+        ...getSlices(child, index + i),
+      ];
+      index = Math.max(0, slices.length - 1);
+    });
+    return { slices };
+  }),
+  withContext(propTypes, ({
+    slices,
+    radius = '150px',
+    centerRadius = '50px',
+  }: Context) => {
+    const centralAngle = 360 / slices.length || 360;
+    const polar = centralAngle % 180 === 0;
+    return { radius, centerRadius, centralAngle, polar };
+  }),
+  getContext(propTypes),
+);
+
+const PieMenu = ({
+  className,
+  radius,
+  centerRadius,
+  centralAngle,
+  polar,
+  Center = PieCenter,
+  slices,
+  attrs = {},
 }: Props) => {
-  const centralAngle = children.length ? 360 / children.length : 360;
   const deltaAngle = 90 - centralAngle;
-  const startAngle = deltaAngle < 0 ? 45 : deltaAngle + (centralAngle / 2);
-  const polar = centralAngle % 180 === 0;
+  const startAngle = polar ? 45 : deltaAngle + (centralAngle / 2);
   return (
-    <div
-      style={
-        Object.assign({
-          position: (centerX || centerY) ? 'absolute' : 'relative',
-          top: `calc(${centerY} - 2 * ${radius} / 2)`,
-          left: `calc(${centerX} - 2 * ${radius} / 2)`,
-        }, styles.container)
-      }
-    >
-      <nav style={styles.nav}>
-        <ul style={Object.assign({
-            width: `calc(2 * ${radius})`,
-            height: `calc(2 * ${radius})`,
-          }, styles.ul)}
-        >
-          {React.Children.map(children, (child, i) => {
-            const rotate = startAngle + (centralAngle * i);
-            const skew = polar ? 0 : deltaAngle;
-            const newChild = React.cloneElement(child, {
-              containerStyle: Object.assign({
-                transform: `skew(${-skew}deg) rotate(${((polar ? 90 : centralAngle) / 2) - 90}deg)`,
-                background: `radial-gradient(transparent ${centerRadius}, rgba(109, 109, 109, 0.925) ${centerRadius})`,
-              }, child.props.containerStyle),
-              focusStyle: Object.assign({
-                background: `radial-gradient(transparent ${centerRadius}, #424242 ${centerRadius})`,
-                color: 'white',
-              }, child.props.focusStyle),
-              contentHeight: child.props.contentHeight || contentHeight,
-              contentContainerStyle: Object.assign({
-                top: `calc((${radius} - ${centerRadius}) / 2 - ${child.props.contentHeight || contentHeight || 0} / 2)`,
-              }, child.props.contentContainerStyle),
-              contentStyle: Object.assign({
-                transform: `rotate(${-centralAngle * i}deg)`,
-                color: 'black',
-              }, child.props.contentStyle),
-            });
-            return (
-              <li style={Object.assign({
-                transform: `rotate(${rotate}deg) skew(${skew}deg)`,
-              }, styles.li)}
-              >
-                {newChild}
-              </li>
-            );
-          })}
-        </ul>
-        <div style={
-          Object.assign({
-            top: `calc(50% - ${centerRadius})`,
-            left: `calc(50% - ${centerRadius})`,
-            width: `calc(2 * ${centerRadius})`,
-            height: `calc(2 * ${centerRadius})`,
-          }, styles.center, centerStyle)
-        }
-        />
-      </nav>
+    <div className={className} {...attrs}>
+      <List radius={radius}>
+        {slices.map((slice, i) => (
+          <Item
+            key={i.toString()}
+            startAngle={startAngle}
+            endAngle={centralAngle * i}
+            skew={polar ? 0 : deltaAngle}
+            centralAngle={centralAngle}
+          >
+            {slice}
+          </Item>
+        ))}
+      </List>
+      <Center centerRadius={centerRadius} />
     </div>
   );
 };
 
-export default PieMenu;
+export default compose(
+  computeSlices,
+  withTheme('pieMenu', 'container'),
+)(PieMenu);

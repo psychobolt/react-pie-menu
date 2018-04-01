@@ -1,5 +1,13 @@
-import 'font-awesome/css/font-awesome.min.css';
-import React, { Component } from 'react';
+import React from 'react';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import { faHome, faRss, faAsterisk } from '@fortawesome/fontawesome-free-solid';
+import {
+  faFacebookF,
+  faTwitter,
+  faLinkedinIn,
+  faGithub,
+  faPinterest,
+} from '@fortawesome/fontawesome-free-brands';
 import { action } from '@storybook/addon-actions';
 
 import PieMenu, { Slice } from 'src';
@@ -8,7 +16,7 @@ import logo from './logo.svg';
 
 const MOUSE_RIGHT_CODE = 3;
 
-class App extends Component {
+export default class extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -68,28 +76,28 @@ class App extends Component {
             centerY={mouseY}
           >
             <Slice onSelect={action('Home selected')}>
-              <i className="fa fa-home fa-2x" />
+              <FontAwesomeIcon icon={faHome} size="2x" />
             </Slice>
             <Slice onSelect={action('Facebook selected')}>
-              <i className="fa fa-facebook fa-2x" />
+              <FontAwesomeIcon icon={faFacebookF} size="2x" />
             </Slice>
             <Slice onSelect={action('Twitter selected')}>
-              <i className="fa fa-twitter fa-2x" />
+              <FontAwesomeIcon icon={faTwitter} size="2x" />
             </Slice>
             <Slice onSelect={action('LinkedIn selected')}>
-              <i className="fa fa-linkedin fa-2x" />
+              <FontAwesomeIcon icon={faLinkedinIn} size="2x" />
             </Slice>
             <Slice onSelect={action('GitHub selected')}>
-              <i className="fa fa-github fa-2x" />
+              <FontAwesomeIcon icon={faGithub} size="2x" />
             </Slice>
             <Slice onSelect={action('RSS selected')}>
-              <i className="fa fa-rss fa-2x" />
+              <FontAwesomeIcon icon={faRss} size="2x" />
             </Slice>
             <Slice onSelect={action('Pinterest selected')}>
-              <i className="fa fa-pinterest fa-2x" />
+              <FontAwesomeIcon icon={faPinterest} size="2x" />
             </Slice>
             <Slice onSelect={action('Asterisk selected')}>
-              <i className="fa fa-asterisk fa-2x" />
+              <FontAwesomeIcon icon={faAsterisk} size="2x" />
             </Slice>
           </PieMenu>
         }
@@ -97,5 +105,3 @@ class App extends Component {
     );
   }
 }
-
-export default App;
