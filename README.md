@@ -87,13 +87,13 @@ export default ({ x, y }) => (
   - centerX: ```'100px'```
   - centerY: ```'100px'```
   - centerRadius: ```'30px'```
-  - Center: [PieCenter](#PieCenter)
+  - Center: [PieCenter](#piecenter)
   - attrs: {} - Custom attributes added to the container DOM element
 - Styles
   - [container](src/PieMenu.style.js)
   - [list](src/PieMenu.style.js)
   - [item](src/PieMenu.style.js)
-  - [center](#PieCenter)
+  - [center](#piecenter)
 
 #### PieCenter
 
@@ -124,24 +124,24 @@ export default ({ x, y }) => (
 
 ### Contexts
 
-By default the [Slice](#Slice) component inherits properties from [PieMenu](#PieMenu) globally:
+By default the [Slice](#slice) component inherits properties from [PieMenu](#piemenu) globally:
 
 #### propTypes
-  - ```radius: string``` - [PieMenu](#PieMenu)'s radius
-  - ```centerRadius: string``` - [PieCenter](PieCenter)'s center radius
+  - ```radius: string``` - [PieMenu](#piemenu)'s radius
+  - ```centerRadius: string``` - [PieCenter](#piecenter)'s center radius
   - ```centralAngle: number``` - Angle for every slice or 360 / (number of slices)
   - ```polar: boolean``` - If true, the library detects that there is at most 2 slices
 
-Additionally, the [Slice](#Slice) component inherits calculated local properties from [PieMenu](#PieMenu):
+Additionally, the [Slice](#slice) component inherits calculated local properties from [PieMenu](#piemenu):
 
 #### itemTypes
   - ```startAngle: number``` - A uniform offset angle
   - ```endAngle: number``` - Target location angle
-  - ```skew: number``` - Number to skew the rectangle container which adjusts tip angle of the slice (e.g. 90 - centralAngle). This is a CSS trick. See [references](#Reference), for details.
+  - ```skew: number``` - Number to skew the rectangle container which adjusts tip angle of the slice (e.g. 90 - centralAngle). This is a CSS trick. See [references](#reference), for details.
 
 ### Styling
 
-Style Pie Menu [components](#Components) with ThemeProvder component
+Style Pie Menu [components](#components) with ThemeProvder component
 ```jsx
 import React from 'react';
 import { ThemeProvder, css } from 'styled-components';
