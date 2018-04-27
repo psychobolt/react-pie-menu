@@ -28,7 +28,7 @@ export default class extends React.Component {
     const ctx = this.canvas.getContext('2d');
     const img = new Image();
     img.onload = () => {
-      ctx.drawImage(img, 0, 0);
+      ctx.drawImage(img, -50, 0, 400, 300);
     };
     img.src = logo;
   }
