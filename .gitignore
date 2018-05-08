@@ -70,5 +70,5 @@ storybook-static
 # only support Yarn
 package-lock.json
 
-# Mac
+# Mac files
 .DS_Store
