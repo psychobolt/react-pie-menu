@@ -1,6 +1,8 @@
+import { withDefaultTheme } from 'styled-components-theme-connector';
+
 import PieMenu from './PieMenu.component';
-import withTheme from './Theme';
+import theme from './PieMenu.theme';
 
 export { default as Slice } from './Slice';
 export { PieCenter } from './PieMenu.component';
-export default withTheme(PieMenu);
+export default withDefaultTheme(theme)(PieMenu);

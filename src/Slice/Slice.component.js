@@ -3,7 +3,7 @@ import React from 'react';
 import { compose, getContext } from 'recompose';
 import PropTypes from 'prop-types';
 
-import { withTheme } from '../utils';
+import { connectTheme } from 'styled-components-theme-connector';
 
 type Callback = (event: SyntheticEvent<*>) => any;
 
@@ -40,9 +40,9 @@ export const itemTypes = {
   skew: PropTypes.number,
 };
 
-const ContentContainer = withTheme('slice', 'contentContainer')('div');
+const ContentContainer = connectTheme('slice.contentContainer')('div');
 
-const Content = withTheme('slice', 'content')('div');
+const Content = connectTheme('slice.content')('div');
 
 const Slice = ({
   className,
@@ -85,5 +85,5 @@ const Slice = ({
 
 export default compose(
   getContext({ ...propTypes, ...itemTypes }),
-  withTheme('slice', 'container'),
+  connectTheme('slice.container'),
 )(Slice);

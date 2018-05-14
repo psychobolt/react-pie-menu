@@ -2,10 +2,10 @@
 import React from 'react';
 import { isFragment, isElement } from 'react-is';
 import { compose, withProps, withContext, getContext } from 'recompose';
+import { connectTheme } from 'styled-components-theme-connector';
 
 import type Slice from './Slice';
 import { itemTypes, propTypes, type Context } from './Slice';
-import { withTheme } from './utils';
 
 /* eslint-disable no-use-before-define */
 type Props = {
@@ -16,17 +16,17 @@ type Props = {
 } & Context;
 /* eslint-enable no-use-before-define */
 
-const List = withTheme('pieMenu', 'list')('ul');
+const List = connectTheme('pieMenu.list')('ul');
 
 const Item = compose(
   withContext(
     itemTypes,
     ({ startAngle, endAngle, skew }) => ({ startAngle, endAngle, skew }),
   ),
-  withTheme('pieMenu', 'item'),
+  connectTheme('pieMenu.item'),
 )('li');
 
-export const PieCenter = withTheme('pieMenu', 'center')('div');
+export const PieCenter = connectTheme('pieMenu.center')('div');
 
 const getSlices = (child, index) => {
   let slices = [];
@@ -99,5 +99,5 @@ const PieMenu = ({
 
 export default compose(
   computeSlices,
-  withTheme('pieMenu', 'container'),
+  connectTheme('pieMenu.container'),
 )(PieMenu);
