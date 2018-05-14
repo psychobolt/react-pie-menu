@@ -33,6 +33,7 @@ export const plugins = [
         'isPortal',
         'isStrictMode',
       ],
+      'node_modules/styled-components-theme-connector/dist/index.js': ['connectTheme', 'withDefaultTheme'],
     },
   }),
   babel({
