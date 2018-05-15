@@ -8,7 +8,7 @@ import { connectTheme } from 'styled-components-theme-connector';
 type Callback = (event: SyntheticEvent<*>) => any;
 
 export type Context = {
-  radius: number,
+  radius: string,
   centerRadius: string,
   centralAngle: number,
   polar: boolean, // eslint-disable-line react/no-unused-prop-types

@@ -10,11 +10,11 @@
 
 A configurable radial menu for React.
 
-## Notes
+## Release Notes
 
-- Since the release of version 0.2.0, inline css styles is deprecated in favor of CSS-in-JS. To understand benefits and usage, visit [styled-components](https://www.styled-components.com/)'s documentation.
+- Since the release of version [0.2.0](https://github.com/psychobolt/react-pie-menu/releases/tag/0.2.0), inline css styles is deprecated in favor of CSS-in-JS. To understand benefits and usage, visit [styled-components](https://www.styled-components.com/)'s documentation.
 
-- For older docs, refer to [0.1.x](https://github.com/psychobolt/react-pie-menu/tree/0.1.11) tree.
+- For older docs, refer to the [0.1.x](https://github.com/psychobolt/react-pie-menu/tree/0.1.11) tree.
 
 ## Install
 
@@ -25,11 +25,9 @@ npm install --save styled-components react-pie-menu
 # or
 yarn add styled-components react-pie-menu
 ```
-## Example
+## Examples
 
-[DEMOS](https://psychobolt.github.io/react-pie-menu/)
-
-### Basic Usage
+There are several [demos](https://psychobolt.github.io/react-pie-menu/). Also check out their [sources](stories). Here is one to get you started:
 
 ```jsx
 import React from 'react';
@@ -68,40 +66,75 @@ export default ({ x, y }) => (
 );
 ```
 
+The code will display a 125 pixel radial menu with 8 slices and a 30 pixel radial center. Each slice is configured to open a url when selected.
+
 ## Components
 
+For configuration of Components, see bellow.
+
 ### PieMenu
+
+Inner elements:
 
 ```jsx
 <div class="container" centerX centerY radius {..attrs}>
   <ul class="list" radius>
     <li class="item" startAngle endAngle skew centralAngle></li>
-    ...
+    ...p
   </ul>
   <Center centerRadius={centerRadius} />
 </div>
 ```
 
-- Props
-  - radius: ```'150px'```
-  - centerX: ```'100px'```
-  - centerY: ```'100px'```
-  - centerRadius: ```'30px'```
-  - Center: [PieCenter](#piecenter)
-  - attrs: {} - Custom attributes added to the container DOM element
-- Styles
-  - [container](src/PieMenu.style.js)
-  - [list](src/PieMenu.style.js)
-  - [item](src/PieMenu.style.js)
-  - [center](#piecenter)
+#### Props
 
-#### PieCenter
+##### `radius?: string`
 
-- Props
-  - centerRadius
-- [Style](src/PieMenu.style.js)
+Defines pie menu's radius in CSS Unit. For example, `150px`.
+`
+##### `centerX?: string`
+
+Defines the position of the pie menu in CSS Unit. For example, `0px` will be left-most position of its parent container.
+
+##### `centerY?: string`
+
+Defines the position of the pie menu in CSS Unit. For example, `0px` will be the top-most position of its parent container.
+
+##### `centerRadius?: string`
+
+Defines the center radius. For example, `30px` or `0` (no center). This prop is forwarded to the Center Component.
+
+##### `Center?: React.ComponentType<T>`
+
+You can provide your own React Component to be the Center (by default [PieCenter](#piecenter)). You may also `import` PieCenter as a Component.
+
+##### `attrs?: {}`
+
+You can add custom attributes by specifying in `attrs`. For example, `{ resize: 'false' }`.
+
+### PieCenter
+
+You can define your own center by importing the Component. For example:
+
+```jsx
+import { PieCenter } from 'react-pie-menu';
+
+export default (props) => (
+  <PieMenu centerRadius={props.centerRadius || '30px'}>
+    { /* my content */}
+  </PieMenu>
+);
+```
+
+#### Props
+
+##### `centerRadius?: string`
+
+Same as Pie Menu. If you define your own center, you can specify your own value instead.
 
 ### Slice
+
+Inner elements:
 
 ```html
 <div class="container" radius centralAngle centralRadius contentHeight {..attrs}>
@@ -111,37 +144,71 @@ export default ({ x, y }) => (
 </div>
 ```
 
-- Props
-  - contentHeight: ```'2em'```
-  - onMouseUp: ```() => {}```
-  - onMouseOver: ```() => {}```
-  - onSelect: ```() => {}```
-  - attrs: {} - Custom attributes added to the container DOM element
-- Styles
-  - [container](src/Slice/Slice.style.js)
-  - [contentContainer](src/Slice/Slice.style.js)
-  - [content](src/Slice/Slice.style.js)
+#### Props
+
+##### `contentHeight?: string`
+
+Height of the content in CSS Size. This prop is used to center the content between top and bottom of the slice. For example, `2em`.
+
+##### `onMouseUp?: (e: SyntheticMouseEvent<T>) => void`
+
+Callback when mouse up event is triggered.
+
+##### `onMouseOver?: (e: SyntheticMouseEvent<T>) => void`
+
+Callback when mouse over event is triggerd
+
+##### `onSelect: (e: SyntehticMouseEvent<T>) => void`
+
+Callback when slice is selected. This event is chained from a mouse up event.
+
+##### `attrs: {}`
+
+You can add custom attributes by specifying in `attrs`. For example, `{ enabled: 'true' }`.
 
 ### Contexts
 
-By default the [Slice](#slice) component inherits properties from [PieMenu](#piemenu) globally:
+PieMenu supplies [context](https://reactjs.org/docs/context.html) props for child elements.
 
 #### propTypes
-  - ```radius: string``` - [PieMenu](#piemenu)'s radius
-  - ```centerRadius: string``` - [PieCenter](#piecenter)'s center radius
-  - ```centralAngle: number``` - Angle for every slice or 360 / (number of slices)
-  - ```polar: boolean``` - If true, the library detects that there is at most 2 slices
 
-Additionally, the [Slice](#slice) component inherits calculated local properties from [PieMenu](#piemenu):
+By default the [Slice](#slice) Component inherits properties from [PieMenu](#piemenu) globally:
+  
+##### `radius: string`
+
+[PieMenu](#piemenu)'s radius
+
+##### `centerRadius: string`
+
+[PieCenter](#piecenter)'s center radius
+
+##### `centralAngle: number`
+
+Computed angle for every slice (360 / # number of slices). Calculated internally.
+
+##### `polar: boolean`
+
+If true, the library detects that there is at most 2 slices.
 
 #### itemTypes
-  - ```startAngle: number``` - A uniform offset angle
-  - ```endAngle: number``` - Target location angle
-  - ```skew: number``` - Number to skew the rectangle container which adjusts tip angle of the slice (e.g. 90 - centralAngle). This is a CSS trick. See [references](#reference), for details.
+
+Additionally, the [Slice](#slice) Component inherits calculated local properties from [PieMenu](#piemenu):
+
+##### `startAngle: number`
+
+Uniform offset angle.
+
+##### `endAngle: number` 
+
+Target location angle
+
+##### `skew: number`
+
+Number to skew the rectangle container which adjusts tip angle of the slice (e.g. 90 - centralAngle). This is a CSS trick. See  [references](#reference), for details.
 
 ### Styling
 
-Style Pie Menu [components](#components) with ThemeProvder component
+Style Pie Menu [Components](#components) with ThemeProvder component
 ```jsx
 import React from 'react';
 import { ThemeProvder, css } from 'styled-components';
@@ -183,7 +250,9 @@ export default () => (
 );
 ```
 
-Also check out demos for [examples](stories).
+Refer to default styles from source files:
+- [PieMenu & PieCenter](src/PieMenu.style.js)
+- [Slice](src/Slice/Slice.style.js)
 
 ## Reference
 https://tympanus.net/codrops/2013/08/09/building-a-circular-navigation-with-css-transforms/
