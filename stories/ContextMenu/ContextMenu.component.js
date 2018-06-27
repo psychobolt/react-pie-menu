@@ -68,7 +68,7 @@ export default class extends React.Component {
           Hold right click on anywhere.
         </p>
         <canvas width="300" height="300" ref={ref => { this.canvas = ref; }} />
-        {showMenu &&
+        {showMenu && (
           <PieMenu
             radius="125px"
             centerRadius="30px"
@@ -100,7 +100,7 @@ export default class extends React.Component {
               <FontAwesomeIcon icon={faAsterisk} size="2x" />
             </Slice>
           </PieMenu>
-        }
+        )}
       </div>
     );
   }

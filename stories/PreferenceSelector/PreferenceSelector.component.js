@@ -98,7 +98,8 @@ export default class extends React.Component {
   }
 
   goBack = () => {
-    if (this.state.choice === INITIAL) return;
+    const { choice } = this.state;
+    if (choice === INITIAL) return;
     this.setState({ choice: INITIAL });
   }
 
@@ -112,7 +113,7 @@ export default class extends React.Component {
     return (
       <ThemeProvider theme={theme}>
         <PieMenu centerRadius="30px" Center={Center}>
-          {choice === 0 &&
+          {choice === 0 && (
             <React.Fragment>
               <Slice onSelect={this.showPayments} attrs={{ filled: `${paymentOption != null}` }}>
                 <FontAwesomeIcon icon={paymentOption || faMoneyBillAlt} size="2x" />
@@ -124,8 +125,8 @@ export default class extends React.Component {
                 <FontAwesomeIcon icon={location || faLocationArrow} size="2x" />
               </Slice>
             </React.Fragment>
-          }
-          {choice === PAYMENT &&
+          )}
+          {choice === PAYMENT && (
             <React.Fragment>
               <Slice
                 onSelect={this.selectPayment(faCcAmazonPay)}
@@ -182,8 +183,8 @@ export default class extends React.Component {
                 <FontAwesomeIcon icon={faGoogleWallet} size="2x" />
               </Slice>
             </React.Fragment>
-          }
-          {choice === GENDERS &&
+          )}
+          {choice === GENDERS && (
             <React.Fragment>
               faGenderless
               <Slice
@@ -193,7 +194,9 @@ export default class extends React.Component {
               >
                 <div>
                   <FontAwesomeIcon icon={faGenderless} size="2x" />
-                  <p>Genderless</p>
+                  <p>
+                    {'Genderless'}
+                  </p>
                 </div>
               </Slice>
               <Slice
@@ -203,7 +206,9 @@ export default class extends React.Component {
               >
                 <div>
                   <FontAwesomeIcon icon={faVenus} size="2x" />
-                  <p>Female</p>
+                  <p>
+                    {'Female'}
+                  </p>
                 </div>
               </Slice>
               <Slice
@@ -213,7 +218,9 @@ export default class extends React.Component {
               >
                 <div>
                   <FontAwesomeIcon icon={faNeuter} size="2x" />
-                  <p>Neuter</p>
+                  <p>
+                    {'Neuter'}
+                  </p>
                 </div>
               </Slice>
               <Slice
@@ -223,7 +230,9 @@ export default class extends React.Component {
               >
                 <div>
                   <FontAwesomeIcon icon={faTransgender} size="2x" />
-                  <p>Transgender</p>
+                  <p>
+                    {'Transgender'}
+                  </p>
                 </div>
               </Slice>
               <Slice
@@ -233,12 +242,14 @@ export default class extends React.Component {
               >
                 <div>
                   <FontAwesomeIcon icon={faMars} size="2x" />
-                  <p>Male</p>
+                  <p>
+                    {'Male'}
+                  </p>
                 </div>
               </Slice>
             </React.Fragment>
-          }
-          {choice === LOCATIONS &&
+          )}
+          {choice === LOCATIONS && (
             <React.Fragment>
               <Slice
                 onSelect={this.selectLocation(faBath)}
@@ -349,7 +360,7 @@ export default class extends React.Component {
                 <FontAwesomeIcon icon={faUniversity} />
               </Slice>
             </React.Fragment>
-          }
+          )}
         </PieMenu>
       </ThemeProvider>
     );
