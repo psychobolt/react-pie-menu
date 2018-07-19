@@ -90,7 +90,6 @@
     "rollup-plugin-uglify": "^4.0.0",
     "storybook-readme": "^3.3.0",
     "styled-components": "^3.3.3",
-    "styled-components-theme-connector": "^0.1.0",
     "stylelint": "^9.3.0",
     "stylelint-config-standard": "^18.2.0",
     "stylelint-config-styled-components": "^0.1.1",
@@ -98,7 +97,8 @@
     "uglify-es": "^3.3.9"
   },
   "dependencies": {
-    "react-is": "^16.4.1"
+    "react-is": "^16.4.1",
+    "styled-components-theme-connector": "^0.1.2"
   },
   "peerDependencies": {
     "react": "^16.4.1",

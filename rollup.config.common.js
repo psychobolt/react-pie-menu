@@ -27,5 +27,6 @@ export default {
     'react-dom',
     'react-is',
     'styled-components',
+    'styled-components-theme-connector',
   ],
 };

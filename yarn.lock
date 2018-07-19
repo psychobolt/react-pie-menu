@@ -8760,9 +8760,9 @@ style-search@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/style-search/-/style-search-0.1.0.tgz#7958c793e47e32e07d2b5cafe5c0bf8e12e77902"
 
-styled-components-theme-connector@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/styled-components-theme-connector/-/styled-components-theme-connector-0.1.0.tgz#6e17cacf894a570f34ee30455f34c751ed27f065"
+styled-components-theme-connector@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/styled-components-theme-connector/-/styled-components-theme-connector-0.1.2.tgz#0eb0edf0449fe354f4d72b61ae58ef59910c4211"
 
 styled-components@^3.3.3:
   version "3.3.3"
