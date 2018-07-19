@@ -12,7 +12,7 @@ A configurable radial menu for React.
 
 ## Release Notes
 
-- Since the release of version [0.2.0](https://github.com/psychobolt/react-pie-menu/releases/tag/0.2.0), inline css styles is deprecated in favor of CSS-in-JS. To understand benefits and usage, visit [styled-components](https://www.styled-components.com/)'s documentation.
+- Since the release of version 0.2.x, inline css styles is deprecated in favor of CSS-in-JS. To understand benefits and usage, visit [styled-components](https://www.styled-components.com/)'s documentation.
 
 - For older docs, refer to the [0.1.x](https://github.com/psychobolt/react-pie-menu/tree/0.1.11) tree.
 
