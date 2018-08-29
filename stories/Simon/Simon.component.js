@@ -16,7 +16,11 @@ const theme = {
   },
 };
 
-const Button = Slice;
+const Button = props => (
+  <Link to="/ding">
+    <Slice {...props} />
+  </Link>
+);
 
 const Center = props => (
   <Route
@@ -35,18 +39,10 @@ export default () => (
   <Router>
     <ThemeProvider theme={theme}>
       <PieMenu Center={Center} startOffsetAngle={45}>
-        <Link to="/ding">
-          <Button backgroundColor="red" />
-        </Link>
-        <Link to="/ding">
-          <Button backgroundColor="blue" />
-        </Link>
-        <Link to="/ding">
-          <Button backgroundColor="yellow" />
-        </Link>
-        <Link to="/ding">
-          <Button backgroundColor="green" />
-        </Link>
+        <Button backgroundColor="red" />
+        <Button backgroundColor="blue" />
+        <Button backgroundColor="yellow" />
+        <Button backgroundColor="green" />
       </PieMenu>
     </ThemeProvider>
   </Router>
