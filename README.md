@@ -104,6 +104,10 @@ Defines the position of the pie menu in CSS Unit. For example, `0px` will be the
 
 Defines the center radius. For example, `30px` or `0` (no center). This prop is forwarded to the Center Component.
 
+##### `startOffsetAngle?: number`
+
+Offsets the starting slice. By default, the first slice's tip is facing north position (0 degrees).
+
 ##### `Center?: React.ComponentType<T>`
 
 You can provide your own React Component to be the Center (by default [PieCenter](#piecenter)). You may also `import` PieCenter as a Component.

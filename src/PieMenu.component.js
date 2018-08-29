@@ -70,13 +70,14 @@ const PieMenu = ({
   radius,
   centerRadius,
   centralAngle,
+  startOffsetAngle = 0,
   polar,
   Center = PieCenter,
   slices,
   attrs = {},
 }: Props) => {
   const deltaAngle = 90 - centralAngle;
-  const startAngle = polar ? 45 : deltaAngle + (centralAngle / 2);
+  const startAngle = polar ? 45 : startOffsetAngle + deltaAngle + (centralAngle / 2);
   return (
     <div className={className} {...attrs}>
       <List radius={radius}>

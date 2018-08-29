@@ -10,7 +10,7 @@ import {
 } from '@fortawesome/fontawesome-free-brands';
 import { action } from '@storybook/addon-actions';
 
-import PieMenu, { Slice } from 'dist';
+import PieMenu, { Slice } from 'src';
 import './style.css';
 import logo from './logo.svg';
 

@@ -43,7 +43,7 @@ import {
   faGoogleWallet,
 } from '@fortawesome/fontawesome-free-brands';
 
-import PieMenu, { PieCenter, Slice } from 'dist';
+import PieMenu, { PieCenter, Slice } from 'src';
 
 import * as styles from './PreferenceSelector.style';
 
