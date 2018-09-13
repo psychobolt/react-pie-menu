@@ -13,7 +13,7 @@
       "root": ["./"],
       "cwd": "./",
       "alias": {
-        "^src$": "./"
+        "^react-pie-menu$": "./"
       }
     }],
     "babel-plugin-styled-components"

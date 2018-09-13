@@ -16,5 +16,5 @@ export const center = css`
 `;
 
 export const button = css`
-  background: ${({ backgroundColor, centerRadius }) => `radial-gradient(transparent ${centerRadius}, ${backgroundColor} ${centerRadius})`}; /* e.g. background: radial-gradient(black 50px, red 50px); */
+  background: ${({ backgroundColor, centerRadius }) => `radial-gradient(transparent ${centerRadius}, ${backgroundColor} ${centerRadius})`}; /* e.g. background: radial-gradient(transparent 50px, red 50px); */
 `;
