@@ -1,3 +1,5 @@
+if: tag IS blank
+
 language: node_js
 
 node_js:
@@ -5,6 +7,12 @@ node_js:
 
 cache:
   yarn: true
+
+before_install:
+  - yarn global add lerna
+
+install:
+  - yarn bootstrap
 
 script:
   - yarn lint
