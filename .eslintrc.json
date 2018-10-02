@@ -16,7 +16,11 @@
     },
     "settings": {
         "import/resolver": {
-            "babel-module": {}
+            "babel-module": {
+                "alias": {
+                    "react-pie-menu": "./src/index.js"
+                }
+            }
         }
     }
 }

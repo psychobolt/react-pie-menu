@@ -1,5 +1,13 @@
+const path = require('path');
+
 module.exports = (baseConfig, env, defaultConfig) => ({
   ...defaultConfig,
+  resolve: {
+    ...defaultConfig.resolve,
+    alias: {
+      'react-pie-menu': path.resolve(__dirname, '../dist'),
+    },
+  },
   module: {
     ...defaultConfig.module,
     rules: [
@@ -17,7 +25,7 @@ module.exports = (baseConfig, env, defaultConfig) => ({
       },
       {
         test: /\.jsx?$/,
-        include: require('path').resolve('./'), // eslint-disable-line global-require
+        include: path.resolve('./'),
         exclude: /(node_modules|dist)/,
         loader: 'babel-loader',
       },

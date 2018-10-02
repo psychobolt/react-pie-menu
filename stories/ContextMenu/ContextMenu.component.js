@@ -1,16 +1,16 @@
 import React from 'react';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import { faHome, faRss, faAsterisk } from '@fortawesome/fontawesome-free-solid';
+import PieMenu, { Slice } from 'react-pie-menu';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHome, faRss, faAsterisk } from '@fortawesome/free-solid-svg-icons';
 import {
   faFacebookF,
   faTwitter,
   faLinkedinIn,
   faGithub,
   faPinterest,
-} from '@fortawesome/fontawesome-free-brands';
+} from '@fortawesome/free-brands-svg-icons';
 import { action } from '@storybook/addon-actions';
 
-import PieMenu, { Slice } from 'react-pie-menu';
 import './style.css';
 import logo from './logo.svg';
 

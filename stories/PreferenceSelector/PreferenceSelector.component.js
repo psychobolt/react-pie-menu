@@ -1,7 +1,8 @@
 
 import React from 'react';
+import PieMenu, { PieCenter, Slice } from 'react-pie-menu';
 import { ThemeProvider } from 'styled-components';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faMoneyBillAlt,
   faVenusMars,
@@ -30,7 +31,7 @@ import {
   faTaxi,
   faTrain,
   faUniversity,
-} from '@fortawesome/fontawesome-free-solid';
+} from '@fortawesome/free-solid-svg-icons';
 import {
   faCcAmazonPay,
   faCcAmex,
@@ -41,9 +42,7 @@ import {
   faCcVisa,
   faEthereum,
   faGoogleWallet,
-} from '@fortawesome/fontawesome-free-brands';
-
-import PieMenu, { PieCenter, Slice } from 'react-pie-menu';
+} from '@fortawesome/free-brands-svg-icons';
 
 import * as styles from './PreferenceSelector.style';
 

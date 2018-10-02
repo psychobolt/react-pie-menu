@@ -1,8 +1,7 @@
 import React from 'react';
+import PieMenu, { PieCenter, Slice } from 'react-pie-menu';
 import { MemoryRouter as Router, Route, Link } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-
-import PieMenu, { PieCenter, Slice } from 'react-pie-menu';
 
 import * as styles from './Simon.style';
 
