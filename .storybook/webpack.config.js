@@ -5,7 +5,7 @@ module.exports = (baseConfig, env, defaultConfig) => ({
   resolve: {
     ...defaultConfig.resolve,
     alias: {
-      'react-pie-menu': path.resolve(__dirname, '../dist'),
+      'react-pie-menu': path.resolve(__dirname, '../'),
     },
   },
   module: {
