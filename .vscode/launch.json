@@ -7,14 +7,18 @@
         "request": "launch",
         "program": "${workspaceRoot}/node_modules/jest-cli/bin/jest.js",
         "stopOnEntry": false,
-        "args": ["--runInBand"],
+        "args": [
+          "--runInBand",
+          "--no-cache"
+        ],
         "cwd": "${workspaceRoot}",
         "runtimeArgs": ["--nolazy"],
-        "env": {
-            "BABEL_ENV": "commonjs"
-        },
         "console": "integratedTerminal",
-        "sourceMaps": true
+        "sourceMaps": true,
+        "env": {
+          "BABEL_ENV": "test",
+          "NODE_ENV": "development"
+        },
       }
     ]
   }
