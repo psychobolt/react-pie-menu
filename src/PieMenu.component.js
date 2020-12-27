@@ -1,20 +1,10 @@
 // @flow
-import React from 'react';
+import * as React from 'react';
 import { isFragment, isElement } from 'react-is';
 import { compose, withProps, withContext, getContext } from 'recompose';
 import { connectTheme } from 'styled-components-theme-connector';
 
-import type Slice from './Slice';
 import { itemTypes, propTypes, type Context } from './Slice';
-
-/* eslint-disable no-use-before-define */
-type Props = {
-  className: string,
-  slices: Slice[],
-  Center: typeof PieCenter,
-  attrs: {}
-} & Context;
-/* eslint-enable no-use-before-define */
 
 const List = connectTheme('pieMenu.list')('ul');
 
@@ -26,7 +16,7 @@ const Item = compose(
   connectTheme('pieMenu.item'),
 )('li');
 
-export const PieCenter = connectTheme('pieMenu.center')('div');
+export const PieCenter: any = connectTheme('pieMenu.center')('div');
 
 const getSlices = (child, index) => {
   let slices = [];
@@ -57,13 +47,22 @@ const computeSlices = compose(
     slices,
     radius = '150px',
     centerRadius = '50px',
-  }: Context) => {
+  }: { slices: any[] } & Context) => {
     const centralAngle = 360 / slices.length || 360;
     const polar = centralAngle % 180 === 0;
     return { radius, centerRadius, centralAngle, polar };
   }),
   getContext(propTypes),
 );
+
+type Props = {
+  className: string,
+  slices: React.Node[],
+  startOffsetAngle: number,
+  Center: any,
+  attrs: {},
+  children: React.Node,
+} & Context;
 
 const PieMenu = ({
   className,
@@ -79,7 +78,7 @@ const PieMenu = ({
   const deltaAngle = 90 - centralAngle;
   const startAngle = polar ? 45 : startOffsetAngle + deltaAngle + (centralAngle / 2);
   return (
-    <div className={className} {...attrs}>
+    <div {...attrs} className={className}>
       <List radius={radius}>
         {slices.map((slice, i) => (
           <Item
@@ -98,7 +97,7 @@ const PieMenu = ({
   );
 };
 
-export default compose(
+export default (compose(
   computeSlices,
   connectTheme('pieMenu.container'),
-)(PieMenu);
+)(PieMenu): React.AbstractComponent<Props>);

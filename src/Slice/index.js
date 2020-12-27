@@ -1,3 +1,4 @@
+// @flow
 import * as sliceStyles from './Slice.style';
 
 export { sliceStyles };

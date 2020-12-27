@@ -1,5 +1,5 @@
 // @flow
-import React from 'react';
+import * as React from 'react';
 import { compose, getContext } from 'recompose';
 import PropTypes from 'prop-types';
 
@@ -60,6 +60,7 @@ const Slice = ({
   attrs = {},
 }: Props) => (
   <div
+    {...attrs}
     role="button"
     className={className}
     onMouseOver={onMouseOver}
@@ -68,7 +69,6 @@ const Slice = ({
     onFocus={onFocus}
     onBlur={onBlur}
     tabIndex={-1}
-    {...attrs}
   >
     <ContentContainer
       radius={radius}
@@ -83,7 +83,7 @@ const Slice = ({
   </div>
 );
 
-export default compose(
+export default (compose(
   getContext({ ...propTypes, ...itemTypes }),
   connectTheme('slice.container'),
-)(Slice);
+)(Slice): React.AbstractComponent<Props>);

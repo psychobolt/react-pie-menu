@@ -26,9 +26,7 @@ const Center = props => (
     path="/ding"
     render={() => (
       <PieCenter {...props}>
-        <div>
-          {'Ding!'}
-        </div>
+        <div>Ding!</div>
       </PieCenter>
     )}
   />
