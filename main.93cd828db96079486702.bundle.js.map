@@ -1,1 +1,0 @@
-{"version":3,"file":"main.93cd828db96079486702.bundle.js","sources":["webpack:///./dist/index.js"],"sourcesContent":["'use strict';\n\nif (process.env.NODE_ENV === 'development') {\n  module.exports = require('./index.dev');\n} else {\n  module.exports = require('./index.prod');\n}\n"],"mappings":"AAKA","sourceRoot":""}
