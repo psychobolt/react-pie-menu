@@ -14,7 +14,7 @@ import { action } from '@storybook/addon-actions';
 import './style.css';
 import logo from './logo.svg';
 
-const MOUSE_RIGHT_CODE = 3;
+const EVENT_CODE = 1;
 
 export default class extends React.Component {
   constructor(props) {
@@ -38,7 +38,7 @@ export default class extends React.Component {
   }
 
   onMouseDown = e => {
-    if (e.nativeEvent.which === MOUSE_RIGHT_CODE) {
+    if (e.nativeEvent.which === EVENT_CODE) {
       this.setState({
         mouseX: `${e.pageX}px`,
         mouseY: `${e.pageY}px`,
@@ -48,7 +48,7 @@ export default class extends React.Component {
   }
 
   onMouseUp = e => {
-    if (e.nativeEvent.which === MOUSE_RIGHT_CODE) {
+    if (e.nativeEvent.which === EVENT_CODE) {
       this.setState({ showMenu: false });
       e.preventDefault();
     }
@@ -65,7 +65,7 @@ export default class extends React.Component {
         onContextMenu={this.onContextMenu}
       >
         <p className="App-intro">
-          Hold right click on anywhere.
+          Hold left click on anywhere.
         </p>
         <canvas width="300" height="300" ref={ref => { this.canvas = ref; }} />
         {showMenu && (
