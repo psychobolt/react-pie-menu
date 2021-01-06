@@ -17,10 +17,12 @@ export type Context = {
 type Props = {
   className: string,
   endAngle: number,
+  active: boolean,
   contentHeight: string,
   onMouseOver: Callback,
   onMouseOut: Callback,
   onSelect: Callback,
+  onKeyDown: Callback,
   onFocus: Callback,
   onBlur: Callback,
   attrs: {},
@@ -35,6 +37,7 @@ export const propTypes = {
 };
 
 export const itemTypes = {
+  active: PropTypes.bool,
   startAngle: PropTypes.number,
   endAngle: PropTypes.number,
   skew: PropTypes.number,
@@ -51,9 +54,11 @@ const Slice = ({
   contentHeight = '2em',
   centralAngle,
   endAngle,
+  active,
   onMouseOver,
   onMouseOut,
   onSelect,
+  onKeyDown,
   onFocus,
   onBlur,
   children,
@@ -65,9 +70,11 @@ const Slice = ({
     className={className}
     onMouseOver={onMouseOver}
     onMouseOut={onMouseOut}
-    onMouseUp={onSelect}
+    onClick={onSelect}
+    onKeyDown={onKeyDown}
     onFocus={onFocus}
     onBlur={onBlur}
+    _highlight={active ? active.toString() : undefined}
     tabIndex={-1}
   >
     <ContentContainer

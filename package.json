@@ -116,6 +116,8 @@
     "stylelint-processor-styled-components": "^1.10.0"
   },
   "dependencies": {
+    "hashids": "^2.2.8",
+    "raf-schd": "^4.0.2",
     "react-is": "^17.0.1",
     "styled-components-theme-connector": "^0.1.3"
   },

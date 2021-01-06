@@ -28,7 +28,8 @@ export const slice = css`
   }
 
   &:hover,
-  &[active=true] {
+  &[active=true],
+  &[_highlight=true] {
     color: black;
     background: radial-gradient(transparent ${({ centerRadius }) => `${centerRadius}, #eee3ef ${centerRadius}`});
   }

@@ -14,7 +14,7 @@ import { action } from '@storybook/addon-actions';
 import './style.css';
 import logo from './logo.svg';
 
-const EVENT_CODE = 1;
+const EVENT_CODES = [0, 1];
 
 export default class extends React.Component {
   constructor(props) {
@@ -33,47 +33,43 @@ export default class extends React.Component {
     img.src = logo;
   }
 
-  onContextMenu = e => {
-    e.preventDefault();
-  }
-
-  onMouseDown = e => {
-    if (e.nativeEvent.which === EVENT_CODE) {
+  captureStartPosition = e => {
+    if (EVENT_CODES.includes(e.nativeEvent.which)) {
       this.setState({
-        mouseX: `${e.pageX}px`,
-        mouseY: `${e.pageY}px`,
+        x: `${e.pageX || e.touches && e.touches[0].clientX}px`,
+        y: `${e.pageY || e.touches && e.touches[0].clientY}px`,
         showMenu: true,
       });
     }
   }
 
-  onMouseUp = e => {
-    if (e.nativeEvent.which === EVENT_CODE) {
+  clearPositions = e => {
+    if (EVENT_CODES.includes(e.nativeEvent.which)) {
       this.setState({ showMenu: false });
-      e.preventDefault();
     }
   }
 
   render() {
-    const { showMenu, mouseX, mouseY } = this.state;
+    const { showMenu, x, y } = this.state;
     return (
       <div
         role="presentation"
         className="App"
-        onMouseDown={this.onMouseDown}
-        onMouseUp={this.onMouseUp}
-        onContextMenu={this.onContextMenu}
+        onTouchStart={this.captureStartPosition}
+        onTouchEnd={this.clearPositions}
+        onMouseDown={this.captureStartPosition}
+        onMouseUp={this.clearPositions}
       >
         <p className="App-intro">
-          Hold left click on anywhere.
+          Touch and hold anywhere.
         </p>
         <canvas width="300" height="300" ref={ref => { this.canvas = ref; }} />
         {showMenu && (
           <PieMenu
             radius="125px"
             centerRadius="30px"
-            centerX={mouseX}
-            centerY={mouseY}
+            centerX={x}
+            centerY={y}
           >
             <Slice onSelect={action('Home selected')}>
               <FontAwesomeIcon icon={faHome} size="2x" />

@@ -10,7 +10,8 @@ export const container = css`
   background: radial-gradient(transparent ${({ centerRadius }) => `${centerRadius}, rgba(109, 109, 109, 0.925) ${centerRadius}`});
   outline: none;
 
-  &:hover {
+  &:hover,
+  &[_highlight=true] {
     color: white;
     background: radial-gradient(transparent ${({ centerRadius }) => `${centerRadius}, #424242 ${centerRadius}`});
   }
