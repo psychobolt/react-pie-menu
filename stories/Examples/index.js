@@ -5,6 +5,9 @@ const reqReadme = require.context('./', true, /^\.\/[\w-]+\/README\.mdx?$/);
 
 export default {
   title: 'Examples',
+  parameters: {
+    layout: 'fullscreen',
+  },
 };
 
 reqExample.keys().forEach(folder => {

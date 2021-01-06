@@ -27,4 +27,5 @@ export const contentContainer = css`
 export const content = css`
   display: inline-block;
   transform: rotate(${({ angle }) => -angle}deg);
+  user-select: none;
 `;
