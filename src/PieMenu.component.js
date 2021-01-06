@@ -65,9 +65,6 @@ const computeSlices = compose(
 const inputMoveEvents = ['touchmove', 'mousemove'];
 const selectEvents = ['mouseup', 'touchend'];
 
-type EventType = MouseEventTypes & TouchEventTypes;
-type EventListener = MouseEventListener | TouchEventListener;
-
 const bindEvents = (events, listener) => events
   .forEach(event => document
     // $FlowFixMe
