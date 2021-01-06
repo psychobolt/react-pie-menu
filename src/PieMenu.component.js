@@ -65,19 +65,21 @@ const computeSlices = compose(
 const inputMoveEvents = ['touchmove', 'mousemove'];
 const selectEvents = ['mouseup', 'touchend'];
 
-type EventType = MouseEventTypes | TouchEventTypes;
+type EventType = MouseEventTypes & TouchEventTypes;
 type EventListener = MouseEventListener | TouchEventListener;
 
-const bindEvents = (events, listener: EventListener) => events
-  .forEach((event: EventType) => document
+const bindEvents = (events, listener) => events
+  .forEach(event => document
+    // $FlowFixMe
     .addEventListener(event, listener, { pasive: false, cancelable: true, capture: true }));
 
-const unbindEvents = (events, listener: EventListener) => events
-  .forEach((event: EventType) => document.removeEventListener(event, listener));
+const unbindEvents = (events, listener) => events
+  // $FlowFixMe
+  .forEach(event => document.removeEventListener(event, listener));
 
 type Props = {
   className: string,
-  slices: React.Node[],
+  slices: [{ itemId: string, slice: React.Node[] }],
   startOffsetAngle: number,
   Center: any,
   attrs: {},
@@ -103,8 +105,8 @@ const PieMenu = ({
     isMounted.current = true;
     const captureActiveSlice = rafSchedule(e => {
       if (!isMounted.current) return;
-      const x = e.pageX || e.touches && e.touches[0].clientX;
-      const y = e.pageY || e.touches && e.touches[0].clientY;
+      const x = e.pageX || (e: TouchEvent).touches && e.touches[0].clientX;
+      const y = e.pageY || (e: TouchEvent).touches && e.touches[0].clientY;
       if (x > -1 && y > -1) {
         const slice = document.elementFromPoint(x, y);
         const item = slice && slice.closest('li');
@@ -115,11 +117,12 @@ const PieMenu = ({
         setActiveSlice(null);
       }
     });
-    const selectActiveSlice = e => {
+    const selectActiveSlice = (e: MouseEvent) => {
       if (!isMounted.current) return;
       setActiveSlice(id => {
+        if (!id) return null;
         const item = document.getElementById(id);
-        if (item && item.childNodes.length) item.childNodes[0].click(e);
+        if (item && item.childNodes.length) (item.childNodes[0]: any).click(e);
         return null;
       });
     };
