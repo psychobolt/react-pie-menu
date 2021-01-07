@@ -66,6 +66,7 @@ const inputMoveEvents = ['touchmove', 'mousemove'];
 const selectEvents = ['mouseup', 'touchend'];
 
 const bindEvents = (events, listener) => events
+  // $FlowFixMe
   .forEach(event => document
     // $FlowFixMe
     .addEventListener(event, listener, { pasive: false, cancelable: true, capture: true }));
@@ -73,6 +74,16 @@ const bindEvents = (events, listener) => events
 const unbindEvents = (events, listener) => events
   // $FlowFixMe
   .forEach(event => document.removeEventListener(event, listener));
+
+function getItemAt(x, y) {
+  const elements = document.elementsFromPoint(x, y);
+  for (let i = 0; i < elements.length; i += 1) {
+    const element = elements[i];
+    if (element.id === 'center') return null;
+    if (`${element.id}`.startsWith('slice_')) return element;
+  }
+  return null;
+}
 
 type Props = {
   className: string,
@@ -102,11 +113,10 @@ const PieMenu = ({
     isMounted.current = true;
     const captureActiveSlice = rafSchedule(e => {
       if (!isMounted.current) return;
-      const x = e.pageX || (e: TouchEvent).touches && e.touches[0].clientX;
-      const y = e.pageY || (e: TouchEvent).touches && e.touches[0].clientY;
+      const x = e.pageX || (e: TouchEvent).touches[0].clientX;
+      const y = e.pageY || (e: TouchEvent).touches[0].clientY;
       if (x > -1 && y > -1) {
-        const slice = document.elementFromPoint(x, y);
-        const item = slice && slice.closest('li');
+        const item = getItemAt(x, y);
         if (item && item.id) {
           setActiveSlice(item.id);
           return;
@@ -114,14 +124,17 @@ const PieMenu = ({
         setActiveSlice(null);
       }
     });
-    const selectActiveSlice = (e: MouseEvent) => {
+    const selectActiveSlice = e => {
       if (!isMounted.current) return;
-      setActiveSlice(id => {
-        if (!id) return null;
-        const item = document.getElementById(id);
-        if (item && item.childNodes.length) (item.childNodes[0]: any).click(e);
-        return null;
-      });
+      const x = e.pageX || (e: TouchEvent).changedTouches[0].clientX;
+      const y = e.pageY || (e: TouchEvent).changedTouches[0].clientY;
+      if (x > -1 && y > -1) {
+        const item = getItemAt(x, y);
+        if (item && item.childNodes.length) {
+          e.preventDefault();
+          (item.childNodes[0]: any).click();
+        }
+      }
     };
     bindEvents(inputMoveEvents, captureActiveSlice);
     bindEvents(selectEvents, selectActiveSlice);
@@ -149,7 +162,7 @@ const PieMenu = ({
           </Item>
         ))}
       </List>
-      <Center centerRadius={centerRadius} />
+      <Center id="center" centerRadius={centerRadius} />
     </div>
   );
 };
