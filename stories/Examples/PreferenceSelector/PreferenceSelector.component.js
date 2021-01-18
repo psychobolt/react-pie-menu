@@ -43,17 +43,7 @@ import {
   faGoogleWallet,
 } from '@fortawesome/free-brands-svg-icons';
 
-import * as styles from './PreferenceSelector.style';
-
-const theme = {
-  pieMenu: {
-    container: styles.container,
-    center: styles.center,
-  },
-  slice: {
-    container: styles.slice,
-  },
-};
+import theme from './PreferenceSelector.theme';
 
 const INITIAL = 0;
 const PAYMENT = 1;
