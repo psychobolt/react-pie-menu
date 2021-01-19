@@ -1,6 +1,13 @@
 // @flow
-import * as sliceStyles from './Slice.style';
+import {
+  container,
+  contentContainer,
+  content,
+  getBackground as background,
+} from './Slice.style';
 
-export { sliceStyles };
+const sliceStyles = { container, contentContainer, content };
+
+export { sliceStyles, background };
 export * from './Slice.component';
 export { default } from './Slice.component';

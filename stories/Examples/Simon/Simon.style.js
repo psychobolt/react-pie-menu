@@ -14,7 +14,3 @@ export const center = css`
     text-align: center;
   }
 `;
-
-export const button = css`
-  background: ${({ backgroundColor, centerRadius }) => `radial-gradient(transparent ${centerRadius}, ${backgroundColor} ${centerRadius})`}; /* e.g. background: radial-gradient(transparent 50px, red 50px); */
-`;

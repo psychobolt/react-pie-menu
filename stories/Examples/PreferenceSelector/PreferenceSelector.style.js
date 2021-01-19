@@ -1,3 +1,4 @@
+import { background } from 'react-pie-menu';
 import { css } from 'styled-components';
 
 export const container = css`
@@ -21,7 +22,7 @@ export const center = css`
 export const slice = css`
   cursor: pointer;
   color: grey;
-  background: radial-gradient(transparent ${({ centerRadius }) => `${centerRadius}, white ${centerRadius}`});
+  ${background('white')};
 
   &[filled=true] {
     color: black;
@@ -31,6 +32,6 @@ export const slice = css`
   &[active=true],
   &[_highlight=true] {
     color: black;
-    background: radial-gradient(transparent ${({ centerRadius }) => `${centerRadius}, #eee3ef ${centerRadius}`});
+    ${background('#eee3ef')}
   }
 `;

@@ -10,15 +10,9 @@
 
 A configurable radial menu for React.
 
-## Release Notes
-
-- Since the release of version 0.2.x, inline css styles is deprecated in favor of CSS-in-JS. To understand benefits and usage, visit [styled-components](https://www.styled-components.com/)'s documentation.
-
-- For older docs, refer to the [0.1.x](https://github.com/psychobolt/react-pie-menu/tree/0.1.11) tree.
-
 ## Install
 
-> Recommended: React and React-DOM 16.x
+> Recommended: React and React-DOM 17.x
 
 ```sh
 npm install --save styled-components react-pie-menu
@@ -36,8 +30,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default ({ x, y }) => (
   <PieMenu 
-    radius='125px' 
-    centerRadius='30px'
+    radius="125px"
+    centerRadius="30px"
     centerX={x}
     centerY={y}
   >
@@ -212,7 +206,24 @@ Number to skew the rectangle container which adjusts tip angle of the slice (e.g
 
 ### Styling
 
-Style Pie Menu [Components](#components) with ThemeProvder component
+#### Using Style Props
+
+You can use props to provide style values. React Pie Menu uses, as well as extends [Styled System](https://styled-system.com/). See below for available props:
+
+##### PieMenu
+
+None
+
+##### Slice
+
+| Category                                                  | Props                            
+|-----------------------------------------------------------|----------------------------------
+| Text [Color](https://styled-system.com/table#color)       | `color, textHighlight`           
+| Background [Color](https://styled-system.com/table#color) | `backgroundColor, bg, highlight`
+
+#### Using Custom Theme CSS
+
+Style Pie Menu [Components](#components) with styled-component's ThemeProvder.
 ```jsx
 import React from 'react';
 import { ThemeProvder, css } from 'styled-components';
@@ -254,10 +265,37 @@ export default () => (
 );
 ```
 
+##### Style Functions
+
+###### `background`
+
+For coloring a slice's background
+
+```jsx
+// ./Slice.style.js
+import { background } from 'react-pie-menu';
+import { css } from 'styled-components';
+
+export const slice = css`
+  ${background('#ff0000')}
+  /* or interpolate from colors scale in a theme */
+  ${background('red.100')}
+  ${background('tomato')}
+`;
+```
+
 Refer to default styles from source files:
 - [PieMenu & PieCenter](src/PieMenu.style.js)
 - [Slice](src/Slice/Slice.style.js)
 
+## Notable Change Notes
+
+- (Coming soon) v0.2.6 introduce the ability to use style props.
+- v0.2.0 deprecated inline css styles in favor of CSS-in-JS.
+- For older docs, refer to the v[0.1.x](https://github.com/psychobolt/react-pie-menu/tree/0.1.11) tree.
+
 ## Reference
-https://tympanus.net/codrops/2013/08/09/building-a-circular-navigation-with-css-transforms/
-https://stackoverflow.com/questions/14184494/segments-in-a-circle-using-css3
+
+- https://tympanus.net/codrops/2013/08/09/building-a-circular-navigation-with-css-transforms/
+- https://stackoverflow.com/questions/14184494/segments-in-a-circle-using-css3
+- https://jamesrwilliams.ca/posts/css-wheel-of-fortune

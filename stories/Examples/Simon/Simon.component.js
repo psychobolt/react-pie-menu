@@ -3,17 +3,7 @@ import PieMenu, { PieCenter, Slice } from 'react-pie-menu';
 import { MemoryRouter as Router, Route, Link } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
-import * as styles from './Simon.style';
-
-const theme = {
-  pieMenu: {
-    container: styles.container,
-    center: styles.center,
-  },
-  slice: {
-    container: styles.button,
-  },
-};
+import theme from './Simon.theme';
 
 const Button = props => (
   <Link to="/ding">
