@@ -7,7 +7,7 @@ const getCenterRadius = ({ centerRadius }) => centerRadius;
 
 const getColor = value => themeGet(`colors.${value}`, value);
 
-export const getBackground = background => css`background: radial-gradient(transparent ${getCenterRadius}, ${getColor(background)} ${getCenterRadius});`;
+export const getBackground = background => (background ? css`background: radial-gradient(transparent ${getCenterRadius}, ${getColor(background)} ${getCenterRadius});` : '');
 
 const background = props => getBackground(props.bg || props.backgroundColor);
 

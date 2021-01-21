@@ -1,10 +1,14 @@
 import { css } from 'styled-components';
 
+const position = ({ radius, centerX, centerY }) => css`
+  position: ${centerX || centerY ? 'absolute' : 'relative'};
+  ${centerX ? `left: calc(${centerX} - ${radius})` : ''};
+  ${centerY ? `top: calc(${centerY} - ${radius})` : ''};
+`;
+
 export const container = css`
   display: inline-block;
-  position: ${({ centerX, centerY }) => ((centerX || centerY) ? 'absolute' : 'relative')};
-  top: calc(${({ centerY }) => centerY} - ${({ radius }) => radius});
-  left: calc(${({ centerX }) => centerX} - ${({ radius }) => radius});
+  ${position}
   border-radius: 50%;
   overflow: hidden;
 `;
