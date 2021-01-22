@@ -290,9 +290,8 @@ Refer to default styles from source files:
 
 ## Notable Change Notes
 
-- (Coming soon) v0.2.6 introduce the ability to use style props.
+- v0.2.6 introduce the ability to use style props and add touch support.
 - v0.2.0 deprecated inline css styles in favor of CSS-in-JS.
-- For older docs, refer to the v[0.1.x](https://github.com/psychobolt/react-pie-menu/tree/0.1.11) tree.
 
 ## Reference
 

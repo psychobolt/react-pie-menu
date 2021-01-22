@@ -5,14 +5,25 @@ import PropTypes from 'prop-types';
 
 import { connectTheme } from 'styled-components-theme-connector';
 
-type Callback = (event: SyntheticEvent<*>) => any;
+export const itemTypes = {
+  active: PropTypes.bool,
+  endAngle: PropTypes.number,
+  skew: PropTypes.number,
+};
 
-export type Context = {
+export type ContextType = {
   radius: string,
   centerRadius: string,
   centralAngle: number,
-  polar: boolean, // eslint-disable-line react/no-unused-prop-types
 };
+
+export const Context: React.Context<ContextType> = React.createContext<ContextType>({});
+
+const ContentContainer = connectTheme('slice.contentContainer')('div');
+
+const Content = connectTheme('slice.content')('div');
+
+type Callback = (event: SyntheticEvent<*>) => any;
 
 type Props = {
   className: string,
@@ -27,32 +38,11 @@ type Props = {
   onBlur: Callback,
   attrs: {},
   children: any,
-} & Context;
-
-export const propTypes = {
-  radius: PropTypes.string,
-  centerRadius: PropTypes.string,
-  centralAngle: PropTypes.number,
-  polar: PropTypes.bool,
-};
-
-export const itemTypes = {
-  active: PropTypes.bool,
-  startAngle: PropTypes.number,
-  endAngle: PropTypes.number,
-  skew: PropTypes.number,
-};
-
-const ContentContainer = connectTheme('slice.contentContainer')('div');
-
-const Content = connectTheme('slice.content')('div');
+} & ContextType;
 
 const Slice = ({
   className,
-  radius,
-  centerRadius,
   contentHeight = '2em',
-  centralAngle,
   endAngle,
   active,
   onMouseOver,
@@ -63,34 +53,37 @@ const Slice = ({
   onBlur,
   children,
   attrs = {},
-}: Props) => (
-  <div
-    {...attrs}
-    role="button"
-    className={className}
-    onMouseOver={onMouseOver}
-    onMouseOut={onMouseOut}
-    onClick={onSelect}
-    onKeyDown={onKeyDown}
-    onFocus={onFocus}
-    onBlur={onBlur}
-    _highlight={active ? active.toString() : undefined}
-    tabIndex={-1}
-  >
-    <ContentContainer
-      radius={radius}
-      centralAngle={centralAngle}
-      centerRadius={centerRadius}
-      contentHeight={contentHeight}
+}: Props) => {
+  const { radius, centerRadius, centralAngle } = React.useContext(Context);
+  return (
+    <div
+      {...attrs}
+      role="button"
+      className={className}
+      onMouseOver={onMouseOver}
+      onMouseOut={onMouseOut}
+      onClick={onSelect}
+      onKeyDown={onKeyDown}
+      onFocus={onFocus}
+      onBlur={onBlur}
+      _highlight={active ? active.toString() : undefined}
+      tabIndex={-1}
     >
-      <Content angle={endAngle}>
-        {children}
-      </Content>
-    </ContentContainer>
-  </div>
-);
+      <ContentContainer
+        radius={radius}
+        centralAngle={centralAngle}
+        centerRadius={centerRadius}
+        contentHeight={contentHeight}
+      >
+        <Content angle={endAngle}>
+          {children}
+        </Content>
+      </ContentContainer>
+    </div>
+  );
+};
 
 export default (compose(
-  getContext({ ...propTypes, ...itemTypes }),
+  getContext(itemTypes),
   connectTheme('slice.container'),
 )(Slice): React.AbstractComponent<Props>);

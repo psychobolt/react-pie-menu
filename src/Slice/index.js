@@ -10,4 +10,4 @@ const sliceStyles = { container, contentContainer, content };
 
 export { sliceStyles, background };
 export * from './Slice.component';
-export { default } from './Slice.component';
+export { default } from './Slice.container';
