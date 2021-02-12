@@ -1,20 +1,17 @@
 // @flow
 import * as React from 'react';
-import { compose, withContext } from 'recompose';
 import { connectTheme } from 'styled-components-theme-connector';
 import rafSchedule from 'raf-schd';
 
-import { itemTypes, type ContextType, Context } from './Slice';
+import { type ContextType, Context, ItemContext } from './Slice';
 
 const List = connectTheme('pieMenu.list')('ul');
 
-const Item = compose(
-  withContext(
-    itemTypes,
-    ({ endAngle, skew, active }) => ({ endAngle, skew, active }),
-  ),
-  connectTheme('pieMenu.item'),
-)('li');
+const Item = connectTheme('pieMenu.item')(({ startAngle, endAngle, skew, active, children, className }) => (
+  <ItemContext.Provider value={{ startAngle, endAngle, skew, active }}>
+    <li className={className}>{children}</li>
+  </ItemContext.Provider>
+));
 
 export const PieCenter: any = connectTheme('pieMenu.center')('div');
 
@@ -122,6 +119,4 @@ const PieMenu = ({
   );
 };
 
-export default (compose(
-  connectTheme('pieMenu.container'),
-)(PieMenu): React.AbstractComponent<Props>);
+export default (connectTheme('pieMenu.container')(PieMenu): React.AbstractComponent<Props>);

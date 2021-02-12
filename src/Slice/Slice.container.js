@@ -1,7 +1,8 @@
 import React from 'react';
-import Slice, { Context } from './Slice.component';
+import Slice, { Context, ItemContext } from './Slice.component';
 
 export default props => {
-  const { centerRadius, centralAngle, polar } = React.useContext(Context);
-  return <Slice {...props} centerRadius={centerRadius} centralAngle={centralAngle} polar={polar} />;
+  const context = React.useContext(Context);
+  const itemContext = React.useContext(ItemContext);
+  return <Slice {...props} {...context} {...itemContext} />;
 };
