@@ -10,6 +10,8 @@
 
 A configurable radial menu for React.
 
+> This README is for the next release 0.3.x. Please see [0.2.x](https://github.com/psychobolt/react-pie-menu/tree/0.2.x).
+
 ## Install
 
 > Recommended: React and React-DOM 17.x
