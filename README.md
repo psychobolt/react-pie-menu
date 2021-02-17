@@ -74,11 +74,11 @@ Inner elements:
 
 ```js
 <div class="container" centerX centerY {...attrs}>
-  <ul class="list">
+  <ul class="list" radius>
     <li class="item">{slice}</li>
     ...
   </ul>
-  <Center />
+  <PieCenter centerRadius />
 </div>
 ```
 
@@ -119,7 +119,7 @@ You can define your own center by importing the Component. For example:
 ```js
 import { PieCenter } from 'react-pie-menu';
 
-export default (props) => (
+export default props => (
   <PieMenu centerRadius={props.centerRadius || '30px'}>
     { /* my content */}
   </PieMenu>
@@ -137,7 +137,7 @@ Same as Pie Menu. If you define your own center, you can specify your own value 
 Inner elements:
 
 ```html
-<div class="container" contentHeight {...attrs}>
+<div class="container" contentHeight _highlight {...attrs}>
   <div class="content-container">
     <div class="content">{children}</div>
   </div>
@@ -156,7 +156,7 @@ Callback when mouse up event is triggered.
 
 ##### `onMouseOver?: (e: SyntheticMouseEvent<T>) => void`
 
-Callback when mouse over event is triggerd
+Callback when mouse over event is triggered.
 
 ##### `onSelect: (e: SyntehticMouseEvent<T>) => void`
 
@@ -165,6 +165,10 @@ Callback when slice is selected. This event is chained from a mouse up event.
 ##### `attrs: {}`
 
 You can add custom attributes by specifying in `attrs`. For example, `{ enabled: 'true' }`.
+
+##### `_highlight: boolean `
+
+Provided by PieMenu when a user input/touch hover a Slice. If true, by default the slice will be highlighted.
 
 ## Theme Context
 
@@ -211,15 +215,15 @@ If true, the library detects that there is at most 2 slices.
 
 ##### `startAngle: number`
 
-Uniform offset angle for the current Slice.
+Uniform offset angle for the current [Slice](#slice).
 
 ##### `endAngle: number` 
 
-Target location angle for the current Slice.
+Target location angle for the current [Slice](#slice).
 
 ##### `skew: number`
 
-Number to skew the rectangle container for the current Slice, which adjusts tip angle of the slice (e.g. 90 - centralAngle). This is a CSS trick. See  [references](#reference), for details.
+Number to skew the rectangle container for the current [Slice](#slice), which adjusts tip angle of the slice (e.g. 90 - centralAngle). This is a CSS trick. See  [references](#reference), for details.
 
 
 ##### `active: boolean`
@@ -227,21 +231,6 @@ Number to skew the rectangle container for the current Slice, which adjusts tip 
 If true, the current Slice is active from mouse/touch over.
 
 ### Styling
-
-#### Using Style Props
-
-You can use props to provide style values. React Pie Menu uses, as well as extends [Styled System](https://styled-system.com/). See below for available props:
-
-##### PieMenu
-
-None
-
-##### Slice
-
-| Category                                                  | Props                            
-|-----------------------------------------------------------|----------------------------------
-| Text [Color](https://styled-system.com/table#color)       | `color, textHighlight`           
-| Background [Color](https://styled-system.com/table#color) | `backgroundColor, bg, highlight`
 
 #### Using Custom Theme CSS
 
@@ -291,7 +280,11 @@ Refer to default styles from source files:
 - [PieMenu & PieCenter](src/PieMenu.style.js)
 - [Slice](src/Slice/Slice.style.js)
 
+#### Utils
+
 ##### Style Functions
+
+Useful functions for styling.
 
 ###### `background`
 
@@ -312,8 +305,6 @@ export const slice = css`
 
 ##### Context Selectors
 
-Usage e.g.
-
 ```js
 import { endAngle } from 'react-pie-menu';
 import { css } from 'styled-components';
@@ -327,9 +318,32 @@ See available selectors:
 - [PieMenu](src/PieMenu.selectors.js)
 - [Slice](src/Slice/Slice.selectors.js)
 
+#### Using Style Props
+
+You can use props to provide style values. React Pie Menu uses, as well as extends [Styled System](https://styled-system.com/). See below for available props:
+
+##### PieMenu
+
+None
+
+##### Slice
+
+| Category                                                  | Supported Props       | Added Props
+|-----------------------------------------------------------|-----------------------|-----------------
+| Text [Color](https://styled-system.com/table#color)       | `color`               | `textHighlight`
+| Background [Color](https://styled-system.com/table#color) | `backgroundColor, bg` | `highlight`
+
+Usage:
+
+```js
+import { Slice } from 'react-pie-menu';
+
+export default props => <Slice {...props} backgroundColor="red" />
+```
+
 ## Notable Change Notes
 
-- v0.3.0 introduce the ability to use style functions, context props, touch device, and React 17 support.
+- v0.3.0 introduce the ability to use style props, context props, touch device, and React 17 support.
 - v0.2.0 deprecated inline css styles in favor of CSS-in-JS.
 
 ## Reference
