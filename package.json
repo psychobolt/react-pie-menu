@@ -1,6 +1,6 @@
 {
   "name": "react-pie-menu",
-  "version": "0.2.5",
+  "version": "0.3.0",
   "description": "A configurable radial context menu for React",
   "main": "./dist/index.js",
   "repository": "https://github.com/psychobolt/react-pie-menu.git",
