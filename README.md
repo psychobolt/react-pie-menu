@@ -8,6 +8,8 @@
 [![Dev Dependencies Status](https://david-dm.org/psychobolt/react-pie-menu/dev-status.svg)](https://david-dm.org/psychobolt/react-pie-menu?type=dev)
 [![Peer Dependencies Status](https://david-dm.org/psychobolt/react-pie-menu/peer-status.svg)](https://david-dm.org/psychobolt/react-pie-menu?type=peer)
 
+![piemenu_clip1](https://user-images.githubusercontent.com/560721/108241603-de648380-7100-11eb-9b26-40fe98b5d148.gif)
+
 A configurable radial menu for React.
 
 > This README is for the next release 0.3.x. Please see [0.2.x](https://github.com/psychobolt/react-pie-menu/tree/0.2.x).
