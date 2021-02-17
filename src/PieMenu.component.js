@@ -1,17 +1,13 @@
 // @flow
 import * as React from 'react';
-import { connectTheme } from 'styled-components-theme-connector';
+import { connectTheme, ThemeContextProvider } from 'styled-components-theme-connector';
 import rafSchedule from 'raf-schd';
 
-import { type ContextType, Context, ItemContext } from './Slice';
+import { type Context } from './Slice/Slice.component';
 
 const List = connectTheme('pieMenu.list')('ul');
 
-const Item = connectTheme('pieMenu.item')(({ startAngle, endAngle, skew, active, children, className }) => (
-  <ItemContext.Provider value={{ startAngle, endAngle, skew, active }}>
-    <li className={className}>{children}</li>
-  </ItemContext.Provider>
-));
+const Item = connectTheme('pieMenu.item')('li');
 
 export const PieCenter: any = connectTheme('pieMenu.center')('div');
 
@@ -46,17 +42,19 @@ type Props = {
   Center: any,
   attrs: {},
   children: React.Node,
-} & ContextType;
+} & Context;
 
 const PieMenu = ({
   className,
   startOffsetAngle = 0,
+  radius,
+  centerRadius,
+  centralAngle,
   polar,
   Center = PieCenter,
   slices,
   attrs = {},
 }: Props) => {
-  const { radius, centerRadius, centralAngle } = React.useContext(Context);
   const deltaAngle = 90 - centralAngle;
   const startAngle = polar ? 45 : startOffsetAngle + deltaAngle + (centralAngle / 2);
   const isMounted = React.useRef(false);
@@ -100,18 +98,20 @@ const PieMenu = ({
     <div {...attrs} className={className}>
       <List radius={radius}>
         {slices.map(({ itemId, slice }, i) => (
-          <Item
-            id={itemId}
+          <ThemeContextProvider
             key={itemId}
-            data-id={itemId}
-            active={activeSlice === itemId}
             startAngle={startAngle}
             endAngle={centralAngle * i}
             skew={polar ? 0 : deltaAngle}
-            centralAngle={centralAngle}
+            active={activeSlice === itemId}
           >
-            {slice}
-          </Item>
+            <Item
+              id={itemId}
+              data-id={itemId}
+            >
+              {slice}
+            </Item>
+          </ThemeContextProvider>
         ))}
       </List>
       <Center id="center" centerRadius={centerRadius} />

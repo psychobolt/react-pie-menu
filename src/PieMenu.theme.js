@@ -1,5 +1,5 @@
 import * as pieMenuStyles from './PieMenu.style';
-import { sliceStyles } from './Slice';
+import * as sliceStyles from './Slice/Slice.style';
 
 export default {
   pieMenu: pieMenuStyles,

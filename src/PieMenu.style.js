@@ -1,9 +1,12 @@
 import { css } from 'styled-components';
 
-const position = ({ radius, centerX, centerY }) => css`
+import { radius, centerRadius, ifObtuse } from './PieMenu.selectors';
+import { startAngle, endAngle, skew } from './Slice/Slice.selectors';
+
+const position = ({ centerX, centerY, ...props }) => css`
   position: ${centerX || centerY ? 'absolute' : 'relative'};
-  ${centerX ? `left: calc(${centerX} - ${radius})` : ''};
-  ${centerY ? `top: calc(${centerY} - ${radius})` : ''};
+  ${centerX ? `left: calc(${centerX} - ${radius(props)})` : ''};
+  ${centerY ? `top: calc(${centerY} - ${radius(props)})` : ''};
 `;
 
 export const container = css`
@@ -19,17 +22,17 @@ export const list = css`
   padding: 0;
   margin: 0;
   border-radius: 50%;
-  width: calc(2 * ${({ radius }) => radius});
-  height: calc(2 * ${({ radius }) => radius});
+  width: calc(2 * ${radius});
+  height: calc(2 * ${radius});
 `;
 
 export const item = css`
-  width: ${({ centralAngle }) => (centralAngle > 90 ? '100%' : '50%')};
-  height: ${({ centralAngle }) => (centralAngle > 90 ? '100%' : '50%')};
-  bottom: ${({ centralAngle }) => (centralAngle > 90 ? '50%' : 'initial')};
-  right: ${({ centralAngle }) => (centralAngle > 90 ? '50%' : 'initial')};
+  width: ${ifObtuse('100%', '50%')};
+  height: ${ifObtuse('100%', '50%')};
+  bottom: ${ifObtuse('50%', 'initial')};
+  right: ${ifObtuse('50%', 'initial')};
   position: absolute;
-  transform: rotate(${({ startAngle, endAngle }) => startAngle + endAngle}deg) skew(${({ skew }) => skew}deg);
+  transform: rotate(${props => startAngle(props) + endAngle(props)}deg) skew(${skew}deg);
   transform-origin: bottom right;
   overflow: hidden;
 `;
@@ -38,8 +41,8 @@ export const center = css`
   position: absolute;
   border-radius: 50%;
   background: transparent;
-  top: calc(50% - ${({ centerRadius }) => centerRadius});
-  left: calc(50% - ${({ centerRadius }) => centerRadius});
-  width: calc(2 * ${({ centerRadius }) => centerRadius});
-  height: calc(2 * ${({ centerRadius }) => centerRadius});
+  top: calc(50% - ${centerRadius});
+  left: calc(50% - ${centerRadius});
+  width: calc(2 * ${centerRadius});
+  height: calc(2 * ${centerRadius});
 `;

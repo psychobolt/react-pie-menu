@@ -1,11 +1,10 @@
 // @flow
 import * as React from 'react';
 import { isFragment, isElement } from 'react-is';
+import { ThemeContextProvider } from 'styled-components-theme-connector';
 import Hashids from 'hashids';
 
 import PieMenu from './PieMenu.component';
-
-import { Context } from './Slice';
 
 const hashids = new Hashids();
 
@@ -41,9 +40,15 @@ export default (({
   });
   const centralAngle = 360 / slices.length || 360;
   const polar = centralAngle % 180 === 0;
+  const context = {
+    radius,
+    centerRadius,
+    centralAngle,
+    polar,
+  };
   return (
-    <Context.Provider value={{ radius, centerRadius, centralAngle, polar }}>
-      <PieMenu {...props} radius={radius} polar={polar} slices={slices} />
-    </Context.Provider>
+    <ThemeContextProvider {...context}>
+      <PieMenu {...props} {...context} slices={slices} />
+    </ThemeContextProvider>
   );
 }: React.AbstractComponent<any>);

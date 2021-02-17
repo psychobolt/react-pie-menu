@@ -3,11 +3,12 @@ import { system } from '@styled-system/core';
 import { color } from '@styled-system/color';
 import { themeGet } from '@styled-system/theme-get';
 
-const getCenterRadius = ({ centerRadius }) => centerRadius;
+import { skew, endAngle } from './Slice.selectors';
+import { radius, centerRadius, centralAngle, polar, ifObtuse } from '../PieMenu.selectors';
 
 const getColor = value => themeGet(`colors.${value}`, value);
 
-export const getBackground = background => (background ? css`background: radial-gradient(transparent ${getCenterRadius}, ${getColor(background)} ${getCenterRadius});` : '');
+export const getBackground = background => (background ? css`background: radial-gradient(transparent ${centerRadius}, ${getColor(background)} ${centerRadius});` : '');
 
 const background = props => getBackground(props.bg || props.backgroundColor);
 
@@ -25,7 +26,7 @@ export const container = css`
   height: 200%;
   transform-origin: 50% 50%;
   border-radius: 50%;
-  transform: ${({ skew, polar, centralAngle }) => `skew(${-skew}deg) rotate(${((polar ? 90 : centralAngle) / 2) - 90}deg)`};
+  transform: skew(${props => -skew(props)}deg) rotate(${props => ((polar(props) ? 90 : centralAngle(props)) / 2) - 90}deg);
 
   color: black;
   ${color}
@@ -45,15 +46,17 @@ export const container = css`
   }
 `;
 
+const contentHeight = props => props.contentHeight;
+
 export const contentContainer = css`
   position: absolute;
   width: 100%;
   text-align: center;
-  top: ${({ radius, centralAngle, centerRadius, contentHeight }) => `calc((${centralAngle > 90 ? '50% + ' : ''}${radius} - ${centerRadius}) / 2 - ${contentHeight} / 2)`};
+  top: calc((${ifObtuse('50%', '0px')} + ${radius} - ${centerRadius}) / 2 - ${contentHeight} / 2);
 `;
 
 export const content = css`
   display: inline-block;
-  transform: rotate(${({ angle }) => -angle}deg);
+  transform: rotate(-${endAngle}deg);
   user-select: none;
 `;

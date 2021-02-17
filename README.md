@@ -25,7 +25,7 @@ yarn add styled-components react-pie-menu
 
 There are several [demos](https://psychobolt.github.io/react-pie-menu/). Also check out their [sources](stories). Here is one to get you started:
 
-```jsx
+```js
 import React from 'react';
 import PieMenu, { Slice } from 'react-pie-menu';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -72,13 +72,13 @@ For configuration of Components, see bellow.
 
 Inner elements:
 
-```jsx
-<div class="container" centerX centerY radius {..attrs}>
-  <ul class="list" radius>
-    <li class="item" startAngle endAngle skew centralAngle></li>
-    ...p
+```js
+<div class="container" centerX centerY {...attrs}>
+  <ul class="list">
+    <li class="item">{slice}</li>
+    ...
   </ul>
-  <Center centerRadius={centerRadius} />
+  <Center />
 </div>
 ```
 
@@ -116,7 +116,7 @@ You can add custom attributes by specifying in `attrs`. For example, `{ resize: 
 
 You can define your own center by importing the Component. For example:
 
-```jsx
+```js
 import { PieCenter } from 'react-pie-menu';
 
 export default (props) => (
@@ -137,7 +137,7 @@ Same as Pie Menu. If you define your own center, you can specify your own value 
 Inner elements:
 
 ```html
-<div class="container" radius centralAngle centralRadius contentHeight {..attrs}>
+<div class="container" contentHeight {...attrs}>
   <div class="content-container">
     <div class="content">{children}</div>
   </div>
@@ -166,45 +166,65 @@ Callback when slice is selected. This event is chained from a mouse up event.
 
 You can add custom attributes by specifying in `attrs`. For example, `{ enabled: 'true' }`.
 
-### Contexts
+## Theme Context
 
-PieMenu supplies [context](https://reactjs.org/docs/context.html) props for child elements.
+PieMenu supplies contextual values for child elements in the theme's context object. e.g.
 
-#### propTypes
+```js
+import React from 'react';
+import { ThemeContext } from 'styled-component';
 
-By default the [Slice](#slice) Component inherits properties from [PieMenu](#piemenu) globally:
+import Content from './Content.component';
+
+export default props => {
+  const { context } = React.useContext(ThemeContext);
+  /* returns e.g.
+    context = {
+      radius,
+      centerRadius,
+      ...      
+    };
+  */
+  return <Content {...props} {...context} />
+};
+```
+
+### Context Props
   
-##### `radius: string`
+#### `radius: string`
 
 [PieMenu](#piemenu)'s radius
 
-##### `centerRadius: string`
+#### `centerRadius: string`
 
 [PieCenter](#piecenter)'s center radius
 
-##### `centralAngle: number`
+#### `centralAngle: number`
 
 Computed angle for every slice (360 / # number of slices). Calculated internally.
 
-##### `polar: boolean`
+#### `polar: boolean`
 
 If true, the library detects that there is at most 2 slices.
 
-#### itemTypes
-
-Additionally, the [Slice](#slice) Component inherits calculated local properties from [PieMenu](#piemenu):
+#### Item's Context
 
 ##### `startAngle: number`
 
-Uniform offset angle.
+Uniform offset angle for the current Slice.
 
 ##### `endAngle: number` 
 
-Target location angle
+Target location angle for the current Slice.
 
 ##### `skew: number`
 
-Number to skew the rectangle container which adjusts tip angle of the slice (e.g. 90 - centralAngle). This is a CSS trick. See  [references](#reference), for details.
+Number to skew the rectangle container for the current Slice, which adjusts tip angle of the slice (e.g. 90 - centralAngle). This is a CSS trick. See  [references](#reference), for details.
+
+
+##### `active: boolean`
+
+If true, the current Slice is active from mouse/touch over.
 
 ### Styling
 
@@ -267,6 +287,10 @@ export default () => (
 );
 ```
 
+Refer to default styles from source files:
+- [PieMenu & PieCenter](src/PieMenu.style.js)
+- [Slice](src/Slice/Slice.style.js)
+
 ##### Style Functions
 
 ###### `background`
@@ -286,13 +310,26 @@ export const slice = css`
 `;
 ```
 
-Refer to default styles from source files:
-- [PieMenu & PieCenter](src/PieMenu.style.js)
-- [Slice](src/Slice/Slice.style.js)
+##### Context Selectors
+
+Usage e.g.
+
+```js
+import { endAngle } from 'react-pie-menu';
+import { css } from 'styled-components';
+
+export const content = css`
+  transform: rotate(-${endAngle}deg);
+`;
+```
+
+See available selectors:
+- [PieMenu](src/PieMenu.selectors.js)
+- [Slice](src/Slice/Slice.selectors.js)
 
 ## Notable Change Notes
 
-- v0.2.6 introduce the ability to use style props and add touch support.
+- v0.3.0 introduce the ability to use style functions, context props, touch device, and React 17 support.
 - v0.2.0 deprecated inline css styles in favor of CSS-in-JS.
 
 ## Reference
