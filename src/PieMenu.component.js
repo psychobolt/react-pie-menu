@@ -24,15 +24,12 @@ const unbindEvents = (events, listener) => events
   // $FlowFixMe
   .forEach(event => document.removeEventListener(event, listener));
 
-function getItemAt(x, y) {
-  const elements = document.elementsFromPoint(x, y);
-  for (let i = 0; i < elements.length; i += 1) {
-    const element = elements[i];
-    if (element.id === 'center') return null;
-    if (`${element.id}`.startsWith('slice_')) return element;
-  }
-  return null;
-}
+type Metadata = {
+  radiusPx: number,
+  centerRadiusPx: number,
+  centerX_Px: number,
+  centerY_Px: number,
+};
 
 type Props = {
   className: string,
@@ -42,7 +39,7 @@ type Props = {
   Center: any,
   attrs: {},
   children: React.Node,
-} & Context;
+} & Context & Metadata;
 
 const PieMenu = ({
   className,
@@ -52,17 +49,39 @@ const PieMenu = ({
   centralAngle,
   polar,
   Center = PieCenter,
+  radiusPx,
+  centerRadiusPx,
   slices,
   attrs = {},
 }: Props) => {
   const deltaAngle = 90 - centralAngle;
   const startAngle = polar ? 45 : startOffsetAngle + deltaAngle + (centralAngle / 2);
-  const isMounted = React.useRef(false);
+  const ref = React.useRef(null);
   const [activeSlice, setActiveSlice] = React.useState(null);
+  const centerArea = centerRadiusPx ** 2;
+  const pieArea = radiusPx ** 2;
+
+  const isInsidePie = (x, y) => {
+    if (!ref.current) return false;
+    const { left: pieX, top: pieY } = ref.current.getBoundingClientRect();
+    const distance = (x - pieX - radiusPx) ** 2 + (y - pieY - radiusPx) ** 2;
+    return centerArea <= distance && distance <= pieArea;
+  };
+
+  const getItemAt = (x, y) => {
+    if (!isInsidePie(x, y)) return null;
+    const elements = document.elementsFromPoint(x, y);
+    for (let i = 0; i < elements.length; i += 1) {
+      const element = elements[i];
+      if (element.id === 'center') return null;
+      if (`${element.id}`.startsWith('slice_')) return element;
+    }
+    return null;
+  };
+
   React.useEffect(() => {
-    isMounted.current = true;
     const captureActiveSlice = rafSchedule(e => {
-      if (!isMounted.current) return;
+      if (!ref.current) return;
       const x = e.pageX !== undefined ? e.pageX : (e: TouchEvent).touches[0].clientX;
       const y = e.pageY !== undefined ? e.pageY : (e: TouchEvent).touches[0].clientY;
       if (x > -1 && y > -1) {
@@ -75,7 +94,7 @@ const PieMenu = ({
       }
     });
     const selectActiveSlice = e => {
-      if (!isMounted.current) return;
+      if (!ref.current) return;
       const x = e.pageX || (e: TouchEvent).changedTouches[0].clientX;
       const y = e.pageY || (e: TouchEvent).changedTouches[0].clientY;
       if (x > -1 && y > -1) {
@@ -89,13 +108,13 @@ const PieMenu = ({
     bindEvents(inputMoveEvents, captureActiveSlice);
     bindEvents(selectEvents, selectActiveSlice);
     return () => {
-      isMounted.current = false;
       unbindEvents(inputMoveEvents, captureActiveSlice);
       unbindEvents(selectEvents, selectActiveSlice);
     };
   }, []);
+
   return (
-    <div {...attrs} className={className}>
+    <div {...attrs} className={className} ref={ref}>
       <List radius={radius}>
         {slices.map(({ itemId, slice }, i) => (
           <ThemeContextProvider

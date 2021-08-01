@@ -2,6 +2,7 @@
 import * as React from 'react';
 import { isFragment, isElement } from 'react-is';
 import { ThemeContextProvider } from 'styled-components-theme-connector';
+import toPx from 'to-px';
 import Hashids from 'hashids';
 
 import PieMenu from './PieMenu.component';
@@ -40,15 +41,19 @@ export default (({
   });
   const centralAngle = 360 / slices.length || 360;
   const polar = centralAngle % 180 === 0;
+  const metadata = {
+    radiusPx: toPx(radius),
+    centerRadiusPx: toPx(centerRadius),
+  };
   const context = {
-    radius,
-    centerRadius,
+    radius: `${metadata.radiusPx}px`,
+    centerRadius: `${metadata.centerRadiusPx}px`,
     centralAngle,
     polar,
   };
   return (
     <ThemeContextProvider {...context}>
-      <PieMenu {...props} {...context} slices={slices} />
+      <PieMenu {...props} {...context} {...metadata} slices={slices} />
     </ThemeContextProvider>
   );
 }: React.AbstractComponent<any>);
