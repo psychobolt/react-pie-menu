@@ -19,6 +19,7 @@ type Callback = (event: SyntheticEvent<*>) => any;
 type Props = {
   className: string,
   contentHeight: string,
+  onMouseEnter: Callback,
   onMouseOver: Callback,
   onMouseOut: Callback,
   onSelect: Callback,
@@ -32,6 +33,7 @@ type Props = {
 const Slice = ({
   className,
   contentHeight = '2em',
+  onMouseEnter,
   onMouseOver,
   onMouseOut,
   onSelect,
@@ -47,6 +49,7 @@ const Slice = ({
       {...attrs}
       role="button"
       className={className}
+      onMouseEnter={onMouseEnter}
       onMouseOver={onMouseOver}
       onMouseOut={onMouseOut}
       onClick={onSelect}

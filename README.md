@@ -156,6 +156,10 @@ Height of the content in CSS Size. This prop is used to center the content betwe
 
 Callback when mouse up event is triggered.
 
+##### `onMouseEnter?: (e: SyntheticMouseEvent<T>) => void`
+
+Callback when mouse enter event is triggered.
+
 ##### `onMouseOver?: (e: SyntheticMouseEvent<T>) => void`
 
 Callback when mouse over event is triggered.
@@ -178,7 +182,7 @@ PieMenu supplies contextual values for child elements in the theme's context obj
 
 ```js
 import React from 'react';
-import { ThemeContext } from 'styled-component';
+import { ThemeContext } from 'styled-components';
 
 import Content from './Content.component';
 
