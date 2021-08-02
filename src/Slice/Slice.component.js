@@ -44,17 +44,18 @@ const Slice = ({
   attrs = {},
 }: Props) => {
   const { context: { active } } = React.useContext(ThemeContext);
+  const getCallback = callback => (active ? callback : undefined);
   return (
     <div
       {...attrs}
       role="button"
       className={className}
-      onMouseEnter={onMouseEnter}
-      onMouseOver={onMouseOver}
-      onMouseOut={onMouseOut}
-      onClick={onSelect}
-      onKeyDown={onKeyDown}
-      onFocus={onFocus}
+      onMouseEnter={getCallback(onMouseEnter)}
+      onMouseOver={getCallback(onMouseOver)}
+      onMouseOut={getCallback(onMouseOut)}
+      onClick={getCallback(onSelect)}
+      onKeyDown={getCallback(onKeyDown)}
+      onFocus={getCallback(onFocus)}
       onBlur={onBlur}
       _highlight={active ? active.toString() : undefined}
       tabIndex={-1}
