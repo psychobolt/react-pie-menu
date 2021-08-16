@@ -1,8 +1,8 @@
 # React Pie Menu
 
 [![npm](https://img.shields.io/npm/v/react-pie-menu.svg)](https://www.npmjs.com/package/react-pie-menu)
-[![Build Status](https://travis-ci.com/psychobolt/react-pie-menu.svg?branch=master)](https://travis-ci.com/psychobolt/react-pie-menu)
-[![codecov](https://codecov.io/gh/psychobolt/react-pie-menu/branch/master/graph/badge.svg)](https://codecov.io/gh/psychobolt/react-pie-menu)
+[![Main workflow](https://github.com/psychobolt/react-pie-menu/actions/workflows/main.yml/badge.svg)](https://github.com/psychobolt/react-pie-menu/actions/workflows/main.yml)
+[![codecov](https://codecov.io/gh/psychobolt/react-pie-menu/branch/master/graph/badge.svg?flag=react-pie-menu)](https://codecov.io/gh/psychobolt/react-pie-menu/tree/master/src)
 
 [![Dependencies Status](https://david-dm.org/psychobolt/react-pie-menu.svg)](https://david-dm.org/psychobolt/react-pie-menu)
 [![Dev Dependencies Status](https://david-dm.org/psychobolt/react-pie-menu/dev-status.svg)](https://david-dm.org/psychobolt/react-pie-menu?type=dev)
