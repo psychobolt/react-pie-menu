@@ -17,6 +17,7 @@ const Content = connectTheme('slice.content')('div');
 type Callback = (event: SyntheticEvent<*>) => any;
 
 type Props = {
+  as: any,
   className: string,
   contentHeight: string,
   onMouseEnter: Callback,
@@ -31,6 +32,7 @@ type Props = {
 } & Context;
 
 const Slice = ({
+  as: Component = 'div',
   className,
   contentHeight = '2em',
   onMouseEnter,
@@ -46,7 +48,7 @@ const Slice = ({
   const { context: { active } } = React.useContext(ThemeContext);
   const getCallback = callback => (active ? callback : undefined);
   return (
-    <div
+    <Component
       {...attrs}
       role="button"
       className={className}
@@ -67,7 +69,7 @@ const Slice = ({
           {children}
         </Content>
       </ContentContainer>
-    </div>
+    </Component>
   );
 };
 

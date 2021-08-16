@@ -5,21 +5,17 @@ import { ThemeProvider } from 'styled-components';
 
 import theme from './Simon.theme';
 
-const Button = props => (
-  <Link to="/ding">
-    <Slice {...props} />
-  </Link>
-);
+const Ding = props => <Link to="/ding" {...props} />;
+
+const Button = props => <Slice forwardedAs={Ding} {...props} />;
 
 const Center = props => (
-  <Route
-    path="/ding"
-    render={() => (
-      <PieCenter {...props}>
-        <div>Ding!</div>
-      </PieCenter>
-    )}
-  />
+  <PieCenter {...props}>
+    <Route
+      path="/ding"
+      render={() => <div>Ding!</div>}
+    />
+  </PieCenter>
 );
 
 export default () => (

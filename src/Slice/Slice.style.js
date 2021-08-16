@@ -22,6 +22,7 @@ const textHighlight = system({
 const highlight = props => getBackground(props.highlight);
 
 export const container = css`
+  display: block;
   width: 200%;
   height: 200%;
   transform-origin: 50% 50%;
@@ -36,7 +37,6 @@ export const container = css`
 
   outline: none;
 
-  &:hover,
   &[_highlight=true] {
     color: white;
     ${textHighlight}

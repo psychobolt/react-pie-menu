@@ -20,7 +20,6 @@ export const center = css`
 `;
 
 export const slice = css`
-  cursor: pointer;
   color: grey;
   ${background('white')};
 
@@ -28,10 +27,10 @@ export const slice = css`
     color: black;
   }
 
-  &:hover,
   &[active=true],
   &[_highlight=true] {
     color: black;
     ${background('#eee3ef')}
+    cursor: pointer;
   }
 `;
