@@ -64,7 +64,8 @@ const PieMenu = ({
   const isInsidePie = (x, y) => {
     if (!ref.current) return false;
     const { left: pieX, top: pieY } = ref.current.getBoundingClientRect();
-    const distance = (x - pieX - radiusPx) ** 2 + (y - pieY - radiusPx) ** 2;
+    const distance = (x - (pieX - window.pageXOffset) - radiusPx) ** 2
+      + (y - (pieY + window.pageYOffset) - radiusPx) ** 2;
     return centerArea <= distance && distance <= pieArea;
   };
 
@@ -82,8 +83,10 @@ const PieMenu = ({
   React.useEffect(() => {
     const captureActiveSlice = rafSchedule(e => {
       if (!ref.current) return;
-      const x = e.pageX !== undefined ? e.pageX : (e: TouchEvent).touches[0].clientX;
-      const y = e.pageY !== undefined ? e.pageY : (e: TouchEvent).touches[0].clientY;
+      const x = (e.pageX !== undefined ? e.pageX : (e: TouchEvent).touches[0].clientX)
+        - window.pageXOffset;
+      const y = (e.pageY !== undefined ? e.pageY : (e: TouchEvent).touches[0].clientY)
+        - window.pageYOffset;
       if (x > -1 && y > -1) {
         const item = getItemAt(x, y);
         if (item && item.id) {
