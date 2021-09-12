@@ -63,9 +63,10 @@ const PieMenu = ({
 
   const isInsidePie = (x, y) => {
     if (!ref.current) return false;
+    const { pageXOffset, pageYOffset } = window;
     const { left: pieX, top: pieY } = ref.current.getBoundingClientRect();
-    const distance = (x - (pieX - window.pageXOffset) - radiusPx) ** 2
-      + (y - (pieY + window.pageYOffset) - radiusPx) ** 2;
+    const distance = (x + pageXOffset - (pieX + pageXOffset) - radiusPx) ** 2
+      + (y + pageYOffset - (pieY + pageYOffset) - radiusPx) ** 2;
     return centerArea <= distance && distance <= pieArea;
   };
 
