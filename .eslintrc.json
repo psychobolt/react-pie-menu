@@ -5,7 +5,7 @@
             "legacyDecorators": true
         }
     },
-    "extends": ["airbnb", "plugin:flowtype/recommended"],
+    "extends": ["airbnb", "plugin:flowtype/recommended", "plugin:storybook/recommended"],
     "plugins": ["flowtype", "jest"],
     "rules": {
         "import/no-extraneous-dependencies": 0,
