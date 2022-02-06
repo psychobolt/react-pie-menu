@@ -5,3 +5,6 @@ include_warnings=true
 
 [lints]
 deprecated-utility=warn
+
+[ignore]
+.*/node_modules/resolve/test/resolver/malformed_package_json/package.json
