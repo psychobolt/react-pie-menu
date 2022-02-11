@@ -1,5 +1,5 @@
 {
-    "parser": "babel-eslint",
+    "parser": "@babel/eslint-parser",
     "parserOptions": {
         "ecmaFeatures": {
             "legacyDecorators": true
@@ -14,8 +14,11 @@
         "arrow-parens": ["error", "as-needed"],
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
         "react/jsx-props-no-spreading": 0,
+        "react/prefer-exact-props": 0,
         "react/static-property-placement": [1, "static public field"],
         "react/no-multi-comp": 0,
+        "react/function-component-definition": 0,
+        "no-restricted-exports": 0,
         "import/prefer-default-export": 0,
         "object-curly-newline": ["error", { "consistent": true }],
         "no-bitwise": ["error", { "int32Hint": true }],

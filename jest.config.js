@@ -5,7 +5,7 @@ import config from 'shared/jest.config';
 import { projectList } from './project-list';
 import pkg from './package.json';
 
-module.exports = {
+export default {
   ...config,
   projects: projectList.reduce((paths, { location }) => {
     const configPath = `${location}/jest.config.js`;

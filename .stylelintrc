@@ -4,5 +4,5 @@
     "stylelint-config-recommended",
     "stylelint-config-styled-components"
   ],
-  "syntax": "scss"
+  "customSyntax": "@stylelint/postcss-css-in-js"
 }
