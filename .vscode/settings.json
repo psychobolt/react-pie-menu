@@ -1,6 +1,5 @@
 {
     "javascript.validate.enable": false,
-    "typescript.validate.enable": false,
     "flow.useNPMPackagedFlow": true,
     "files.eol": "\n"
 }
