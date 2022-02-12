@@ -3,7 +3,9 @@ description: Runs linting, code coverage, and dry build
 runs:
   using: "composite"
   steps:
-    - run: yarn bootstrap
+    - run: yarn install
+      shell: bash
+    - run: yarn lerna bootstrap
       shell: bash
     - run: yarn lint
       shell: bash
