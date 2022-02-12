@@ -64,7 +64,7 @@ yarn lint:js --fix # attempts to fix js lint issues
 yarn test # runs functional/unit tests for all packages
 ```
 
-> Configurable with .project file, supports the [PACKAGES](#packages) variable. You can also inspect all tests in debug mode within Visual Studio Code.
+> Configurable with `.projectlist` file, supports the [PACKAGES](#packages) variable. You can also inspect all tests in debug mode within Visual Studio Code.
 
 ## Coverage
 
@@ -74,7 +74,7 @@ Coverage will be uploaded to your [codecov](https://codecov.io/) account, indivi
 yarn codecov # Runs tests and upload coverage for all packages
 ```
 
-> Configurable with .project file, supports the [PACKAGES](#packages) variable.
+> Configurable with `.projectlist` file, supports the [PACKAGES](#packages) variable.
 
 ## Other scripts
 
@@ -88,10 +88,10 @@ yarn watch # watches dev builds
 yarn dist # builds all packages and publishes to npm
 ```
 
-> Configurable with .project file, supports the [PACKAGES](#packages) variable.
+> Configurable with `.projectlist` file, supports the [PACKAGES](#packages) variable.
 
 ## Environment Variables
 
 ### PACKAGES
 
-Some scripts optionally allow the environment variable to specific local packages(s) (in Glob format) for running scripts e.g. ```PACKAGES=default-export,package-* yarn test``` This environment variable will override the .projects config.
+Some scripts optionally allow the environment variable to specific local packages(s) (in Glob format) for running scripts e.g. ```PACKAGES=default-export,package-* yarn test``` This environment variable will override the `.projectlist` config.
