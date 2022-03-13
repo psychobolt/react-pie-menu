@@ -5,7 +5,7 @@ runs:
   steps:
     - run: yarn install
       shell: bash
-    - run: yarn lerna bootstrap
+    - run: yarn bootstrap
       shell: bash
     - run: yarn lint
       shell: bash
@@ -15,7 +15,7 @@ runs:
       shell: bash
     - run: yarn test --coverage
       shell: bash
-    - run: CODECOV_FLAGS=$(yarn workspaces.js --ls-projects) >> $GITHUB_ENV
+    - run: CODECOV_FLAGS=$(yarn node ./workspaces.js --ls-projects) >> $GITHUB_ENV
       shell: bash
     - run: yarn build
       shell: bash
