@@ -2,7 +2,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import * as styles from './App.style';
+import * as styles from './App.style.js';
 import logo from './logo.svg';
 
 type Props = {

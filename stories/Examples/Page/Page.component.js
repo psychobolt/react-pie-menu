@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 
-import { Header, type Props } from '../Header/Header.component';
+import { Header, type Props } from '../Header/Header.component.js';
 import './page.css';
 
 export const Page: React.AbstractComponent<Props> = (

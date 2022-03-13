@@ -1,9 +1,12 @@
-export const Flexbox = require('./Flexbox.component').default; // eslint-disable-line global-require
+import Component from './Flexbox.component.js';
+import code from './Flexbox.component.js?raw'; // eslint-disable-line import/no-unresolved
+
+export const Flexbox = Component;
 
 Flexbox.parameters = {
   docs: {
     source: {
-      code: require('!!raw-loader!./Flexbox.component').default, // eslint-disable-line global-require
+      code,
     },
   },
 };

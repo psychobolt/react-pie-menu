@@ -1,1 +1,1 @@
-export { default } from './Messenger.component';
+export { default } from './Messenger.component.js';

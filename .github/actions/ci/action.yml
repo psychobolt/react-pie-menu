@@ -13,7 +13,9 @@ runs:
       shell: bash
     - run: yarn flow
       shell: bash
-    - run: yarn codecov
+    - run: yarn test --coverage
+      shell: bash
+    - run: CODECOV_FLAGS=$(yarn workspaces.js --ls-projects) >> $GITHUB_ENV
       shell: bash
     - run: yarn build
       shell: bash

@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 
-import { Button } from '../Button/Button.component';
+import { Button } from '../Button/Button.component.js';
 import './header.css';
 
 export type Props = {

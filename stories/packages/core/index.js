@@ -1,7 +1,7 @@
 import React from 'react';
-import { HelloWorld } from 'react-rollup-boilerplate';
+import { HelloWorld } from '@psychobolt/react-rollup-boilerplate';
 
-import App from 'stories/shared/App';
+import App from 'stories/shared/App/index.js';
 
 export default {
   title: 'packages/core',

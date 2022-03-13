@@ -1,13 +1,13 @@
 import React, { Suspense } from 'react';
 import styled from 'styled-components';
 
-import * as styles from './HelloWorld.style';
+import * as styles from './HelloWorld.style.js';
 
 export const Content = styled.p`
   ${styles.content}
 `;
 
-const Messenger = React.lazy(() => import('./Messenger'));
+const Messenger = React.lazy(() => import('./Messenger/index.js'));
 
 export default () => (
   <Suspense fallback={<p>Waiting for message...</p>}>

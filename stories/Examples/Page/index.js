@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { Page } from './Page.component';
-import * as HeaderStories from '../Header';
+import { Page } from './Page.component.js';
+import * as HeaderStories from '../Header/index.js';
 
 export default {
   title: 'Examples/Page',

@@ -1,2 +1,2 @@
-export * from './HelloWorld';
-export { default as HelloWorld } from './HelloWorld';
+export * from './HelloWorld/index.js';
+export { default as HelloWorld } from './HelloWorld/index.js';

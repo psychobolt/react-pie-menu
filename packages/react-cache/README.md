@@ -1,5 +1,7 @@
 # react-cache
 
+See: https://github.com/facebook/react/issues/14780#issuecomment-461861948
+
 A basic cache for React applications. It also serves as a reference for more
 advanced caching implementations.
 

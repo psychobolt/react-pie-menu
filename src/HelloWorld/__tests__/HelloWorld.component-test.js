@@ -1,10 +1,8 @@
-import 'jest-styled-components';
-
 import React from 'react';
 import { isPortal, isFragment } from 'react-is';
 import { mount } from 'enzyme';
 
-import HelloWorld from '../HelloWorld.component';
+import HelloWorld from '../HelloWorld.component.js';
 
 describe('component <HelloWorld />', () => {
   it('should render correctly', () => {

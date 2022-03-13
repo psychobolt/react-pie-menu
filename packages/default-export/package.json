@@ -1,16 +1,33 @@
 {
-  "name": "default-export",
+  "name": "@psychobolt/default-export",
   "version": "0.0.1",
   "description": "Dummy package",
-  "main": "./dist/index.js",
-  "repository": "https://github.com/psychobolt/react-rollup-boilerplate/",
+  "type": "module",
+  "module": "./dist/index.prod.js",
+  "main": "./dist/index.prod.cjs",
+  "exports": {
+    "development": {
+      "module": "./dist/index.dev.js",
+      "import": "./dist/index.dev.cjs.mjs",
+      "require": "./dist/index.dev.cjs"
+    },
+    "import": "./dist/index.prod.cjs.mjs",
+    "require": "./dist/index.prod.cjs",
+    "default": "./dist/index.prod.js"
+  },
+  "repository": "https://github.com/psychobolt/react-rollup-boilerplate/tree/master/packages/default-export",
   "author": "psychobolt",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
   },
   "peerDependencies": {
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react": "*",
+    "react-dom": "*"
+  },
+  "devDependencies": {
+    "app-root-path": "*",
+    "enzyme": "*",
+    "react": "*"
   }
 }

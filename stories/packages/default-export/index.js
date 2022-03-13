@@ -1,6 +1,6 @@
 import React from 'react';
 
-import DefaultExport from 'default-export';
+import DefaultExport from '@psychobolt/default-export';
 
 export default {
   title: 'packages/default-export',

@@ -1,1 +1,1 @@
-export { default, Content } from './HelloWorld.component';
+export { default, Content } from './HelloWorld.component.js';

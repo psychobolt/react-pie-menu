@@ -3,6 +3,9 @@
     "parserOptions": {
         "ecmaFeatures": {
             "legacyDecorators": true
+        },
+        "babelOptions": {
+            "configFile": "./babel.config.common.cjs"
         }
     },
     "extends": ["airbnb", "plugin:flowtype/recommended", "plugin:storybook/recommended"],
@@ -10,6 +13,7 @@
     "rules": {
         "import/no-extraneous-dependencies": 0,
         "import/no-webpack-loader-syntax": 0,
+        "import/extensions": ["error", "ignorePackages"],
         "no-confusing-arrow": ["error", {"allowParens": true}],
         "arrow-parens": ["error", "as-needed"],
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
@@ -30,9 +34,8 @@
     },
     "settings": {
         "import/resolver": {
-            "babel-module": {
-                "root": ["./"],
-                "cwd": "./"
+            "node": {
+                "moduleDirectory": ["./"]
             }
         }
     }

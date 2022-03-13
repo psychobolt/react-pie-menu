@@ -52,8 +52,8 @@ typings/
 *.tgz
 
 # Yarn
-.pnp.*
 .yarn/*
+!.yarn/cache
 !.yarn/patches
 !.yarn/plugins
 !.yarn/releases
@@ -66,7 +66,8 @@ typings/
 
 # dist
 **/dist/*
-!**/dist/index.js
+!**/dist/wrapper.(dev|prod).js
+!**/dist/*.cjs.flow
 !**/dist/*.js.flow
 
 # flow-typed
