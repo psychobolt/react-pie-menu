@@ -7,7 +7,7 @@ runs:
       shell: bash
     - run: yarn bootstrap
       shell: bash
-    - run: yarn lint
+    - run: yarn build
       shell: bash
     - run: yarn flow-typed-install
       shell: bash
@@ -16,8 +16,6 @@ runs:
     - run: yarn test --coverage
       shell: bash
     - run: CODECOV_FLAGS=$(yarn node ./workspaces.js --ls-projects) >> $GITHUB_ENV
-      shell: bash
-    - run: yarn build
       shell: bash
     - run: yarn build-storybook
       shell: bash
