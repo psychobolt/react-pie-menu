@@ -11,7 +11,7 @@ jobs:
       - uses: ./.github/actions/ci
       - uses: codecov/codecov-action@v2
         with:
-          flags: ${{ env.CODECOV_FLAGS }}}
+          flags: ${{ env.CODECOV_FLAGS }}
       - uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
