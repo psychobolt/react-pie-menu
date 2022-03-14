@@ -59,7 +59,6 @@ typings/
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
-.yarn-integrity
 
 # dotenv environment variables file
 .env
