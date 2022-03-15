@@ -3,18 +3,18 @@ on:
 
 jobs:
   lint:
+    name: "Lint Sources"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
-      - uses: ./.github/actions/install
-      - uses: actions/download-artifact@v3
-        with:
-          name: bundles-${{env.GITHUB_SHA}}
       - run: yarn install
         shell: bash
       - run: yarn bootstrap
         shell: bash
+      - uses: actions/download-artifact@v3
+        with:
+          name: bundles-${{env.GITHUB_SHA}}
       - run: yarn flow-typed-install
         shell: bash
       - run: yarn flow
