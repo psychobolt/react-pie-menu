@@ -13,7 +13,7 @@ jobs:
         shell: bash
       - uses: actions/upload-artifact@v3
         with:
-          name: bundles-${{env.GITHUB_SHA}}
+          name: bundles-${{ github.sha }}
           path: |
             **/dist
             storybook-static

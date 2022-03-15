@@ -14,10 +14,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
-      - uses: ./.github/actions/install
       - uses: actions/download-artifact@v3
         with:
-          name: bundles-${{env.GITHUB_SHA}}
+          name: bundles-${{ github.sha }}
       - uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}

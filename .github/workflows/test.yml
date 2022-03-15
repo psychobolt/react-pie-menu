@@ -7,7 +7,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
-      - uses: ./.github/actions/ci
+      - uses: ./.github/actions/install
       - uses: actions/download-artifact@v3
         with:
           name: bundles-${{env.GITHUB_SHA}}
