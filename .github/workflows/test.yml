@@ -63,5 +63,5 @@ jobs:
         with:
           name: ${{ matrix.flag }}_coverage_${{ github.sha }}
       - uses: codecov/codecov-action@v2
-          with:
-            flags: ${{ matrix.flag }}
+        with:
+          flags: ${{ matrix.flag }}
