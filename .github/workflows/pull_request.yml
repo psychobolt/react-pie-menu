@@ -1,7 +1,7 @@
 on: pull_request
 jobs:
   build:
-    uses: ./.github/workflows/ci/bundle.yml
+    uses: ./.github/workflows/bundle.yml
   test:
     needs: build
-    uses: ./.github/workflows/ci/test.yml
+    uses: ./.github/workflows/test.yml
