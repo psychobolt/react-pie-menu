@@ -3,6 +3,7 @@ on:
 
 jobs:
   build:
+    name: "Build Projects"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

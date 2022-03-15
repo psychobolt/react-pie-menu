@@ -2,7 +2,7 @@ on:
   workflow_call:
 
 jobs:
-  test:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -11,6 +11,10 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: bundles-${{env.GITHUB_SHA}}
+      - run: yarn install
+        shell: bash
+      - run: yarn bootstrap
+        shell: bash
       - run: yarn flow-typed-install
         shell: bash
       - run: yarn flow
