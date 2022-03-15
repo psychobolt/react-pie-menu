@@ -1,8 +1,7 @@
 on: pull_request
 jobs:
-  ci:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-      - uses: ./.github/actions/ci
+  build:
+    uses: ./.github/workflows/ci/bundle.yml
+  test:
+    needs: build
+    uses: ./.github/workflows/ci/test.yml

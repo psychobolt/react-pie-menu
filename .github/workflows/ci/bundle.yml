@@ -1,0 +1,20 @@
+on:
+  workflow_call:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - uses: ./.github/actions/ci
+      - run: yarn build
+        shell: bash
+      - run: yarn build-storybook
+        shell: bash
+      - uses: actions/upload-artifact@v3
+        with:
+          name: bundles-${{env.GITHUB_SHA}}
+          path: |
+            **/dist
+            storybook-static

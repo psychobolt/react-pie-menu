@@ -1,0 +1,19 @@
+on:
+  workflow_call:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - uses: ./.github/actions/ci
+      - uses: actions/download-artifact@v3
+        with:
+          name: bundles-${{env.GITHUB_SHA}}
+      - run: yarn flow-typed-install
+        shell: bash
+      - run: yarn flow
+        shell: bash
+      - run: yarn lint
+        shell: bash
