@@ -54,7 +54,7 @@ jobs:
   coverage:
     name: "Report Coverage"
     runs-on: ubuntu-latest
-    needs: test
+    needs: [setenv, test]
     strategy:
       matrix:
         flag: ${{ fromJSON(needs.setenv.outputs.workspaces).*.name }}
