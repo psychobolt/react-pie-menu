@@ -21,3 +21,14 @@ jobs:
         shell: bash
       - run: yarn lint
         shell: bash
+  test:
+    name: "Test Projects"
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        project: ${{ env.WORKSPACES }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - run: yarn test --coverage --projects ${{ matrix.project }}
+        shell: bash
