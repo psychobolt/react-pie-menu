@@ -122,14 +122,11 @@ export async function getPackageName(cwd) {
   return null;
 }
 
-if (argv.lsProjects) {
+if (argv.lsPublic) {
   await (setup());
   await (getProjects());
 
-  const scopeRegex = /^@(.+\/)+/;
-  let projects = [];
-  PROJECTS.forEach((project, cwd) => projects.push(getPackageName(cwd)));
-  projects = await (Promise.all(projects));
-  projects = projects.map(project => project.replace(scopeRegex, ''));
-  console.log(projects.join(',')); // eslint-disable-line no-console
+  const paths = [];
+  PROJECTS.forEach((project, cwd) => paths.push(cwd));
+  console.log(JSON.stringify(paths)); // eslint-disable-line no-console
 }

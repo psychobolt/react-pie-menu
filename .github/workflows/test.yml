@@ -2,6 +2,16 @@ on:
   workflow_call:
 
 jobs:
+  setenv:
+    name: Set Environment Variables
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - run: echo "WORKSPACES=$(yarn node ./workspaces.js --ls-public)" >> $GITHUB_ENV
+        shell: bash
+      - run: echo "${{ env.WORKSPACES }}"
+        shell: bash
   lint:
     name: "Lint Sources"
     runs-on: ubuntu-latest
@@ -24,6 +34,7 @@ jobs:
   test:
     name: "Test Projects"
     runs-on: ubuntu-latest
+    needs: setenv
     strategy:
       matrix:
         project: ${{ env.WORKSPACES }}

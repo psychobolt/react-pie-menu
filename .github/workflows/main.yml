@@ -3,8 +3,6 @@ on:
     branches:
       - master
 jobs:
-  setup:
-    uses: ./.github/workflows/setup.yml
   bundle:
     needs: setup
     uses: ./.github/workflows/bundle.yml
