@@ -5,12 +5,13 @@ jobs:
   setenv:
     name: Set Environment Variables
     runs-on: ubuntu-latest
+    outputs:
+      workspaces: ${{ steps.ls_public_workspaces.outputs.workspaces }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
-      - run: echo "WORKSPACES=$(yarn node ./workspaces.js --ls-public)" >> $GITHUB_ENV
-        shell: bash
-      - run: echo "${{ env.WORKSPACES }}"
+      - id: ls_public_workspaces
+        run: echo "::set-output name=workspaces::$(yarn node ./workspaces.js --ls-public)"
         shell: bash
   lint:
     name: "Lint Sources"
@@ -37,7 +38,7 @@ jobs:
     needs: setenv
     strategy:
       matrix:
-        project: ${{ env.WORKSPACES }}
+        project: ${{ fromJSON(needs.setenv.outputs.workspaces) }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
