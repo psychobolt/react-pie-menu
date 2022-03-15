@@ -7,7 +7,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
-      - uses: ./.github/actions/ci
       - run: yarn build
         shell: bash
       - run: yarn build-storybook
