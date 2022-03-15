@@ -126,7 +126,10 @@ if (argv.lsPublic) {
   await (setup());
   await (getProjects());
 
-  const paths = [];
-  PROJECTS.forEach((project, cwd) => paths.push(cwd));
-  console.log(JSON.stringify(paths)); // eslint-disable-line no-console
+  const workspaces = [];
+  PROJECTS.forEach((project, cwd) => workspaces.push({
+    name: project.workspacesByCwd.get(cwd).manifest.name.name,
+    path: cwd,
+  }));
+  console.log(JSON.stringify(workspaces)); // eslint-disable-line no-console
 }

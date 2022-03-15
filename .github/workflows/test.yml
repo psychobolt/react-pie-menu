@@ -33,14 +33,35 @@ jobs:
       - run: yarn lint
         shell: bash
   test:
-    name: "Test Projects"
+    name: "Test Project"
     runs-on: ubuntu-latest
     needs: setenv
     strategy:
       matrix:
-        project: ${{ fromJSON(needs.setenv.outputs.workspaces) }}
+        path: ${{ fromJSON(needs.setenv.outputs.workspaces).*.path }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
-      - run: yarn test --coverage --projects ${{ matrix.project }}
+      - run: yarn test --coverage --projects ${{ matrix.path }}
         shell: bash
+      - uses: actions/upload-artifact@v3
+        with:
+          name: ${{ fromJSON(needs.setenv.outputs.workspaces)[strategy.job-index].name }}_coverage_${{ github.sha }}
+          path: |
+            ${{ matrix.path }}/**/coverage
+          if-no-files-found: error
+          retention-days: 1
+  coverage:
+    name: "Report Coverage"
+    runs-on: ubuntu-latest
+    needs: test
+    strategy:
+      matrix:
+        flag: ${{ fromJSON(needs.setenv.outputs.workspaces).*.name }}
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: ${{ matrix.flag }}_coverage_${{ github.sha }}
+      - uses: codecov/codecov-action@v2
+          with:
+            flags: ${{ matrix.flag }}
