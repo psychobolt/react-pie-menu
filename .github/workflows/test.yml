@@ -48,7 +48,7 @@ jobs:
         with:
           name: ${{ fromJSON(needs.setenv.outputs.workspaces)[strategy.job-index].name }}_coverage_${{ github.sha }}
           path: |
-            ${{ matrix.path }}/**/coverage
+            ${{ matrix.path }}/coverage
           if-no-files-found: error
           retention-days: 1
   coverage:
