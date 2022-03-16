@@ -59,6 +59,7 @@ jobs:
       matrix:
         flag: ${{ fromJSON(needs.setenv.outputs.workspaces).*.name }}
     steps:
+      - uses: actions/checkout@v2
       - uses: actions/download-artifact@v3
         with:
           name: ${{ matrix.flag }}_coverage_${{ github.sha }}
