@@ -10,7 +10,9 @@
     "**/.pnp.*": true
   },
   "eslint.nodePath": ".yarn/sdks",
-  "stylelint.validate": ["javascript"],
+  "stylelint.validate": [
+    "javascript"
+  ],
   "stylelint.configFile": "./.stylelintrc.json",
   "flow.pathToFlow": "${workspaceFolder}/.yarn/sdks/flow-bin/cli.js"
 }
