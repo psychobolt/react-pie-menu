@@ -3,7 +3,8 @@
     "baseUrl": ".",
     "paths": {
       // List aliases here, for example:
-      "@psychobolt/default-export": ["./packages/default-export/src/index.js"],
+      "@psychobolt/react-rollup-boilerplate": ["./src/index.js"],
+      "@psychobolt/*": ["./packages/*/src/index.js"],
     }
   }
 }

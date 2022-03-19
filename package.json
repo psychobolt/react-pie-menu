@@ -40,7 +40,7 @@
     "build-storybook": "build-storybook",
     "bootstrap": "yarn node bootstrap.js",
     "prepack": "yarn run build",
-    "dist": "yarn workspaces foreach --no-private npm publish --tolerate-republish"
+    "dist": "yarn workspaces foreach --no-private npm publish --tolerate-republish --access public"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.3",
