@@ -15,6 +15,7 @@ A boilerplate for building [React](https://reactjs.org/) libraries.
     - [CommonJS](https://www.npmjs.com/package/rollup-plugin-commonjs)
     - [Terser](https://www.npmjs.com/package/rollup-plugin-terser)
     - [Replace](https://www.npmjs.com/package/@rollup/plugin-replace)
+    - [Flow Entry](https://www.npmjs.com/package/rollup-plugin-flow-entry)
 - [styled-components](https://www.styled-components.com/) with [default](https://www.styled-components.com/docs/tooling#stylelint) [stylelint](https://stylelint.io/) support
 - Run tests with [Jest](https://facebook.github.io/jest/)
 - Code Coverage reporting with [Codecov](https://codecov.io/)

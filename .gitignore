@@ -65,8 +65,6 @@ typings/
 
 # dist
 **/dist/*
-!**/dist/*.cjs.flow
-!**/dist/*.js.flow
 
 # flow-typed
 flow-typed/npm

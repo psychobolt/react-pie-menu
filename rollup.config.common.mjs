@@ -5,6 +5,7 @@ import commonjs from '@rollup/plugin-commonjs';
 import replace from '@rollup/plugin-replace';
 import { babel } from '@rollup/plugin-babel';
 import mjsEntry from 'rollup-plugin-mjs-entry';
+import flowEntry from 'rollup-plugin-flow-entry';
 
 import { rootResolve } from './shared/utils.js';
 
@@ -58,6 +59,7 @@ const config = {
     commonjs({
       include: /node_modules/,
     }),
+    flowEntry(),
     babel({
       exclude: /node_modules/,
       babelHelpers: 'bundled',

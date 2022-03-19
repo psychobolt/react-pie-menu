@@ -132,6 +132,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-is", "npm:17.0.2"],\
             ["rimraf", "npm:3.0.2"],\
             ["rollup", "npm:2.67.3"],\
+            ["rollup-plugin-flow-entry", "npm:0.3.6"],\
             ["rollup-plugin-mjs-entry", "npm:0.1.1"],\
             ["rollup-plugin-terser", "virtual:a8a1d15306c5b22d13fd53c9bfa71986250b0024a5faa5f5f09c0c92f0de8941d2bf3403e449fdf6b9df13d3a931d8ae3950d04eca325a0d5881add962206733#npm:7.0.2"],\
             ["semver", "npm:7.3.5"],\
@@ -4191,6 +4192,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-is", "npm:17.0.2"],\
             ["rimraf", "npm:3.0.2"],\
             ["rollup", "npm:2.67.3"],\
+            ["rollup-plugin-flow-entry", "npm:0.3.6"],\
             ["rollup-plugin-mjs-entry", "npm:0.1.1"],\
             ["rollup-plugin-terser", "virtual:a8a1d15306c5b22d13fd53c9bfa71986250b0024a5faa5f5f09c0c92f0de8941d2bf3403e449fdf6b9df13d3a931d8ae3950d04eca325a0d5881add962206733#npm:7.0.2"],\
             ["semver", "npm:7.3.5"],\
@@ -21106,6 +21108,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["rollup", "npm:2.67.3"],\
             ["fsevents", "patch:fsevents@npm%3A2.3.2#~builtin<compat/fsevents>::version=2.3.2&hash=18f3a7"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["rollup-plugin-flow-entry", [\
+        ["npm:0.3.6", {\
+          "packageLocation": "./.yarn/cache/rollup-plugin-flow-entry-npm-0.3.6-46ec1cf586-5214aa631a.zip/node_modules/rollup-plugin-flow-entry/",\
+          "packageDependencies": [\
+            ["rollup-plugin-flow-entry", "npm:0.3.6"]\
           ],\
           "linkType": "HARD"\
         }]\
