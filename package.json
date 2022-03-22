@@ -104,7 +104,7 @@
     "eslint": "^8.8.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-react-app": "^7.0.0",
-    "eslint-import-resolver-babel-module": "^5.3.1",
+    "eslint-import-resolver-alias": "^1.1.2",
     "eslint-import-resolver-node": "^0.3.6",
     "eslint-plugin-flowtype": "^8.0.3",
     "eslint-plugin-import": "^2.22.1",

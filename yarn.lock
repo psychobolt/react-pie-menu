@@ -2451,7 +2451,7 @@ __metadata:
     eslint: ^8.8.0
     eslint-config-airbnb: ^19.0.4
     eslint-config-react-app: ^7.0.0
-    eslint-import-resolver-babel-module: ^5.3.1
+    eslint-import-resolver-alias: ^1.1.2
     eslint-import-resolver-node: ^0.3.6
     eslint-plugin-flowtype: ^8.0.3
     eslint-plugin-import: ^2.22.1
@@ -8619,16 +8619,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-import-resolver-babel-module@npm:^5.3.1":
-  version: 5.3.1
-  resolution: "eslint-import-resolver-babel-module@npm:5.3.1"
-  dependencies:
-    pkg-up: ^3.1.0
-    resolve: ^1.20.0
+"eslint-import-resolver-alias@npm:^1.1.2":
+  version: 1.1.2
+  resolution: "eslint-import-resolver-alias@npm:1.1.2"
   peerDependencies:
-    "@babel/core": ^7.0.0-0
-    babel-plugin-module-resolver: ^3.0.0 || ^4.0.0
-  checksum: cd26740e9b9b7bb12667aabcc5c3e0e39a401b32b2890dfc4fd2444a00910f7e23fdb65cbb6084b026ade43899f824a2c762ce6078f5eb977762b8dda31aca1a
+    eslint-plugin-import: ">=1.4.0"
+  checksum: 3fbb9aeda98335060bb438ed8446a060d282f80a365838a82edb1f8743b1d54c89303009c7717e3c915d5d722e57148082c5ada4455e811acdc8ed3a65059fa1
   languageName: node
   linkType: hard
 

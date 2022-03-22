@@ -27,7 +27,7 @@ yarn workspace <workspace-name> add <package-name>@* [--dev] # Add/link a packag
 
 This boilerplate supports [Monorepo](https://danluu.com/monorepo/) configurations out of the box and will watch, build, serve any local packages. Each package should have ```src/index.js``` entry file. Refer to Yarn's [CLI docs](https://yarnpkg.com/cli/) for more information on running workspace commands.
 
-> You can also give alias to source files of the packages in order to work with Visual Studio Code's Intellisense. See [jsconfig.json](https://github.com/psychobolt/react-rollup-boilerplate/blob/master/jsconfig.json) and [usage](https://code.visualstudio.com/docs/languages/jsconfig#_using-webpack-aliases).
+> You can also give alias to source files of the packages in order to work with Visual Studio Code's Intellisense and ESLint. See [jsconfig.json](https://github.com/psychobolt/react-rollup-boilerplate/blob/master/jsconfig.json) and [usage](https://code.visualstudio.com/docs/languages/jsconfig#_using-webpack-aliases). Also see the [Lint](#lint) section.
 
 ## Static Types
 
@@ -51,6 +51,10 @@ yarn lint:css # lint only css
 yarn lint:js # lint only js
 yarn lint:js --fix # attempts to fix js lint issues
 ```
+
+### Local Package Aliases
+
+Alias for local packages can be configured in [.eslintrc.json](https://github.com/psychobolt/react-rollup-boilerplate/blob/master/.eslintrc.json) using the [Alias Resolver](https://www.npmjs.com/package/eslint-import-resolver-node) plugin. In the future, package names for workspace projects will be automatically configured by the usage of [workspaces.js](https://github.com/psychobolt/react-rollup-boilerplate/blob/master/workspaces.js). Due to the nature of this, that work will be postponed until eslint have support for [ESM Configurations](https://github.com/eslint/eslint/issues/13481). 
 
 ## Test
 

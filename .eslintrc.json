@@ -16,10 +16,10 @@
         "import/extensions": ["error", "ignorePackages"],
         "no-confusing-arrow": ["error", {"allowParens": true}],
         "arrow-parens": ["error", "as-needed"],
-        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+        "react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx"] }],
         "react/jsx-props-no-spreading": 0,
         "react/prefer-exact-props": 0,
-        "react/static-property-placement": [1, "static public field"],
+        "react/static-property-placement": ["warn", "static public field"],
         "react/no-multi-comp": 0,
         "react/function-component-definition": 0,
         "no-restricted-exports": 0,
@@ -36,7 +36,11 @@
         "import/resolver": {
             "node": {
                 "moduleDirectory": ["./"]
-            }
+            },
+            "alias": [
+                ["@psychobolt/react-rollup-boilerplate", "./src/index.js"],
+                ["@psychobolt/default-export", "./packages/default-export/src/index.js"]
+            ]
         }
     }
 }
