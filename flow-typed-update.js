@@ -1,10 +1,14 @@
-import path from 'path';
 import spawn from 'cross-spawn';
 
 import { setup, getProjects, getPackageName } from './workspaces.js';
+import { rootResolve } from './shared/utils.js';
 
 await (setup());
 const projects = await (getProjects());
+
+const ROOT_RESOLVE = rootResolve();
+
+const libdefDir = './shared/flow-typed';
 
 /* eslint-disable no-console, no-await-in-loop, no-restricted-syntax */
 for (const [cwd] of projects) {
@@ -14,7 +18,7 @@ for (const [cwd] of projects) {
     'yarn',
     [
       'workspace', name,
-      'exec', 'flow-typed', 'update', '-s', '-i', 'dev', '-p', path.resolve(), '--verbose', '--skipFlowRestart',
+      'exec', 'flow-typed', 'update', '--libdefDir', libdefDir, '-s', '-i', 'dev', '-p', ROOT_RESOLVE, '--verbose', '--skipFlowRestart',
     ],
     { stdio: 'inherit' },
   );

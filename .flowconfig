@@ -1,10 +1,13 @@
 [options]
 module.name_mapper='^\(.*\)\.\mdx?$' -> '<PROJECT_ROOT>/RAWFlowStub.js.flow'
 module.name_mapper='^stories/\(.*\)$' -> '<PROJECT_ROOT>/stories/\1'
-module.system.node.resolve_dirname=node_modules
 module.system.node.resolve_dirname=packages
+module.system.node.resolve_dirname=flow-deps/node_modules
 
 include_warnings=true
+
+[libs]
+shared/flow-typed
 
 [lints]
 deprecated-utility=warn

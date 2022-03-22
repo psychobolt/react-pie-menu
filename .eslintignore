@@ -3,5 +3,5 @@
 /packages/*/node_modules
 /packages/react-cache
 **/dist
-/flow-typed/npm
+/shared/flow-typed/npm
 /storybook-static

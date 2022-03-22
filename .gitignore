@@ -67,7 +67,7 @@ typings/
 **/dist/*
 
 # flow-typed
-flow-typed/npm
+shared/flow-typed/npm
 
 # Storybook
 storybook-static

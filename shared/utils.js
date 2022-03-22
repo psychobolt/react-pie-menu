@@ -9,3 +9,5 @@ export const dirname = url => slash(path.dirname(fileURLToPath(url)));
 export const rootResolve = () => slash(`${appRoot}`);
 
 export const requireCJS = (url, modulePath) => createRequire(url)(modulePath);
+
+export const normalizePath = cwd => slash(path.resolve(`${cwd}`));

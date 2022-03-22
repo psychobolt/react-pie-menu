@@ -23,7 +23,7 @@
   },
   "scripts": {
     "flow-typed-update": "yarn node flow-typed-update.js",
-    "flow-typed-install": "yarn rimraf flow-typed/npm && yarn run flow-typed-update",
+    "flow-typed-install": "yarn rimraf shared/flow-typed/npm && yarn run flow-typed-update && cd shared/flow-deps && yarn install",
     "build:dev": "yarn cross-env BABEL_ENV=development rollup -c rollup.config.dev.mjs",
     "build:prod": "yarn cross-env rollup -c rollup.config.prod.mjs",
     "clean": "yarn rimraf \"**/dist/index?(-*).*.?(c|m)js?(.flow)\"",

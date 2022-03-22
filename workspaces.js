@@ -3,8 +3,9 @@ import yargs from 'yargs';
 import glob from 'glob';
 import micromatch from 'micromatch';
 import appRoot from 'app-root-path';
-import slash from 'slash';
 import { Configuration, Project } from '@yarnpkg/core';
+
+import { normalizePath } from './shared/utils.js';
 
 const { argv } = yargs(process.argv.slice(2));
 
@@ -13,8 +14,6 @@ const EXCLUDES = new Set();
 const INCLUDES = new Set();
 let PROJECTS;
 let MAIN_PROJECT;
-
-const normalizePath = cwd => slash(path.resolve(`${cwd}`));
 
 // defined private in typescript, not sure how to add workspace without it
 // TODO extend class Project, can we use workspace cache from MAIN_PROJECT?

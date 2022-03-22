@@ -21,6 +21,8 @@ yarn add <package-name> [--peer] # for external dependencies (Note: Include in e
 yarn workspace <workspace-name> add <package-name>@* [--dev] # Add/link a package to a specific local package. See section: Including local packages
 ```
 
+> Note: All packages are installed using the [PnP strategy](https://yarnpkg.com/features/pnp) by default. To see advantages, visit the [official Yarn docs](https://yarnpkg.com/features/pnp#the-node_modules-problem). Some tools however, such as Flow, are not compatible with the PnP resolution strategy. In order to circumvent you can opt out by installing non PnP configurations as a seperate Yarn project. For example, see [Static Types](#static-types).
+
 ## Local packages and comannds
 
 This boilerplate supports [Monorepo](https://danluu.com/monorepo/) configurations out of the box and will watch, build, serve any local packages. Each package should have ```src/index.js``` entry file. Refer to Yarn's [CLI docs](https://yarnpkg.com/cli/) for more information on running workspace commands.
@@ -29,9 +31,15 @@ This boilerplate supports [Monorepo](https://danluu.com/monorepo/) configuration
 
 ## Static Types
 
+### Installing Types
+
 ```sh
 yarn flow-typed-install # clean & install flow definitions
 yarn flow-typed-update # downloads and updates new flow definitions
+cd shared/flow-deps && yarn install <package-name> # install any node modules that flow cannot resolve with PnP strategy
+```
+
+```sh
 yarn flow # performs type checking on files
 ```
 

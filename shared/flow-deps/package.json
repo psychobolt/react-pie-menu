@@ -1,0 +1,5 @@
+{
+  "name": "flow-deps",
+  "priavte": true,
+  "packageManager": "yarn@3.2.0-rc.16"
+}
