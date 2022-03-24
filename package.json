@@ -23,7 +23,7 @@
   },
   "scripts": {
     "flow-typed-update": "yarn node flow-typed-update.js",
-    "flow-typed-install": "yarn rimraf shared/flow-typed/npm && yarn run flow-typed-update && cd shared/flow-deps && yarn install",
+    "flow-typed-install": "yarn symlink-dir shared/flow-deps/node_modules flow-deps-modules && yarn rimraf shared/flow-typed/npm && yarn run flow-typed-update && cd shared/flow-deps && yarn install",
     "build:dev": "yarn cross-env BABEL_ENV=development rollup -c rollup.config.dev.mjs",
     "build:prod": "yarn cross-env rollup -c rollup.config.prod.mjs",
     "clean": "yarn rimraf \"**/dist/index?(-*).*.?(c|m)js?(.flow)\"",
@@ -142,6 +142,7 @@
     "stylelint-config-standard-scss": "^3.0.0",
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-processor-styled-components": "https://github.com/psychobolt/stylelint-processor-styled-components",
+    "symlink-dir": "^5.0.1",
     "yargs": "^17.3.1"
   },
   "dependencies": {

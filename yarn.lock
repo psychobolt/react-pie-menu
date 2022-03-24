@@ -2490,6 +2490,7 @@ __metadata:
     stylelint-config-standard-scss: ^3.0.0
     stylelint-config-styled-components: ^0.1.1
     stylelint-processor-styled-components: "https://github.com/psychobolt/stylelint-processor-styled-components"
+    symlink-dir: ^5.0.1
     yargs: ^17.3.1
   peerDependencies:
     react: ^17.0.2
@@ -5029,6 +5030,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@zkochan/rimraf@npm:^2.1.2":
+  version: 2.1.2
+  resolution: "@zkochan/rimraf@npm:2.1.2"
+  dependencies:
+    rimraf: ^3.0.2
+  checksum: 4f7fbfe837b7957bd33b12ce3d41639c737be115122fcad9ce3a96cf02c47da6f4b9be06f9efef2c7f5d94a401a96d593fe07be1d9f181b70437e844f2f211c3
+  languageName: node
+  linkType: hard
+
 "abab@npm:^2.0.3, abab@npm:^2.0.5":
   version: 2.0.5
   resolution: "abab@npm:2.0.5"
@@ -6086,6 +6096,15 @@ __metadata:
   dependencies:
     open: ^7.0.3
   checksum: 3d1a945d125cbbc6e6a841bef7540435d77d5aa61fc4d345896f5f0b3780fcf9c7145373deaedf62d674a427b187ae973f4410884f9fea0c15f7f01f9dc339c7
+  languageName: node
+  linkType: hard
+
+"better-path-resolve@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "better-path-resolve@npm:1.0.0"
+  dependencies:
+    is-windows: ^1.0.0
+  checksum: 5392dbe04e7fe68b944eb37961d9dfa147aaac3ee9ee3f6e13d42e2c9fbe949e68d16e896c14ee9016fa5f8e6e53ec7fd8b5f01b50a32067a7d94ac9cfb9a050
   languageName: node
   linkType: hard
 
@@ -11493,7 +11512,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"is-windows@npm:^1.0.2":
+"is-windows@npm:^1.0.0, is-windows@npm:^1.0.2":
   version: 1.0.2
   resolution: "is-windows@npm:1.0.2"
   checksum: 438b7e52656fe3b9b293b180defb4e448088e7023a523ec21a91a80b9ff8cdb3377ddb5b6e60f7c7de4fa8b63ab56e121b6705fe081b3cf1b828b0a380009ad7
@@ -15915,6 +15934,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"rename-overwrite@npm:^4.0.0":
+  version: 4.0.2
+  resolution: "rename-overwrite@npm:4.0.2"
+  dependencies:
+    "@zkochan/rimraf": ^2.1.2
+  checksum: 9a6466a1b6c24b6452757c3295d7223183c561706b46e6a2b02908c2b4404158de57971ce8ad6ca6d5301ef69cac99b60750d1c01d86f60b94e2eef3682b718a
+  languageName: node
+  linkType: hard
+
 "renderkid@npm:^2.0.4":
   version: 2.0.7
   resolution: "renderkid@npm:2.0.7"
@@ -17569,6 +17597,18 @@ __metadata:
     has-symbols: ^1.0.2
     object.getownpropertydescriptors: ^2.1.2
   checksum: 2bf20a5fbc74bdda7133e0915b978bf50bf5e2a48dd2174885ba6cd623d001ca18f7dbb1e01a3f3ea3a34f05030175ebee3dcb357f099a61af6e964f3281e9b9
+  languageName: node
+  linkType: hard
+
+"symlink-dir@npm:^5.0.1":
+  version: 5.0.1
+  resolution: "symlink-dir@npm:5.0.1"
+  dependencies:
+    better-path-resolve: ^1.0.0
+    rename-overwrite: ^4.0.0
+  bin:
+    symlink-dir: dist/cli.js
+  checksum: 73694291cb357c07eb60241d509c6faa2350a4bccfa5b5278101d3d7b7bfa9ad7a3884ada5d11920aece59a1af4e43ba99c4c1bad845c2901f7bcf0a0bea9e32
   languageName: node
   linkType: hard
 
