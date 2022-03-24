@@ -4,9 +4,10 @@ __mocks__
 .yarn
 coverage
 !/dist
-flow-typed
 packages
 shared
+!shared/flow-deps
+!shared/flow-typed
 stories
 storybook-static
 .eslintignore
