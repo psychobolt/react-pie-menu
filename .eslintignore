@@ -1,6 +1,7 @@
 !/.storybook
+/.yarn
 /coverage
-/packages/*/node_modules
+/flow-deps-modules
 /packages/react-cache
 **/dist
 /shared/flow-typed/npm
