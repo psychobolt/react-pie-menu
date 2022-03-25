@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 
-import { radius, centerRadius, ifObtuse } from './PieMenu.selectors';
-import { startAngle, endAngle, skew } from './Slice/Slice.selectors';
+import { radius, centerRadius, ifObtuse } from './PieMenu.selectors.js';
+import { startAngle, endAngle, skew } from './Slice/Slice.selectors.js';
 
 const position = ({ centerX, centerY, ...props }) => css`
   position: ${centerX || centerY ? 'absolute' : 'relative'};

@@ -1,0 +1,68 @@
+on:
+  workflow_call:
+
+jobs:
+  setenv:
+    name: Set Environment Variables
+    runs-on: ubuntu-latest
+    outputs:
+      workspaces: ${{ steps.ls_public_workspaces.outputs.workspaces }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - id: ls_public_workspaces
+        run: echo "::set-output name=workspaces::$(yarn node ./workspaces.js --ls-public)"
+        shell: bash
+  lint:
+    name: "Lint Sources"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - run: yarn install
+        shell: bash
+      - run: yarn bootstrap
+        shell: bash
+      - uses: actions/download-artifact@v3
+        with:
+          name: bundles_${{ github.sha }}
+      - run: yarn flow-typed-install
+        shell: bash
+      - run: yarn flow
+        shell: bash
+      - run: yarn lint
+        shell: bash
+  test:
+    name: "Test Project"
+    runs-on: ubuntu-latest
+    needs: setenv
+    strategy:
+      matrix:
+        path: ${{ fromJSON(needs.setenv.outputs.workspaces).*.path }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - run: yarn test --coverage --projects ${{ matrix.path }}
+        shell: bash
+      - uses: actions/upload-artifact@v3
+        with:
+          name: ${{ fromJSON(needs.setenv.outputs.workspaces)[strategy.job-index].name }}_coverage_${{ github.sha }}
+          path: |
+            ${{ matrix.path }}/coverage
+          if-no-files-found: error
+          retention-days: 1
+  coverage:
+    name: "Report Coverage"
+    runs-on: ubuntu-latest
+    needs: [setenv, test]
+    strategy:
+      matrix:
+        flag: ${{ fromJSON(needs.setenv.outputs.workspaces).*.name }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/download-artifact@v3
+        with:
+          name: ${{ matrix.flag }}_coverage_${{ github.sha }}
+      - uses: codecov/codecov-action@v2
+        with:
+          flags: ${{ matrix.flag }}

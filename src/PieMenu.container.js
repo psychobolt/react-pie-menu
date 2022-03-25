@@ -5,7 +5,7 @@ import { ThemeContextProvider } from 'styled-components-theme-connector';
 import toPx from 'to-px';
 import Hashids from 'hashids';
 
-import PieMenu from './PieMenu.component';
+import PieMenu from './PieMenu.component.js';
 
 const hashids = new Hashids();
 

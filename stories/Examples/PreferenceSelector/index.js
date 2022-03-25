@@ -1,1 +1,1 @@
-export { default } from './PreferenceSelector.component';
+export { default as PreferenceSelector } from './PreferenceSelector.component.js';

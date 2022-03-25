@@ -3,18 +3,18 @@ on:
     branches:
       - master
 jobs:
-  main:
+  bundle:
+    uses: ./.github/workflows/bundle.yml
+  test:
+    needs: bundle
+    uses: ./.github/workflows/test.yml
+  deploy:
+    needs: [test, bundle]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-      - uses: actions/cache@v2
+      - uses: actions/download-artifact@v3
         with:
-          path: |
-            node_modules
-            packages/*/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - uses: ./.github/actions/ci
+          name: bundles_${{ github.sha }}
       - uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}

@@ -3,12 +3,14 @@ import { system } from '@styled-system/core';
 import { color } from '@styled-system/color';
 import { themeGet } from '@styled-system/theme-get';
 
-import { skew, endAngle } from './Slice.selectors';
-import { radius, centerRadius, centralAngle, polar, ifObtuse } from '../PieMenu.selectors';
+import { skew, endAngle } from './Slice.selectors.js';
+import { radius, centerRadius, centralAngle, polar, ifObtuse } from '../PieMenu.selectors.js';
 
 const getColor = value => themeGet(`colors.${value}`, value);
 
-export const getBackground = background => (background ? css`background: radial-gradient(transparent ${centerRadius}, ${getColor(background)} ${centerRadius});` : '');
+export const getBackground = background => (background ? css`
+  background: radial-gradient(transparent ${centerRadius}, ${getColor(background)} ${centerRadius});
+` : '');
 
 const background = props => getBackground(props.bg || props.backgroundColor);
 
@@ -28,19 +30,15 @@ export const container = css`
   transform-origin: 50% 50%;
   border-radius: 50%;
   transform: skew(${props => -skew(props)}deg) rotate(${props => ((polar(props) ? 90 : centralAngle(props)) / 2) - 90}deg);
-
   color: black;
   ${color}
-
   ${getBackground('rgba(109, 109, 109, 0.925)')}; /* css fallback */
   ${background};
-
   outline: none;
 
-  &[_highlight=true] {
+  &[_highlight="true"] {
     color: white;
     ${textHighlight}
-    
     ${getBackground('#424242')};
     ${highlight};
   }

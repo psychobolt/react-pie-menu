@@ -51,19 +51,24 @@ typings/
 # Output of 'npm pack'
 *.tgz
 
-# Yarn Integrity file
-.yarn-integrity
+# Yarn
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
 
 # dotenv environment variables file
 .env
 
 # dist
 **/dist/*
-!**/dist/index.js
-!**/dist/*.js.flow
 
-# flow-typed
-flow-typed/npm
+# flow
+flow-deps-modules
+shared/flow-typed/npm
 
 # Storybook
 storybook-static

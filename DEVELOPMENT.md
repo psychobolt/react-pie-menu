@@ -2,13 +2,15 @@
 
 ## Setup
 
-Install the latest [Node JS LTS](https://nodejs.org/) and [Yarn](https://yarnpkg.com) and simply run ```yarn bootstrap``` command in the root project directory.
+Install the latest [Node](https://nodejs.org/)@^17.4.0 and [Yarn](https://yarnpkg.com) and simply run ```yarn ./bootstrap.js``` in the root project directory.
 
 ## Local development
 
 During development,
 ```sh
 yarn start # watch, build, and serves packages
+# or
+yarn dev # same as above, but includes development sources and maps
 ```
 
 ## Including NPM packages
@@ -16,36 +18,28 @@ yarn start # watch, build, and serves packages
 ```sh
 yarn add <package-name> --dev # for dev tools, story dependencies, libraries to be bundled
 yarn add <package-name> [--peer] # for external dependencies (Note: Include in externals from rollup.config.common.js whenever update)
-yarn lerna add <package-name> [--dev] packages/<target-package-name>] # Add/link a package to all or specific local package(s). See section: Including local packages
+yarn workspace <workspace-name> add <package-name>@* [--dev] # Add/link a package to a specific local package. See section: Including local packages
 ```
 
-## Including local packages
+> Note: All packages are installed using the [PnP strategy](https://yarnpkg.com/features/pnp) by default. To see advantages, visit the [official Yarn docs](https://yarnpkg.com/features/pnp#the-node_modules-problem). Some tools however, such as Flow, are not compatible with the PnP resolution strategy. In order to circumvent you can opt out by installing non PnP configurations as a seperate Yarn project. For example, see [Static Types](#static-types).
 
-This boilerplate supports [Monorepo](https://danluu.com/monorepo/) configurations out of the box and will watch, build, serve any local packages. Each package should have ```src/index.js``` entry file.
+## Local packages and comannds
 
-By default, local packages are [independently](https://github.com/psychobolt/react-rollup-boilerplate/blob/master/lerna.json#L6) versioned. You may import your own repos with Lerna or create your own sub-packages using NPM:
+This boilerplate supports [Monorepo](https://danluu.com/monorepo/) configurations out of the box and will watch, build, serve any local packages. Each package should have ```src/index.js``` entry file. Refer to Yarn's [CLI docs](https://yarnpkg.com/cli/) for more information on running workspace commands.
 
-```sh
-yarn lerna import <path-to-external-repository> # import a repository to packages/
-# or 
-mkdir packages/<my-package> && cd <my-package> && yarn init
-```
-
-See Lerna's offical [readme](https://github.com/lerna/lerna#readme) for a configuration and usage guide.
-
-> You can also give alias to source files of the packages in order to work with Visual Studio Code's Intellisense. See [jsconfig.json](https://github.com/psychobolt/react-rollup-boilerplate/blob/master/jsconfig.json) and [usage](https://code.visualstudio.com/docs/languages/jsconfig#_using-webpack-aliases).
-
-## Main Package
-
-By default, the ```lerna.json``` defines the main package at the [root](https://github.com/psychobolt/react-rollup-boilerplate/blob/master/lerna.json#L3). You may opt-out of this configuration manually, by removing its settings and any alias references to its directory or package. 
-
-> Note, the main package has one limitation: it cannot include any non-published packages.
+> You can also give alias to source files of the packages in order to work with Visual Studio Code's Intellisense and ESLint. See [jsconfig.json](https://github.com/psychobolt/react-rollup-boilerplate/blob/master/jsconfig.json) and [usage](https://code.visualstudio.com/docs/languages/jsconfig#_using-webpack-aliases). Also see the [Lint](#lint) section.
 
 ## Static Types
+
+### Installing Types
 
 ```sh
 yarn flow-typed-install # clean & install flow definitions
 yarn flow-typed-update # downloads and updates new flow definitions
+cd shared/flow-deps && yarn install <package-name> # install any node modules that flow cannot resolve with PnP strategy
+```
+
+```sh
 yarn flow # performs type checking on files
 ```
 
@@ -58,23 +52,21 @@ yarn lint:js # lint only js
 yarn lint:js --fix # attempts to fix js lint issues
 ```
 
+### Local Package Aliases
+
+Alias for local packages can be configured in [.eslintrc.json](https://github.com/psychobolt/react-rollup-boilerplate/blob/master/.eslintrc.json) using the [Alias Resolver](https://www.npmjs.com/package/eslint-import-resolver-node) plugin. In the future, package names for workspace projects will be automatically configured by the usage of [workspaces.js](https://github.com/psychobolt/react-rollup-boilerplate/blob/master/workspaces.js). Due to the nature of this, that work will be postponed until eslint have support for [ESM Configurations](https://github.com/eslint/eslint/issues/13481). 
+
 ## Test
 
 ```sh
 yarn test # runs functional/unit tests for all packages
 ```
 
-> Configurable with .project file, supports the [PACKAGES](#packages) variable. You can also inspect all tests in debug mode within Visual Studio Code.
+> Supports the [PACKAGES](#packages) variable. You can also inspect all tests in debug mode within Visual Studio Code.
 
 ## Coverage
 
-Coverage will be uploaded to your [codecov](https://codecov.io/) account, individually for packages by using each package's name as a [flag](https://docs.codecov.io/docs/flags). By default, coverage is configured to utilize a configuration from codecov-config branch (for [example](https://github.com/psychobolt/react-rollup-boilerplate/tree/codecov-config)). However, you may opt out that setting and configure codecov.yml in the master branch.
-
-```sh
-yarn codecov # Runs tests and upload coverage for all packages
-```
-
-> Configurable with .project file, supports the [PACKAGES](#packages) variable.
+Coverage will be uploaded to your [codecov](https://codecov.io/) account, individually for packages by using each package's name as a [flag](https://docs.codecov.io/docs/flags).
 
 ## Other scripts
 
@@ -88,10 +80,10 @@ yarn watch # watches dev builds
 yarn dist # builds all packages and publishes to npm
 ```
 
-> Configurable with .project file, supports the [PACKAGES](#packages) variable.
+> Supports the [PACKAGES](#packages) variable.
 
 ## Environment Variables
 
 ### PACKAGES
 
-Some scripts optionally allow the environment variable to specific local packages(s) (in Glob format) for running scripts e.g. ```PACKAGES=default-export,package-* yarn test``` This environment variable will override the .projects config.
+Some scripts optionally allow the environment variable to specific local packages(s) (in Glob format) for running scripts e.g. ```PACKAGES=default-export,package-* yarn test```

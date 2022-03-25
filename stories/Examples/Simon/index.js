@@ -1,1 +1,1 @@
-export { default } from './Simon.component';
+export { default as Simon } from './Simon.component.js';

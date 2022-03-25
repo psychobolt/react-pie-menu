@@ -1,5 +1,18 @@
 {
-    "javascript.validate.enable": false,
-    "flow.useNPMPackagedFlow": true,
-    "files.eol": "\n"
+  "javascript.validate.enable": false,
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  "flow.useNPMPackagedFlow": true,
+  "files.eol": "\n",
+  "search.exclude": {
+    "**/.yarn": true,
+    "**/.pnp.*": true
+  },
+  "eslint.nodePath": ".yarn/sdks",
+  "stylelint.validate": [
+    "javascript"
+  ],
+  "stylelint.configFile": "./.stylelintrc.json",
+  "flow.pathToFlow": "${workspaceFolder}/.yarn/sdks/flow-bin/cli.js"
 }

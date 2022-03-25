@@ -23,12 +23,12 @@ export const slice = css`
   color: grey;
   ${background('white')};
 
-  &[filled=true] {
+  &[filled="true"] {
     color: black;
   }
 
-  &[active=true],
-  &[_highlight=true] {
+  &[active="true"],
+  &[_highlight="true"] {
     color: black;
     ${background('#eee3ef')}
     cursor: pointer;

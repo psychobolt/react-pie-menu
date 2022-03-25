@@ -3,7 +3,7 @@ import * as React from 'react';
 import { connectTheme, ThemeContextProvider } from 'styled-components-theme-connector';
 import rafSchedule from 'raf-schd';
 
-import { type Context } from './Slice/Slice.component';
+import { type Context } from './Slice/Slice.component.js';
 
 const List = connectTheme('pieMenu.list')('ul');
 

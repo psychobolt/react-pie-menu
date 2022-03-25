@@ -41,13 +41,13 @@ export default class extends React.Component {
         showMenu: true,
       });
     }
-  }
+  };
 
   clearPositions = e => {
     if (EVENT_CODES.includes(e.nativeEvent.which)) {
       this.setState({ showMenu: false });
     }
-  }
+  };
 
   render() {
     const { showMenu, x, y } = this.state;

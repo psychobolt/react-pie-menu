@@ -5,19 +5,20 @@
         "name": "Debug Tests",
         "type": "node",
         "request": "launch",
-        "program": "${workspaceRoot}/node_modules/jest-cli/bin/jest.js",
+        "runtimeExecutable": "yarn",
         "stopOnEntry": false,
         "args": [
-          "--runInBand",
           "--no-cache"
         ],
         "cwd": "${workspaceRoot}",
-        "runtimeArgs": ["--nolazy"],
+        "runtimeArgs": [
+          "test",
+          "--runInBand"
+        ],
         "console": "integratedTerminal",
         "sourceMaps": true,
         "env": {
-          "BABEL_ENV": "test",
-          "NODE_ENV": "development"
+          "NODE_OPTIONS": "--conditions=development ",
         },
       }
     ]

@@ -1,4 +1,4 @@
-import * as styles from './Simon.style';
+import * as styles from './Simon.style.js';
 
 export default {
   pieMenu: {

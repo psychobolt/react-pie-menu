@@ -1,4 +1,4 @@
-import * as styles from './PreferenceSelector.style';
+import * as styles from './PreferenceSelector.style.js';
 
 export default {
   pieMenu: {

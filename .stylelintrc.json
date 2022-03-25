@@ -1,0 +1,9 @@
+{
+  "processors": ["stylelint-processor-styled-components"],
+  "extends": ["stylelint-config-standard-scss", "stylelint-config-styled-components"],
+  "rules": {
+    "value-keyword-case": ["lower", { "ignoreKeywords": ["dummyValue"] }],
+    "keyframes-name-pattern": "^((key-frame)|([a-z][a-z0-9]*)(-[a-z0-9]+)*)$"
+  },
+  "files": ["./(packages|stories|src)/**/*.js"]
+}

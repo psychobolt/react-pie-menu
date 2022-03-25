@@ -43,7 +43,7 @@ import {
   faGoogleWallet,
 } from '@fortawesome/free-brands-svg-icons';
 
-import theme from './PreferenceSelector.theme';
+import theme from './PreferenceSelector.theme.js';
 
 const INITIAL = 0;
 const PAYMENT = 1;
@@ -63,45 +63,45 @@ export default class extends React.Component {
 
   showPayments = () => {
     this.setState({ choice: PAYMENT });
-  }
+  };
 
   selectPayment = paymentOption => () => {
     this.setState({ paymentOption });
-  }
+  };
 
   showGenders = () => {
     this.setState({ choice: GENDERS });
-  }
+  };
 
   selectGender = gender => () => {
     this.setState({ gender });
-  }
+  };
 
   showLocations = () => {
     this.setState({ choice: LOCATIONS });
-  }
+  };
 
   selectLocation = location => () => {
     this.setState({ location });
-  }
+  };
 
   goBack = () => {
     const { choice } = this.state;
     if (choice === INITIAL) return;
     this.setState({ choice: INITIAL });
-  }
+  };
 
   render() {
     const { paymentOption, gender, location, choice } = this.state;
-    const Center = props => (
+    const Center = props => ( // eslint-disable-line react/no-unstable-nested-components
       <PieCenter {...props} onClick={this.goBack}>
-        {choice !== 0 && <FontAwesomeIcon icon={faArrowLeft} size="2x" />}
+        {choice !== INITIAL && <FontAwesomeIcon icon={faArrowLeft} size="2x" />}
       </PieCenter>
     );
     return (
       <ThemeProvider theme={theme}>
         <PieMenu centerRadius="30px" Center={Center}>
-          {choice === 0 && (
+          {choice === INITIAL && (
             <>
               <Slice onSelect={this.showPayments} attrs={{ filled: `${paymentOption != null}` }}>
                 <FontAwesomeIcon icon={paymentOption || faMoneyBillAlt} size="2x" />

@@ -1,19 +1,27 @@
+import path from 'path';
 import fs from 'fs';
 
-import config from 'shared/jest.config';
+import config from './shared/jest.config.js';
+import { setup, getProjects, getPackageName } from './workspaces.js';
+import { dirname } from './shared/utils.js';
 
-import { projectList } from './project-list';
-import pkg from './package.json';
+await (setup());
 
-module.exports = {
+const projects = await (getProjects());
+const configs = [];
+
+projects.forEach((project, cwd) => {
+  const configPath = path.resolve(cwd, 'jest.config.js');
+  if (fs.existsSync(configPath)) {
+    configs.push(configPath);
+  }
+});
+
+export default {
   ...config,
-  projects: projectList.reduce((paths, { location }) => {
-    const configPath = `${location}/jest.config.js`;
-    return fs.existsSync(configPath) ? [...paths, configPath] : paths;
-  }, []),
-
+  projects: configs,
   // root config
-  displayName: pkg.name,
+  displayName: await (getPackageName(dirname(import/*:: ("") */.meta.url))),
   testPathIgnorePatterns: [
     '/node_modules/',
     '/packages/',

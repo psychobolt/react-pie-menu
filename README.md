@@ -4,10 +4,6 @@
 [![Main workflow](https://github.com/psychobolt/react-pie-menu/actions/workflows/main.yml/badge.svg)](https://github.com/psychobolt/react-pie-menu/actions/workflows/main.yml)
 [![codecov](https://codecov.io/gh/psychobolt/react-pie-menu/branch/master/graph/badge.svg?flag=react-pie-menu)](https://codecov.io/gh/psychobolt/react-pie-menu/tree/master/src)
 
-[![Dependencies Status](https://david-dm.org/psychobolt/react-pie-menu.svg)](https://david-dm.org/psychobolt/react-pie-menu)
-[![Dev Dependencies Status](https://david-dm.org/psychobolt/react-pie-menu/dev-status.svg)](https://david-dm.org/psychobolt/react-pie-menu?type=dev)
-[![Peer Dependencies Status](https://david-dm.org/psychobolt/react-pie-menu/peer-status.svg)](https://david-dm.org/psychobolt/react-pie-menu?type=peer)
-
 ![piemenu_clip1](https://user-images.githubusercontent.com/560721/108241603-de648380-7100-11eb-9b26-40fe98b5d148.gif)
 
 A configurable radial menu for React.

@@ -1,21 +1,28 @@
 {
-    "parser": "babel-eslint",
+    "parser": "@babel/eslint-parser",
     "parserOptions": {
         "ecmaFeatures": {
             "legacyDecorators": true
+        },
+        "babelOptions": {
+            "configFile": "./babel.config.common.cjs"
         }
     },
-    "extends": ["airbnb", "plugin:flowtype/recommended"],
+    "extends": ["airbnb", "plugin:flowtype/recommended", "plugin:storybook/recommended"],
     "plugins": ["flowtype", "jest"],
     "rules": {
         "import/no-extraneous-dependencies": 0,
         "import/no-webpack-loader-syntax": 0,
+        "import/extensions": ["error", "ignorePackages"],
         "no-confusing-arrow": ["error", {"allowParens": true}],
         "arrow-parens": ["error", "as-needed"],
-        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+        "react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx"] }],
         "react/jsx-props-no-spreading": 0,
-        "react/static-property-placement": [1, "static public field"],
+        "react/prefer-exact-props": 0,
+        "react/static-property-placement": ["warn", "static public field"],
         "react/no-multi-comp": 0,
+        "react/function-component-definition": 0,
+        "no-restricted-exports": 0,
         "import/prefer-default-export": 0,
         "object-curly-newline": ["error", { "consistent": true }],
         "no-bitwise": ["error", { "int32Hint": true }],
@@ -27,10 +34,13 @@
     },
     "settings": {
         "import/resolver": {
-            "babel-module": {
-                "root": ["./"],
-                "cwd": "./"
-            }
+            "node": {
+                "moduleDirectory": ["./"]
+            },
+            "alias": [
+                ["@psychobolt/react-rollup-boilerplate", "./src/index.js"],
+                ["@psychobolt/default-export", "./packages/default-export/src/index.js"]
+            ]
         }
     }
 }
