@@ -25,8 +25,6 @@ const projects = await (getProjects());
 
 const libdefDir = path.relative(dirname(import/*:: ("") */.meta.url), path.resolve(SHARED_RESOLVE, 'flow-typed'));
 
-console.log(libdefDir);
-
 /* eslint-disable no-await-in-loop, no-restricted-syntax */
 for (const [cwd] of projects) {
   const name = await (getPackageName(cwd));
