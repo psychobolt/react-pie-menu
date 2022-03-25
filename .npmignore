@@ -6,8 +6,6 @@ coverage
 !/dist
 packages
 shared
-!shared/flow-deps
-!shared/flow-typed
 stories
 storybook-static
 .eslintignore

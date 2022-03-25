@@ -21,7 +21,7 @@ export default {
   ...config,
   projects: configs,
   // root config
-  displayName: await (getPackageName(dirname(import /*:: ("") */.meta.url))),
+  displayName: await (getPackageName(dirname(import/*:: ("") */.meta.url))),
   testPathIgnorePatterns: [
     '/node_modules/',
     '/packages/',
