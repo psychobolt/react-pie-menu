@@ -26,8 +26,6 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: bundles_${{ github.sha }}
-      - run: yarn flow-typed-install
-        shell: bash
       - run: yarn flow
         shell: bash
       - run: yarn lint

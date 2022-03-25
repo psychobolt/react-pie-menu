@@ -22,8 +22,9 @@
     "access": "public"
   },
   "scripts": {
+    "postinstall": "yarn run flow-typed-update",
     "flow-typed-update": "yarn node flow-typed-update.js",
-    "flow-typed-install": "yarn symlink-dir shared/flow-deps/node_modules flow-deps-modules && yarn rimraf shared/flow-typed/npm && yarn run flow-typed-update && cd shared/flow-deps && yarn install",
+    "flow-typed-install": "yarn rimraf shared/flow-typed/npm && yarn run flow-typed-update",
     "build:dev": "yarn cross-env BABEL_ENV=development rollup -c rollup.config.dev.mjs",
     "build:prod": "yarn cross-env rollup -c rollup.config.prod.mjs",
     "clean": "yarn rimraf \"**/dist/index?(-*).*.?(c|m)js?(.flow)\"",
