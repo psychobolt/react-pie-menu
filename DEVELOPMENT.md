@@ -66,7 +66,7 @@ yarn test # runs functional/unit tests for all packages
 
 ## Coverage
 
-Coverage will be uploaded to your [codecov](https://codecov.io/) account, individually for packages by using each package's name as a [flag](https://docs.codecov.io/docs/flags). By default, coverage is configured to utilize a configuration from codecov-config branch (for [example](https://github.com/psychobolt/react-rollup-boilerplate/tree/codecov-config)). However, you may opt out that setting and configure codecov.yml in the master branch.
+Coverage will be uploaded to your [codecov](https://codecov.io/) account, individually for packages by using each package's name as a [flag](https://docs.codecov.io/docs/flags).
 
 ## Other scripts
 
