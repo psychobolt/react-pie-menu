@@ -35,7 +35,7 @@
     "test": "yarn cross-env BABEL_ENV=test yarn node --experimental-vm-modules $(yarn bin jest) --passWithNoTests",
     "lint": "concurrently 'npm:lint:css' 'npm:lint:js'",
     "lint:css": "yarn stylelint \"./(packages|stories|src)/**/*.js\"",
-    "lint:js": "yarn eslint \"**/*.js\"",
+    "lint:js": "yarn eslint \"**/*.?(c|m)js\"",
     "storybook": "yarn start-storybook",
     "build-storybook": "build-storybook",
     "bootstrap": "yarn node bootstrap.js",

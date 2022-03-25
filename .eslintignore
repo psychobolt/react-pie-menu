@@ -6,3 +6,5 @@
 **/dist
 /shared/flow-typed/npm
 /storybook-static
+.pnp.cjs
+.pnp.loader.mjs
