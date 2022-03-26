@@ -71,7 +71,6 @@ const config = {
     ...packages,
     'react',
     'react-dom',
-    'react-is',
     'styled-components',
   ],
 };

@@ -130,6 +130,7 @@
     "react": "^17.0.2",
     "react-cache": "workspace:^",
     "react-dom": "^17.0.2",
+    "react-is": "^17.0.2",
     "rimraf": "^3.0.2",
     "rollup": "^2.67.2",
     "rollup-plugin-flow-entry": "^0.3.6",
@@ -146,9 +147,6 @@
     "symlink-dir": "^5.0.1",
     "webpack": "^5.70.0",
     "yargs": "^17.3.1"
-  },
-  "dependencies": {
-    "react-is": "^17.0.2"
   },
   "peerDependencies": {
     "react": "^17.0.2",
