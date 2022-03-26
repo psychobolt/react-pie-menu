@@ -14,11 +14,9 @@ const FLOW_DEPS_LINK_RESOLVE = path.resolve(ROOT_RESOLVE, 'flow-deps-modules');
 
 const command = (args, cwd) => spawn.sync('yarn', args, { stdio: 'inherit', cwd });
 
-if (!fs.existsSync(FLOW_DEPS_LINK_RESOLVE)) {
-  console.log('Installing Flow Dependencies...');
-  command(['install'], FLOW_DEPS_RESOLVE);
-  command(['symlink-dir', path.resolve(ROOT_RESOLVE, FLOW_DEPS_RESOLVE, 'node_modules'), FLOW_DEPS_LINK_RESOLVE]);
-}
+console.log('Linking Flow Dependencies...');
+command(['install'], FLOW_DEPS_RESOLVE);
+command(['symlink-dir', path.resolve(ROOT_RESOLVE, FLOW_DEPS_RESOLVE, 'node_modules'), FLOW_DEPS_LINK_RESOLVE]);
 
 await (setup());
 const projects = await (getProjects());
