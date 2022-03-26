@@ -6,6 +6,7 @@ import toPx from 'to-px';
 import Hashids from 'hashids';
 
 import PieMenu from './PieMenu.component.js';
+import type { Props as BaseProps } from './PieMenu.component.js';
 
 const hashids = new Hashids();
 
@@ -24,12 +25,16 @@ const getSlices = (child, index) => {
   return slices;
 };
 
+export type Props = {
+  children?: React.Node,
+} & BaseProps;
+
 export default (({
   radius = '150px',
   centerRadius = '50px',
   children,
   ...props
-}) => {
+}: Props) => {
   let slices = [];
   let index = 0;
   React.Children.forEach(children, (child, i) => {
@@ -42,8 +47,8 @@ export default (({
   const centralAngle = 360 / slices.length || 360;
   const polar = centralAngle % 180 === 0;
   const metadata = {
-    radiusPx: toPx(radius),
-    centerRadiusPx: toPx(centerRadius),
+    radiusPx: toPx(radius) || 0,
+    centerRadiusPx: toPx(centerRadius) || 0,
   };
   const context = {
     radius: `${metadata.radiusPx}px`,
@@ -56,4 +61,4 @@ export default (({
       <PieMenu {...props} {...context} {...metadata} slices={slices} />
     </ThemeContextProvider>
   );
-}: React.AbstractComponent<any>);
+}: React.ComponentType<Props>);

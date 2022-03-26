@@ -149,7 +149,7 @@
     "slash": "3.0.0",
     "source-map-loader": "^3.0.1",
     "styled-components": "^5.2.3",
-    "styled-components-theme-connector": "^0.1.5",
+    "styled-components-theme-connector": "^0.1.6",
     "stylelint": "^14.5.3",
     "stylelint-config-standard-scss": "^3.0.0",
     "stylelint-config-styled-components": "^0.1.1",
@@ -170,8 +170,5 @@
       "packages/*"
     ]
   },
-  "packageManager": "yarn@3.2.0-rc.16",
-  "resolutions": {
-    "styled-components-theme-connector": "portal:/D:/psychobolt-github/styled-components-theme-connector"
-  }
+  "packageManager": "yarn@3.2.0-rc.16"
 }

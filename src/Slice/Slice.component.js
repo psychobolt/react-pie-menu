@@ -10,7 +10,7 @@ export type Context = {
   polar: boolean,
 };
 
-const ContentContainer = connectTheme('slice.contentContainer')('div');
+const ContentContainer = connectTheme('slice.contentContainer')(('div'));
 
 const Content = connectTheme('slice.content')('div');
 
@@ -73,4 +73,4 @@ const Slice = ({
   );
 };
 
-export default (connectTheme('slice.container')(Slice): React.AbstractComponent<Props>);
+export default (connectTheme('slice.container')(Slice): React.ComponentType<Props>);

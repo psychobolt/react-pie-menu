@@ -3,7 +3,8 @@
   "priavte": true,
   "packageManager": "yarn@3.2.0-rc.16",
   "dependencies": {
-    "raf-schd": "^4.0.3"
+    "raf-schd": "^4.0.3",
+    "styled-components-theme-connector": "^0.1.6"
   },
   "devDependencies": {
     "flow-bin": "^0.174.1"

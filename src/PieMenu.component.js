@@ -9,14 +9,15 @@ const List = connectTheme('pieMenu.list')('ul');
 
 const Item = connectTheme('pieMenu.item')('li');
 
-export const PieCenter: any = connectTheme('pieMenu.center')('div');
+export const PieCenter = (connectTheme('pieMenu.center')('div'): React.ComponentType<any>);
 
 const inputMoveEvents = ['touchmove', 'mousemove'];
 const selectEvents = ['mouseup', 'touchend'];
 
 const bindEvents = (events, listener) => events
-  // $FlowFixMe
+  // $FlowFixMe[speculation-ambiguous]
   .forEach(event => document
+    // $FlowFixMe[incompatible-call]
     .addEventListener(event, listener, { pasive: false, cancelable: true, capture: true }));
 
 const unbindEvents = (events, listener) => events
@@ -24,20 +25,17 @@ const unbindEvents = (events, listener) => events
   .forEach(event => document.removeEventListener(event, listener));
 
 type Metadata = {
+  className?: string,
   radiusPx: number,
   centerRadiusPx: number,
-  centerX_Px: number,
-  centerY_Px: number,
 };
 
-type Props = {
-  className: string,
-  slices: [{ itemId: string, slice: React.Node[] }],
-  startOffsetAngle: number,
+export type Props = {
+  slices: { itemId: string, slice: React.Node[] }[],
+  startOffsetAngle?: number,
   polar: boolean,
-  Center: any,
-  attrs: {},
-  children: React.Node,
+  Center?: React.ComponentType<any>,
+  attrs?: {},
 } & Context & Metadata;
 
 const PieMenu = ({
@@ -47,11 +45,11 @@ const PieMenu = ({
   centerRadius,
   centralAngle,
   polar,
-  Center = PieCenter,
+  Center,
   radiusPx,
   centerRadiusPx,
   slices,
-  attrs = {},
+  attrs,
 }: Props) => {
   const deltaAngle = 90 - centralAngle;
   const startAngle = polar ? 45 : startOffsetAngle + deltaAngle + (centralAngle / 2);
@@ -136,9 +134,15 @@ const PieMenu = ({
           </ThemeContextProvider>
         ))}
       </List>
-      <Center id="center" centerRadius={centerRadius} />
+      {Center ? <Center id="center" centerRadius={centerRadius} /> : null}
     </div>
   );
 };
 
-export default (connectTheme('pieMenu.container')(PieMenu): React.AbstractComponent<Props>);
+PieMenu.defaultProps = {
+  startOffsetAngle: 0,
+  Center: PieCenter,
+  attrs: {},
+};
+
+export default (connectTheme('pieMenu.container')(PieMenu): React.ComponentType<Props>);

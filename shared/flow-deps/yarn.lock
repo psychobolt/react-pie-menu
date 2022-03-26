@@ -20,12 +20,33 @@ __metadata:
   dependencies:
     flow-bin: ^0.174.1
     raf-schd: ^4.0.3
+    styled-components-theme-connector: ^0.1.6
   languageName: unknown
   linkType: soft
+
+"lodash@npm:^4.17.21":
+  version: 4.17.21
+  resolution: "lodash@npm:4.17.21"
+  checksum: eb835a2e51d381e561e508ce932ea50a8e5a68f4ebdd771ea240d3048244a8d13658acbd502cd4829768c56f2e16bdd4340b9ea141297d472517b83868e677f7
+  languageName: node
+  linkType: hard
 
 "raf-schd@npm:^4.0.3":
   version: 4.0.3
   resolution: "raf-schd@npm:4.0.3"
   checksum: 45514041c5ad31fa96aef3bb3c572a843b92da2f2cd1cb4a47c9ad58e48761d3a4126e18daa32b2bfa0bc2551a42d8f324a0e40e536cb656969929602b4e8b58
+  languageName: node
+  linkType: hard
+
+"styled-components-theme-connector@npm:^0.1.6":
+  version: 0.1.6
+  resolution: "styled-components-theme-connector@npm:0.1.6"
+  dependencies:
+    lodash: ^4.17.21
+  peerDependencies:
+    react: ^17.0.2
+    react-dom: ^17.0.2
+    styled-components: ^5.2.3
+  checksum: 5aacfa65b1c772326a2033865050a65986efc0a9ad4be174ce95d970f620e278a378f8be8717b388f4895432fedd67a05bfa725a1bd24b0453c9e0e6e69c613d
   languageName: node
   linkType: hard
