@@ -4,5 +4,8 @@
   "packageManager": "yarn@3.2.0-rc.16",
   "dependencies": {
     "raf-schd": "^4.0.3"
+  },
+  "devDependencies": {
+    "flow-bin": "^0.174.1"
   }
 }

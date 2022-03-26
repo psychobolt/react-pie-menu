@@ -9497,12 +9497,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"flow-bin@npm:^0.171.0":
-  version: 0.171.0
-  resolution: "flow-bin@npm:0.171.0"
+"flow-bin@npm:^0.174.1":
+  version: 0.174.1
+  resolution: "flow-bin@npm:0.174.1"
   bin:
     flow: cli.js
-  checksum: 6f64b26a3939cf353918c8c200a064de4b6ceeb85405fd83b293d76081ae5247369f54899b5e87e8f5e330e2421cfa4304b4bca941eedfc137e7d4ba0c89d00a
+  checksum: 02501ae76dc498ebb2e9e5259a6db6a649022ae0a25b4dc87da86e0054567b83d9ab8ecd50a73060c53b40b05ab2bd16010a84a35dbbab2b3c3d28db3b98618d
   languageName: node
   linkType: hard
 
@@ -9513,7 +9513,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"flow-typed@npm:^3.3.1":
+"flow-typed@npm:^3.7.0":
   version: 3.7.0
   resolution: "flow-typed@npm:3.7.0"
   dependencies:
@@ -15792,8 +15792,8 @@ __metadata:
     eslint-plugin-react: ^7.23.2
     eslint-plugin-react-hooks: ^4.3.0
     eslint-plugin-storybook: ^0.5.7
-    flow-bin: ^0.171.0
-    flow-typed: ^3.3.1
+    flow-bin: ^0.174.1
+    flow-typed: ^3.7.0
     glob: ^7.1.6
     hashids: ^2.2.10
     is-class: ^0.0.9
@@ -17735,9 +17735,6 @@ __metadata:
 "styled-components-theme-connector@portal:/D:/psychobolt-github/styled-components-theme-connector::locator=react-pie-menu%40workspace%3A.":
   version: 0.0.0-use.local
   resolution: "styled-components-theme-connector@portal:/D:/psychobolt-github/styled-components-theme-connector::locator=react-pie-menu%40workspace%3A."
-  dependencies:
-    lodash: ^4.17.21
-    react-is: ^17.0.2
   peerDependencies:
     react: ^17.0.2
     react-dom: ^17.0.2

@@ -110,7 +110,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-react", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:7.29.4"],\
             ["eslint-plugin-react-hooks", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:4.3.0"],\
             ["eslint-plugin-storybook", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:0.5.7"],\
-            ["flow-bin", "npm:0.171.0"],\
+            ["flow-bin", "npm:0.174.1"],\
             ["flow-typed", "npm:3.7.0"],\
             ["glob", "npm:7.2.0"],\
             ["hashids", "npm:2.2.10"],\
@@ -13135,10 +13135,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["flow-bin", [\
-        ["npm:0.171.0", {\
-          "packageLocation": "./.yarn/unplugged/flow-bin-npm-0.171.0-40a89428d7/node_modules/flow-bin/",\
+        ["npm:0.174.1", {\
+          "packageLocation": "./.yarn/unplugged/flow-bin-npm-0.174.1-ef5745eb89/node_modules/flow-bin/",\
           "packageDependencies": [\
-            ["flow-bin", "npm:0.171.0"]\
+            ["flow-bin", "npm:0.174.1"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -20355,7 +20355,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-react", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:7.29.4"],\
             ["eslint-plugin-react-hooks", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:4.3.0"],\
             ["eslint-plugin-storybook", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:0.5.7"],\
-            ["flow-bin", "npm:0.171.0"],\
+            ["flow-bin", "npm:0.174.1"],\
             ["flow-typed", "npm:3.7.0"],\
             ["glob", "npm:7.2.0"],\
             ["hashids", "npm:2.2.10"],\
@@ -22563,10 +22563,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react", null],\
             ["@types/react-dom", null],\
             ["@types/styled-components", null],\
-            ["lodash", "npm:4.17.21"],\
             ["react", "npm:17.0.2"],\
             ["react-dom", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:17.0.2"],\
-            ["react-is", "npm:17.0.2"],\
             ["styled-components", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:5.3.5"]\
           ],\
           "packagePeers": [\
