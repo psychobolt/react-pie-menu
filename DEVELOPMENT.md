@@ -34,10 +34,20 @@ This boilerplate supports [Monorepo](https://danluu.com/monorepo/) configuration
 ### Installing Types
 
 ```sh
-yarn flow-typed-install # clean & install flow definitions
+yarn flow-typed-install # clean & install flow definitions from dependencies and peerDependencies
 yarn flow-typed-update # downloads and updates new flow definitions
 cd shared/flow-deps && yarn install <package-name> # install any node modules that flow cannot resolve with PnP strategy
 ```
+
+### Creating Stubs
+
+```
+yarn flow-typed-create-stub <package-name> # create a flow-typed stub for a package name into shared/flow-typed/npm
+```
+
+> Note: Since the shared/flow-typed/npm is ignored, it is best to move the stub file so it can be committed.
+
+### Run Flow
 
 ```sh
 yarn flow # performs type checking on files
