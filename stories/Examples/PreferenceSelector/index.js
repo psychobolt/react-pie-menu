@@ -1,1 +1,4 @@
-export { default as PreferenceSelector } from './PreferenceSelector.component.js';
+import React from 'react';
+import PreferenceSelector from './PreferenceSelector.component.js';
+
+export default () => <PreferenceSelector />;

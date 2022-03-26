@@ -1,9 +1,16 @@
 import React from 'react';
 import ContextMenu from './ContextMenu.component.js';
+import code from './ContextMenu.component.js?raw';
 
-export default {
-  title: 'Context Menu',
-  component: ContextMenu,
+const Story = () => <ContextMenu />;
+
+Story.parameters = {
+  docs: {
+    source: {
+      code,
+      language: 'javascript',
+    },
+  },
 };
 
-export const Default = () => <ContextMenu />;
+export default Story;

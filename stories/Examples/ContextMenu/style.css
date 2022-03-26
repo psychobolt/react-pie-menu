@@ -4,10 +4,7 @@ body {
 }
 
 .App {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: stretch;
+  height: 100vh;
   font-family: sans-serif;
   text-align: center;
 }

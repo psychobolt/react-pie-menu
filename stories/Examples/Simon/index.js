@@ -1,1 +1,4 @@
-export { default as Simon } from './Simon.component.js';
+import React from 'react';
+import Simon from './Simon.component.js';
+
+export default () => <Simon />;
