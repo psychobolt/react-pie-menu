@@ -8,7 +8,6 @@ Story.parameters = {
   docs: {
     source: {
       code,
-      language: 'javascript',
     },
   },
 };

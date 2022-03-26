@@ -2,6 +2,7 @@ const appRoot = require('app-root-path');
 const slash = require('slash');
 
 const { getStories } = require('./utils.cjs');
+const defaultConfig = require('./webpack.config.cjs');
 
 const PROJECT_ROOT = slash(`${appRoot}`);
 
@@ -23,10 +24,6 @@ module.exports = {
     module: {
       ...config.module,
       rules: [
-        {
-          resourceQuery: /raw/,
-          type: 'asset/source',
-        },
         ...config.module.rules.map(rule => {
           const { test, exclude } = rule;
           if (test.test('.md')) {
@@ -46,18 +43,12 @@ module.exports = {
           }
           return rule;
         }),
-        {
-          test: /\.jsx?$/,
-          exclude: /node_modules/,
-          loader: 'source-map-loader',
-          enforce: 'pre',
-        },
+        ...defaultConfig.module.rules,
       ],
     },
     resolve: {
       ...config.resolve,
-      // match defaults to rollup's https://github.com/rollup/plugins/tree/master/packages/node-resolve/#exportconditions
-      ...(process.env.BABEL_ENV === 'development' ? { conditionNames: ['development', 'default', 'module', 'require'] } : undefined),
+      ...defaultConfig.module.resolve,
     },
   }),
 };

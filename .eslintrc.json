@@ -14,6 +14,7 @@
         "import/no-extraneous-dependencies": 0,
         "import/no-webpack-loader-syntax": 0,
         "import/extensions": ["error", "ignorePackages"],
+        "import/no-duplicates": ["error", {"considerQueryString": true}],
         "no-confusing-arrow": ["error", {"allowParens": true}],
         "arrow-parens": ["error", "as-needed"],
         "react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx"] }],
@@ -36,6 +37,9 @@
         "import/resolver": {
             "node": {
                 "moduleDirectory": ["./"]
+            },
+            "webpack": {
+                "config": "./.storybook/webpack.config.cjs"
             },
             "alias": [
                 ["@psychobolt/react-rollup-boilerplate", "./src/index.js"],

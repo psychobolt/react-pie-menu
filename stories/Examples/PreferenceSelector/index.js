@@ -1,4 +1,15 @@
 import React from 'react';
 import PreferenceSelector from './PreferenceSelector.component.js';
+import code from './PreferenceSelector.component.js?raw';
 
-export default () => <PreferenceSelector />;
+const Story = () => <PreferenceSelector />;
+
+Story.parameters = {
+  docs: {
+    source: {
+      code,
+    },
+  },
+};
+
+export default Story;

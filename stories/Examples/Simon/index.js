@@ -1,4 +1,15 @@
 import React from 'react';
 import Simon from './Simon.component.js';
+import code from './Simon.component.js?raw';
 
-export default () => <Simon />;
+const Story = () => <Simon />;
+
+Story.parameters = {
+  docs: {
+    source: {
+      code,
+    },
+  },
+};
+
+export default Story;

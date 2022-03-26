@@ -1,5 +1,6 @@
 import React from 'react';
 import PieMenu, { Slice } from 'react-pie-menu';
+import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faRss, faAsterisk } from '@fortawesome/free-solid-svg-icons';
 import {
@@ -15,6 +16,10 @@ import './style.css';
 import logo from './logo.svg';
 
 const EVENT_CODES = [0, 1];
+
+const ContextMenu = styled(PieMenu)`
+  position: fixed;
+`;
 
 export default class extends React.Component {
   constructor(props) {
@@ -36,8 +41,8 @@ export default class extends React.Component {
   captureStartPosition = e => {
     if (EVENT_CODES.includes(e.nativeEvent.which)) {
       this.setState({
-        x: `${e.pageX || e.touches && e.touches[0].clientX}px`,
-        y: `${e.pageY || e.touches && e.touches[0].clientY}px`,
+        x: `${e.clientX || e.touches && e.touches[0].clientX}px`,
+        y: `${e.clientY || e.touches && e.touches[0].clientY}px`,
         showMenu: true,
       });
     }
@@ -65,7 +70,7 @@ export default class extends React.Component {
         </p>
         <canvas width="300" height="300" ref={ref => { this.canvas = ref; }} />
         {showMenu && (
-          <PieMenu
+          <ContextMenu
             radius="125px"
             centerRadius="30px"
             centerX={x}
@@ -95,7 +100,7 @@ export default class extends React.Component {
             <Slice onSelect={action('Asterisk selected')}>
               <FontAwesomeIcon icon={faAsterisk} size="2x" />
             </Slice>
-          </PieMenu>
+          </ContextMenu>
         )}
       </div>
     );
