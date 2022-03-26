@@ -12096,13 +12096,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["lodash", "npm:4.17.21"],\
             ["resolve", "patch:resolve@npm%3A1.22.0#~builtin<compat/resolve>::version=1.22.0&hash=07638b"],\
             ["semver", "npm:5.7.1"],\
-            ["webpack", null]\
+            ["webpack", "virtual:459d03e7a88aaeeda772ee805f1b0c6ed5d4e88300bb42900285a5d1b8a5249308eebd570bcdf1d4750072c3e0eabfa82d7abf2a35fac99343047ef26a28e624#npm:5.70.0"]\
           ],\
           "packagePeers": [\
             "@types/eslint-plugin-import",\
             "@types/webpack",\
-            "eslint-plugin-import",\
-            "webpack"\
+            "eslint-plugin-import"\
           ],\
           "linkType": "HARD"\
         }]\
