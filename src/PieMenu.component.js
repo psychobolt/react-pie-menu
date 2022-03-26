@@ -17,11 +17,10 @@ const selectEvents = ['mouseup', 'touchend'];
 const bindEvents = (events, listener) => events
   // $FlowFixMe
   .forEach(event => document
-    // $FlowFixMe
     .addEventListener(event, listener, { pasive: false, cancelable: true, capture: true }));
 
 const unbindEvents = (events, listener) => events
-  // $FlowFixMe
+  // $FlowFixMe[speculation-ambiguous]
   .forEach(event => document.removeEventListener(event, listener));
 
 type Metadata = {
