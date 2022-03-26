@@ -1,5 +1,5 @@
 import Component from './Flexbox.component.js';
-import code from './Flexbox.component.js?raw'; // eslint-disable-line import/no-unresolved
+import code from './Flexbox.component.js?raw';
 
 export const Flexbox = Component;
 

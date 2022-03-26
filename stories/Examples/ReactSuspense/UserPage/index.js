@@ -1,5 +1,5 @@
 import Component from './UserPage.component.js';
-import code from './UserPage.component.js?raw'; // eslint-disable-line import/no-unresolved
+import code from './UserPage.component.js?raw';
 
 export const UserPage = Component;
 
