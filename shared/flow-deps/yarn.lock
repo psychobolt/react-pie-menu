@@ -3,9 +3,21 @@
 
 __metadata:
   version: 6
+  cacheKey: 8
+
+"flow-bin@npm:^0.174.1":
+  version: 0.174.1
+  resolution: "flow-bin@npm:0.174.1"
+  bin:
+    flow: cli.js
+  checksum: 02501ae76dc498ebb2e9e5259a6db6a649022ae0a25b4dc87da86e0054567b83d9ab8ecd50a73060c53b40b05ab2bd16010a84a35dbbab2b3c3d28db3b98618d
+  languageName: node
+  linkType: hard
 
 "flow-deps@workspace:.":
   version: 0.0.0-use.local
   resolution: "flow-deps@workspace:."
+  dependencies:
+    flow-bin: ^0.174.1
   languageName: unknown
   linkType: soft

@@ -22,6 +22,7 @@
     "access": "public"
   },
   "scripts": {
+    "flow": "yarn node shared/flow-deps/node_modules/flow-bin/cli.js",
     "flow-typed-update": "yarn node flow-typed-update.js",
     "flow-typed-install": "yarn rimraf shared/flow-typed/npm && yarn run flow-typed-update",
     "flow-typed-create-stub": "yarn flow-typed create-stub --libdefDir shared/flow-typed/",
@@ -115,7 +116,6 @@
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.3.0",
     "eslint-plugin-storybook": "^0.5.7",
-    "flow-bin": "^0.171.0",
     "flow-typed": "^3.3.1",
     "glob": "^7.1.6",
     "is-class": "^0.0.9",
