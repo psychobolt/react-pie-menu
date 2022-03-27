@@ -27,7 +27,7 @@
     "flow-typed-create-stub": "yarn flow-typed create-stub --libdefDir shared/flow-typed/",
     "build:dev": "yarn cross-env BABEL_ENV=development rollup -c rollup.config.dev.mjs",
     "build:prod": "yarn cross-env rollup -c rollup.config.prod.mjs",
-    "clean": "yarn rimraf \"**/dist/index?(-*).*.?(c|m)js?(.flow)\"",
+    "clean": "yarn rimraf \"dist/index?(-*).*.?(c|m)js?(.flow)\" && yarn rimraf \"packages/*/dist/index?(-*).*.?(c|m)js?(.flow)\"",
     "build": "yarn run clean && yarn run build:dev && yarn run build:prod",
     "watch": "yarn run build:dev --w",
     "start": "yarn cross-env BABEL_ENV=development concurrently 'npm:watch' 'npm:storybook'",
