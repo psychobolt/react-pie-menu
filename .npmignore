@@ -4,6 +4,7 @@ __mocks__
 .yarn
 coverage
 !/dist
+flow-deps-modules
 packages
 shared
 stories
