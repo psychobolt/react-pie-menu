@@ -15,6 +15,8 @@ module.exports = {
   },
   resolve: {
     // match defaults to rollup's https://github.com/rollup/plugins/tree/master/packages/node-resolve/#exportconditions
-    ...(process.env.BABEL_ENV === 'development' ? { conditionNames: ['development', 'default', 'module', 'require'] } : undefined),
+    conditionNames: [
+      ...(process.env.BABEL_ENV === 'development' ? ['development'] : []), 'default', 'module', 'require',
+    ],
   },
 };
