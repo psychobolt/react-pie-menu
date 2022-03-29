@@ -42,8 +42,7 @@
                 "config": "./.storybook/webpack.config.cjs"
             },
             "alias": [
-                ["@psychobolt/react-rollup-boilerplate", "./src/index.js"],
-                ["@psychobolt/default-export", "./packages/default-export/src/index.js"]
+                ["react-pie-menu", "./src/index.js"]
             ]
         }
     }

@@ -1,5 +1,5 @@
 import React from 'react';
-import PieMenu, { PieCenter, Slice } from 'react-pie-menu';
+import { PieMenu, PieCenter, Slice } from 'react-pie-menu';
 import { ThemeProvider } from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {

@@ -49,6 +49,10 @@ module.exports = {
     resolve: {
       ...config.resolve,
       ...defaultConfig.resolve,
+      alias: {
+        ...config.resolve.alias,
+        ...defaultConfig.resolve.alias,
+      },
     },
   }),
 };

@@ -25,7 +25,7 @@ There are several [demos](https://psychobolt.github.io/react-pie-menu/). Also ch
 
 ```js
 import React from 'react';
-import PieMenu, { Slice } from 'react-pie-menu';
+import { PieMenu, Slice } from 'react-pie-menu';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default ({ x, y }) => (

@@ -1,4 +1,4 @@
-import PieMenu from 'react-pie-menu';
+import { PieMenu } from 'react-pie-menu';
 
 export default {
   title: 'Examples',
