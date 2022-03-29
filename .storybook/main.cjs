@@ -48,7 +48,7 @@ module.exports = {
     },
     resolve: {
       ...config.resolve,
-      ...defaultConfig.module.resolve,
+      ...defaultConfig.resolve,
     },
   }),
 };
