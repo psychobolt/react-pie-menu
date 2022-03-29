@@ -38,7 +38,7 @@ export const output = ({ dir, format, suffix = '', ...options }) => {
     entryFileNames: `[name]${suffix}${extension}`,
     chunkFileNames: `[name]-[hash]${suffix}${extension}`,
     format,
-    exports: 'named',
+    exports: 'auto',
     sourcemap: 'inline',
     ...options,
   };
