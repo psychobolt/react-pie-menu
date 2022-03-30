@@ -17,7 +17,7 @@ const FLOW_DEPS_LINK_RESOLVE = path.resolve(ROOT_RESOLVE, 'flow-deps-modules');
 
 const libdefDir = path.relative(dirname(importMetaUrl), path.resolve(SHARED_RESOLVE, 'flow-typed'));
 
-const command = (args, cwd) => spawn.sync('yarn', args, { stdio: 'inherit', cwd });
+const command = (args, cwd) => spawn.sync('yarn', args, { stdio: 'inherit', cwd }); // TODO handle stderr
 const flowTypedCmd = ['node', require.resolve('flow-typed'), 'update', '--libdefDir', libdefDir, '-s', '--skipFlowRestart', '-i', 'dev'];
 
 console.log('Linking Flow Dependencies...');
@@ -25,7 +25,7 @@ command(['install'], FLOW_DEPS_RESOLVE);
 command(['symlink-dir', path.resolve(ROOT_RESOLVE, FLOW_DEPS_RESOLVE, 'node_modules'), FLOW_DEPS_LINK_RESOLVE]);
 
 console.log('\nChecking flow types for shared/flow-deps');
-command([...flowTypedCmd, '-p', FLOW_DEPS_RESOLVE], FLOW_DEPS_RESOLVE);
+command([...flowTypedCmd, '-p', ROOT_RESOLVE], FLOW_DEPS_RESOLVE);
 
 await (setup());
 const projects = await (getProjects());
