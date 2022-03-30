@@ -14,5 +14,5 @@
     "javascript"
   ],
   "stylelint.configFile": "./.stylelintrc.json",
-  "flow.pathToFlow": "${workspaceFolder}/shared/flow-deps/node_modules/.bin/flow"
+  "flow.pathToFlow": "${workspaceFolder}/.yarn/sdks/.bin/flow"
 }
