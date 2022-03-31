@@ -19,7 +19,6 @@ export default {
             process.env.BABEL_ENV === 'test'
               ? {
                 'styled-components': path.resolve(cjs, 'styled-components.cjs'), // See: https://github.com/styled-components/styled-components/issues/3601
-                enzyme: path.resolve(cjs, 'enzyme.cjs'), // See: // See https://github.com/facebook/jest/issues/11563
               }
               : {}
           ),

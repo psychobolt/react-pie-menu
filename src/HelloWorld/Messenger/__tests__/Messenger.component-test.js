@@ -1,10 +1,8 @@
 import React from 'react';
-import enzyme from 'enzyme';
+import { render } from '@testing-library/react';
 
 import Messenger from '../Messenger.component.js';
 
-const { shallow } = enzyme;
-
 test('component <Messenger /> should render correctly', () => {
-  shallow(<Messenger />);
+  render(<Messenger />);
 });

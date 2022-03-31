@@ -1,8 +1,8 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 
 import Component from '../index.js';
 
 it('default <Component /> renders without crashing', () => {
-  shallow(<Component />);
+  render(<Component />);
 });

@@ -20,7 +20,7 @@ A boilerplate for building [React](https://reactjs.org/) libraries.
 - Run tests with [Jest](https://facebook.github.io/jest/)
 - Code Coverage reporting with [Codecov](https://codecov.io/)
 - Dev sandbox and documentation with [Storybook](https://storybook.js.org/)
-- Structural and interaction testing with [Enzyme](https://github.com/airbnb/enzyme)
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
 - Type checking with [Flow](https://flow.org)
 - JS style check with [ESLint](http://eslint.org/) using [AirBnb style guide](https://github.com/airbnb/javascript)
 - Continuous integration with [GitHub Actions](https://github.com/features/actions)
