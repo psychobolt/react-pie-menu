@@ -1,6 +1,8 @@
 module.exports = {
   presets: [
-    '@babel/preset-env',
+    ['@babel/preset-env', {
+      targets: process.env.BABEL_ENV === 'test' ? { node: 'current' } : {},
+    }],
     '@babel/preset-react',
     '@babel/preset-flow',
   ],
