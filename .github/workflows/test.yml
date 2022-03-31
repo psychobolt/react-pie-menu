@@ -9,7 +9,7 @@ jobs:
       workspaces: ${{ steps.ls_public_workspaces.outputs.workspaces }}
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
       - id: ls_public_workspaces
         run: echo "::set-output name=workspaces::$(yarn node ./workspaces.js --ls-public)"
         shell: bash
@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
       - run: yarn install
         shell: bash
       - run: yarn bootstrap
@@ -41,7 +41,7 @@ jobs:
         path: ${{ fromJSON(needs.setenv.outputs.workspaces).*.path }}
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
       - run: yarn test --coverage --projects ${{ matrix.path }}
         shell: bash
       - uses: actions/upload-artifact@v3
