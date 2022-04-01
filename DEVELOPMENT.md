@@ -23,7 +23,7 @@ yarn workspace <workspace-name> add <package-name>@* [--dev] # Add/link a packag
 
 > Note: All packages are installed using the [PnP strategy](https://yarnpkg.com/features/pnp) by default. To see advantages, visit the [official Yarn docs](https://yarnpkg.com/features/pnp#the-node_modules-problem). Some tools however, such as Flow, are not compatible with the PnP resolution strategy. In order to circumvent you can opt out by installing non PnP configurations as a seperate Yarn project. For example, see [Static Types](#static-types).
 
-## Local packages and comannds
+## Local packages and commands
 
 This boilerplate supports [Monorepo](https://danluu.com/monorepo/) configurations out of the box and will watch, build, serve any local packages. Each package should have ```src/index.js``` entry file. Refer to Yarn's [CLI docs](https://yarnpkg.com/cli/) for more information on running workspace commands.
 
