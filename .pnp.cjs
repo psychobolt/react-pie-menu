@@ -113,7 +113,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-react", "virtual:a8a1d15306c5b22d13fd53c9bfa71986250b0024a5faa5f5f09c0c92f0de8941d2bf3403e449fdf6b9df13d3a931d8ae3950d04eca325a0d5881add962206733#npm:7.29.4"],\
             ["eslint-plugin-react-hooks", "virtual:a8a1d15306c5b22d13fd53c9bfa71986250b0024a5faa5f5f09c0c92f0de8941d2bf3403e449fdf6b9df13d3a931d8ae3950d04eca325a0d5881add962206733#npm:4.4.0"],\
             ["eslint-plugin-storybook", "virtual:a8a1d15306c5b22d13fd53c9bfa71986250b0024a5faa5f5f09c0c92f0de8941d2bf3403e449fdf6b9df13d3a931d8ae3950d04eca325a0d5881add962206733#npm:0.5.7"],\
-            ["flow-bin", "npm:0.174.1"],\
+            ["flow-bin", "npm:0.175.0"],\
             ["flow-typed", "npm:3.7.0"],\
             ["glob", "npm:7.2.0"],\
             ["http-server", "npm:14.1.0"],\
@@ -4185,7 +4185,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-react", "virtual:a8a1d15306c5b22d13fd53c9bfa71986250b0024a5faa5f5f09c0c92f0de8941d2bf3403e449fdf6b9df13d3a931d8ae3950d04eca325a0d5881add962206733#npm:7.29.4"],\
             ["eslint-plugin-react-hooks", "virtual:a8a1d15306c5b22d13fd53c9bfa71986250b0024a5faa5f5f09c0c92f0de8941d2bf3403e449fdf6b9df13d3a931d8ae3950d04eca325a0d5881add962206733#npm:4.4.0"],\
             ["eslint-plugin-storybook", "virtual:a8a1d15306c5b22d13fd53c9bfa71986250b0024a5faa5f5f09c0c92f0de8941d2bf3403e449fdf6b9df13d3a931d8ae3950d04eca325a0d5881add962206733#npm:0.5.7"],\
-            ["flow-bin", "npm:0.174.1"],\
+            ["flow-bin", "npm:0.175.0"],\
             ["flow-typed", "npm:3.7.0"],\
             ["glob", "npm:7.2.0"],\
             ["http-server", "npm:14.1.0"],\
@@ -13427,10 +13427,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["flow-bin", [\
-        ["npm:0.174.1", {\
-          "packageLocation": "./.yarn/unplugged/flow-bin-npm-0.174.1-ef5745eb89/node_modules/flow-bin/",\
+        ["npm:0.175.0", {\
+          "packageLocation": "./.yarn/unplugged/flow-bin-npm-0.175.0-d949f3a057/node_modules/flow-bin/",\
           "packageDependencies": [\
-            ["flow-bin", "npm:0.174.1"]\
+            ["flow-bin", "npm:0.175.0"]\
           ],\
           "linkType": "HARD"\
         }]\
