@@ -19,9 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
-      - run: yarn install
-        shell: bash
-      - run: yarn bootstrap
+      - run: yarn node ./bootstrap.js
         shell: bash
       - uses: actions/download-artifact@v3
         with:

@@ -2,7 +2,7 @@
 
 ## Setup
 
-Install the latest [Node](https://nodejs.org/)@^17.4.0 and [Yarn](https://yarnpkg.com) and simply run ```yarn ./bootstrap.js``` in the root project directory.
+Install the latest [Node](https://nodejs.org/)@^17.4.0 and [Yarn](https://yarnpkg.com) and simply run ```yarn node ./bootstrap.js``` in the root project directory.
 
 ## Local development
 
