@@ -3836,7 +3836,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@styled-system/color@npm:^5.1.2":
+"@styled-system/color@npm:5.1.2":
   version: 5.1.2
   resolution: "@styled-system/color@npm:5.1.2"
   dependencies:
@@ -3845,7 +3845,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@styled-system/core@npm:^5.1.2":
+"@styled-system/core@npm:5.1.2, @styled-system/core@npm:^5.1.2":
   version: 5.1.2
   resolution: "@styled-system/core@npm:5.1.2"
   dependencies:
@@ -3854,7 +3854,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@styled-system/theme-get@npm:^5.1.2":
+"@styled-system/theme-get@npm:5.1.2":
   version: 5.1.2
   resolution: "@styled-system/theme-get@npm:5.1.2"
   dependencies:
@@ -10386,7 +10386,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"hashids@npm:^2.2.10":
+"hashids@npm:2.2.10":
   version: 2.2.10
   resolution: "hashids@npm:2.2.10"
   checksum: b65982baec1f184e287c9f2ae80303cc62ad752bdb742271754f82b81f7fdde987456d8a0440a1f8639af07fafa402a10ef77674d524247c098be07de3a765c8
@@ -15527,7 +15527,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"raf-schd@npm:^4.0.2":
+"raf-schd@npm:4.0.3":
   version: 4.0.3
   resolution: "raf-schd@npm:4.0.3"
   checksum: 45514041c5ad31fa96aef3bb3c572a843b92da2f2cd1cb4a47c9ad58e48761d3a4126e18daa32b2bfa0bc2551a42d8f324a0e40e536cb656969929602b4e8b58
@@ -15746,9 +15746,9 @@ __metadata:
     "@storybook/manager-webpack5": 6.5.0-alpha.53
     "@storybook/react": 6.5.0-alpha.53
     "@storybook/theming": 6.5.0-alpha.53
-    "@styled-system/color": ^5.1.2
-    "@styled-system/core": ^5.1.2
-    "@styled-system/theme-get": ^5.1.2
+    "@styled-system/color": 5.1.2
+    "@styled-system/core": 5.1.2
+    "@styled-system/theme-get": 5.1.2
     "@testing-library/react": 12.1.4
     "@yarnpkg/core": 3.2.0
     app-root-path: 3.0.0
@@ -15778,7 +15778,7 @@ __metadata:
     flow-bin: 0.175.0
     flow-typed: 3.7.0
     glob: 7.2.0
-    hashids: ^2.2.10
+    hashids: 2.2.10
     http-server: 14.1.0
     is-class: 0.0.9
     jest: 27.5.1
@@ -15790,11 +15790,11 @@ __metadata:
     postcss-scss: 4.0.3
     prop-types: 15.8.1
     raf: 3.4.1
-    raf-schd: ^4.0.2
+    raf-schd: 4.0.3
     react: 17.0.2
     react-dom: 17.0.2
     react-is: 17.0.2
-    react-router-dom: ^5.2.0
+    react-router-dom: 5.3.0
     rimraf: 3.0.2
     rollup: 2.70.1
     rollup-plugin-flow-entry: 0.3.6
@@ -15809,7 +15809,7 @@ __metadata:
     stylelint-config-styled-components: 0.1.1
     stylelint-processor-styled-components: "https://github.com/psychobolt/stylelint-processor-styled-components"
     symlink-dir: 5.0.1
-    to-px: ^1.1.0
+    to-px: 1.1.0
     webpack: 5.71.0
     yargs: 17.4.0
   peerDependencies:
@@ -15827,7 +15827,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-router-dom@npm:^5.2.0":
+"react-router-dom@npm:5.3.0":
   version: 5.3.0
   resolution: "react-router-dom@npm:5.3.0"
   dependencies:
@@ -18217,7 +18217,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"to-px@npm:^1.1.0":
+"to-px@npm:1.1.0":
   version: 1.1.0
   resolution: "to-px@npm:1.1.0"
   dependencies:
