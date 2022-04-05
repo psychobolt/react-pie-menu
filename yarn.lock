@@ -1790,7 +1790,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fortawesome/fontawesome-svg-core@npm:^1.2.34":
+"@fortawesome/fontawesome-svg-core@npm:1.2.36":
   version: 1.2.36
   resolution: "@fortawesome/fontawesome-svg-core@npm:1.2.36"
   dependencies:
@@ -1799,7 +1799,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fortawesome/free-brands-svg-icons@npm:^5.15.2":
+"@fortawesome/free-brands-svg-icons@npm:5.15.4":
   version: 5.15.4
   resolution: "@fortawesome/free-brands-svg-icons@npm:5.15.4"
   dependencies:
@@ -1808,7 +1808,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fortawesome/free-solid-svg-icons@npm:^5.15.2":
+"@fortawesome/free-solid-svg-icons@npm:5.15.4":
   version: 5.15.4
   resolution: "@fortawesome/free-solid-svg-icons@npm:5.15.4"
   dependencies:
@@ -1817,7 +1817,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fortawesome/react-fontawesome@npm:^0.1.14":
+"@fortawesome/react-fontawesome@npm:0.1.18":
   version: 0.1.18
   resolution: "@fortawesome/react-fontawesome@npm:0.1.18"
   dependencies:
@@ -15726,10 +15726,10 @@ __metadata:
     "@babel/preset-flow": 7.16.7
     "@babel/preset-react": 7.16.7
     "@babel/template": 7.16.7
-    "@fortawesome/fontawesome-svg-core": ^1.2.34
-    "@fortawesome/free-brands-svg-icons": ^5.15.2
-    "@fortawesome/free-solid-svg-icons": ^5.15.2
-    "@fortawesome/react-fontawesome": ^0.1.14
+    "@fortawesome/fontawesome-svg-core": 1.2.36
+    "@fortawesome/free-brands-svg-icons": 5.15.4
+    "@fortawesome/free-solid-svg-icons": 5.15.4
+    "@fortawesome/react-fontawesome": 0.1.18
     "@mdx-js/react": 1.6.22
     "@rollup/plugin-alias": 3.1.9
     "@rollup/plugin-babel": 5.3.1
