@@ -9,8 +9,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "flow-deps@workspace:."
   dependencies:
-    raf-schd: ^4.0.3
-    styled-components-theme-connector: ^0.1.6
+    raf-schd: 4.0.3
+    styled-components-theme-connector: 0.1.6
   languageName: unknown
   linkType: soft
 
@@ -21,14 +21,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"raf-schd@npm:^4.0.3":
+"raf-schd@npm:4.0.3":
   version: 4.0.3
   resolution: "raf-schd@npm:4.0.3"
   checksum: 45514041c5ad31fa96aef3bb3c572a843b92da2f2cd1cb4a47c9ad58e48761d3a4126e18daa32b2bfa0bc2551a42d8f324a0e40e536cb656969929602b4e8b58
   languageName: node
   linkType: hard
 
-"styled-components-theme-connector@npm:^0.1.6":
+"styled-components-theme-connector@npm:0.1.6":
   version: 0.1.6
   resolution: "styled-components-theme-connector@npm:0.1.6"
   dependencies:

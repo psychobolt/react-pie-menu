@@ -2,7 +2,6 @@
 /.yarn
 /coverage
 /flow-deps-modules
-/packages/react-cache
 **/dist
 /shared/flow-typed/npm
 /storybook-static

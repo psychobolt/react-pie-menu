@@ -8,8 +8,8 @@ jobs:
     outputs:
       workspaces: ${{ steps.ls_public_workspaces.outputs.workspaces }}
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
       - id: ls_public_workspaces
         run: echo "::set-output name=workspaces::$(yarn node ./workspaces.js --ls-public)"
         shell: bash
@@ -17,11 +17,9 @@ jobs:
     name: "Lint Sources"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-      - run: yarn install
-        shell: bash
-      - run: yarn bootstrap
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - run: yarn node ./bootstrap.js
         shell: bash
       - uses: actions/download-artifact@v3
         with:
@@ -40,8 +38,8 @@ jobs:
       matrix:
         path: ${{ fromJSON(needs.setenv.outputs.workspaces).*.path }}
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
       - run: yarn test --coverage --projects ${{ matrix.path }}
         shell: bash
       - uses: actions/upload-artifact@v3
@@ -59,10 +57,10 @@ jobs:
       matrix:
         flag: ${{ fromJSON(needs.setenv.outputs.workspaces).*.name }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: actions/download-artifact@v3
         with:
           name: ${{ matrix.flag }}_coverage_${{ github.sha }}
-      - uses: codecov/codecov-action@v2
+      - uses: codecov/codecov-action@v3
         with:
           flags: ${{ matrix.flag }}

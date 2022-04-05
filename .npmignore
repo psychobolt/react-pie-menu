@@ -13,7 +13,6 @@ storybook-static
 .eslintrc.json
 .flowconfig
 .pnp.*
-.projectlist
 .stylelintrc.json
 .yarn.js
 .yarnrc
