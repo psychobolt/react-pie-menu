@@ -2468,7 +2468,7 @@ __metadata:
     eslint-plugin-react: 7.29.4
     eslint-plugin-react-hooks: 4.4.0
     eslint-plugin-storybook: 0.5.7
-    flow-bin: 0.175.0
+    flow-bin: 0.175.1
     flow-typed: 3.7.0
     glob: 7.2.0
     http-server: 14.1.0
@@ -2504,7 +2504,7 @@ __metadata:
   peerDependencies:
     react: ^17.0.2
     react-dom: ^17.0.2
-    styled-components: ^5.2.3
+    styled-components: ^5.2.5
   languageName: unknown
   linkType: soft
 
@@ -9560,12 +9560,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"flow-bin@npm:0.175.0":
-  version: 0.175.0
-  resolution: "flow-bin@npm:0.175.0"
+"flow-bin@npm:0.175.1":
+  version: 0.175.1
+  resolution: "flow-bin@npm:0.175.1"
   bin:
     flow: cli.js
-  checksum: bd8168d1a889fbe3b86d29f6aaa6346a9d01f8c9a9aeed47a9193a98ee9bb5d2d38e3d52afe65f5beaa368eeadcbd3ae85ed9d66e6e2ac29d277d6e2b69b1f4c
+  checksum: efcab38f144ff928829c2bbaca1b9d23c088173fbcb01be08f99a28f76a064124b0e7845c9c8b9eaa7f3dd31c8e3280477d2ff96bcd3f34db29a4aeab6c294af
   languageName: node
   linkType: hard
 
