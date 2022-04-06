@@ -134,9 +134,9 @@
     "prop-types": "15.8.1",
     "raf": "3.4.1",
     "raf-schd": "4.0.3",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "react-is": "17.0.2",
+    "react": "18.0.0",
+    "react-dom": "18.0.0",
+    "react-is": "18.0.0",
     "react-router-dom": "5.3.0",
     "rimraf": "3.0.2",
     "rollup": "2.70.1",
@@ -157,9 +157,9 @@
     "yargs": "17.4.0"
   },
   "peerDependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-is": "^17.0.2",
+    "react": "^17.0.2 || ^18.0.0",
+    "react-dom": "^17.0.2 || ^18.0.0",
+    "react-is": "^17.0.2 || ^18.0.0",
     "styled-components": "^5.2.5"
   },
   "workspaces": {
