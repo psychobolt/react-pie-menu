@@ -96,7 +96,7 @@
     "babel-plugin-lodash": "3.3.4",
     "babel-plugin-module-resolver": "4.1.0",
     "babel-plugin-named-exports-order": "0.0.2",
-    "babel-plugin-styled-components": "2.0.6",
+    "babel-plugin-styled-components": "2.0.7",
     "cash-true": "0.0.2",
     "concurrently": "7.1.0",
     "cross-env": "7.0.3",
