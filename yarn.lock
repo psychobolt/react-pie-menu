@@ -2445,7 +2445,7 @@ __metadata:
     "@yarnpkg/core": 3.2.0
     app-root-path: 3.0.0
     babel-jest: 27.5.1
-    babel-plugin-add-module-exports: ^1.0.4
+    babel-plugin-add-module-exports: 1.0.4
     babel-plugin-dynamic-import-node: 2.3.3
     babel-plugin-lodash: 3.3.4
     babel-plugin-module-resolver: 4.1.0
@@ -5773,7 +5773,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-plugin-add-module-exports@npm:^1.0.4":
+"babel-plugin-add-module-exports@npm:1.0.4":
   version: 1.0.4
   resolution: "babel-plugin-add-module-exports@npm:1.0.4"
   checksum: def017e6f34c956302b2fb2ce594d253b83229c3491444f89c2ee4a66e0882025a814676e27173687ca6d1fd4fbff860ce2f35ca4d66d1b333f6c78c8765e981
