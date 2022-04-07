@@ -38,6 +38,9 @@ module.exports = {
           if (test.test('.js') || test.test('.css')) {
             return {
               ...rule,
+              ...(rule.use && rule.use.find(({ loader }) => loader && loader.indexOf('babel-loader') > -1)
+                ? { exclude: [/node_modules/, /.+.prod\.m?jsx?$/] }
+                : undefined),
               resourceQuery: { not: [/raw/] },
             };
           }
