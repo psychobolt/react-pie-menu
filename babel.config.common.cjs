@@ -47,7 +47,12 @@ module.exports = {
       },
     ],
     'babel-plugin-add-module-exports',
-    'babel-plugin-styled-components',
+    [
+      'babel-plugin-styled-components',
+      {
+        topLevelImportPaths: ['styled-components-theme-connector'],
+      },
+    ],
     'babel-plugin-named-exports-order',
   ],
 };
