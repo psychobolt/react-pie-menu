@@ -2444,6 +2444,7 @@ __metadata:
     "@storybook/theming": 6.5.0-alpha.53
     "@testing-library/react": 12.1.4
     "@yarnpkg/core": 3.2.0
+    "@yarnpkg/sdks": 2.6.0
     app-root-path: 3.0.0
     babel-jest: 27.5.1
     babel-plugin-dynamic-import-node: 2.3.3
@@ -4933,7 +4934,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@yarnpkg/core@npm:3.2.0":
+"@yarnpkg/core@npm:3.2.0, @yarnpkg/core@npm:^3.2.0":
   version: 3.2.0
   resolution: "@yarnpkg/core@npm:3.2.0"
   dependencies:
@@ -5020,6 +5021,24 @@ __metadata:
     "@types/node": ^13.7.0
     "@yarnpkg/fslib": ^2.6.1
   checksum: 5b99f89e774a0e98f6e86b9bdcd36eee4f9dc00b9b5983e8f6df95c3ecc196f5a030616edaaad7648f548d5b06fd7b201226e1205d64e61fe02657fea3860410
+  languageName: node
+  linkType: hard
+
+"@yarnpkg/sdks@npm:2.6.0":
+  version: 2.6.0
+  resolution: "@yarnpkg/sdks@npm:2.6.0"
+  dependencies:
+    "@yarnpkg/core": ^3.2.0
+    "@yarnpkg/fslib": ^2.6.1
+    "@yarnpkg/parsers": ^2.5.0
+    chalk: ^3.0.0
+    clipanion: ^3.2.0-rc.4
+    comment-json: ^2.2.0
+    lodash: ^4.17.15
+    tslib: ^1.13.0
+  bin:
+    sdks: ./lib/cli.js
+  checksum: 80d3c8931169e7604ce3c28d81f47478ead243626e7f951bbb69e23327f69435d2e9a90e4905e5a33955e46dee4525d28cc6e0cc3aca34369c7372550a72b05d
   languageName: node
   linkType: hard
 
@@ -7208,6 +7227,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"comment-json@npm:^2.2.0":
+  version: 2.4.2
+  resolution: "comment-json@npm:2.4.2"
+  dependencies:
+    core-util-is: ^1.0.2
+    esprima: ^4.0.1
+    has-own-prop: ^2.0.0
+    repeat-string: ^1.6.1
+  checksum: 1e52aa6ddc7aaab4b66b2fbca8758f1035c9ea42bacf7ccd3c446a46b635fff83366cd8a490043675a345402a13675a9e22581671ebbd202e6987ecb6d4d5280
+  languageName: node
+  linkType: hard
+
 "common-path-prefix@npm:^3.0.0":
   version: 3.0.0
   resolution: "common-path-prefix@npm:3.0.0"
@@ -7423,7 +7454,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-util-is@npm:~1.0.0":
+"core-util-is@npm:^1.0.2, core-util-is@npm:~1.0.0":
   version: 1.0.3
   resolution: "core-util-is@npm:1.0.3"
   checksum: 9de8597363a8e9b9952491ebe18167e3b36e7707569eed0ebf14f8bba773611376466ae34575bca8cfe3c767890c859c74056084738f09d4e4a6f902b2ad7d99
@@ -10336,6 +10367,13 @@ __metadata:
   dependencies:
     is-glob: ^3.0.0
   checksum: cafad93e599f49f676a9ab444ec90210fcda35ac14ad6c9bb96c08057ad18a1318f1116b053aa6bdc744f19252537006872d3fc76785e842bbe8cc4312447fc8
+  languageName: node
+  linkType: hard
+
+"has-own-prop@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "has-own-prop@npm:2.0.0"
+  checksum: ca6336e85ead2295c9603880cbc199e2d3ff7eaea0e9035d68fbc79892e9cf681abc62c0909520f112c671dad9961be2173b21dff951358cc98425c560e789e0
   languageName: node
   linkType: hard
 

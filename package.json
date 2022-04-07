@@ -88,6 +88,7 @@
     "@storybook/theming": "6.5.0-alpha.53",
     "@testing-library/react": "12.1.4",
     "@yarnpkg/core": "3.2.0",
+    "@yarnpkg/sdks": "2.6.0",
     "app-root-path": "3.0.0",
     "babel-jest": "27.5.1",
     "babel-plugin-dynamic-import-node": "2.3.3",
