@@ -2,4 +2,4 @@
 
 const { default: styled, css, ...rest } = require('styled-components');
 
-module.exports = { ...styled, css, ...rest };
+module.exports = { default: styled, ...styled, css, ...rest };

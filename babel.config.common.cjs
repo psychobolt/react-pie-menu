@@ -46,14 +46,8 @@ module.exports = {
         id: ['lodash'],
       },
     ],
+    'babel-plugin-add-module-exports',
     'babel-plugin-styled-components',
     'babel-plugin-named-exports-order',
   ],
-  env: {
-    commonjs: {
-      plugins: [
-        '@babel/plugin-transform-modules-commonjs',
-      ],
-    },
-  },
 };
