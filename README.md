@@ -8,7 +8,7 @@
 
 A configurable radial menu for React.
 
-> This README is for the next release 1.0.x. Please see [0.3.x](https://github.com/psychobolt/react-pie-menu/tree/react-pie-menu%400.3.3).
+> This README is for the next release 1.0.x. Please see [0.3.x](https://github.com/psychobolt/react-pie-menu/tree/react-pie-menu%400.3.3) for the previous release docs.
 
 ## Install
 
