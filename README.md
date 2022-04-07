@@ -345,6 +345,7 @@ export default props => <Slice {...props} backgroundColor="red" />
 
 ## Notable Change Notes
 
+- [v1.0.0-alpha.0](https://github.com/psychobolt/react-pie-menu/releases/tag/react-pie-menu%401.0.0-alpha.0)
 - v0.3.0 introduce the ability to use style props, context props, touch device, and React 17 support.
 - v0.2.0 deprecated inline css styles in favor of CSS-in-JS.
 
