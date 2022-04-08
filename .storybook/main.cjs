@@ -14,9 +14,11 @@ module.exports = {
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
+    '@storybook/addon-interactions',
   ],
+  framework: '@storybook/react',
   core: {
-    builder: 'webpack5',
+    builder: '@storybook/builder-webpack5',
   },
   // See https://github.com/storybookjs/storybook/blob/master/addons/docs/src/frameworks/common/preset.ts, to configure
   webpackFinal: config => ({
