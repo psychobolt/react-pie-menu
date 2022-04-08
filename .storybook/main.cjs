@@ -40,7 +40,7 @@ module.exports = {
           if (test.test('.js') || test.test('.css')) {
             return {
               ...rule,
-              ...(rule.use && rule.use.find(({ loader }) => loader === require.resolve('babel-loader'))
+              ...(rule.use && rule.use.find(({ loader }) => loader && loader.indexOf('babel-loader') > -1)
                 ? { exclude: /(node_modules|.yarn|.+.prod\.m?jsx?$)/ }
                 : undefined),
               resourceQuery: { not: [/raw/] },
