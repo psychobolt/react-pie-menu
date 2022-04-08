@@ -11,6 +11,7 @@
       "import": "./dist/index.dev.cjs.mjs",
       "require": "./dist/index.dev.cjs"
     },
+    "module": "./dist/index.prod.js",
     "import": "./dist/index.prod.cjs.mjs",
     "require": "./dist/index.prod.cjs",
     "default": "./dist/index.prod.js"
@@ -36,7 +37,7 @@
     "lint": "concurrently 'npm:lint:css' 'npm:lint:js'",
     "lint:css": "yarn stylelint \"./(packages|stories|src)/**/*.js\"",
     "lint:js": "yarn eslint \"**/*.?(c|m)js\"",
-    "storybook": "yarn start-storybook",
+    "storybook": "yarn start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "serve-storybook": "yarn http-server storybook-static",
     "bootstrap": "yarn node bootstrap.js",
@@ -95,7 +96,7 @@
     "babel-plugin-lodash": "3.3.4",
     "babel-plugin-module-resolver": "4.1.0",
     "babel-plugin-named-exports-order": "0.0.2",
-    "babel-plugin-styled-components": "2.0.6",
+    "babel-plugin-styled-components": "2.0.7",
     "cash-true": "0.0.2",
     "concurrently": "7.1.0",
     "cross-env": "7.0.3",
@@ -112,7 +113,7 @@
     "eslint-plugin-jsx-a11y": "6.5.1",
     "eslint-plugin-react": "7.29.4",
     "eslint-plugin-react-hooks": "4.4.0",
-    "eslint-plugin-storybook": "0.5.7",
+    "eslint-plugin-storybook": "0.5.8",
     "flow-bin": "0.175.1",
     "flow-typed": "3.7.0",
     "glob": "7.2.0",
@@ -144,7 +145,7 @@
     "stylelint-config-styled-components": "0.1.1",
     "stylelint-processor-styled-components": "https://github.com/psychobolt/stylelint-processor-styled-components",
     "symlink-dir": "5.0.1",
-    "webpack": "5.71.0",
+    "webpack": "5.72.0",
     "yargs": "17.4.0"
   },
   "peerDependencies": {

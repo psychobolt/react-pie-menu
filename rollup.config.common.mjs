@@ -57,11 +57,11 @@ const config = {
       exportConditions,
     }),
     commonjs({
-      include: /node_modules/,
+      include: [/node_modules/, /.yarn/],
     }),
     flowEntry(),
     babel({
-      exclude: /node_modules/,
+      exclude: [/node_modules/, /.yarn/],
       babelHelpers: 'bundled',
       configFile: path.resolve(ROOT_RESOLVE, './babel.config.js'),
     }),
