@@ -8,9 +8,6 @@ const PROJECT_ROOT = slash(`${appRoot}`);
 
 module.exports = {
   stories: getStories([`${PROJECT_ROOT}/stories/index.cjs`]),
-  features: {
-    postcss: false,
-  },
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
