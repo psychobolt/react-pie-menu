@@ -2676,7 +2676,7 @@ __metadata:
     "@psychobolt/default-export": "workspace:^"
     "@rollup/plugin-alias": 3.1.9
     "@rollup/plugin-babel": 5.3.1
-    "@rollup/plugin-commonjs": 21.0.3
+    "@rollup/plugin-commonjs": 21.1.0
     "@rollup/plugin-node-resolve": 13.1.3
     "@rollup/plugin-replace": 4.0.0
     "@storybook/addon-actions": 6.5.0-alpha.61
@@ -2789,9 +2789,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rollup/plugin-commonjs@npm:21.0.3":
-  version: 21.0.3
-  resolution: "@rollup/plugin-commonjs@npm:21.0.3"
+"@rollup/plugin-commonjs@npm:21.1.0":
+  version: 21.1.0
+  resolution: "@rollup/plugin-commonjs@npm:21.1.0"
   dependencies:
     "@rollup/pluginutils": ^3.1.0
     commondir: ^1.0.1
@@ -2802,7 +2802,7 @@ __metadata:
     resolve: ^1.17.0
   peerDependencies:
     rollup: ^2.38.3
-  checksum: 23307d3b7eb8d64dd966fbe380b85bf3b5f4908c7344427d45918d570cf6b48710ef6f155bea74545127c10de9d64f87dd2219078e83dbccf927505d38774de8
+  checksum: e8280f4b6192729f2bdf878c48c451dc441075f2a12f22c688393f48a6b95e8ff83caaacc3df4eb1d81516e08a0e3a669213632879910d85dd630b37bb284df7
   languageName: node
   linkType: hard
 
