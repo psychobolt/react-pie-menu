@@ -17,10 +17,14 @@ A boilerplate for building [React](https://reactjs.org/) libraries.
     - [Replace](https://www.npmjs.com/package/@rollup/plugin-replace)
     - [Flow Entry](https://www.npmjs.com/package/rollup-plugin-flow-entry)
 - [styled-components](https://www.styled-components.com/) with [default](https://www.styled-components.com/docs/tooling#stylelint) [stylelint](https://stylelint.io/) support
-- Run tests with [Jest](https://facebook.github.io/jest/)
+- Test Automation
+    - Visual testing with [Chromatic](https://www.chromatic.com/)
+    - Interactive testing with [@storybook/addon-interactions](https://www.npmjs.com/package/@storybook/addon-interactions)
+    - Run component and story tests with [Jest](https://jestjs.io/) and included libraries:
+        - [React Testing Library](https://testing-library.com/docs/react-testing-library)
+        - [@storybook/testing-react](https://www.npmjs.com/package/testing-react)
 - Code Coverage reporting with [Codecov](https://codecov.io/)
 - Dev sandbox and documentation with [Storybook](https://storybook.js.org/)
-- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
 - Type checking with [Flow](https://flow.org)
 - JS style check with [ESLint](http://eslint.org/) using [AirBnb style guide](https://github.com/airbnb/javascript)
 - Continuous integration with [GitHub Actions](https://github.com/features/actions)
