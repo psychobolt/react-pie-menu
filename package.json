@@ -115,7 +115,7 @@
     "eslint-plugin-jsx-a11y": "6.5.1",
     "eslint-plugin-react": "7.29.4",
     "eslint-plugin-react-hooks": "4.4.0",
-    "eslint-plugin-storybook": "0.5.8",
+    "eslint-plugin-storybook": "0.5.10",
     "flow-bin": "0.175.1",
     "flow-typed": "3.7.0",
     "glob": "7.2.0",
