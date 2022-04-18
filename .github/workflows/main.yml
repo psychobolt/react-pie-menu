@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - master
+      - main
 jobs:
   bundle:
     uses: ./.github/workflows/bundle.yml
