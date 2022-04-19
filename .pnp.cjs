@@ -84,7 +84,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@storybook/jest", "npm:0.0.10"],\
             ["@storybook/manager-webpack5", "virtual:a8a1d15306c5b22d13fd53c9bfa71986250b0024a5faa5f5f09c0c92f0de8941d2bf3403e449fdf6b9df13d3a931d8ae3950d04eca325a0d5881add962206733#npm:6.5.0-alpha.61"],\
             ["@storybook/react", "virtual:a8a1d15306c5b22d13fd53c9bfa71986250b0024a5faa5f5f09c0c92f0de8941d2bf3403e449fdf6b9df13d3a931d8ae3950d04eca325a0d5881add962206733#npm:6.5.0-alpha.61"],\
-            ["@storybook/testing-library", "npm:0.0.9"],\
+            ["@storybook/testing-library", "npm:0.0.10"],\
             ["@testing-library/react", "virtual:a8a1d15306c5b22d13fd53c9bfa71986250b0024a5faa5f5f09c0c92f0de8941d2bf3403e449fdf6b9df13d3a931d8ae3950d04eca325a0d5881add962206733#npm:13.1.1"],\
             ["@yarnpkg/core", "npm:3.2.0"],\
             ["@yarnpkg/sdks", "npm:2.6.0"],\
@@ -5954,7 +5954,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@storybook/jest", "npm:0.0.10"],\
             ["@storybook/manager-webpack5", "virtual:a8a1d15306c5b22d13fd53c9bfa71986250b0024a5faa5f5f09c0c92f0de8941d2bf3403e449fdf6b9df13d3a931d8ae3950d04eca325a0d5881add962206733#npm:6.5.0-alpha.61"],\
             ["@storybook/react", "virtual:a8a1d15306c5b22d13fd53c9bfa71986250b0024a5faa5f5f09c0c92f0de8941d2bf3403e449fdf6b9df13d3a931d8ae3950d04eca325a0d5881add962206733#npm:6.5.0-alpha.61"],\
-            ["@storybook/testing-library", "npm:0.0.9"],\
+            ["@storybook/testing-library", "npm:0.0.10"],\
             ["@testing-library/react", "virtual:a8a1d15306c5b22d13fd53c9bfa71986250b0024a5faa5f5f09c0c92f0de8941d2bf3403e449fdf6b9df13d3a931d8ae3950d04eca325a0d5881add962206733#npm:13.1.1"],\
             ["@yarnpkg/core", "npm:3.2.0"],\
             ["@yarnpkg/sdks", "npm:2.6.0"],\
@@ -8295,14 +8295,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@storybook/testing-library", [\
-        ["npm:0.0.9", {\
-          "packageLocation": "./.yarn/cache/@storybook-testing-library-npm-0.0.9-833c5eb027-070a545bb9.zip/node_modules/@storybook/testing-library/",\
+        ["npm:0.0.10", {\
+          "packageLocation": "./.yarn/cache/@storybook-testing-library-npm-0.0.10-634d9a084c-835e9ce009.zip/node_modules/@storybook/testing-library/",\
           "packageDependencies": [\
-            ["@storybook/testing-library", "npm:0.0.9"],\
+            ["@storybook/testing-library", "npm:0.0.10"],\
             ["@storybook/client-logger", "npm:6.5.0-alpha.59"],\
             ["@storybook/instrumenter", "npm:6.5.0-alpha.59"],\
             ["@testing-library/dom", "npm:8.13.0"],\
-            ["@testing-library/user-event", "virtual:833c5eb027c44c539c71716c1122db01b6312a7975a5aa532d1e526daef6d062b77abf0a1ce335fc9c94223818f8195565d38f880e1765a6395161615abd3a32#npm:13.5.0"],\
+            ["@testing-library/user-event", "virtual:634d9a084c3124f7fef077d729950d122bb6581a3a240b5fceae73e70a991e92c2accf3676ce76fa5fe4dcacc8555dedf34d9cc0ef69b328a2b7bec442986f43#npm:14.1.1"],\
             ["ts-dedent", "npm:2.2.0"]\
           ],\
           "linkType": "HARD"\
@@ -8569,18 +8569,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@testing-library/user-event", [\
-        ["npm:13.5.0", {\
-          "packageLocation": "./.yarn/cache/@testing-library-user-event-npm-13.5.0-1ff89b703a-16319de685.zip/node_modules/@testing-library/user-event/",\
+        ["npm:14.1.1", {\
+          "packageLocation": "./.yarn/cache/@testing-library-user-event-npm-14.1.1-5080ff18a4-dd02aecbde.zip/node_modules/@testing-library/user-event/",\
           "packageDependencies": [\
-            ["@testing-library/user-event", "npm:13.5.0"]\
+            ["@testing-library/user-event", "npm:14.1.1"]\
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:833c5eb027c44c539c71716c1122db01b6312a7975a5aa532d1e526daef6d062b77abf0a1ce335fc9c94223818f8195565d38f880e1765a6395161615abd3a32#npm:13.5.0", {\
-          "packageLocation": "./.yarn/__virtual__/@testing-library-user-event-virtual-b8db603b48/0/cache/@testing-library-user-event-npm-13.5.0-1ff89b703a-16319de685.zip/node_modules/@testing-library/user-event/",\
+        ["virtual:634d9a084c3124f7fef077d729950d122bb6581a3a240b5fceae73e70a991e92c2accf3676ce76fa5fe4dcacc8555dedf34d9cc0ef69b328a2b7bec442986f43#npm:14.1.1", {\
+          "packageLocation": "./.yarn/__virtual__/@testing-library-user-event-virtual-0cec9f15d2/0/cache/@testing-library-user-event-npm-14.1.1-5080ff18a4-dd02aecbde.zip/node_modules/@testing-library/user-event/",\
           "packageDependencies": [\
-            ["@testing-library/user-event", "virtual:833c5eb027c44c539c71716c1122db01b6312a7975a5aa532d1e526daef6d062b77abf0a1ce335fc9c94223818f8195565d38f880e1765a6395161615abd3a32#npm:13.5.0"],\
-            ["@babel/runtime", "npm:7.17.8"],\
+            ["@testing-library/user-event", "virtual:634d9a084c3124f7fef077d729950d122bb6581a3a240b5fceae73e70a991e92c2accf3676ce76fa5fe4dcacc8555dedf34d9cc0ef69b328a2b7bec442986f43#npm:14.1.1"],\
             ["@testing-library/dom", "npm:8.13.0"],\
             ["@types/testing-library__dom", null]\
           ],\
