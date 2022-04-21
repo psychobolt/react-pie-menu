@@ -2689,7 +2689,7 @@ __metadata:
     "@storybook/jest": 0.0.10
     "@storybook/manager-webpack5": 6.5.0-alpha.61
     "@storybook/react": 6.5.0-alpha.61
-    "@storybook/testing-library": 0.0.10
+    "@storybook/testing-library": 0.0.11
     "@testing-library/react": 13.1.1
     "@yarnpkg/core": 3.2.0
     "@yarnpkg/sdks": 2.6.0
@@ -4348,16 +4348,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/testing-library@npm:0.0.10":
-  version: 0.0.10
-  resolution: "@storybook/testing-library@npm:0.0.10"
+"@storybook/testing-library@npm:0.0.11":
+  version: 0.0.11
+  resolution: "@storybook/testing-library@npm:0.0.11"
   dependencies:
     "@storybook/client-logger": ^6.4.0 || >=6.5.0-0
     "@storybook/instrumenter": ^6.4.0 || >=6.5.0-0
-    "@testing-library/dom": ^8.13.0
-    "@testing-library/user-event": ^14.1.1
+    "@testing-library/dom": ^8.3.0
+    "@testing-library/user-event": ^13.2.1
     ts-dedent: ^2.2.0
-  checksum: 835e9ce00970a9cfadf283c7788ed00fa05c23258ddac76ee311536fd50ef2a67d3003c0a055058870d4f748f4ac7f6eca6d8357d1ff8b342841d01b8072e0c8
+  checksum: 9d5204e1330cde81811ecacd6fade3246892db45b469a4ac31d906b0d1f330f2a039fa281801f3eb83cf01e67ea429e21d86a92a68ffd2bd0c228d1436affbaa
   languageName: node
   linkType: hard
 
@@ -4460,7 +4460,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/dom@npm:^8.13.0, @testing-library/dom@npm:^8.5.0":
+"@testing-library/dom@npm:^8.3.0, @testing-library/dom@npm:^8.5.0":
   version: 8.13.0
   resolution: "@testing-library/dom@npm:8.13.0"
   dependencies:
@@ -4521,12 +4521,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/user-event@npm:^14.1.1":
-  version: 14.1.1
-  resolution: "@testing-library/user-event@npm:14.1.1"
+"@testing-library/user-event@npm:^13.2.1":
+  version: 13.5.0
+  resolution: "@testing-library/user-event@npm:13.5.0"
+  dependencies:
+    "@babel/runtime": ^7.12.5
   peerDependencies:
     "@testing-library/dom": ">=7.21.4"
-  checksum: dd02aecbde64002aa3c58392137672156101fc3bb821f43db99e3c652e6a6d34b3eb29b2524eb41ad2a317cfdff6ab2e88d7027605d88dccaacf4f07a08dc7a9
+  checksum: 16319de685fbb7008f1ba667928f458b2d08196918002daca56996de80ef35e6d9de26e9e1ece7d00a004692b95a597cf9142fff0dc53f2f51606a776584f549
   languageName: node
   linkType: hard
 
