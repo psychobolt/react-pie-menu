@@ -1,0 +1,12 @@
+on: 
+  push:
+    branches-ignore: 
+      - main
+jobs:
+  bundle:
+    uses: ./.github/workflows/bundle.yml
+  test:
+    needs: bundle
+    uses: ./.github/workflows/test.yml
+    secrets:
+      CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}

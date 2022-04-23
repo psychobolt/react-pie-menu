@@ -4,6 +4,6 @@
   "packageManager": "yarn@3.2.0",
   "dependencies": {
     "raf-schd": "4.0.3",
-    "styled-components-theme-connector": "0.1.6"
+    "styled-components-theme-connector": "0.1.7"
   }
 }

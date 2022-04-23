@@ -1,13 +1,15 @@
 on:
   push:
     branches:
-      - master
+      - main
 jobs:
   bundle:
     uses: ./.github/workflows/bundle.yml
   test:
     needs: bundle
     uses: ./.github/workflows/test.yml
+    secrets:
+      CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
   deploy:
     needs: [test, bundle]
     runs-on: ubuntu-latest

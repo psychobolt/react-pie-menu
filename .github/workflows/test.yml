@@ -1,5 +1,8 @@
 on:
   workflow_call:
+    secrets:
+      CHROMATIC_PROJECT_TOKEN:
+        required: true
 
 jobs:
   setenv:
@@ -49,6 +52,20 @@ jobs:
             ${{ matrix.path }}/coverage
           if-no-files-found: error
           retention-days: 1
+  chromatic:
+    name: "Run Visual Tests"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: actions/download-artifact@v3
+        with:
+          name: bundles_${{ github.sha }}
+      - uses: chromaui/action@v1
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          storybookBuildDir: storybook-static
   coverage:
     name: "Report Coverage"
     runs-on: ubuntu-latest

@@ -8,15 +8,14 @@ const PROJECT_ROOT = slash(`${appRoot}`);
 
 module.exports = {
   stories: getStories([`${PROJECT_ROOT}/stories/index.cjs`]),
-  features: {
-    postcss: false,
-  },
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
+    '@storybook/addon-interactions',
   ],
+  framework: '@storybook/react',
   core: {
-    builder: 'webpack5',
+    builder: '@storybook/builder-webpack5',
   },
   // See https://github.com/storybookjs/storybook/blob/master/addons/docs/src/frameworks/common/preset.ts, to configure
   webpackFinal: config => ({
@@ -39,7 +38,7 @@ module.exports = {
             return {
               ...rule,
               ...(rule.use && rule.use.find(({ loader }) => loader && loader.indexOf('babel-loader') > -1)
-                ? { exclude: [/node_modules/, /.+.prod\.m?jsx?$/] }
+                ? { exclude: /(node_modules|.yarn|.+.prod\.m?jsx?$)/ }
                 : undefined),
               resourceQuery: { not: [/raw/] },
             };

@@ -1,7 +1,0 @@
-on: pull_request
-jobs:
-  bundle:
-    uses: ./.github/workflows/bundle.yml
-  test:
-    needs: bundle
-    uses: ./.github/workflows/test.yml

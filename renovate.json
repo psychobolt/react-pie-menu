@@ -1,5 +1,13 @@
 {
   "extends": [
     "config:base"
+  ],
+  "automerge": true,
+  "automergeType": "branch",
+  "packageRules": [
+    {
+      "matchPackageNames": ["@mdx-js/react", "flow-bin", "eslint"],
+      "automerge": false
+    }
   ]
 }
