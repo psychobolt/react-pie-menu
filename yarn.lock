@@ -2615,7 +2615,7 @@ __metadata:
     lodash: 4.17.21
     micromatch: 4.0.5
     postcss: 8.4.12
-    postcss-scss: 4.0.3
+    postcss-scss: 4.0.4
     prop-types: 15.8.1
     raf: 3.4.1
     react: 18.0.0
@@ -15265,7 +15265,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-scss@npm:4.0.3, postcss-scss@npm:^4.0.2":
+"postcss-scss@npm:4.0.4":
+  version: 4.0.4
+  resolution: "postcss-scss@npm:4.0.4"
+  peerDependencies:
+    postcss: ^8.3.3
+  checksum: b4f240dd5eeb0c21738b673d9caf9a06b9a6db665a5b1c815ee4ca10c4c74a67c54f11cd5a4970dea98475cbb9e6d846e05dd3e48924189c2ecbf1f50cd44aa4
+  languageName: node
+  linkType: hard
+
+"postcss-scss@npm:^4.0.2":
   version: 4.0.3
   resolution: "postcss-scss@npm:4.0.3"
   peerDependencies:
