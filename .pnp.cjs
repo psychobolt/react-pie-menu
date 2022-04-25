@@ -123,7 +123,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["lodash", "npm:4.17.21"],\
             ["micromatch", "npm:4.0.5"],\
             ["postcss", "npm:8.4.12"],\
-            ["postcss-scss", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:4.0.3"],\
+            ["postcss-scss", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:4.0.4"],\
             ["prop-types", "npm:15.8.1"],\
             ["raf", "npm:3.4.1"],\
             ["raf-schd", "npm:4.0.3"],\
@@ -21531,10 +21531,30 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:4.0.3", {\
-          "packageLocation": "./.yarn/__virtual__/postcss-scss-virtual-f9d3ede9d9/0/cache/postcss-scss-npm-4.0.3-ebb887d5e1-d11110376c.zip/node_modules/postcss-scss/",\
+        ["npm:4.0.4", {\
+          "packageLocation": "./.yarn/cache/postcss-scss-npm-4.0.4-5ed4da166a-b4f240dd5e.zip/node_modules/postcss-scss/",\
           "packageDependencies": [\
-            ["postcss-scss", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:4.0.3"],\
+            ["postcss-scss", "npm:4.0.4"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:6ef1ced05f6adaa8689f295444a04d2b465ee26192f47b20ce41fe8225092c2ea5839c9d806fa8d5d65604227635f8d073f314c4e85ee404628b47604e70b9d2#npm:4.0.3", {\
+          "packageLocation": "./.yarn/__virtual__/postcss-scss-virtual-a005145582/0/cache/postcss-scss-npm-4.0.3-ebb887d5e1-d11110376c.zip/node_modules/postcss-scss/",\
+          "packageDependencies": [\
+            ["postcss-scss", "virtual:6ef1ced05f6adaa8689f295444a04d2b465ee26192f47b20ce41fe8225092c2ea5839c9d806fa8d5d65604227635f8d073f314c4e85ee404628b47604e70b9d2#npm:4.0.3"],\
+            ["@types/postcss", null],\
+            ["postcss", "npm:8.4.12"]\
+          ],\
+          "packagePeers": [\
+            "@types/postcss",\
+            "postcss"\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:4.0.4", {\
+          "packageLocation": "./.yarn/__virtual__/postcss-scss-virtual-aed38fb1a4/0/cache/postcss-scss-npm-4.0.4-5ed4da166a-b4f240dd5e.zip/node_modules/postcss-scss/",\
+          "packageDependencies": [\
+            ["postcss-scss", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:4.0.4"],\
             ["@types/postcss", null],\
             ["postcss", "npm:8.4.12"]\
           ],\
@@ -22326,7 +22346,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["lodash", "npm:4.17.21"],\
             ["micromatch", "npm:4.0.5"],\
             ["postcss", "npm:8.4.12"],\
-            ["postcss-scss", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:4.0.3"],\
+            ["postcss-scss", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:4.0.4"],\
             ["prop-types", "npm:15.8.1"],\
             ["raf", "npm:3.4.1"],\
             ["raf-schd", "npm:4.0.3"],\
@@ -24520,7 +24540,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["stylelint-config-recommended-scss", "virtual:c870f0fb22b7647c33d7e3276f986eefa87058b1ac500f2e00b4dfdb0c6aa8a9e5ee9f954700e0a8dcd0f98977e1002594ddd950c44c235fefc782f843f6a930#npm:5.0.2"],\
             ["@types/stylelint", null],\
             ["postcss", "npm:8.4.12"],\
-            ["postcss-scss", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:4.0.3"],\
+            ["postcss-scss", "virtual:6ef1ced05f6adaa8689f295444a04d2b465ee26192f47b20ce41fe8225092c2ea5839c9d806fa8d5d65604227635f8d073f314c4e85ee404628b47604e70b9d2#npm:4.0.3"],\
             ["stylelint", "npm:14.7.1"],\
             ["stylelint-config-recommended", "virtual:6ef1ced05f6adaa8689f295444a04d2b465ee26192f47b20ce41fe8225092c2ea5839c9d806fa8d5d65604227635f8d073f314c4e85ee404628b47604e70b9d2#npm:6.0.0"],\
             ["stylelint-scss", "virtual:6ef1ced05f6adaa8689f295444a04d2b465ee26192f47b20ce41fe8225092c2ea5839c9d806fa8d5d65604227635f8d073f314c4e85ee404628b47604e70b9d2#npm:4.2.0"]\
