@@ -81,7 +81,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@styled-system/color", "npm:5.1.2"],\
             ["@styled-system/core", "npm:5.1.2"],\
             ["@styled-system/theme-get", "npm:5.1.2"],\
-            ["@testing-library/react", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:13.1.1"],\
+            ["@testing-library/react", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:13.2.0"],\
             ["@yarnpkg/core", "npm:3.2.0"],\
             ["@yarnpkg/sdks", "npm:2.6.0"],\
             ["app-root-path", "npm:3.0.0"],\
@@ -8699,17 +8699,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@testing-library/react", [\
-        ["npm:13.1.1", {\
-          "packageLocation": "./.yarn/cache/@testing-library-react-npm-13.1.1-c5e9cec627-9a0043be56.zip/node_modules/@testing-library/react/",\
+        ["npm:13.2.0", {\
+          "packageLocation": "./.yarn/cache/@testing-library-react-npm-13.2.0-a1a70b5e81-29f4a97c93.zip/node_modules/@testing-library/react/",\
           "packageDependencies": [\
-            ["@testing-library/react", "npm:13.1.1"]\
+            ["@testing-library/react", "npm:13.2.0"]\
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:13.1.1", {\
-          "packageLocation": "./.yarn/__virtual__/@testing-library-react-virtual-2e3f50c104/0/cache/@testing-library-react-npm-13.1.1-c5e9cec627-9a0043be56.zip/node_modules/@testing-library/react/",\
+        ["virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:13.2.0", {\
+          "packageLocation": "./.yarn/__virtual__/@testing-library-react-virtual-9d146eeef7/0/cache/@testing-library-react-npm-13.2.0-a1a70b5e81-29f4a97c93.zip/node_modules/@testing-library/react/",\
           "packageDependencies": [\
-            ["@testing-library/react", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:13.1.1"],\
+            ["@testing-library/react", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:13.2.0"],\
             ["@babel/runtime", "npm:7.17.8"],\
             ["@testing-library/dom", "npm:8.13.0"],\
             ["@types/react", null],\
@@ -22675,7 +22675,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@styled-system/color", "npm:5.1.2"],\
             ["@styled-system/core", "npm:5.1.2"],\
             ["@styled-system/theme-get", "npm:5.1.2"],\
-            ["@testing-library/react", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:13.1.1"],\
+            ["@testing-library/react", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:13.2.0"],\
             ["@yarnpkg/core", "npm:3.2.0"],\
             ["@yarnpkg/sdks", "npm:2.6.0"],\
             ["app-root-path", "npm:3.0.0"],\
