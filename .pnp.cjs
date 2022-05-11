@@ -148,7 +148,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["stylelint-processor-styled-components", "https://github.com/psychobolt/stylelint-processor-styled-components.git#commit=a8f7cb15b42925a961ffd8af7c6e2ce13ffb3cd5"],\
             ["symlink-dir", "npm:5.0.1"],\
             ["webpack", "virtual:a8a1d15306c5b22d13fd53c9bfa71986250b0024a5faa5f5f09c0c92f0de8941d2bf3403e449fdf6b9df13d3a931d8ae3950d04eca325a0d5881add962206733#npm:5.72.1"],\
-            ["yargs", "npm:17.4.1"]\
+            ["yargs", "npm:17.5.0"]\
           ],\
           "linkType": "SOFT"\
         }]\
@@ -6038,7 +6038,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["stylelint-processor-styled-components", "https://github.com/psychobolt/stylelint-processor-styled-components.git#commit=a8f7cb15b42925a961ffd8af7c6e2ce13ffb3cd5"],\
             ["symlink-dir", "npm:5.0.1"],\
             ["webpack", "virtual:a8a1d15306c5b22d13fd53c9bfa71986250b0024a5faa5f5f09c0c92f0de8941d2bf3403e449fdf6b9df13d3a931d8ae3950d04eca325a0d5881add962206733#npm:5.72.1"],\
-            ["yargs", "npm:17.4.1"]\
+            ["yargs", "npm:17.5.0"]\
           ],\
           "linkType": "SOFT"\
         }]\
@@ -26896,10 +26896,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "HARD"\
         }],\
-        ["npm:17.4.1", {\
-          "packageLocation": "./.yarn/cache/yargs-npm-17.4.1-f5d309f85f-e901232287.zip/node_modules/yargs/",\
+        ["npm:17.5.0", {\
+          "packageLocation": "./.yarn/cache/yargs-npm-17.5.0-9888d00e71-e2c662a7a6.zip/node_modules/yargs/",\
           "packageDependencies": [\
-            ["yargs", "npm:17.4.1"],\
+            ["yargs", "npm:17.5.0"],\
             ["cliui", "npm:7.0.4"],\
             ["escalade", "npm:3.1.1"],\
             ["get-caller-file", "npm:2.0.5"],\
