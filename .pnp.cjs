@@ -112,7 +112,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-storybook", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:0.5.11"],\
             ["flow-bin", "npm:0.176.3"],\
             ["flow-typed", "npm:3.7.0"],\
-            ["glob", "npm:8.0.1"],\
+            ["glob", "npm:8.0.2"],\
             ["hashids", "npm:2.2.10"],\
             ["http-server", "npm:14.1.0"],\
             ["is-class", "npm:0.0.9"],\
@@ -16358,16 +16358,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "HARD"\
         }],\
-        ["npm:8.0.1", {\
-          "packageLocation": "./.yarn/cache/glob-npm-8.0.1-3485e1ee02-7ac782f3ef.zip/node_modules/glob/",\
+        ["npm:8.0.2", {\
+          "packageLocation": "./.yarn/cache/glob-npm-8.0.2-4d57d42757-9897d6d445.zip/node_modules/glob/",\
           "packageDependencies": [\
-            ["glob", "npm:8.0.1"],\
+            ["glob", "npm:8.0.2"],\
             ["fs.realpath", "npm:1.0.0"],\
             ["inflight", "npm:1.0.6"],\
             ["inherits", "npm:2.0.4"],\
             ["minimatch", "npm:5.0.1"],\
-            ["once", "npm:1.4.0"],\
-            ["path-is-absolute", "npm:1.0.1"]\
+            ["once", "npm:1.4.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -22715,7 +22714,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-storybook", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:0.5.11"],\
             ["flow-bin", "npm:0.176.3"],\
             ["flow-typed", "npm:3.7.0"],\
-            ["glob", "npm:8.0.1"],\
+            ["glob", "npm:8.0.2"],\
             ["hashids", "npm:2.2.10"],\
             ["http-server", "npm:14.1.0"],\
             ["is-class", "npm:0.0.9"],\
