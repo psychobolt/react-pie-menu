@@ -118,7 +118,7 @@
     "execa": "6.1.0",
     "flow-bin": "0.176.3",
     "flow-typed": "3.7.0",
-    "glob": "8.0.1",
+    "glob": "8.0.2",
     "http-server": "14.1.0",
     "is-class": "0.0.9",
     "jest": "27.5.1",
