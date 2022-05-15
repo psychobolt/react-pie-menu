@@ -98,7 +98,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["babel-plugin-named-exports-order", "npm:0.0.2"],\
             ["babel-plugin-styled-components", "virtual:a8a1d15306c5b22d13fd53c9bfa71986250b0024a5faa5f5f09c0c92f0de8941d2bf3403e449fdf6b9df13d3a931d8ae3950d04eca325a0d5881add962206733#npm:2.0.7"],\
             ["cash-true", "npm:0.0.2"],\
-            ["concurrently", "npm:7.1.0"],\
+            ["concurrently", "npm:7.2.0"],\
             ["cross-env", "npm:7.0.3"],\
             ["eslint", "npm:8.14.0"],\
             ["eslint-config-airbnb", "virtual:a8a1d15306c5b22d13fd53c9bfa71986250b0024a5faa5f5f09c0c92f0de8941d2bf3403e449fdf6b9df13d3a931d8ae3950d04eca325a0d5881add962206733#npm:19.0.4"],\
@@ -5988,7 +5988,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["babel-plugin-named-exports-order", "npm:0.0.2"],\
             ["babel-plugin-styled-components", "virtual:a8a1d15306c5b22d13fd53c9bfa71986250b0024a5faa5f5f09c0c92f0de8941d2bf3403e449fdf6b9df13d3a931d8ae3950d04eca325a0d5881add962206733#npm:2.0.7"],\
             ["cash-true", "npm:0.0.2"],\
-            ["concurrently", "npm:7.1.0"],\
+            ["concurrently", "npm:7.2.0"],\
             ["cross-env", "npm:7.0.3"],\
             ["eslint", "npm:8.14.0"],\
             ["eslint-config-airbnb", "virtual:a8a1d15306c5b22d13fd53c9bfa71986250b0024a5faa5f5f09c0c92f0de8941d2bf3403e449fdf6b9df13d3a931d8ae3950d04eca325a0d5881add962206733#npm:19.0.4"],\
@@ -12921,18 +12921,19 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["concurrently", [\
-        ["npm:7.1.0", {\
-          "packageLocation": "./.yarn/cache/concurrently-npm-7.1.0-d3983cf1fe-723996afc7.zip/node_modules/concurrently/",\
+        ["npm:7.2.0", {\
+          "packageLocation": "./.yarn/cache/concurrently-npm-7.2.0-c42e3ca726-363506e777.zip/node_modules/concurrently/",\
           "packageDependencies": [\
-            ["concurrently", "npm:7.1.0"],\
+            ["concurrently", "npm:7.2.0"],\
             ["chalk", "npm:4.1.2"],\
             ["date-fns", "npm:2.28.0"],\
             ["lodash", "npm:4.17.21"],\
             ["rxjs", "npm:6.6.7"],\
+            ["shell-quote", "npm:1.7.3"],\
             ["spawn-command", "npm:0.0.2"],\
             ["supports-color", "npm:8.1.1"],\
             ["tree-kill", "npm:1.2.2"],\
-            ["yargs", "npm:16.2.0"]\
+            ["yargs", "npm:17.5.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -23767,6 +23768,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/shebang-regex-npm-3.0.0-899a0cd65e-1a2bcae50d.zip/node_modules/shebang-regex/",\
           "packageDependencies": [\
             ["shebang-regex", "npm:3.0.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["shell-quote", [\
+        ["npm:1.7.3", {\
+          "packageLocation": "./.yarn/cache/shell-quote-npm-1.7.3-76a78a6d77-aca58e73a3.zip/node_modules/shell-quote/",\
+          "packageDependencies": [\
+            ["shell-quote", "npm:1.7.3"]\
           ],\
           "linkType": "HARD"\
         }]\
