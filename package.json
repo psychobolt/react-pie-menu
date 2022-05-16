@@ -160,7 +160,7 @@
     "symlink-dir": "5.0.1",
     "to-px": "1.1.0",
     "webpack": "5.72.1",
-    "yargs": "17.5.0"
+    "yargs": "17.5.1"
   },
   "peerDependencies": {
     "react": "^17.0.2 || ^18.0.0",
