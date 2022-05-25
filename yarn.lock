@@ -3578,7 +3578,7 @@ __metadata:
     slash: 3.0.0
     source-map-loader: 3.0.1
     styled-components: 5.3.5
-    stylelint: 14.8.4
+    stylelint: 14.8.5
     stylelint-config-standard-scss: 3.0.0
     stylelint-config-styled-components: 0.1.1
     stylelint-processor-styled-components: "https://github.com/psychobolt/stylelint-processor-styled-components"
@@ -18902,9 +18902,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stylelint@npm:14.8.4":
-  version: 14.8.4
-  resolution: "stylelint@npm:14.8.4"
+"stylelint@npm:14.8.5":
+  version: 14.8.5
+  resolution: "stylelint@npm:14.8.5"
   dependencies:
     balanced-match: ^2.0.0
     colord: ^2.9.2
@@ -18948,7 +18948,7 @@ __metadata:
     write-file-atomic: ^4.0.1
   bin:
     stylelint: bin/stylelint.js
-  checksum: c8284d2bc25d8977e69a2231e2b79b4afe8d1a4aad53a76c75d67af7425195f26317d5033ac6efe89bdfcf60b31ce15f21fef1f726c63fb9930948fa150fbaf6
+  checksum: ab4a8cbe49223f068f2219cddb8fac9061c21bc6544731cdbe18ec2c2aeff76566fadc185a7b49e8fb48242c732566a565f0e862af083c58ae97d5b2213617d1
   languageName: node
   linkType: hard
 
