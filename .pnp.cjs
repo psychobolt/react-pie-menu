@@ -114,7 +114,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["flow-typed", "npm:3.7.0"],\
             ["glob", "npm:8.0.3"],\
             ["hashids", "npm:2.2.10"],\
-            ["http-server", "npm:14.1.0"],\
+            ["http-server", "npm:14.1.1"],\
             ["is-class", "npm:0.0.9"],\
             ["jest", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:27.5.1"],\
             ["jest-cli", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:27.5.1"],\
@@ -17855,10 +17855,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["http-server", [\
-        ["npm:14.1.0", {\
-          "packageLocation": "./.yarn/cache/http-server-npm-14.1.0-ab0746a665-9a88fb47aa.zip/node_modules/http-server/",\
+        ["npm:14.1.1", {\
+          "packageLocation": "./.yarn/cache/http-server-npm-14.1.1-93097e8f48-4f96742891.zip/node_modules/http-server/",\
           "packageDependencies": [\
-            ["http-server", "npm:14.1.0"],\
+            ["http-server", "npm:14.1.1"],\
             ["basic-auth", "npm:2.0.1"],\
             ["chalk", "npm:4.1.2"],\
             ["corser", "npm:2.0.1"],\
@@ -23403,7 +23403,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["flow-typed", "npm:3.7.0"],\
             ["glob", "npm:8.0.3"],\
             ["hashids", "npm:2.2.10"],\
-            ["http-server", "npm:14.1.0"],\
+            ["http-server", "npm:14.1.1"],\
             ["is-class", "npm:0.0.9"],\
             ["jest", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:27.5.1"],\
             ["jest-cli", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:27.5.1"],\
