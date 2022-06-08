@@ -2646,6 +2646,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@csstools/selector-specificity@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@csstools/selector-specificity@npm:2.0.0"
+  peerDependencies:
+    postcss: ^8.3
+    postcss-selector-parser: ^6.0.10
+  checksum: 46bc5a941334393ed596d493fc66c57e0839150ca86692b269f230641d0f073f258eb32fce289b8ab8a12e73b3329d266d4626b08a8705429f8a12929a8f64ae
+  languageName: node
+  linkType: hard
+
 "@discoveryjs/json-ext@npm:^0.5.3":
   version: 0.5.7
   resolution: "@discoveryjs/json-ext@npm:0.5.7"
@@ -3578,7 +3588,7 @@ __metadata:
     slash: 3.0.0
     source-map-loader: 3.0.1
     styled-components: 5.3.5
-    stylelint: 14.8.5
+    stylelint: 14.9.0
     stylelint-config-standard-scss: 4.0.0
     stylelint-config-styled-components: 0.1.1
     stylelint-processor-styled-components: "https://github.com/psychobolt/stylelint-processor-styled-components"
@@ -9085,10 +9095,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"css-functions-list@npm:^3.0.1":
-  version: 3.0.1
-  resolution: "css-functions-list@npm:3.0.1"
-  checksum: 8998406f9c6508180dad621bf91cfbf4649d922a57e2e5dd3fd909a2855e29d2f82cf176bd89a7598237b9e989126f8520e21479f2da51f37b1491a38fe72061
+"css-functions-list@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "css-functions-list@npm:3.1.0"
+  checksum: 8a7c9d4ae57cb2f01500263e65a21372048d359ca7aa6430a32a736fe2a421decfebe45e579124b9a158ec68aba2eadcd733e568495a7698240d9607d31f681b
   languageName: node
   linkType: hard
 
@@ -18362,15 +18372,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"specificity@npm:^0.4.1":
-  version: 0.4.1
-  resolution: "specificity@npm:0.4.1"
-  bin:
-    specificity: ./bin/specificity
-  checksum: e558f1098f85aa54a8e90277309ac0d1913c84812c0bd349aa449076aa700964f71ab69f04f5fda9b7898bef9b7da3faa1cad9caedfd3f1a1ebfebedc18604ab
-  languageName: node
-  linkType: hard
-
 "split-string@npm:^3.0.1, split-string@npm:^3.0.2":
   version: 3.1.0
   resolution: "split-string@npm:3.1.0"
@@ -18902,14 +18903,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stylelint@npm:14.8.5":
-  version: 14.8.5
-  resolution: "stylelint@npm:14.8.5"
+"stylelint@npm:14.9.0":
+  version: 14.9.0
+  resolution: "stylelint@npm:14.9.0"
   dependencies:
+    "@csstools/selector-specificity": ^2.0.0
     balanced-match: ^2.0.0
     colord: ^2.9.2
     cosmiconfig: ^7.0.1
-    css-functions-list: ^3.0.1
+    css-functions-list: ^3.1.0
     debug: ^4.3.4
     execall: ^2.0.0
     fast-glob: ^3.2.11
@@ -18937,7 +18939,6 @@ __metadata:
     postcss-selector-parser: ^6.0.10
     postcss-value-parser: ^4.2.0
     resolve-from: ^5.0.0
-    specificity: ^0.4.1
     string-width: ^4.2.3
     strip-ansi: ^6.0.1
     style-search: ^0.1.0
@@ -18948,7 +18949,7 @@ __metadata:
     write-file-atomic: ^4.0.1
   bin:
     stylelint: bin/stylelint.js
-  checksum: ab4a8cbe49223f068f2219cddb8fac9061c21bc6544731cdbe18ec2c2aeff76566fadc185a7b49e8fb48242c732566a565f0e862af083c58ae97d5b2213617d1
+  checksum: 9996238740feb045c2f14def7152ed2a1a512c4cfd632c02bf136193f8be1c24f1357e53c27cd3c59876a73897f0f7bd5a1df0ee5af614050574ac8fc6ea179a
   languageName: node
   linkType: hard
 
