@@ -2667,13 +2667,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/selector-specificity@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "@csstools/selector-specificity@npm:2.0.0"
+"@csstools/selector-specificity@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "@csstools/selector-specificity@npm:2.0.1"
   peerDependencies:
     postcss: ^8.3
     postcss-selector-parser: ^6.0.10
-  checksum: 46bc5a941334393ed596d493fc66c57e0839150ca86692b269f230641d0f073f258eb32fce289b8ab8a12e73b3329d266d4626b08a8705429f8a12929a8f64ae
+  checksum: 08ec92e6746c6c23a8baca12805619e8fec9e41c33376272d6fcc4705fe9e35307d1577c2624e71f6fb3ec2d3188de25806b0e3127efd53e41641c3bf297926d
   languageName: node
   linkType: hard
 
@@ -17162,7 +17162,7 @@ __metadata:
     source-map-loader: 3.0.1
     styled-components: 5.3.5
     styled-components-theme-connector: 0.1.7
-    stylelint: 14.9.0
+    stylelint: 14.9.1
     stylelint-config-standard-scss: 4.0.0
     stylelint-config-styled-components: 0.1.1
     stylelint-processor-styled-components: "https://github.com/psychobolt/stylelint-processor-styled-components"
@@ -19139,11 +19139,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stylelint@npm:14.9.0":
-  version: 14.9.0
-  resolution: "stylelint@npm:14.9.0"
+"stylelint@npm:14.9.1":
+  version: 14.9.1
+  resolution: "stylelint@npm:14.9.1"
   dependencies:
-    "@csstools/selector-specificity": ^2.0.0
+    "@csstools/selector-specificity": ^2.0.1
     balanced-match: ^2.0.0
     colord: ^2.9.2
     cosmiconfig: ^7.0.1
@@ -19185,7 +19185,7 @@ __metadata:
     write-file-atomic: ^4.0.1
   bin:
     stylelint: bin/stylelint.js
-  checksum: 9996238740feb045c2f14def7152ed2a1a512c4cfd632c02bf136193f8be1c24f1357e53c27cd3c59876a73897f0f7bd5a1df0ee5af614050574ac8fc6ea179a
+  checksum: 53c65c9a1d0009ba15847905afc34efc2f4820edc989f8c2aeecf6b7873b2de3040a1969761ef0983caca2e773947482962df5c25216cb9e3f21af241675bb50
   languageName: node
   linkType: hard
 
