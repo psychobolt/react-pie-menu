@@ -17304,7 +17304,7 @@ __metadata:
     react-router-dom: 5.3.3
     require-from-string: 2.0.2
     rimraf: 3.0.2
-    rollup: 2.75.6
+    rollup: 2.75.7
     rollup-plugin-flow-entry: 0.3.6
     rollup-plugin-mjs-entry: 0.1.1
     rollup-plugin-terser: 7.0.2
@@ -18099,9 +18099,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rollup@npm:2.75.6":
-  version: 2.75.6
-  resolution: "rollup@npm:2.75.6"
+"rollup@npm:2.75.7":
+  version: 2.75.7
+  resolution: "rollup@npm:2.75.7"
   dependencies:
     fsevents: ~2.3.2
   dependenciesMeta:
@@ -18109,7 +18109,7 @@ __metadata:
       optional: true
   bin:
     rollup: dist/bin/rollup
-  checksum: df83c6d43a144a296daf82bed7f12f2dfcc6c495a64245e840d15fd21f2ab8b66bb3423e61c974875b33ccf53fb659d2ed099f272937ecf23af48815277c6cd5
+  checksum: a6331d46b01062b184efdcb42ce12caf2e1575f989963944534b02f5855f6f3bc239ed0c1a18893572d7695af6d83166f3aef59dbd0365084e1531cb67824674
   languageName: node
   linkType: hard
 
