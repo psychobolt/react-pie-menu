@@ -119,7 +119,7 @@
     "eslint-plugin-import": "2.26.0",
     "eslint-plugin-jest": "26.5.3",
     "eslint-plugin-jsx-a11y": "6.5.1",
-    "eslint-plugin-react": "7.30.0",
+    "eslint-plugin-react": "7.30.1",
     "eslint-plugin-react-hooks": "4.6.0",
     "eslint-plugin-storybook": "0.5.12",
     "flow-bin": "0.176.3",
