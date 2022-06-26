@@ -117,7 +117,7 @@
     "eslint-plugin-storybook": "0.5.13",
     "execa": "6.1.0",
     "flow-bin": "0.176.3",
-    "flow-typed": "3.7.0",
+    "flow-typed": "3.8.0",
     "glob": "8.0.3",
     "http-server": "14.1.1",
     "is-class": "0.0.9",
