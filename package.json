@@ -123,7 +123,7 @@
     "eslint-plugin-react-hooks": "4.6.0",
     "eslint-plugin-storybook": "0.5.13",
     "flow-bin": "0.176.3",
-    "flow-typed": "3.7.0",
+    "flow-typed": "3.8.0",
     "glob": "8.0.3",
     "hashids": "2.2.10",
     "http-server": "14.1.1",
