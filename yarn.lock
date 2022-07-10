@@ -10706,16 +10706,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-storybook@npm:0.5.13":
-  version: 0.5.13
-  resolution: "eslint-plugin-storybook@npm:0.5.13"
+"eslint-plugin-storybook@npm:0.6.0":
+  version: 0.6.0
+  resolution: "eslint-plugin-storybook@npm:0.6.0"
   dependencies:
     "@storybook/csf": ^0.0.1
     "@typescript-eslint/experimental-utils": ^5.3.0
     requireindex: ^1.1.0
   peerDependencies:
     eslint: ">=6"
-  checksum: 78a74daff68394e080aeff52250c5a6a3a6779f2867366c7db93ce36afd6e3113c3190b4a1d68c6a220b2511b3a3747aeab3d43bdce87fc6a63464847b9576fa
+  checksum: ab5e3c3403644a73308a068e2ea0d92f249d4ac979c36f0702f7926c0729226bf1a9fcfef581203b7c5b92e38df6adb4be36d1c6742ccf2b97a7893cd083dcd6
   languageName: node
   linkType: hard
 
@@ -17535,7 +17535,7 @@ __metadata:
     eslint-plugin-jsx-a11y: 6.6.0
     eslint-plugin-react: 7.30.1
     eslint-plugin-react-hooks: 4.6.0
-    eslint-plugin-storybook: 0.5.13
+    eslint-plugin-storybook: 0.6.0
     flow-bin: 0.176.3
     flow-typed: 3.8.0
     glob: 8.0.3
