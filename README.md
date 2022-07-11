@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/react-pie-menu.svg)](https://www.npmjs.com/package/react-pie-menu)
 [![Main workflow](https://github.com/psychobolt/react-pie-menu/actions/workflows/main.yml/badge.svg)](https://github.com/psychobolt/react-pie-menu/actions/workflows/main.yml)
-[![codecov](https://codecov.io/gh/psychobolt/react-pie-menu/branch/master/graph/badge.svg?flag=react-pie-menu)](https://codecov.io/gh/psychobolt/react-pie-menu/tree/master/src)
+[![codecov](https://codecov.io/gh/psychobolt/react-pie-menu/branch/main/graph/badge.svg?flag=react-pie-menu)](https://codecov.io/gh/psychobolt/react-pie-menu/tree/main/src)
 
 ![piemenu_clip1](https://user-images.githubusercontent.com/560721/108241603-de648380-7100-11eb-9b26-40fe98b5d148.gif)
 

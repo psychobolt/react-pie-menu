@@ -10,7 +10,7 @@ jobs:
       - uses: actions/setup-node@v3
       - run: yarn build
         shell: bash
-      - run: yarn build-storybook
+      - run: yarn build-storybook --webpack-stats-json
         shell: bash
       - uses: actions/upload-artifact@v3
         with:
