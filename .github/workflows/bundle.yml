@@ -8,6 +8,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
+      - run: yarn install
+        shell: bash
       - run: yarn build
         shell: bash
       - run: yarn build-storybook --webpack-stats-json
