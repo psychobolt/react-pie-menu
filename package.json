@@ -88,7 +88,7 @@
     "@storybook/react": "6.5.9",
     "@storybook/testing-library": "0.0.13",
     "@testing-library/react": "13.3.0",
-    "@yarnpkg/core": "3.2.2",
+    "@yarnpkg/core": "3.2.3",
     "@yarnpkg/sdks": "2.6.2",
     "app-root-path": "3.0.0",
     "babel-jest": "27.5.1",
