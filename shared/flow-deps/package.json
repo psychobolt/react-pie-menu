@@ -1,7 +1,7 @@
 {
   "name": "flow-deps",
   "priavte": true,
-  "packageManager": "yarn@3.2.1",
+  "packageManager": "yarn@3.2.2",
   "dependencies": {
     "raf-schd": "4.0.3",
     "styled-components-theme-connector": "0.1.7"
