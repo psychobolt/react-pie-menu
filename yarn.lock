@@ -5,6 +5,13 @@ __metadata:
   version: 6
   cacheKey: 8
 
+"@adobe/css-tools@npm:^4.0.1":
+  version: 4.0.1
+  resolution: "@adobe/css-tools@npm:4.0.1"
+  checksum: 80226e2229024c21da9ffa6b5cd4a34b931f071e06f45aba4777ade071d7a6c94605cf73b13718b0c4b34e8b124c65c607b82eaa53a326d3eb73d9682a04a593
+  languageName: node
+  linkType: hard
+
 "@ampproject/remapping@npm:^2.1.0":
   version: 2.1.2
   resolution: "@ampproject/remapping@npm:2.1.2"
@@ -14705,14 +14712,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-styled-components@npm:7.0.8":
-  version: 7.0.8
-  resolution: "jest-styled-components@npm:7.0.8"
+"jest-styled-components@npm:7.1.0":
+  version: 7.1.0
+  resolution: "jest-styled-components@npm:7.1.0"
   dependencies:
-    css: ^3.0.0
+    "@adobe/css-tools": ^4.0.1
   peerDependencies:
     styled-components: ">= 5"
-  checksum: 0fc3a71c54ece55b8fd4c8304a9db283acac97cdfd8350ff27ff3b0c3da8e798dca87c7ee5fc004b1b0577d632dec44ebea31750238b82395152c0f8a471ea7c
+  checksum: 98802d87dd1e404678a922b08cc8d381d16b45804ca5f1b8c523e857bffd223869d14f44ce09f58f5fac13fe280dbb71411ba70e5b35bc0bb53a3c3a7f95a39e
   languageName: node
   linkType: hard
 
@@ -18121,7 +18128,7 @@ __metadata:
     jest: 27.5.1
     jest-cli: 27.5.1
     jest-specific-snapshot: 5.0.0
-    jest-styled-components: 7.0.8
+    jest-styled-components: 7.1.0
     lodash: 4.17.21
     micromatch: 4.0.5
     postcss: 8.4.16
