@@ -122,7 +122,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest", "virtual:a8a1d15306c5b22d13fd53c9bfa71986250b0024a5faa5f5f09c0c92f0de8941d2bf3403e449fdf6b9df13d3a931d8ae3950d04eca325a0d5881add962206733#npm:27.5.1"],\
             ["jest-cli", "virtual:a8a1d15306c5b22d13fd53c9bfa71986250b0024a5faa5f5f09c0c92f0de8941d2bf3403e449fdf6b9df13d3a931d8ae3950d04eca325a0d5881add962206733#npm:27.5.1"],\
             ["jest-specific-snapshot", "virtual:a8a1d15306c5b22d13fd53c9bfa71986250b0024a5faa5f5f09c0c92f0de8941d2bf3403e449fdf6b9df13d3a931d8ae3950d04eca325a0d5881add962206733#npm:5.0.0"],\
-            ["jest-styled-components", "virtual:a8a1d15306c5b22d13fd53c9bfa71986250b0024a5faa5f5f09c0c92f0de8941d2bf3403e449fdf6b9df13d3a931d8ae3950d04eca325a0d5881add962206733#npm:7.0.8"],\
+            ["jest-styled-components", "virtual:a8a1d15306c5b22d13fd53c9bfa71986250b0024a5faa5f5f09c0c92f0de8941d2bf3403e449fdf6b9df13d3a931d8ae3950d04eca325a0d5881add962206733#npm:7.1.0"],\
             ["lodash", "npm:4.17.21"],\
             ["micromatch", "npm:4.0.5"],\
             ["postcss", "npm:8.4.16"],\
@@ -151,6 +151,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["yargs", "npm:17.5.1"]\
           ],\
           "linkType": "SOFT"\
+        }]\
+      ]],\
+      ["@adobe/css-tools", [\
+        ["npm:4.0.1", {\
+          "packageLocation": "./.yarn/cache/@adobe-css-tools-npm-4.0.1-414e22a25e-80226e2229.zip/node_modules/@adobe/css-tools/",\
+          "packageDependencies": [\
+            ["@adobe/css-tools", "npm:4.0.1"]\
+          ],\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["@ampproject/remapping", [\
@@ -7355,7 +7364,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest", "virtual:a8a1d15306c5b22d13fd53c9bfa71986250b0024a5faa5f5f09c0c92f0de8941d2bf3403e449fdf6b9df13d3a931d8ae3950d04eca325a0d5881add962206733#npm:27.5.1"],\
             ["jest-cli", "virtual:a8a1d15306c5b22d13fd53c9bfa71986250b0024a5faa5f5f09c0c92f0de8941d2bf3403e449fdf6b9df13d3a931d8ae3950d04eca325a0d5881add962206733#npm:27.5.1"],\
             ["jest-specific-snapshot", "virtual:a8a1d15306c5b22d13fd53c9bfa71986250b0024a5faa5f5f09c0c92f0de8941d2bf3403e449fdf6b9df13d3a931d8ae3950d04eca325a0d5881add962206733#npm:5.0.0"],\
-            ["jest-styled-components", "virtual:a8a1d15306c5b22d13fd53c9bfa71986250b0024a5faa5f5f09c0c92f0de8941d2bf3403e449fdf6b9df13d3a931d8ae3950d04eca325a0d5881add962206733#npm:7.0.8"],\
+            ["jest-styled-components", "virtual:a8a1d15306c5b22d13fd53c9bfa71986250b0024a5faa5f5f09c0c92f0de8941d2bf3403e449fdf6b9df13d3a931d8ae3950d04eca325a0d5881add962206733#npm:7.1.0"],\
             ["lodash", "npm:4.17.21"],\
             ["micromatch", "npm:4.0.5"],\
             ["postcss", "npm:8.4.16"],\
@@ -20408,19 +20417,19 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["jest-styled-components", [\
-        ["npm:7.0.8", {\
-          "packageLocation": "./.yarn/cache/jest-styled-components-npm-7.0.8-348bd4dc64-0fc3a71c54.zip/node_modules/jest-styled-components/",\
+        ["npm:7.1.0", {\
+          "packageLocation": "./.yarn/cache/jest-styled-components-npm-7.1.0-113cda2f2e-98802d87dd.zip/node_modules/jest-styled-components/",\
           "packageDependencies": [\
-            ["jest-styled-components", "npm:7.0.8"]\
+            ["jest-styled-components", "npm:7.1.0"]\
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:a8a1d15306c5b22d13fd53c9bfa71986250b0024a5faa5f5f09c0c92f0de8941d2bf3403e449fdf6b9df13d3a931d8ae3950d04eca325a0d5881add962206733#npm:7.0.8", {\
-          "packageLocation": "./.yarn/__virtual__/jest-styled-components-virtual-14c3367f78/0/cache/jest-styled-components-npm-7.0.8-348bd4dc64-0fc3a71c54.zip/node_modules/jest-styled-components/",\
+        ["virtual:a8a1d15306c5b22d13fd53c9bfa71986250b0024a5faa5f5f09c0c92f0de8941d2bf3403e449fdf6b9df13d3a931d8ae3950d04eca325a0d5881add962206733#npm:7.1.0", {\
+          "packageLocation": "./.yarn/__virtual__/jest-styled-components-virtual-bf4950f5a1/0/cache/jest-styled-components-npm-7.1.0-113cda2f2e-98802d87dd.zip/node_modules/jest-styled-components/",\
           "packageDependencies": [\
-            ["jest-styled-components", "virtual:a8a1d15306c5b22d13fd53c9bfa71986250b0024a5faa5f5f09c0c92f0de8941d2bf3403e449fdf6b9df13d3a931d8ae3950d04eca325a0d5881add962206733#npm:7.0.8"],\
+            ["jest-styled-components", "virtual:a8a1d15306c5b22d13fd53c9bfa71986250b0024a5faa5f5f09c0c92f0de8941d2bf3403e449fdf6b9df13d3a931d8ae3950d04eca325a0d5881add962206733#npm:7.1.0"],\
+            ["@adobe/css-tools", "npm:4.0.1"],\
             ["@types/styled-components", null],\
-            ["css", "npm:3.0.0"],\
             ["styled-components", "virtual:a8a1d15306c5b22d13fd53c9bfa71986250b0024a5faa5f5f09c0c92f0de8941d2bf3403e449fdf6b9df13d3a931d8ae3950d04eca325a0d5881add962206733#npm:5.3.5"]\
           ],\
           "packagePeers": [\
