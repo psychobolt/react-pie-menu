@@ -95,7 +95,7 @@
     "@styled-system/theme-get": "5.1.2",
     "@testing-library/react": "13.3.0",
     "@yarnpkg/core": "3.2.3",
-    "@yarnpkg/sdks": "2.6.2",
+    "@yarnpkg/sdks": "2.6.3",
     "app-root-path": "3.1.0",
     "babel-jest": "27.5.1",
     "babel-loader": "8.2.5",
