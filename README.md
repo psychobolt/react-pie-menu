@@ -12,7 +12,7 @@ A configurable radial menu for React.
 
 ## Install
 
-> Recommended: React and React-DOM 17.x
+> Recommended: React and React-DOM 18.x
 
 ```sh
 npm install --save styled-components react-pie-menu
