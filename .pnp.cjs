@@ -112,7 +112,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["execa", "npm:6.1.0"],\
             ["flow-bin", "npm:0.176.3"],\
             ["flow-typed", "npm:3.8.0"],\
-            ["glob", "npm:8.0.3"],\
+            ["glob", "npm:7.2.3"],\
             ["hashids", "npm:2.2.10"],\
             ["http-server", "npm:14.1.1"],\
             ["is-class", "npm:0.0.9"],\
@@ -255,7 +255,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@babel/code-frame", "npm:7.16.7"],\
             ["@babel/generator", "npm:7.18.7"],\
             ["@babel/helper-module-transforms", "npm:7.18.8"],\
-            ["@babel/helpers", "npm:7.18.6"],\
+            ["@babel/helpers", "npm:7.17.9"],\
             ["@babel/parser", "npm:7.18.8"],\
             ["@babel/template", "npm:7.16.7"],\
             ["@babel/traverse", "npm:7.18.8"],\
@@ -1268,16 +1268,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@babel/template", "npm:7.16.7"],\
             ["@babel/traverse", "npm:7.17.9"],\
             ["@babel/types", "npm:7.17.0"]\
-          ],\
-          "linkType": "HARD"\
-        }],\
-        ["npm:7.18.6", {\
-          "packageLocation": "./.yarn/cache/@babel-helpers-npm-7.18.6-113f2054af-5dea4fa537.zip/node_modules/@babel/helpers/",\
-          "packageDependencies": [\
-            ["@babel/helpers", "npm:7.18.6"],\
-            ["@babel/template", "npm:7.18.6"],\
-            ["@babel/traverse", "npm:7.18.6"],\
-            ["@babel/types", "npm:7.18.6"]\
           ],\
           "linkType": "HARD"\
         }],\
@@ -11813,6 +11803,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["acorn", "npm:8.7.1"]\
           ],\
           "linkType": "HARD"\
+        }],\
+        ["npm:8.8.0", {\
+          "packageLocation": "./.yarn/cache/acorn-npm-8.8.0-9ef399ab45-7270ca82b2.zip/node_modules/acorn/",\
+          "packageDependencies": [\
+            ["acorn", "npm:8.8.0"]\
+          ],\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["acorn-globals", [\
@@ -11833,6 +11830,19 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["acorn-import-assertions", "npm:1.8.0"]\
           ],\
           "linkType": "SOFT"\
+        }],\
+        ["virtual:4ad88fecbf9d1faa8a20d5873019081e0324869e0b6a5467828bef000b5991fb0176a7f42b68c31e071e14f24ee75e40418d5ac5f03e48af2507e395271a2e49#npm:1.8.0", {\
+          "packageLocation": "./.yarn/__virtual__/acorn-import-assertions-virtual-1f8a4c9d1e/0/cache/acorn-import-assertions-npm-1.8.0-e9a9d57e27-5c4cf7c850.zip/node_modules/acorn-import-assertions/",\
+          "packageDependencies": [\
+            ["acorn-import-assertions", "virtual:4ad88fecbf9d1faa8a20d5873019081e0324869e0b6a5467828bef000b5991fb0176a7f42b68c31e071e14f24ee75e40418d5ac5f03e48af2507e395271a2e49#npm:1.8.0"],\
+            ["@types/acorn", null],\
+            ["acorn", "npm:8.8.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/acorn",\
+            "acorn"\
+          ],\
+          "linkType": "HARD"\
         }],\
         ["virtual:cd558dc7fd63caf62a304d43359f8cc47aa78595fa30ac5a557e3539186a3c4e381073b856738b91f1ad14b7f5477facf385bab8597e8e79d724bab5c1b1ef54#npm:1.8.0", {\
           "packageLocation": "./.yarn/__virtual__/acorn-import-assertions-virtual-7cb8b6069f/0/cache/acorn-import-assertions-npm-1.8.0-e9a9d57e27-5c4cf7c850.zip/node_modules/acorn-import-assertions/",\
@@ -11874,7 +11884,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["acorn-jsx", "virtual:c70fa2a91dcbd99b022aeff42b1b7671b1079fb9945248dc00dedd7520f879dc07058703f4626782de94f97692f30d5b18138d744c1e1ed1913a7610755d40e3#npm:5.3.2"],\
             ["@types/acorn", null],\
-            ["acorn", "npm:8.7.1"]\
+            ["acorn", "npm:8.8.0"]\
           ],\
           "packagePeers": [\
             "@types/acorn",\
@@ -16980,7 +16990,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/espree-npm-9.3.2-c70fa2a91d-9a790d6779.zip/node_modules/espree/",\
           "packageDependencies": [\
             ["espree", "npm:9.3.2"],\
-            ["acorn", "npm:8.7.1"],\
+            ["acorn", "npm:8.8.0"],\
             ["acorn-jsx", "virtual:c70fa2a91dcbd99b022aeff42b1b7671b1079fb9945248dc00dedd7520f879dc07058703f4626782de94f97692f30d5b18138d744c1e1ed1913a7610755d40e3#npm:5.3.2"],\
             ["eslint-visitor-keys", "npm:3.3.0"]\
           ],\
@@ -18220,18 +18230,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["minimatch", "npm:5.0.1"],\
             ["once", "npm:1.4.0"],\
             ["path-is-absolute", "npm:1.0.1"]\
-          ],\
-          "linkType": "HARD"\
-        }],\
-        ["npm:8.0.3", {\
-          "packageLocation": "./.yarn/cache/glob-npm-8.0.3-750f909025-50bcdea19d.zip/node_modules/glob/",\
-          "packageDependencies": [\
-            ["glob", "npm:8.0.3"],\
-            ["fs.realpath", "npm:1.0.0"],\
-            ["inflight", "npm:1.0.6"],\
-            ["inherits", "npm:2.0.4"],\
-            ["minimatch", "npm:5.0.1"],\
-            ["once", "npm:1.4.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -24599,7 +24597,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["execa", "npm:6.1.0"],\
             ["flow-bin", "npm:0.176.3"],\
             ["flow-typed", "npm:3.8.0"],\
-            ["glob", "npm:8.0.3"],\
+            ["glob", "npm:7.2.3"],\
             ["hashids", "npm:2.2.10"],\
             ["http-server", "npm:14.1.1"],\
             ["is-class", "npm:0.0.9"],\
@@ -28527,8 +28525,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@webassemblyjs/ast", "npm:1.11.1"],\
             ["@webassemblyjs/wasm-edit", "npm:1.11.1"],\
             ["@webassemblyjs/wasm-parser", "npm:1.11.1"],\
-            ["acorn", "npm:8.7.1"],\
-            ["acorn-import-assertions", "virtual:cd558dc7fd63caf62a304d43359f8cc47aa78595fa30ac5a557e3539186a3c4e381073b856738b91f1ad14b7f5477facf385bab8597e8e79d724bab5c1b1ef54#npm:1.8.0"],\
+            ["acorn", "npm:8.8.0"],\
+            ["acorn-import-assertions", "virtual:4ad88fecbf9d1faa8a20d5873019081e0324869e0b6a5467828bef000b5991fb0176a7f42b68c31e071e14f24ee75e40418d5ac5f03e48af2507e395271a2e49#npm:1.8.0"],\
             ["browserslist", "npm:4.21.1"],\
             ["chrome-trace-event", "npm:1.0.3"],\
             ["enhanced-resolve", "npm:5.10.0"],\
