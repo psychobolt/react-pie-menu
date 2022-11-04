@@ -110,7 +110,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-react-hooks", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:4.6.0"],\
             ["eslint-plugin-storybook", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:0.6.4"],\
             ["execa", "npm:6.1.0"],\
-            ["flow-bin", "npm:0.176.3"],\
+            ["flow-bin", "npm:0.192.0"],\
             ["flow-typed", "npm:3.8.0"],\
             ["glob", "npm:7.2.3"],\
             ["hashids", "npm:2.2.10"],\
@@ -17627,10 +17627,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["flow-bin", [\
-        ["npm:0.176.3", {\
-          "packageLocation": "./.yarn/unplugged/flow-bin-npm-0.176.3-f744a6db8a/node_modules/flow-bin/",\
+        ["npm:0.192.0", {\
+          "packageLocation": "./.yarn/unplugged/flow-bin-npm-0.192.0-25b1fe6c3c/node_modules/flow-bin/",\
           "packageDependencies": [\
-            ["flow-bin", "npm:0.176.3"]\
+            ["flow-bin", "npm:0.192.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -24595,7 +24595,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-react-hooks", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:4.6.0"],\
             ["eslint-plugin-storybook", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:0.6.4"],\
             ["execa", "npm:6.1.0"],\
-            ["flow-bin", "npm:0.176.3"],\
+            ["flow-bin", "npm:0.192.0"],\
             ["flow-typed", "npm:3.8.0"],\
             ["glob", "npm:7.2.3"],\
             ["hashids", "npm:2.2.10"],\
