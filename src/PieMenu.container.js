@@ -3,22 +3,19 @@ import * as React from 'react';
 import { isFragment, isElement } from 'react-is';
 import { ThemeContextProvider } from 'styled-components-theme-connector';
 import toPx from 'to-px';
-import Hashids from 'hashids';
 
 import PieMenu from './PieMenu.component.js';
 import type { Props as BaseProps } from './PieMenu.component.js';
 
-const hashids = new Hashids();
-
-const getSlices = (child, index) => {
+const getSlices = (containerId, child, index) => {
   let slices = [];
   if (isFragment(child)) {
     React.Children.forEach(child.props.children, (slice, i) => {
-      slices = [...slices, ...getSlices(slice, index + i)];
+      slices = [...slices, ...getSlices(containerId, slice, index + i)];
     });
   } else if (isElement(child)) {
     return [{
-      itemId: `slice_${hashids.encode(new Date().getTime() + index)}`,
+      itemId: `${containerId}_slice_${index}`,
       slice: child,
     }];
   }
@@ -35,12 +32,13 @@ export default (({
   children,
   ...props
 }: Props) => {
+  const id = React.useId();
   let slices = [];
   let index = 0;
   React.Children.forEach(children, (child, i) => {
     slices = [
       ...slices,
-      ...getSlices(child, index + i),
+      ...getSlices(id, child, index + i),
     ];
     index = Math.max(0, slices.length - 1);
   });
@@ -58,7 +56,7 @@ export default (({
   };
   return (
     <ThemeContextProvider {...context}>
-      <PieMenu {...props} {...context} {...metadata} slices={slices} />
+      <PieMenu {...props} {...context} {...metadata} containerId={id} slices={slices} />
     </ThemeContextProvider>
   );
 }: React.ComponentType<Props>);

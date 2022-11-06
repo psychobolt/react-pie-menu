@@ -12836,13 +12836,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"hashids@npm:2.2.10":
-  version: 2.2.10
-  resolution: "hashids@npm:2.2.10"
-  checksum: b65982baec1f184e287c9f2ae80303cc62ad752bdb742271754f82b81f7fdde987456d8a0440a1f8639af07fafa402a10ef77674d524247c098be07de3a765c8
-  languageName: node
-  linkType: hard
-
 "hast-to-hyperscript@npm:^9.0.0":
   version: 9.0.1
   resolution: "hast-to-hyperscript@npm:9.0.1"
@@ -18064,7 +18057,6 @@ __metadata:
     flow-bin: 0.176.3
     flow-typed: 3.8.0
     glob: 7.2.3
-    hashids: 2.2.10
     http-server: 14.1.1
     is-class: 0.0.9
     jest: 27.5.1

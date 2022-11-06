@@ -31,6 +31,7 @@ type Metadata = {
 };
 
 export type Props = {
+  containerId: string,
   slices: { itemId: string, slice: React.Node[] }[],
   startOffsetAngle?: number,
   polar: boolean,
@@ -39,6 +40,7 @@ export type Props = {
 } & Context & Metadata;
 
 const PieMenu = ({
+  containerId,
   className,
   startOffsetAngle = 0,
   radius,
@@ -73,7 +75,7 @@ const PieMenu = ({
     for (let i = 0; i < elements.length; i += 1) {
       const element = elements[i];
       if (element.id === 'center') return null;
-      if (`${element.id}`.startsWith('slice_')) return element;
+      if (`${element.id}`.startsWith(`${containerId}_slice_`)) return element;
     }
     return null;
   };
