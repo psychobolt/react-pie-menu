@@ -10,7 +10,7 @@ import type { Props as BaseProps } from './PieMenu.component.js';
 
 const hashids = new Hashids();
 
-const getSlices = (child, index) => {
+const getSlices = (child: React.Element<any>, index: number) => {
   let slices = [];
   if (isFragment(child)) {
     React.Children.forEach(child.props.children, (slice, i) => {

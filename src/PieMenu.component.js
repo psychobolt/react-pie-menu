@@ -14,13 +14,13 @@ export const PieCenter = (connectTheme('pieMenu.center')('div'): React.Component
 const inputMoveEvents = ['touchmove', 'mousemove'];
 const selectEvents = ['mouseup', 'touchend'];
 
-const bindEvents = (events, listener) => events
+const bindEvents = (events: string[], listener: EventListener) => events
   // $FlowFixMe[speculation-ambiguous]
   .forEach(event => document
     // $FlowFixMe[incompatible-call]
     .addEventListener(event, listener, { pasive: false, cancelable: true, capture: true }));
 
-const unbindEvents = (events, listener) => events
+const unbindEvents = (events: string[], listener: EventListener) => events
   // $FlowFixMe[speculation-ambiguous]
   .forEach(event => document.removeEventListener(event, listener));
 
@@ -67,7 +67,7 @@ const PieMenu = ({
     return centerArea <= distance && distance <= pieArea;
   };
 
-  const getItemAt = (x, y) => {
+  const getItemAt = (x: number, y: number) => {
     if (!isInsidePie(x, y)) return null;
     const elements = document.elementsFromPoint(x, y);
     for (let i = 0; i < elements.length; i += 1) {
@@ -94,10 +94,10 @@ const PieMenu = ({
         setActiveSlice(null);
       }
     });
-    const selectActiveSlice = e => {
+    const selectActiveSlice = (e: TouchEvent) => {
       if (!ref.current) return;
-      const x = e.pageX || (e: TouchEvent).changedTouches[0].clientX;
-      const y = e.pageY || (e: TouchEvent).changedTouches[0].clientY;
+      const x = e.pageX || e.changedTouches[0].clientX;
+      const y = e.pageY || e.changedTouches[0].clientY;
       if (x > -1 && y > -1) {
         const item = getItemAt(x, y);
         if (item && item.childNodes.length) {

@@ -18091,7 +18091,7 @@ __metadata:
     slash: 3.0.0
     source-map-loader: 4.0.0
     styled-components: 5.3.5
-    styled-components-theme-connector: 0.1.7
+    styled-components-theme-connector: 0.1.8
     stylelint: 14.11.0
     stylelint-config-standard-scss: 5.0.0
     stylelint-config-styled-components: 0.1.1
@@ -19963,16 +19963,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"styled-components-theme-connector@npm:0.1.7":
-  version: 0.1.7
-  resolution: "styled-components-theme-connector@npm:0.1.7"
+"styled-components-theme-connector@npm:0.1.8":
+  version: 0.1.8
+  resolution: "styled-components-theme-connector@npm:0.1.8"
   dependencies:
     lodash: 4.17.21
   peerDependencies:
-    react: ^17.0.2
-    react-dom: ^17.0.2
+    react: ^17.0.2 || ^18.0.0
+    react-dom: ^17.0.2 || ^18.0.0
     styled-components: ^5.2.5
-  checksum: d15adec7c6637e2efbb033ae1936cffed16b572695605f2cb93e7204003ee5a256ea39ca6f49d9fccf839af406722eac25821cc7749ccdaa7ef4362eb168bf04
+  checksum: 828bbf2e3000875515bf231dd1264da5ee53564e43fa5c6e61af2fb6e458251251ff2ebaead5ef1c31000a7174b29b91832430e49a9a03d3b3c9ac12e509cb67
   languageName: node
   linkType: hard
 
