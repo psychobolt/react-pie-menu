@@ -115,7 +115,7 @@ You can add custom attributes by specifying in `attrs`. For example, `{ resize: 
 You can define your own center by importing the Component. For example:
 
 ```js
-import { PieCenter } from 'react-pie-menu';
+import { PieMenu } from 'react-pie-menu';
 
 export default props => (
   <PieMenu centerRadius={props.centerRadius || '30px'}>

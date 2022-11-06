@@ -1,11 +1,11 @@
 // @flow
-type ThemeContextSelector<T> = ({ theme: { context: { [string]: T } } }) => T;
+export type ThemeContextSelector<T> = ({ theme: { context: { [string]: T } } }) => T;
 
-const context = (key: string) => (({ theme }) => theme.context[key]: ThemeContextSelector<any>);
+const context: (string => ThemeContextSelector<any>) = key => ({ theme }) => theme.context[key];
 
-export const radius = (context('radius'): ThemeContextSelector<number>);
-export const centerRadius = (context('centerRadius'): ThemeContextSelector<number>);
-export const centralAngle = (context('centralAngle'): ThemeContextSelector<number>);
-export const polar = (context('polar'): ThemeContextSelector<boolean>);
-export const ifObtuse = (value: any, _default: any): any => props => (context('centralAngle')(props) > 90
+export const radius: ThemeContextSelector<number> = context('radius');
+export const centerRadius: ThemeContextSelector<number> = context('centerRadius');
+export const centralAngle: ThemeContextSelector<number> = context('centralAngle');
+export const polar: ThemeContextSelector<boolean> = context('polar');
+export const ifObtuse: ((any, any) => any) = (value, _default) => props => (context('centralAngle')(props) > 90
   ? value : _default);

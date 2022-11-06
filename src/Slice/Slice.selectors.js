@@ -1,5 +1,8 @@
-const context = key => ({ theme }) => theme.context?.[key];
+// @flow
+import type { ThemeContextSelector } from '../PieMenu.selectors.js';
 
-export const startAngle = context('startAngle');
-export const endAngle = context('endAngle');
-export const skew = context('skew');
+const context: (string => ThemeContextSelector<any>) = key => ({ theme }) => theme.context[key];
+
+export const startAngle: ThemeContextSelector<number> = context('startAngle');
+export const endAngle: ThemeContextSelector<number> = context('endAngle');
+export const skew: ThemeContextSelector<number> = context('skew');
