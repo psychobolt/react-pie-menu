@@ -14,14 +14,11 @@ export const PieCenter = (connectTheme('pieMenu.center')('div'): React.Component
 const inputMoveEvents = ['touchmove', 'mousemove'];
 const selectEvents = ['mouseup', 'touchend'];
 
-const bindEvents = (events: string[], listener: EventListener) => events
-  // $FlowFixMe[speculation-ambiguous]
+const bindEvents = (events: string[], listener: any) => events
   .forEach(event => document
-    // $FlowFixMe[incompatible-call]
     .addEventListener(event, listener, { pasive: false, cancelable: true, capture: true }));
 
-const unbindEvents = (events: string[], listener: EventListener) => events
-  // $FlowFixMe[speculation-ambiguous]
+const unbindEvents = (events: string[], listener: any) => events
   .forEach(event => document.removeEventListener(event, listener));
 
 type Metadata = {
@@ -31,7 +28,7 @@ type Metadata = {
 };
 
 export type Props = {
-  slices: { itemId: string, slice: React.Node[] }[],
+  slices: { itemId: string, slice: React.Element<any> }[],
   startOffsetAngle?: number,
   polar: boolean,
   Center?: React.ComponentType<any>,
@@ -79,11 +76,11 @@ const PieMenu = ({
   };
 
   React.useEffect(() => {
-    const captureActiveSlice = rafSchedule(e => {
+    const captureActiveSlice = rafSchedule((e: MouseEvent & TouchEvent) => {
       if (!ref.current) return;
-      const x = (e.pageX !== undefined ? e.pageX : (e: TouchEvent).touches[0].clientX)
+      const x = (e.pageX !== undefined ? e.pageX : e.touches[0].clientX)
         - window.pageXOffset;
-      const y = (e.pageY !== undefined ? e.pageY : (e: TouchEvent).touches[0].clientY)
+      const y = (e.pageY !== undefined ? e.pageY : e.touches[0].clientY)
         - window.pageYOffset;
       if (x > -1 && y > -1) {
         const item = getItemAt(x, y);
@@ -94,7 +91,7 @@ const PieMenu = ({
         setActiveSlice(null);
       }
     });
-    const selectActiveSlice = (e: TouchEvent) => {
+    const selectActiveSlice = (e: MouseEvent & TouchEvent) => {
       if (!ref.current) return;
       const x = e.pageX || e.changedTouches[0].clientX;
       const y = e.pageY || e.changedTouches[0].clientY;
