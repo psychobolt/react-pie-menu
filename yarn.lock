@@ -11984,12 +11984,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"flow-bin@npm:0.176.3":
-  version: 0.176.3
-  resolution: "flow-bin@npm:0.176.3"
+"flow-bin@npm:0.183.0":
+  version: 0.183.0
+  resolution: "flow-bin@npm:0.183.0"
   bin:
     flow: cli.js
-  checksum: 00b9ca55f245d6d73e57459fddd4ef832af7205dbe94e4af00ef21c39a832503cb98221bfd3acf65abe5fb4acb09993ffdef02d4e96433ba14be09dc5b464b9b
+  checksum: b9e0792ee425b12cbd9900db1bb7391f4e32d0812655f8018b14d1b060a359fe84e140d86a253ba1a80817e0e78fff42ea6b29849ee807b793ba6c04444ff171
   languageName: node
   linkType: hard
 
@@ -18054,7 +18054,7 @@ __metadata:
     eslint-plugin-react-hooks: 4.6.0
     eslint-plugin-storybook: 0.6.4
     execa: 6.1.0
-    flow-bin: 0.176.3
+    flow-bin: 0.183.0
     flow-typed: 3.8.0
     glob: 7.2.3
     http-server: 14.1.1
@@ -18083,7 +18083,7 @@ __metadata:
     slash: 3.0.0
     source-map-loader: 4.0.0
     styled-components: 5.3.5
-    styled-components-theme-connector: 0.1.7
+    styled-components-theme-connector: 0.1.8
     stylelint: 14.11.0
     stylelint-config-standard-scss: 5.0.0
     stylelint-config-styled-components: 0.1.1
@@ -19955,16 +19955,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"styled-components-theme-connector@npm:0.1.7":
-  version: 0.1.7
-  resolution: "styled-components-theme-connector@npm:0.1.7"
+"styled-components-theme-connector@npm:0.1.8":
+  version: 0.1.8
+  resolution: "styled-components-theme-connector@npm:0.1.8"
   dependencies:
     lodash: 4.17.21
   peerDependencies:
-    react: ^17.0.2
-    react-dom: ^17.0.2
+    react: ^17.0.2 || ^18.0.0
+    react-dom: ^17.0.2 || ^18.0.0
     styled-components: ^5.2.5
-  checksum: d15adec7c6637e2efbb033ae1936cffed16b572695605f2cb93e7204003ee5a256ea39ca6f49d9fccf839af406722eac25821cc7749ccdaa7ef4362eb168bf04
+  checksum: 828bbf2e3000875515bf231dd1264da5ee53564e43fa5c6e61af2fb6e458251251ff2ebaead5ef1c31000a7174b29b91832430e49a9a03d3b3c9ac12e509cb67
   languageName: node
   linkType: hard
 

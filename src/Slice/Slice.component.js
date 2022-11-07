@@ -46,7 +46,7 @@ const Slice = ({
   attrs = {},
 }: Props) => {
   const { context: { active } } = React.useContext(ThemeContext);
-  const getCallback = callback => (active ? callback : undefined);
+  const getCallback = (callback: Callback) => (active ? callback : undefined);
   return (
     <Component
       {...attrs}

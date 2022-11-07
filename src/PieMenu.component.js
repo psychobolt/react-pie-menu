@@ -14,14 +14,11 @@ export const PieCenter = (connectTheme('pieMenu.center')('div'): React.Component
 const inputMoveEvents = ['touchmove', 'mousemove'];
 const selectEvents = ['mouseup', 'touchend'];
 
-const bindEvents = (events, listener) => events
-  // $FlowFixMe[speculation-ambiguous]
+const bindEvents = (events: string[], listener: any) => events
   .forEach(event => document
-    // $FlowFixMe[incompatible-call]
     .addEventListener(event, listener, { pasive: false, cancelable: true, capture: true }));
 
-const unbindEvents = (events, listener) => events
-  // $FlowFixMe[speculation-ambiguous]
+const unbindEvents = (events: string[], listener: any) => events
   .forEach(event => document.removeEventListener(event, listener));
 
 type Metadata = {
@@ -32,7 +29,7 @@ type Metadata = {
 
 export type Props = {
   containerId: string,
-  slices: { itemId: string, slice: React.Node[] }[],
+  slices: { itemId: string, slice: React.Element<any> }[],
   startOffsetAngle?: number,
   polar: boolean,
   Center?: React.ComponentType<any>,
@@ -69,7 +66,7 @@ const PieMenu = ({
     return centerArea <= distance && distance <= pieArea;
   };
 
-  const getItemAt = (x, y) => {
+  const getItemAt = (x: number, y: number) => {
     if (!isInsidePie(x, y)) return null;
     const elements = document.elementsFromPoint(x, y);
     for (let i = 0; i < elements.length; i += 1) {
@@ -81,11 +78,11 @@ const PieMenu = ({
   };
 
   React.useEffect(() => {
-    const captureActiveSlice = rafSchedule(e => {
+    const captureActiveSlice = rafSchedule((e: MouseEvent & TouchEvent) => {
       if (!ref.current) return;
-      const x = (e.pageX !== undefined ? e.pageX : (e: TouchEvent).touches[0].clientX)
+      const x = (e.pageX !== undefined ? e.pageX : e.touches[0].clientX)
         - window.pageXOffset;
-      const y = (e.pageY !== undefined ? e.pageY : (e: TouchEvent).touches[0].clientY)
+      const y = (e.pageY !== undefined ? e.pageY : e.touches[0].clientY)
         - window.pageYOffset;
       if (x > -1 && y > -1) {
         const item = getItemAt(x, y);
@@ -96,10 +93,10 @@ const PieMenu = ({
         setActiveSlice(null);
       }
     });
-    const selectActiveSlice = e => {
+    const selectActiveSlice = (e: MouseEvent & TouchEvent) => {
       if (!ref.current) return;
-      const x = e.pageX || (e: TouchEvent).changedTouches[0].clientX;
-      const y = e.pageY || (e: TouchEvent).changedTouches[0].clientY;
+      const x = e.pageX || e.changedTouches[0].clientX;
+      const y = e.pageY || e.changedTouches[0].clientY;
       if (x > -1 && y > -1) {
         const item = getItemAt(x, y);
         if (item && item.childNodes.length) {
