@@ -1,5 +1,6 @@
 // @flow
 import * as React from 'react';
+import _ from 'lodash';
 import { ThemeContext } from 'styled-components';
 import { connectTheme } from 'styled-components-theme-connector';
 
@@ -46,7 +47,9 @@ const Slice = ({
   attrs = {},
 }: Props) => {
   const { context: { active } } = React.useContext(ThemeContext);
-  const getCallback = (callback: Callback) => (active ? callback : undefined);
+  const getCallback = (callback?: Callback) => (
+    active && callback ? _.debounce(callback) : undefined
+  );
   return (
     <Component
       {...attrs}
