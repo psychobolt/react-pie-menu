@@ -130,7 +130,7 @@
     "jest": "27.5.1",
     "jest-cli": "27.5.1",
     "jest-specific-snapshot": "5.0.0",
-    "jest-styled-components": "7.1.0",
+    "jest-styled-components": "7.1.1",
     "lodash": "4.17.21",
     "micromatch": "4.0.5",
     "postcss": "8.4.16",
