@@ -1,6 +1,6 @@
 {
   "name": "react-pie-menu",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-alpha.4",
   "description": "A configurable radial context menu for React",
   "type": "module",
   "module": "./dist/index.prod.js",
