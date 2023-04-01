@@ -94,7 +94,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["babel-plugin-named-exports-order", "npm:0.0.2"],\
             ["babel-plugin-styled-components", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:2.0.7"],\
             ["cash-true", "npm:0.0.2"],\
-            ["concurrently", "npm:7.3.0"],\
+            ["concurrently", "npm:7.6.0"],\
             ["cross-env", "npm:7.0.3"],\
             ["eslint", "npm:8.14.0"],\
             ["eslint-config-airbnb", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:19.0.4"],\
@@ -14974,12 +14974,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["concurrently", [\
-        ["npm:7.3.0", {\
-          "packageLocation": "./.yarn/cache/concurrently-npm-7.3.0-0123c57666-5de845e494.zip/node_modules/concurrently/",\
+        ["npm:7.6.0", {\
+          "packageLocation": "./.yarn/cache/concurrently-npm-7.6.0-2eabc58c36-f705c9a796.zip/node_modules/concurrently/",\
           "packageDependencies": [\
-            ["concurrently", "npm:7.3.0"],\
+            ["concurrently", "npm:7.6.0"],\
             ["chalk", "npm:4.1.2"],\
-            ["date-fns", "npm:2.28.0"],\
+            ["date-fns", "npm:2.29.3"],\
             ["lodash", "npm:4.17.21"],\
             ["rxjs", "npm:7.5.5"],\
             ["shell-quote", "npm:1.7.3"],\
@@ -15567,10 +15567,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["date-fns", [\
-        ["npm:2.28.0", {\
-          "packageLocation": "./.yarn/cache/date-fns-npm-2.28.0-c19c5add1b-a0516b2e4f.zip/node_modules/date-fns/",\
+        ["npm:2.29.3", {\
+          "packageLocation": "./.yarn/cache/date-fns-npm-2.29.3-fef7e3c72c-e01cf5b62a.zip/node_modules/date-fns/",\
           "packageDependencies": [\
-            ["date-fns", "npm:2.28.0"]\
+            ["date-fns", "npm:2.29.3"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -24881,7 +24881,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["babel-plugin-named-exports-order", "npm:0.0.2"],\
             ["babel-plugin-styled-components", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:2.0.7"],\
             ["cash-true", "npm:0.0.2"],\
-            ["concurrently", "npm:7.3.0"],\
+            ["concurrently", "npm:7.6.0"],\
             ["cross-env", "npm:7.0.3"],\
             ["eslint", "npm:8.14.0"],\
             ["eslint-config-airbnb", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:19.0.4"],\
