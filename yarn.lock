@@ -12713,6 +12713,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fs-extra@npm:10.1.0":
+  version: 10.1.0
+  resolution: "fs-extra@npm:10.1.0"
+  dependencies:
+    graceful-fs: ^4.2.0
+    jsonfile: ^6.0.1
+    universalify: ^2.0.0
+  checksum: dc94ab37096f813cc3ca12f0f1b5ad6744dfed9ed21e953d72530d103cea193c2f81584a39e9dee1bea36de5ee66805678c0dddc048e8af1427ac19c00fffc50
+  languageName: node
+  linkType: hard
+
 "fs-extra@npm:^0.30.0":
   version: 0.30.0
   resolution: "fs-extra@npm:0.30.0"
@@ -18829,7 +18840,7 @@ __metadata:
     stylelint-config-standard-scss: 5.0.0
     stylelint-config-styled-components: 0.1.1
     stylelint-processor-styled-components: "https://github.com/psychobolt/stylelint-processor-styled-components"
-    symlink-dir: 5.0.1
+    symlink-dir: 5.1.1
     to-px: 1.1.0
     webpack: 5.74.0
     yargs: 17.5.1
@@ -19317,12 +19328,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rename-overwrite@npm:^4.0.0":
-  version: 4.0.2
-  resolution: "rename-overwrite@npm:4.0.2"
+"rename-overwrite@npm:^4.0.3":
+  version: 4.0.3
+  resolution: "rename-overwrite@npm:4.0.3"
   dependencies:
     "@zkochan/rimraf": ^2.1.2
-  checksum: 9a6466a1b6c24b6452757c3295d7223183c561706b46e6a2b02908c2b4404158de57971ce8ad6ca6d5301ef69cac99b60750d1c01d86f60b94e2eef3682b718a
+    fs-extra: 10.1.0
+  checksum: ac225a1b2e05ed3c2c15c235f3ed2bb93474d9fb037c401a6a68dc64f7e7439847110e907ed09096fe3db253212f4379e350c89c03d8bfbda22e97a0d5c12a22
   languageName: node
   linkType: hard
 
@@ -21054,15 +21066,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"symlink-dir@npm:5.0.1":
-  version: 5.0.1
-  resolution: "symlink-dir@npm:5.0.1"
+"symlink-dir@npm:5.1.1":
+  version: 5.1.1
+  resolution: "symlink-dir@npm:5.1.1"
   dependencies:
     better-path-resolve: ^1.0.0
-    rename-overwrite: ^4.0.0
+    rename-overwrite: ^4.0.3
   bin:
     symlink-dir: dist/cli.js
-  checksum: 73694291cb357c07eb60241d509c6faa2350a4bccfa5b5278101d3d7b7bfa9ad7a3884ada5d11920aece59a1af4e43ba99c4c1bad845c2901f7bcf0a0bea9e32
+  checksum: 9cff2d5dfaeac8d12d7154e194c3c4cac85d6779a5f9050b4bb4a8b4254de40a508e0b7d371657c2db3ada4bbec7e9e71085b660ca075da52ea9be92ed75e375
   languageName: node
   linkType: hard
 
