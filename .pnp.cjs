@@ -142,7 +142,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["symlink-dir", "npm:5.1.1"],\
             ["to-px", "npm:1.1.0"],\
             ["webpack", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:5.77.0"],\
-            ["yargs", "npm:17.7.1"]\
+            ["yargs", "npm:17.7.2"]\
           ],\
           "linkType": "SOFT"\
         }]\
@@ -25340,7 +25340,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["symlink-dir", "npm:5.1.1"],\
             ["to-px", "npm:1.1.0"],\
             ["webpack", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:5.77.0"],\
-            ["yargs", "npm:17.7.1"]\
+            ["yargs", "npm:17.7.2"]\
           ],\
           "linkType": "SOFT"\
         }]\
@@ -30043,10 +30043,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "HARD"\
         }],\
-        ["npm:17.7.1", {\
-          "packageLocation": "./.yarn/cache/yargs-npm-17.7.1-0758ec0e50-3d8a43c336.zip/node_modules/yargs/",\
+        ["npm:17.7.2", {\
+          "packageLocation": "./.yarn/cache/yargs-npm-17.7.2-80b62638e1-73b572e863.zip/node_modules/yargs/",\
           "packageDependencies": [\
-            ["yargs", "npm:17.7.1"],\
+            ["yargs", "npm:17.7.2"],\
             ["cliui", "npm:8.0.1"],\
             ["escalade", "npm:3.1.1"],\
             ["get-caller-file", "npm:2.0.5"],\
