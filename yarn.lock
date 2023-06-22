@@ -4740,14 +4740,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addon-console@npm:1.2.3":
-  version: 1.2.3
-  resolution: "@storybook/addon-console@npm:1.2.3"
+"@storybook/addon-console@npm:2.0.0":
+  version: 2.0.0
+  resolution: "@storybook/addon-console@npm:2.0.0"
   dependencies:
-    global: ^4.3.2
+    "@storybook/global": ^5.0.0
   peerDependencies:
     "@storybook/addon-actions": "*"
-  checksum: 6c899dcb52185da526d8b98d0b7e7aaaeaeb053d4c805b499b73fa4f5a74b410da294970448a26880447f1a21f5b0563a1cd87e640200a3d714639675dccb382
+  checksum: 0cd9d976369d792dec94ada492ec34aa9cb1c58604b07af4cfe846feef145736ae7518a5f53bb0008238ee0bd25c645891b94b4d7a12c42ad3c2ef42e4ea8917
   languageName: node
   linkType: hard
 
@@ -13238,7 +13238,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"global@npm:^4.3.2, global@npm:^4.4.0":
+"global@npm:^4.4.0":
   version: 4.4.0
   resolution: "global@npm:4.4.0"
   dependencies:
@@ -18898,7 +18898,7 @@ __metadata:
     "@rollup/plugin-node-resolve": 15.1.0
     "@rollup/plugin-replace": 5.0.2
     "@storybook/addon-actions": 6.5.16
-    "@storybook/addon-console": 1.2.3
+    "@storybook/addon-console": 2.0.0
     "@storybook/addon-docs": 6.5.16
     "@storybook/addon-essentials": 6.5.16
     "@storybook/addon-interactions": 6.5.16
