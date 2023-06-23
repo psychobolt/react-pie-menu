@@ -85,7 +85,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["babel-plugin-add-module-exports", "npm:1.0.4"],\
             ["babel-plugin-dynamic-import-node", "npm:2.3.3"],\
             ["babel-plugin-lodash", "npm:3.3.4"],\
-            ["babel-plugin-module-resolver", "npm:4.1.0"],\
+            ["babel-plugin-module-resolver", "npm:5.0.0"],\
             ["babel-plugin-named-exports-order", "npm:0.0.2"],\
             ["babel-plugin-styled-components", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:2.1.3"],\
             ["cash-true", "npm:0.0.2"],\
@@ -13230,14 +13230,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["babel-plugin-module-resolver", [\
-        ["npm:4.1.0", {\
-          "packageLocation": "./.yarn/cache/babel-plugin-module-resolver-npm-4.1.0-0510da8f92-3907fba21c.zip/node_modules/babel-plugin-module-resolver/",\
+        ["npm:5.0.0", {\
+          "packageLocation": "./.yarn/cache/babel-plugin-module-resolver-npm-5.0.0-67eb48a53b-d6880e49fc.zip/node_modules/babel-plugin-module-resolver/",\
           "packageDependencies": [\
-            ["babel-plugin-module-resolver", "npm:4.1.0"],\
-            ["find-babel-config", "npm:1.2.0"],\
-            ["glob", "npm:7.2.0"],\
+            ["babel-plugin-module-resolver", "npm:5.0.0"],\
+            ["find-babel-config", "npm:2.0.0"],\
+            ["glob", "npm:8.1.0"],\
             ["pkg-up", "npm:3.1.0"],\
-            ["reselect", "npm:4.1.5"],\
+            ["reselect", "npm:4.1.8"],\
             ["resolve", "patch:resolve@npm%3A1.22.1#~builtin<compat/resolve>::version=1.22.1&hash=c3c19d"]\
           ],\
           "linkType": "HARD"\
@@ -18040,12 +18040,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["find-babel-config", [\
-        ["npm:1.2.0", {\
-          "packageLocation": "./.yarn/cache/find-babel-config-npm-1.2.0-428bef14f2-0a1785d3da.zip/node_modules/find-babel-config/",\
+        ["npm:2.0.0", {\
+          "packageLocation": "./.yarn/cache/find-babel-config-npm-2.0.0-fc8c84f53e-d110308b02.zip/node_modules/find-babel-config/",\
           "packageDependencies": [\
-            ["find-babel-config", "npm:1.2.0"],\
-            ["json5", "npm:0.5.1"],\
-            ["path-exists", "npm:3.0.0"]\
+            ["find-babel-config", "npm:2.0.0"],\
+            ["json5", "npm:2.2.3"],\
+            ["path-exists", "npm:4.0.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -21630,13 +21630,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["json5", [\
-        ["npm:0.5.1", {\
-          "packageLocation": "./.yarn/cache/json5-npm-0.5.1-dad9a6cdb1-9b85bf0695.zip/node_modules/json5/",\
-          "packageDependencies": [\
-            ["json5", "npm:0.5.1"]\
-          ],\
-          "linkType": "HARD"\
-        }],\
         ["npm:1.0.1", {\
           "packageLocation": "./.yarn/cache/json5-npm-1.0.1-647fc8794b-e76ea23dbb.zip/node_modules/json5/",\
           "packageDependencies": [\
@@ -25317,7 +25310,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["babel-plugin-add-module-exports", "npm:1.0.4"],\
             ["babel-plugin-dynamic-import-node", "npm:2.3.3"],\
             ["babel-plugin-lodash", "npm:3.3.4"],\
-            ["babel-plugin-module-resolver", "npm:4.1.0"],\
+            ["babel-plugin-module-resolver", "npm:5.0.0"],\
             ["babel-plugin-named-exports-order", "npm:0.0.2"],\
             ["babel-plugin-styled-components", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:2.1.3"],\
             ["cash-true", "npm:0.0.2"],\
@@ -25989,10 +25982,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["reselect", [\
-        ["npm:4.1.5", {\
-          "packageLocation": "./.yarn/cache/reselect-npm-4.1.5-bc046e41ae-54c13c1e79.zip/node_modules/reselect/",\
+        ["npm:4.1.8", {\
+          "packageLocation": "./.yarn/cache/reselect-npm-4.1.8-cad5f0a3f3-a4ac87ceda.zip/node_modules/reselect/",\
           "packageDependencies": [\
-            ["reselect", "npm:4.1.5"]\
+            ["reselect", "npm:4.1.8"]\
           ],\
           "linkType": "HARD"\
         }]\
