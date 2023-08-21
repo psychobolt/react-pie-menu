@@ -4890,9 +4890,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rollup/plugin-commonjs@npm:25.0.2":
-  version: 25.0.2
-  resolution: "@rollup/plugin-commonjs@npm:25.0.2"
+"@rollup/plugin-commonjs@npm:25.0.4":
+  version: 25.0.4
+  resolution: "@rollup/plugin-commonjs@npm:25.0.4"
   dependencies:
     "@rollup/pluginutils": ^5.0.1
     commondir: ^1.0.1
@@ -4905,7 +4905,7 @@ __metadata:
   peerDependenciesMeta:
     rollup:
       optional: true
-  checksum: d8c4e22d264c5b9286f697653c2f9288149c0fe0169d49b83b5dc8b542f96cc0b9113da3f30d241f2f277513fbf3f8c207d95def5559eb3800190f1872add794
+  checksum: 073b92b765a1f8ab8db8e1aa216c1950e62f6c0c41210d10bb7530c4fc63670a16c19c0bbbf73e2752467c4468ad4c8134cf4724924388c3eed83df45630fda6
   languageName: node
   linkType: hard
 
@@ -19496,7 +19496,7 @@ __metadata:
     "@mdx-js/react": 1.6.22
     "@rollup/plugin-alias": 5.0.0
     "@rollup/plugin-babel": 6.0.3
-    "@rollup/plugin-commonjs": 25.0.2
+    "@rollup/plugin-commonjs": 25.0.4
     "@rollup/plugin-node-resolve": 15.1.0
     "@rollup/plugin-replace": 5.0.2
     "@storybook/addon-actions": 6.5.16
