@@ -158,7 +158,7 @@
     "stylelint-processor-styled-components": "https://github.com/psychobolt/stylelint-processor-styled-components",
     "symlink-dir": "5.1.1",
     "to-px": "1.1.0",
-    "webpack": "5.88.0",
+    "webpack": "5.88.2",
     "yargs": "17.7.2"
   },
   "peerDependencies": {
