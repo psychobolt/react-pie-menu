@@ -12980,9 +12980,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"flow-typed@npm:3.8.0":
-  version: 3.8.0
-  resolution: "flow-typed@npm:3.8.0"
+"flow-typed@npm:3.9.0":
+  version: 3.9.0
+  resolution: "flow-typed@npm:3.9.0"
   dependencies:
     "@octokit/rest": ^18.12.0
     colors: 1.4.0
@@ -12995,13 +12995,13 @@ __metadata:
     node-stream-zip: ^1.15.0
     prettier: ^1.19.1
     rimraf: ^3.0.2
-    semver: 7.3.2
+    semver: ^7.5.4
     table: ^6.7.3
     which: ^2.0.2
     yargs: ^15.1.0
   bin:
     flow-typed: dist/cli.js
-  checksum: f3b93888434b5b55613fcf13ede49c62c5541d70fdb06343ffe2f438b14e8aa34b5778df266679cf842efa1be8ebc75ca75f63a559e6cc7bc25eb5a337763b90
+  checksum: ec410b9dc1f979c3feee92258f9d5fc6087529991e4be0f4f8dd8e2af95d2903927f4bd37e032f9c50f3f21224bff08f8fb73dc5d3b7fd9ec4fcf43b75d42e08
   languageName: node
   linkType: hard
 
@@ -19615,7 +19615,7 @@ __metadata:
     eslint-plugin-storybook: 0.6.13
     execa: 7.2.0
     flow-bin: 0.183.0
-    flow-typed: 3.8.0
+    flow-typed: 3.9.0
     glob: 7.2.3
     http-server: 14.1.1
     is-class: 0.0.9
@@ -20753,15 +20753,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semver@npm:7.3.2":
-  version: 7.3.2
-  resolution: "semver@npm:7.3.2"
-  bin:
-    semver: bin/semver.js
-  checksum: 692f4900dadb43919614b0df9af23fe05743051cda0d1735b5e4d76f93c9e43a266fae73cfc928f5d1489f022c5c0e65dfd2900fcf5b1839c4e9a239729afa7b
-  languageName: node
-  linkType: hard
-
 "semver@npm:^5.7.2":
   version: 5.7.2
   resolution: "semver@npm:5.7.2"
@@ -20797,6 +20788,17 @@ __metadata:
   bin:
     semver: bin/semver.js
   checksum: 2fa3e877568cd6ce769c75c211beaed1f9fce80b28338cadd9d0b6c40f2e2862bafd62c19a6cff42f3d54292b7c623277bcab8816a2b5521cf15210d43e75232
+  languageName: node
+  linkType: hard
+
+"semver@npm:^7.5.4":
+  version: 7.5.4
+  resolution: "semver@npm:7.5.4"
+  dependencies:
+    lru-cache: ^6.0.0
+  bin:
+    semver: bin/semver.js
+  checksum: 12d8ad952fa353b0995bf180cdac205a4068b759a140e5d3c608317098b3575ac2f1e09182206bf2eb26120e1c0ed8fb92c48c592f6099680de56bb071423ca3
   languageName: node
   linkType: hard
 

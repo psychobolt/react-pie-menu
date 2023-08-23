@@ -106,7 +106,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-storybook", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:0.6.13"],\
             ["execa", "npm:7.2.0"],\
             ["flow-bin", "npm:0.183.0"],\
-            ["flow-typed", "npm:3.8.0"],\
+            ["flow-typed", "npm:3.9.0"],\
             ["glob", "npm:7.2.3"],\
             ["http-server", "npm:14.1.1"],\
             ["is-class", "npm:0.0.9"],\
@@ -18726,10 +18726,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["flow-typed", [\
-        ["npm:3.8.0", {\
-          "packageLocation": "./.yarn/cache/flow-typed-npm-3.8.0-d3e308fc70-f3b9388843.zip/node_modules/flow-typed/",\
+        ["npm:3.9.0", {\
+          "packageLocation": "./.yarn/cache/flow-typed-npm-3.9.0-0e7c1d2ff7-ec410b9dc1.zip/node_modules/flow-typed/",\
           "packageDependencies": [\
-            ["flow-typed", "npm:3.8.0"],\
+            ["flow-typed", "npm:3.9.0"],\
             ["@octokit/rest", "npm:18.12.0"],\
             ["colors", "npm:1.4.0"],\
             ["flowgen", "npm:1.19.0"],\
@@ -18741,7 +18741,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["node-stream-zip", "npm:1.15.0"],\
             ["prettier", "npm:1.19.1"],\
             ["rimraf", "npm:3.0.2"],\
-            ["semver", "npm:7.3.2"],\
+            ["semver", "npm:7.5.4"],\
             ["table", "npm:6.8.0"],\
             ["which", "npm:2.0.2"],\
             ["yargs", "npm:15.4.1"]\
@@ -26203,7 +26203,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-storybook", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:0.6.13"],\
             ["execa", "npm:7.2.0"],\
             ["flow-bin", "npm:0.183.0"],\
-            ["flow-typed", "npm:3.8.0"],\
+            ["flow-typed", "npm:3.9.0"],\
             ["glob", "npm:7.2.3"],\
             ["http-server", "npm:14.1.1"],\
             ["is-class", "npm:0.0.9"],\
@@ -27393,17 +27393,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "HARD"\
         }],\
-        ["npm:7.3.2", {\
-          "packageLocation": "./.yarn/cache/semver-npm-7.3.2-161b023bbb-692f4900da.zip/node_modules/semver/",\
-          "packageDependencies": [\
-            ["semver", "npm:7.3.2"]\
-          ],\
-          "linkType": "HARD"\
-        }],\
         ["npm:7.3.7", {\
           "packageLocation": "./.yarn/cache/semver-npm-7.3.7-3bfe704194-2fa3e87756.zip/node_modules/semver/",\
           "packageDependencies": [\
             ["semver", "npm:7.3.7"],\
+            ["lru-cache", "npm:6.0.0"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:7.5.4", {\
+          "packageLocation": "./.yarn/cache/semver-npm-7.5.4-c4ad957fcd-12d8ad952f.zip/node_modules/semver/",\
+          "packageDependencies": [\
+            ["semver", "npm:7.5.4"],\
             ["lru-cache", "npm:6.0.0"]\
           ],\
           "linkType": "HARD"\
