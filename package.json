@@ -148,7 +148,7 @@
     "rollup-plugin-flow-entry": "0.3.6",
     "rollup-plugin-mjs-entry": "0.1.1",
     "rollup-plugin-terser": "7.0.2",
-    "slash": "3.0.0",
+    "slash": "5.1.0",
     "source-map-loader": "4.0.1",
     "styled-components": "5.3.11",
     "styled-components-theme-connector": "0.1.8",
