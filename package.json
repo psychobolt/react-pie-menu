@@ -108,7 +108,7 @@
     "cash-true": "0.0.2",
     "concurrently": "8.2.1",
     "cross-env": "7.0.3",
-    "eslint": "8.14.0",
+    "eslint": "8.57.0",
     "eslint-config-airbnb": "19.0.4",
     "eslint-config-react-app": "7.0.1",
     "eslint-import-resolver-alias": "1.1.2",
