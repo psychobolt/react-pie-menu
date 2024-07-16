@@ -4001,49 +4001,49 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fortawesome/fontawesome-common-types@npm:6.1.2":
-  version: 6.1.2
-  resolution: "@fortawesome/fontawesome-common-types@npm:6.1.2"
-  checksum: 16ba97f73256adef5cd680a027e6dbd3e76f34ba9227f7bd9e8c372cb4f337c7ccbf41f35dcfbc22b11320bbb579d01daccf1aa7ae47df5d0b17260c0097bb30
+"@fortawesome/fontawesome-common-types@npm:6.6.0":
+  version: 6.6.0
+  resolution: "@fortawesome/fontawesome-common-types@npm:6.6.0"
+  checksum: f8753e3ea603224df1b975059f6cea6168aac3c16d3e73d1a1a95c9a6d7550e3d843162f87946f746b6d8a7be7f8602c399c7e35356c9033d628ce23e83a819f
   languageName: node
   linkType: hard
 
-"@fortawesome/fontawesome-svg-core@npm:6.1.2":
-  version: 6.1.2
-  resolution: "@fortawesome/fontawesome-svg-core@npm:6.1.2"
+"@fortawesome/fontawesome-svg-core@npm:6.6.0":
+  version: 6.6.0
+  resolution: "@fortawesome/fontawesome-svg-core@npm:6.6.0"
   dependencies:
-    "@fortawesome/fontawesome-common-types": 6.1.2
-  checksum: bb82ed1e79ade9977746b4bb28ac0d03de7557e7c923446adec78cb3447740aca0859e91d6310007d758055a1b8f3a6f740915f04cac738931135c9bdbfe5d32
+    "@fortawesome/fontawesome-common-types": 6.6.0
+  checksum: 3eaf5d3a2f9d6b362a2d01889eadecb7fe3d86a5ba7c29b5d9653a00206d329aae78e18160d46009955fa80e40ab523a3b35032d45a52014ced15b9510c264c9
   languageName: node
   linkType: hard
 
-"@fortawesome/free-brands-svg-icons@npm:6.1.2":
-  version: 6.1.2
-  resolution: "@fortawesome/free-brands-svg-icons@npm:6.1.2"
+"@fortawesome/free-brands-svg-icons@npm:6.6.0":
+  version: 6.6.0
+  resolution: "@fortawesome/free-brands-svg-icons@npm:6.6.0"
   dependencies:
-    "@fortawesome/fontawesome-common-types": 6.1.2
-  checksum: 178b7f97bf64dcc1589bff74fc73cd0de32f002d585254e5dfb362d16c21011a77c61439dd507873d288f3c93de615cfc63235622968b037d8d8ded2d56f1d81
+    "@fortawesome/fontawesome-common-types": 6.6.0
+  checksum: f2bcddb9e88860e459d68bdcb0100a98f7e9fd56325bb66d4c7328b3e4191c67734bee0fea8fe739c51602e1a93e5418f7542279a9f38271cf1dc3a9f6e8e099
   languageName: node
   linkType: hard
 
-"@fortawesome/free-solid-svg-icons@npm:6.1.2":
-  version: 6.1.2
-  resolution: "@fortawesome/free-solid-svg-icons@npm:6.1.2"
+"@fortawesome/free-solid-svg-icons@npm:6.6.0":
+  version: 6.6.0
+  resolution: "@fortawesome/free-solid-svg-icons@npm:6.6.0"
   dependencies:
-    "@fortawesome/fontawesome-common-types": 6.1.2
-  checksum: b7258cd092304f9bd1e557cd3a59e9ff560165631b04f16785da14ce3148873fa8e688d62f95d68f668be32e1207c47a1fe556978ae7e9573a5b0fec09fc0f0c
+    "@fortawesome/fontawesome-common-types": 6.6.0
+  checksum: 145ae70fe0df253ed5e3330f88fde7236518700311d55019584f1633da67eef65e83838b948e5f4709d70beac3ba3c6b0b5ed58932127e69651b15e8d2e7ee7f
   languageName: node
   linkType: hard
 
-"@fortawesome/react-fontawesome@npm:0.2.0":
-  version: 0.2.0
-  resolution: "@fortawesome/react-fontawesome@npm:0.2.0"
+"@fortawesome/react-fontawesome@npm:0.2.2":
+  version: 0.2.2
+  resolution: "@fortawesome/react-fontawesome@npm:0.2.2"
   dependencies:
     prop-types: ^15.8.1
   peerDependencies:
     "@fortawesome/fontawesome-svg-core": ~1 || ~6
     react: ">=16.3"
-  checksum: f652a0c2172e7b209e2d9e7e511f9b8c17abad85f55e0bd09bb1175ea1927693215da47eb6cd95b1f3a23bd124368553c677907fa76cb17c5093afc1fcffe338
+  checksum: e4bed35bfb7fc88b5bcf2305d08ee1835b82fa7705945c4d310df33bb747b05ef07a33ac9db643c8870ca4f835228978290d84d82f2c6c6a70b9ab4c886731a6
   languageName: node
   linkType: hard
 
@@ -19735,10 +19735,10 @@ __metadata:
     "@babel/preset-flow": 7.21.4
     "@babel/preset-react": 7.18.6
     "@babel/template": 7.20.7
-    "@fortawesome/fontawesome-svg-core": 6.1.2
-    "@fortawesome/free-brands-svg-icons": 6.1.2
-    "@fortawesome/free-solid-svg-icons": 6.1.2
-    "@fortawesome/react-fontawesome": 0.2.0
+    "@fortawesome/fontawesome-svg-core": 6.6.0
+    "@fortawesome/free-brands-svg-icons": 6.6.0
+    "@fortawesome/free-solid-svg-icons": 6.6.0
+    "@fortawesome/react-fontawesome": 0.2.2
     "@mdx-js/react": 1.6.22
     "@rollup/plugin-alias": 5.0.0
     "@rollup/plugin-babel": 6.0.3
