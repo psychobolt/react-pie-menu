@@ -1190,18 +1190,10 @@ class ProxiedFS extends FakeFS {
     return this.baseFs.symlinkSync(mappedTarget, mappedP, type);
   }
   async readFilePromise(p, encoding) {
-    if (encoding === `utf8`) {
-      return this.baseFs.readFilePromise(this.fsMapToBase(p), encoding);
-    } else {
-      return this.baseFs.readFilePromise(this.fsMapToBase(p), encoding);
-    }
+    return this.baseFs.readFilePromise(this.fsMapToBase(p), encoding);
   }
   readFileSync(p, encoding) {
-    if (encoding === `utf8`) {
-      return this.baseFs.readFileSync(this.fsMapToBase(p), encoding);
-    } else {
-      return this.baseFs.readFileSync(this.fsMapToBase(p), encoding);
-    }
+    return this.baseFs.readFileSync(this.fsMapToBase(p), encoding);
   }
   async readdirPromise(p, opts) {
     return this.baseFs.readdirPromise(this.mapToBase(p), opts);
@@ -1333,6 +1325,9 @@ const HAS_CONSOLIDATED_HOOKS = major > 16 || major === 16 && minor >= 12;
 const HAS_UNFLAGGED_JSON_MODULES = major > 17 || major === 17 && minor >= 5 || major === 16 && minor >= 15;
 const HAS_JSON_IMPORT_ASSERTION_REQUIREMENT = major > 17 || major === 17 && minor >= 1 || major === 16 && minor > 14;
 const WATCH_MODE_MESSAGE_USES_ARRAYS = major > 19 || major === 19 && minor >= 2 || major === 18 && minor >= 13;
+const HAS_LAZY_LOADED_TRANSLATORS = major === 20 && minor < 6 || major === 19 && minor >= 3;
+const SUPPORTS_IMPORT_ATTRIBUTES = major >= 21 || major === 20 && minor >= 10 || major === 18 && minor >= 20;
+const SUPPORTS_IMPORT_ATTRIBUTES_ONLY = major >= 22;
 
 const builtinModules = new Set(Module.builtinModules || Object.keys(process.binding(`natives`)));
 const isBuiltinModule = (request) => request.startsWith(`node:`) || builtinModules.has(request);
@@ -1445,7 +1440,7 @@ async function getSource$1(urlString, context, defaultGetSource) {
 }
 
 async function load$1(urlString, context, nextLoad) {
-  var _a;
+  var _a, _b, _c;
   const url = tryParseURL(urlString);
   if ((url == null ? void 0 : url.protocol) !== `file:`)
     return nextLoad(urlString, context, nextLoad);
@@ -1453,10 +1448,21 @@ async function load$1(urlString, context, nextLoad) {
   const format = getFileFormat(filePath);
   if (!format)
     return nextLoad(urlString, context, nextLoad);
-  if (HAS_JSON_IMPORT_ASSERTION_REQUIREMENT && format === `json` && ((_a = context.importAssertions) == null ? void 0 : _a.type) !== `json`) {
-    const err = new TypeError(`[ERR_IMPORT_ASSERTION_TYPE_MISSING]: Module "${urlString}" needs an import assertion of type "json"`);
-    err.code = `ERR_IMPORT_ASSERTION_TYPE_MISSING`;
-    throw err;
+  if (HAS_JSON_IMPORT_ASSERTION_REQUIREMENT && format === `json`) {
+    if (SUPPORTS_IMPORT_ATTRIBUTES_ONLY) {
+      if (((_a = context.importAttributes) == null ? void 0 : _a.type) !== `json`) {
+        const err = new TypeError(`[ERR_IMPORT_ATTRIBUTE_MISSING]: Module "${urlString}" needs an import attribute of "type: json"`);
+        err.code = `ERR_IMPORT_ATTRIBUTE_MISSING`;
+        throw err;
+      }
+    } else {
+      const type = `importAttributes` in context ? (_b = context.importAttributes) == null ? void 0 : _b.type : (_c = context.importAssertions) == null ? void 0 : _c.type;
+      if (type !== `json`) {
+        const err = new TypeError(`[ERR_IMPORT_ASSERTION_TYPE_MISSING]: Module "${urlString}" needs an import ${SUPPORTS_IMPORT_ATTRIBUTES ? `attribute` : `assertion`} of type "json"`);
+        err.code = `ERR_IMPORT_ASSERTION_TYPE_MISSING`;
+        throw err;
+      }
+    }
   }
   if (process.env.WATCH_REPORT_DEPENDENCIES && process.send) {
     const pathToSend = pathToFileURL(
@@ -1470,7 +1476,7 @@ async function load$1(urlString, context, nextLoad) {
   }
   return {
     format,
-    source: await fs.promises.readFile(filePath, `utf8`),
+    source: format === `commonjs` ? void 0 : await fs.promises.readFile(filePath, `utf8`),
     shortCircuit: true
   };
 }
@@ -1854,12 +1860,7 @@ function patternKeyCompare(a, b) {
     return 1;
   return 0;
 }
-function packageImportsResolve({
-  name,
-  base,
-  conditions,
-  readFileSyncFn
-}) {
+function packageImportsResolve({ name, base, conditions, readFileSyncFn }) {
   if (name === "#" || StringPrototypeStartsWith(name, "#/") || StringPrototypeEndsWith(name, "/")) {
     const reason = "is not a valid internal imports specifier name";
     throw new ERR_INVALID_MODULE_SPECIFIER(name, reason, fileURLToPath(base));
@@ -1955,7 +1956,7 @@ async function resolvePrivateRequest(specifier, issuer, context, nextResolve) {
   }
 }
 async function resolve$1(originalSpecifier, context, nextResolve) {
-  var _a;
+  var _a, _b;
   const { findPnpApi } = moduleExports;
   if (!findPnpApi || isBuiltinModule(originalSpecifier))
     return nextResolve(originalSpecifier, context, nextResolve);
@@ -1967,8 +1968,8 @@ async function resolve$1(originalSpecifier, context, nextResolve) {
     specifier = fileURLToPath(url);
   }
   const { parentURL, conditions = [] } = context;
-  const issuer = parentURL ? fileURLToPath(parentURL) : process.cwd();
-  const pnpapi = (_a = findPnpApi(issuer)) != null ? _a : url ? findPnpApi(specifier) : null;
+  const issuer = parentURL && ((_a = tryParseURL(parentURL)) == null ? void 0 : _a.protocol) === `file:` ? fileURLToPath(parentURL) : process.cwd();
+  const pnpapi = (_b = findPnpApi(issuer)) != null ? _b : url ? findPnpApi(specifier) : null;
   if (!pnpapi)
     return nextResolve(originalSpecifier, context, nextResolve);
   if (specifier.startsWith(`#`))
@@ -1988,10 +1989,17 @@ async function resolve$1(originalSpecifier, context, nextResolve) {
       }
     }
   }
-  const result = pnpapi.resolveRequest(specifier, issuer, {
-    conditions: new Set(conditions),
-    extensions: allowLegacyResolve ? void 0 : []
-  });
+  let result;
+  try {
+    result = pnpapi.resolveRequest(specifier, issuer, {
+      conditions: new Set(conditions),
+      extensions: allowLegacyResolve ? void 0 : []
+    });
+  } catch (err) {
+    if (err instanceof Error && `code` in err && err.code === `MODULE_NOT_FOUND`)
+      err.code = `ERR_MODULE_NOT_FOUND`;
+    throw err;
+  }
   if (!result)
     throw new Error(`Resolving '${specifier}' from '${issuer}' failed`);
   const resultURL = pathToFileURL(result);
@@ -2007,32 +2015,49 @@ async function resolve$1(originalSpecifier, context, nextResolve) {
   };
 }
 
-const binding = process.binding(`fs`);
-const originalfstat = binding.fstat;
-const ZIP_MASK = 4278190080;
-const ZIP_MAGIC = 704643072;
-binding.fstat = function(...args) {
-  const [fd, useBigint, req] = args;
-  if ((fd & ZIP_MASK) === ZIP_MAGIC && useBigint === false && req === void 0) {
-    try {
-      const stats = fs.fstatSync(fd);
-      return new Float64Array([
-        stats.dev,
-        stats.mode,
-        stats.nlink,
-        stats.uid,
-        stats.gid,
-        stats.rdev,
-        stats.blksize,
-        stats.ino,
-        stats.size,
-        stats.blocks
-      ]);
-    } catch {
-    }
+if (!HAS_LAZY_LOADED_TRANSLATORS) {
+  const binding = process.binding(`fs`);
+  const originalReadFile = binding.readFileUtf8 || binding.readFileSync;
+  if (originalReadFile) {
+    binding[originalReadFile.name] = function(...args) {
+      try {
+        return fs.readFileSync(args[0], {
+          encoding: `utf8`,
+          flag: args[1]
+        });
+      } catch {
+      }
+      return originalReadFile.apply(this, args);
+    };
+  } else {
+    const binding2 = process.binding(`fs`);
+    const originalfstat = binding2.fstat;
+    const ZIP_MASK = 4278190080;
+    const ZIP_MAGIC = 704643072;
+    binding2.fstat = function(...args) {
+      const [fd, useBigint, req] = args;
+      if ((fd & ZIP_MASK) === ZIP_MAGIC && useBigint === false && req === void 0) {
+        try {
+          const stats = fs.fstatSync(fd);
+          return new Float64Array([
+            stats.dev,
+            stats.mode,
+            stats.nlink,
+            stats.uid,
+            stats.gid,
+            stats.rdev,
+            stats.blksize,
+            stats.ino,
+            stats.size,
+            stats.blocks
+          ]);
+        } catch {
+        }
+      }
+      return originalfstat.apply(this, args);
+    };
   }
-  return originalfstat.apply(this, args);
-};
+}
 
 const resolve = resolve$1;
 const getFormat = HAS_CONSOLIDATED_HOOKS ? void 0 : getFormat$1;
