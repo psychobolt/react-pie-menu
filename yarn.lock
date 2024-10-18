@@ -4620,7 +4620,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mdx-js/react@npm:1.6.22, @mdx-js/react@npm:^1.6.22":
+"@mdx-js/react@npm:3.1.0":
+  version: 3.1.0
+  resolution: "@mdx-js/react@npm:3.1.0"
+  dependencies:
+    "@types/mdx": ^2.0.0
+  peerDependencies:
+    "@types/react": ">=16"
+    react: ">=16"
+  checksum: c5a9c495f43f498ece24a768762a1743abe2be33d050d7eab731beb754e631700547f039198c6262c998d9a443906bd78811c3fa38bc2fb37659848161dac331
+  languageName: node
+  linkType: hard
+
+"@mdx-js/react@npm:^1.6.22":
   version: 1.6.22
   resolution: "@mdx-js/react@npm:1.6.22"
   peerDependencies:
@@ -6760,6 +6772,13 @@ __metadata:
   dependencies:
     "@types/unist": "*"
   checksum: 3f587bfc0a9a2403ecadc220e61031b01734fedaf82e27eb4d5ba039c0eb54db8c85681ccc070ab4df3f7ec711b736a82b990e69caa14c74bf7ac0ccf2ac7313
+  languageName: node
+  linkType: hard
+
+"@types/mdx@npm:^2.0.0":
+  version: 2.0.13
+  resolution: "@types/mdx@npm:2.0.13"
+  checksum: 195137b548e75a85f0558bb1ca5088aff1c01ae0fc64454da06085b7513a043356d0bb51ed559d3cbc7ad724ccd8cef2a7d07d014b89a47a74dff8875ceb3b15
   languageName: node
   linkType: hard
 
@@ -19739,7 +19758,7 @@ __metadata:
     "@fortawesome/free-brands-svg-icons": 6.1.2
     "@fortawesome/free-solid-svg-icons": 6.1.2
     "@fortawesome/react-fontawesome": 0.2.0
-    "@mdx-js/react": 1.6.22
+    "@mdx-js/react": 3.1.0
     "@rollup/plugin-alias": 5.0.0
     "@rollup/plugin-babel": 6.0.3
     "@rollup/plugin-commonjs": 25.0.4
