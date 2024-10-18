@@ -56,7 +56,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@fortawesome/free-brands-svg-icons", "npm:6.1.2"],\
             ["@fortawesome/free-solid-svg-icons", "npm:6.1.2"],\
             ["@fortawesome/react-fontawesome", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:0.2.0"],\
-            ["@mdx-js/react", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:1.6.22"],\
+            ["@mdx-js/react", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:3.1.0"],\
             ["@rollup/plugin-alias", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:5.0.0"],\
             ["@rollup/plugin-babel", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:6.0.3"],\
             ["@rollup/plugin-commonjs", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:25.0.4"],\
@@ -7978,10 +7978,31 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:1.6.22", {\
-          "packageLocation": "./.yarn/__virtual__/@mdx-js-react-virtual-bca8554bd8/0/cache/@mdx-js-react-npm-1.6.22-57e4c05c2b-bc84bd514b.zip/node_modules/@mdx-js/react/",\
+        ["npm:3.1.0", {\
+          "packageLocation": "./.yarn/cache/@mdx-js-react-npm-3.1.0-a91217d996-c5a9c495f4.zip/node_modules/@mdx-js/react/",\
           "packageDependencies": [\
-            ["@mdx-js/react", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:1.6.22"],\
+            ["@mdx-js/react", "npm:3.1.0"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:3.1.0", {\
+          "packageLocation": "./.yarn/__virtual__/@mdx-js-react-virtual-4166e223c3/0/cache/@mdx-js-react-npm-3.1.0-a91217d996-c5a9c495f4.zip/node_modules/@mdx-js/react/",\
+          "packageDependencies": [\
+            ["@mdx-js/react", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:3.1.0"],\
+            ["@types/mdx", "npm:2.0.13"],\
+            ["@types/react", null],\
+            ["react", "npm:18.2.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/react",\
+            "react"\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["virtual:b9976b4e12f4cbdc0b71c75fcbef03175145d3d68afdd4f46cae8db57b94381f6fe2ab04e17a8dfbca705aa908f3bca06b187210f6090cca2d5a212f9a827fe1#npm:1.6.22", {\
+          "packageLocation": "./.yarn/__virtual__/@mdx-js-react-virtual-674007aad1/0/cache/@mdx-js-react-npm-1.6.22-57e4c05c2b-bc84bd514b.zip/node_modules/@mdx-js/react/",\
+          "packageDependencies": [\
+            ["@mdx-js/react", "virtual:b9976b4e12f4cbdc0b71c75fcbef03175145d3d68afdd4f46cae8db57b94381f6fe2ab04e17a8dfbca705aa908f3bca06b187210f6090cca2d5a212f9a827fe1#npm:1.6.22"],\
             ["@types/react", null],\
             ["react", "npm:18.2.0"]\
           ],\
@@ -8744,7 +8765,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@babel/plugin-transform-react-jsx", "virtual:b9976b4e12f4cbdc0b71c75fcbef03175145d3d68afdd4f46cae8db57b94381f6fe2ab04e17a8dfbca705aa908f3bca06b187210f6090cca2d5a212f9a827fe1#npm:7.17.3"],\
             ["@babel/preset-env", "virtual:c434339fe4fa1f8971e19eda167b4949c5cbc3a05c4fc2590b6dfd872134d5875db0440d6aa6e6d0c181e50a93bb3242811005ad50d546c412c68aa9f932b39d#npm:7.16.11"],\
             ["@jest/transform", "npm:26.6.2"],\
-            ["@mdx-js/react", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:1.6.22"],\
+            ["@mdx-js/react", "virtual:b9976b4e12f4cbdc0b71c75fcbef03175145d3d68afdd4f46cae8db57b94381f6fe2ab04e17a8dfbca705aa908f3bca06b187210f6090cca2d5a212f9a827fe1#npm:1.6.22"],\
             ["@storybook/addons", "virtual:e54dc57a03475fa845737134737db79aff95df851ac993dba94bf3a3bfa1a8ccc0684d1a78217824f673f7a8d78681bead3587d165d74824df072830135fb138#npm:6.5.16"],\
             ["@storybook/api", "virtual:e54dc57a03475fa845737134737db79aff95df851ac993dba94bf3a3bfa1a8ccc0684d1a78217824f673f7a8d78681bead3587d165d74824df072830135fb138#npm:6.5.16"],\
             ["@storybook/components", "virtual:e54dc57a03475fa845737134737db79aff95df851ac993dba94bf3a3bfa1a8ccc0684d1a78217824f673f7a8d78681bead3587d165d74824df072830135fb138#npm:6.5.16"],\
@@ -11100,6 +11121,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@types/mdast", "npm:3.0.10"],\
             ["@types/unist", "npm:2.0.6"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@types/mdx", [\
+        ["npm:2.0.13", {\
+          "packageLocation": "./.yarn/cache/@types-mdx-npm-2.0.13-52981f86f6-195137b548.zip/node_modules/@types/mdx/",\
+          "packageDependencies": [\
+            ["@types/mdx", "npm:2.0.13"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -26300,7 +26330,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@fortawesome/free-brands-svg-icons", "npm:6.1.2"],\
             ["@fortawesome/free-solid-svg-icons", "npm:6.1.2"],\
             ["@fortawesome/react-fontawesome", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:0.2.0"],\
-            ["@mdx-js/react", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:1.6.22"],\
+            ["@mdx-js/react", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:3.1.0"],\
             ["@rollup/plugin-alias", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:5.0.0"],\
             ["@rollup/plugin-babel", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:6.0.3"],\
             ["@rollup/plugin-commonjs", "virtual:8604178f483659a40fb50334a2f455ae376ab832fda9bb7e0452fc9fe058a329d0882f4bbce0d9c50c1c1c75814a649932d66214472c0a3e10b6ca5ba01e2d27#npm:25.0.4"],\
