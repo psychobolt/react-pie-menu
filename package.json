@@ -94,8 +94,8 @@
     "@styled-system/core": "5.1.2",
     "@styled-system/theme-get": "5.1.2",
     "@testing-library/react": "14.0.0",
-    "@yarnpkg/core": "3.5.0",
-    "@yarnpkg/sdks": "2.7.0",
+    "@yarnpkg/core": "3.7.0",
+    "@yarnpkg/sdks": "2.7.4",
     "app-root-path": "3.1.0",
     "babel-jest": "29.6.4",
     "babel-loader": "9.1.3",
@@ -171,5 +171,5 @@
       "packages/*"
     ]
   },
-  "packageManager": "yarn@3.5.0"
+  "packageManager": "yarn@3.8.6"
 }
