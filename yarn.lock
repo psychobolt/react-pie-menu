@@ -6349,14 +6349,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/testing-library@npm:0.2.0":
-  version: 0.2.0
-  resolution: "@storybook/testing-library@npm:0.2.0"
+"@storybook/testing-library@npm:0.2.2":
+  version: 0.2.2
+  resolution: "@storybook/testing-library@npm:0.2.2"
   dependencies:
     "@testing-library/dom": ^9.0.0
-    "@testing-library/user-event": ^14.0.0
+    "@testing-library/user-event": ^14.4.0
     ts-dedent: ^2.2.0
-  checksum: 1c1c16aea6f961de344f5d43bdfd2847bc5f44df1037c2e1383312bb6b842e2c17a805670fc9cfe1a8425f9e48e240fe5d025ab3d4802a198cfe9eb6ed8e7636
+  checksum: 8ccdc1fbbb3472264c56b0aaf2f1c5d273f1ae9b230a53adf9cf82bf82c1a555550894f0e8869c206fa07b1fe8423da4d56590377756c58de3ec560b35a96c46
   languageName: node
   linkType: hard
 
@@ -6483,12 +6483,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/user-event@npm:^14.0.0":
-  version: 14.4.3
-  resolution: "@testing-library/user-event@npm:14.4.3"
+"@testing-library/user-event@npm:^14.4.0":
+  version: 14.6.1
+  resolution: "@testing-library/user-event@npm:14.6.1"
   peerDependencies:
     "@testing-library/dom": ">=7.21.4"
-  checksum: 852c48ea6db1c9471b18276617c84fec4320771e466cd58339a732ca3fd73ad35e5a43ae14f51af51a8d0a150dcf60fcaab049ef367871207bea8f92c4b8195e
+  checksum: 4cb8a81fea1fea83a42619e9545137b51636bb7a3182c596bb468e5664f1e4699a275c2d0fb8b6dcc3fe2684f9d87b0637ab7cb4f566051539146872c9141fcb
   languageName: node
   linkType: hard
 
@@ -19755,7 +19755,7 @@ __metadata:
     "@storybook/jest": 0.2.1
     "@storybook/manager-webpack5": 6.5.16
     "@storybook/react": 6.5.16
-    "@storybook/testing-library": 0.2.0
+    "@storybook/testing-library": 0.2.2
     "@styled-system/color": 5.1.2
     "@styled-system/core": 5.1.2
     "@styled-system/theme-get": 5.1.2
