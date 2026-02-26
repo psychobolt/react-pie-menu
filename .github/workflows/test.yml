@@ -24,7 +24,7 @@ jobs:
       - uses: actions/setup-node@v3
       - run: yarn node ./bootstrap.js
         shell: bash
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v8
         with:
           name: bundles_${{ github.sha }}
       - run: yarn flow-typed-install
@@ -45,7 +45,7 @@ jobs:
       - uses: actions/setup-node@v3
       - run: yarn test --coverage --projects ${{ matrix.path }}
         shell: bash
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v7
         with:
           name: ${{ fromJSON(needs.setenv.outputs.workspaces)[strategy.job-index].name }}_coverage_${{ github.sha }}
           path: |
@@ -59,7 +59,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v8
         with:
           name: bundles_${{ github.sha }}
       - uses: chromaui/action@v1
@@ -76,7 +76,7 @@ jobs:
         flag: ${{ fromJSON(needs.setenv.outputs.workspaces).*.name }}
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v8
         with:
           name: ${{ matrix.flag }}_coverage_${{ github.sha }}
       - uses: codecov/codecov-action@v3

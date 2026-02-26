@@ -14,7 +14,7 @@ jobs:
         shell: bash
       - run: yarn build-storybook --webpack-stats-json
         shell: bash
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v7
         with:
           name: bundles_${{ github.sha }}
           path: |
