@@ -1,6 +1,6 @@
 # React UI
 
-[<img src="https://codecov.io/gh/psychobolt/vite-storybook-boilerplate/branch/main/graph/badge.svg?flag=react-ui&component=react-ui">](https://codecov.io/gh/psychobolt/vite-storybook-boilerplate/tree/main/packages/react-ui)
+[<img src="https://codecov.io/gh/psychobolt/vite-storybook-boilerplate/branch/main/graph/badge.svg?flag=react-ui&component-id=react-ui">](https://codecov.io/gh/psychobolt/vite-storybook-boilerplate/tree/main/packages/react-ui)
 
 UI Components used for the [next-app demo](https://github.com/psychobolt/vite-storybook-boilerplate/tree/main/apps/next-app).
 

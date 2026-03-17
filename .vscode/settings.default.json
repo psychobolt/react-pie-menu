@@ -4,6 +4,8 @@
     "**/.pnp.*": true
   },
   "js/ts.tsdk.path": ".yarn/sdks/typescript/lib",
+  "js/ts.tsdk.promptToUseWorkspaceVersion": true,
+  "js/ts.validate.enabled": true,
   "editor.tabSize": 2,
   "eslint.nodePath": ".yarn/sdks",
   "eslint.runtime": "node",

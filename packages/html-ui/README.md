@@ -1,6 +1,6 @@
 # HTML UI
 
-[<img src="https://codecov.io/gh/psychobolt/vite-storybook-boilerplate/branch/main/graph/badge.svg?flag=html-ui&component=html-ui">](https://codecov.io/gh/psychobolt/vite-storybook-boilerplate/tree/main/packages/html-ui)
+[<img src="https://codecov.io/gh/psychobolt/vite-storybook-boilerplate/branch/main/graph/badge.svg?flag=html-ui&component-id=html-ui">](https://codecov.io/gh/psychobolt/vite-storybook-boilerplate/tree/main/packages/html-ui)
 
 UI Components used for the [svelte-app demo](https://github.com/psychobolt/vite-storybook-boilerplate/tree/main/apps/svelte-app).
 
