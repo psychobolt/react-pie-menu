@@ -1,19 +1,11 @@
 {
-  "extends": [
-    "config:base"
-  ],
-  "automerge": true,
-  "automergeType": "branch",
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "baseBranchPatterns": ["$default", "bitbucket"],
+  "useBaseBranchConfig": "merge",
   "packageRules": [
     {
-      "matchPackageNames": ["@mdx-js/react", "flow-bin", "eslint"],
-      "automerge": false
-    },
-    {
-      "matchPackageNames": ["glob"],
-      "major": {
-        "dependencyDashboardApproval": true
-      }
+      "matchPackageNames": ["actions/node-versions"],
+      "allowedVersions": "< 23"
     }
   ]
 }

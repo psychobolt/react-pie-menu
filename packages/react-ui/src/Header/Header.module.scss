@@ -1,0 +1,6 @@
+@use 'sass:meta';
+@use 'html-ui/Header.css';
+
+:global {
+  @include meta.load-css('html-ui/Header.css');
+}

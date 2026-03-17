@@ -1,0 +1,38 @@
+name: Status
+
+on:
+  push:
+    branches:
+      - main
+      - 'release-*'
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    uses: ./.github/workflows/ci.yml
+    secrets: inherit
+
+  finish:
+    needs: ci
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Check status of all required jobs'
+        if: github.ref_name != 'main' && !contains(github.ref_name, 'release-')
+        run: |-
+          NEEDS_CONTEXT='${{ toJson(needs) }}'
+          JOB_IDS=$(echo "$NEEDS_CONTEXT" | jq -r 'keys[]')
+          for JOB_ID in $JOB_IDS; do
+            RESULT=$(echo "$NEEDS_CONTEXT" | jq -r ".[\"$JOB_ID\"].result")
+            echo "$JOB_ID job result: $RESULT"
+            if [[ "$RESULT" != "success" ]]; then
+              echo "***"
+              echo "Error: The $JOB_ID job did not pass."
+              exit 1
+            fi
+          done
+          echo "All jobs passed or were skipped."

@@ -1,0 +1,55 @@
+name: Packages
+
+on:
+  workflow_call:
+    inputs:
+      ref:
+        type: string
+      ref_name:
+        type: string
+      package_names:
+        type: string
+        required: true
+      release:
+        type: string
+    outputs:
+      release:
+        value: 'true'
+
+jobs:
+  commons:
+    uses: ./.github/workflows/test-commons.yml
+    if: contains(fromJSON(inputs.package_names), 'commons')
+    with:
+      ref_name: ${{ inputs.ref_name }}
+      workspace: commons
+    secrets: inherit
+
+  stylelint-config:
+    uses: './.github/workflows/test-commons.yml'
+    if: contains(fromJSON(inputs.package_names), 'stylelint-config')
+    with:
+      ref_name: ${{ inputs.ref_name }}
+      workspace: stylelint-config
+    secrets: inherit
+
+  html-ui:
+    uses: ./.github/workflows/package.yml
+    if: contains(fromJSON(inputs.package_names), 'html-ui')
+    with:
+      ref: ${{ inputs.ref }}
+      workspace: html-ui
+      path: packages/html-ui
+      release: ${{ inputs.release }}
+    secrets: inherit
+
+  react-ui:
+    if: contains(fromJSON(inputs.package_names), 'react-ui')
+    uses: ./.github/workflows/package.yml
+    with:
+      ref: ${{ inputs.ref }}
+      workspace: react-ui
+      path: packages/react-ui
+      test-runner: vitest
+      release: ${{ inputs.release }}
+    secrets: inherit

@@ -1,0 +1,211 @@
+diff --git a/dist/components/HeaderButtons.js b/dist/components/HeaderButtons.js
+index f1dd3e0b304656f47827a41803cbcd9df88a8d58..b1c391bd86027b1be319265408e22f6f78da3280 100644
+--- a/dist/components/HeaderButtons.js
++++ b/dist/components/HeaderButtons.js
+@@ -1,7 +1,7 @@
+ import React from "react";
+-import { IconButton, TooltipMessage, WithTooltip } from "@storybook/components";
++import { IconButton, TooltipMessage, WithTooltip } from "storybook/internal/components";
+ import { UserIcon, ZoomIcon, ZoomOutIcon, ZoomResetIcon } from "@storybook/icons";
+-import { styled } from "@storybook/theming";
++import { styled } from "storybook/theming";
+ const ProfileTooltip = ({ username, onLogout }) => (React.createElement(TooltipWrapper, null,
+     React.createElement(TooltipMessage, { title: username && React.createElement(TooltipTitle, null, username), links: [{ onClick: onLogout, title: "Log out" }] })));
+ export default function HeaderButtons({ username, onZoomIn, onZoomOut, onZoomReset, onLogout }) {
+diff --git a/dist/components/HeaderButtons.stories.js b/dist/components/HeaderButtons.stories.js
+index 6a3306942513908eabe4bb6e377fc5ffe7af2652..3458ecf98eff369c84058c698be748ce50242466 100644
+--- a/dist/components/HeaderButtons.stories.js
++++ b/dist/components/HeaderButtons.stories.js
+@@ -1,5 +1,5 @@
+ import React from "react";
+-import HeaderButtons from "./HeaderButtons";
++import HeaderButtons from "./HeaderButtons.js";
+ export default {
+     title: "Addon/HeaderButtons",
+ };
+diff --git a/dist/components/MainPanel.js b/dist/components/MainPanel.js
+index 3016b450ee19bb49d88d04f576828a02232bc269..1d52ec9fcee98c90bdb9f92f61f8db0f9b0b3498 100644
+--- a/dist/components/MainPanel.js
++++ b/dist/components/MainPanel.js
+@@ -1,7 +1,7 @@
+ import React, { useState } from "react";
+-import ZeplinPanel from "./ZeplinPanel";
+-import { PATForm } from "./PATForm";
+-import { isLoggedIn, login, logout } from "../utils/api";
++import ZeplinPanel from "./ZeplinPanel.js";
++import { PATForm } from "./PATForm.js";
++import { isLoggedIn, login, logout } from "../utils/api.js";
+ export const MainPanel = ({ zeplinLink }) => {
+     const [loggedIn, setLoggedIn] = useState(isLoggedIn());
+     if (!loggedIn) {
+diff --git a/dist/components/OverlayButtons.js b/dist/components/OverlayButtons.js
+index 6f920832849296d6b4b45d90d66ef74b37632d72..e4fab500568efc68d0ba8de3b8b0b6bcdf6830cb 100644
+--- a/dist/components/OverlayButtons.js
++++ b/dist/components/OverlayButtons.js
+@@ -1,7 +1,7 @@
+ import React from "react";
+-import { IconButton } from "@storybook/components";
++import { IconButton } from "storybook/internal/components";
+ import { EyeCloseIcon, EyeIcon, LockIcon, MirrorIcon, UnlockIcon } from "@storybook/icons";
+-import { styled } from "@storybook/theming";
++import { styled } from "storybook/theming";
+ export default function OverlayButtons(props) {
+     const { onToggleOverlay, onToggleLock, onToggleDifference, overlayIsOpen, overlayIsLocked, showDifference, } = props;
+     const additionalOptions = overlayIsOpen && (React.createElement(React.Fragment, null,
+diff --git a/dist/components/OverlayImage.js b/dist/components/OverlayImage.js
+index 27740199c1774547fdfd1b0d6ec247fce2458c7c..dcfb5e12aefe0704fa106792564be572467f08e2 100644
+--- a/dist/components/OverlayImage.js
++++ b/dist/components/OverlayImage.js
+@@ -1,6 +1,6 @@
+ import React, { useState, useEffect, useReducer } from "react";
+-import { useParameter } from "@storybook/manager-api";
+-import { styled } from "@storybook/theming";
++import { useParameter } from "storybook/manager-api";
++import { styled } from "storybook/theming";
+ const movementReducer = (state, offset) => {
+     return {
+         x: state.x + offset.x,
+diff --git a/dist/components/OverlayPanel.js b/dist/components/OverlayPanel.js
+index fc120f49bb13ac84664f63d83f28ae8cf56fa058..fe8f443808d9b99320f767325ac7489c8ba3009d 100644
+--- a/dist/components/OverlayPanel.js
++++ b/dist/components/OverlayPanel.js
+@@ -1,8 +1,8 @@
+ import React, { useCallback, useReducer } from "react";
+-import { styled } from "@storybook/theming";
+-import OverlayPortal from "./OverlayPortal";
+-import OverlayButtons from "./OverlayButtons";
+-import OverlayImage from "./OverlayImage";
++import { styled } from "storybook/theming";
++import OverlayPortal from "./OverlayPortal.js";
++import OverlayButtons from "./OverlayButtons.js";
++import OverlayImage from "./OverlayImage.js";
+ const initialState = {
+     showOverlay: false,
+     lockOverlay: false,
+diff --git a/dist/components/OverlayPortal.js b/dist/components/OverlayPortal.js
+index 5d8431447ee79102cb8a9a14e7b5118b29f828a1..1aea1e6ed761c8e160208c27cf4a3c356cf2c8a4 100644
+--- a/dist/components/OverlayPortal.js
++++ b/dist/components/OverlayPortal.js
+@@ -1,5 +1,5 @@
+ import { createPortal } from 'react-dom';
+-import { getOverlay } from '../utils/overlay';
++import { getOverlay } from '../utils/overlay.js';
+ const OverlayPortal = ({ children }) => {
+     const overlay = getOverlay();
+     return createPortal(children, overlay);
+diff --git a/dist/components/PATForm.js b/dist/components/PATForm.js
+index c4575e7cc3e4b5624d5167fa2a8e3a6de31585eb..2f4a76e54985880370ec3df36b12bbaeccf2acdb 100644
+--- a/dist/components/PATForm.js
++++ b/dist/components/PATForm.js
+@@ -1,6 +1,6 @@
+ import React, { useState } from "react";
+-import { Button, Form, Link } from "@storybook/components";
+-import { styled } from "@storybook/theming";
++import { Button, Form, Link } from "storybook/internal/components";
++import { styled } from "storybook/theming";
+ export const PATForm = ({ onSubmit }) => {
+     const [token, setToken] = useState("");
+     const handleSubmit = (e) => {
+diff --git a/dist/components/ZeplinPanel.js b/dist/components/ZeplinPanel.js
+index 3e0832ddf648ce2c4a820e6d9d94b17dc08a42e6..0061f494e90c162fd0e951661644127d63f37041 100644
+--- a/dist/components/ZeplinPanel.js
++++ b/dist/components/ZeplinPanel.js
+@@ -1,11 +1,11 @@
+ import React, { useEffect, useCallback, useReducer } from "react";
+-import { Form, Link } from "@storybook/components";
+-import { styled } from "@storybook/theming";
+-import HeaderButtons from "./HeaderButtons";
+-import { getUser, getZeplinResource } from "../utils/api";
+-import { relativeDate } from "../utils/date";
+-import OverlayPanel from "./OverlayPanel";
+-import { useLinks } from "./hooks";
++import { Form, Link } from "storybook/internal/components";
++import { styled } from "storybook/theming";
++import HeaderButtons from "./HeaderButtons.js";
++import { getUser, getZeplinResource } from "../utils/api.js";
++import { relativeDate } from "../utils/date.js";
++import OverlayPanel from "./OverlayPanel.js";
++import { useLinks } from "./hooks/index.js";
+ const initialState = {
+     selectedLink: "",
+     zeplinData: null,
+diff --git a/dist/components/hooks/index.js b/dist/components/hooks/index.js
+index fc2423273a2c74bd7d65da6d4f2e8727518eaa5b..1888db8cc39f212cd682887af7d57420a5cf2ced 100644
+--- a/dist/components/hooks/index.js
++++ b/dist/components/hooks/index.js
+@@ -1 +1 @@
+-export * from "./useLinks";
++export * from "./useLinks.js";
+diff --git a/dist/components/hooks/useLinks.js b/dist/components/hooks/useLinks.js
+index 84dd7b7a955aa426d22b0934ce56aee55127deb0..284878298276f0a490e50b61398ffb556fa47e64 100644
+--- a/dist/components/hooks/useLinks.js
++++ b/dist/components/hooks/useLinks.js
+@@ -1,7 +1,7 @@
+ import { useEffect, useReducer } from "react";
+-import { ZEPLIN_APP_BASE, ZEPLIN_WEB_BASE } from "../../constants";
+-import { useStorybookState } from "@storybook/manager-api";
+-import { getZeplinLinksFromConnectedComponents } from "../../utils/api";
++import { ZEPLIN_APP_BASE, ZEPLIN_WEB_BASE } from "../../constants.js";
++import { useStorybookState } from "storybook/manager-api";
++import { getZeplinLinksFromConnectedComponents } from "../../utils/api.js";
+ const getProjectIdFromProjectLink = (link) => {
+     if (link.startsWith(`${ZEPLIN_APP_BASE}//project?`)) {
+         const [, searchParams] = link.split("?");
+diff --git a/dist/index.js b/dist/index.js
+index 1d45e88bae5d0cae6ad6d611b9aa827c1831fab8..9fcf5fda4f1b5f19e908da66b1e1b9328445ccf8 100644
+--- a/dist/index.js
++++ b/dist/index.js
+@@ -1 +1 @@
+-export { ADDON_ID } from "./constants";
++export { ADDON_ID } from "./constants.js";
+diff --git a/dist/register.js b/dist/register.js
+index 335031ece09f8fb9468367ad0c5b4f95d9c87ecd..8f98c2a0b45bad1f2cf48836bd6cb53c60e99aea 100644
+--- a/dist/register.js
++++ b/dist/register.js
+@@ -1,11 +1,11 @@
+ import React from "react";
+-import lt from "semver/functions/lt";
+-import { addons, types, useParameter } from "@storybook/manager-api";
+-import { AddonPanel } from "@storybook/components";
++import lt from "semver/functions/lt.js";
++import { addons, types, useParameter } from "storybook/manager-api";
++import { AddonPanel } from "storybook/internal/components";
+ import { getStoryDetail, getStories, getGlobalContext } from "@zeplin/storybook-inspector";
+-import { TITLE, ADDON_ID, PARAM_KEY, PANEL_ID, ZEPLIN_WEB_BASE, ZEPLIN_APP_BASE } from "./constants";
+-import { messenger } from "./utils/messenger";
+-import { MainPanel } from "./components/MainPanel";
++import { TITLE, ADDON_ID, PARAM_KEY, PANEL_ID, ZEPLIN_WEB_BASE, ZEPLIN_APP_BASE } from "./constants.js";
++import { messenger } from "./utils/messenger.js";
++import { MainPanel } from "./components/MainPanel.js";
+ addons.register(ADDON_ID, async (api) => {
+     const render = ({ active }) => {
+         const zeplinLink = useParameter(PARAM_KEY, null);
+diff --git a/dist/utils/api.js b/dist/utils/api.js
+index 7cae7806eaa3732b48e2e6507ca8798ca89e99cb..0cfdbeddea9c595ac3a5faae7d90bb497e390609 100644
+--- a/dist/utils/api.js
++++ b/dist/utils/api.js
+@@ -1,6 +1,6 @@
+ import { getZeplinLinkProperties, RESOURCE_TYPES } from "@zeplin/storybook-inspector";
+ import { Configuration, ZeplinApi } from "@zeplin/sdk";
+-import { ZEPLIN_TOKEN, ZEPLIN_API_URL, ZEPLIN_WEB_BASE, ZEPLIN_APP_BASE, } from "../constants";
++import { ZEPLIN_TOKEN, ZEPLIN_API_URL, ZEPLIN_WEB_BASE, ZEPLIN_APP_BASE, } from "../constants.js";
+ const ZEPLIN_TOKEN_STORAGE_KEY = "storybook_zeplin:access_token";
+ let cachedUser;
+ const zeplinResourceCache = new Map();
+diff --git a/dist/utils/messenger.js b/dist/utils/messenger.js
+index 02e29d0f83bff7e82d1b6b4d0bbb5ecbf5cccbc2..cc1c50f63ca63ec3fe969340dc4dc7805535c72a 100644
+--- a/dist/utils/messenger.js
++++ b/dist/utils/messenger.js
+@@ -1,4 +1,4 @@
+-import { PARENT_ORIGIN } from "../constants";
++import { PARENT_ORIGIN } from "../constants.js";
+ const ADDON_SOURCE_NAME = "storybook-zeplin-addon";
+ class Messenger {
+     constructor() {
+diff --git a/register.js b/register.js
+index 616629ed5fadafdf844ddaf3a2d8a2d66452ff43..a9eb41428411e46ccf26f093e27e0309842e3091 100644
+--- a/register.js
++++ b/register.js
+@@ -1 +1 @@
+-require("./dist/register");
++import "./dist/register.js";

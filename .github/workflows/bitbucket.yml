@@ -1,0 +1,66 @@
+name: Mirror Bitbucket branches
+
+on:
+  push:
+    branches: ['main', 'bitbucket']
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  setup:
+    uses: ./.github/workflows/sync.yml
+    with:
+      ref_name: bitbucket
+    secrets: inherit
+  mirror:
+    needs: setup
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Get token
+        id: get_token
+        uses: actions/create-github-app-token@f8d387b68d61c58ab83c6c016672934102569859 # v3.0.0
+        with:
+          private-key: ${{ secrets.BOT_APP_PRIVATE_KEY }}
+          app-id: ${{ secrets.BOT_APP_ID }}
+      - name: Get GitHub App User ID
+        id: get_user_id
+        env:
+          GH_TOKEN: ${{ steps.get_token.outputs.token }}
+        run: echo "user-id=$(gh api "/users/${{ steps.get_token.outputs.app-slug }}[bot]" --jq .id)" >> "$GITHUB_OUTPUT"
+      - name: Configure git
+        run: |
+          git config --global user.name ${{ steps.get_token.outputs.app-slug }}[bot]
+          git config --global user.email ${{ steps.get_user_id.outputs.user-id }}+${{ steps.get_token.outputs.app-slug }}[bot]@users.noreply.github.com
+      - name: Check out code
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          fetch-depth: 0
+          token: ${{ steps.get_token.outputs.token }}
+      - name: Install SSH key
+        uses: shimataro/ssh-key-action@6b84f2e793b32fa0b03a379cadadec75cc539391 # v2.8.0
+        with:
+          key: ${{ secrets.BITBUCKET_SSH_KEY }}
+          name: bitbucket
+          known_hosts: |
+            ${{ secrets.BITBUCKET_HOST_KEY }}
+          config: |
+            Host bitbucket.org
+            User ${{ secrets.BITBUCKET_USER }}
+            IdentityFile ~/.ssh/bitbucket
+      - name: Configure bitbucket upstream
+        run: git remote add bitbucket ${{ secrets.BITBUCKET_REPO }}
+      - name: Fetch bitbucket upstream
+        run: git fetch bitbucket
+      - name: Switch to bitbucket/main
+        run: git checkout -B bitbucket-main bitbucket/main
+      - name: Merge origin/bitbucket into bitbucket/main
+        run: git merge origin/bitbucket
+      - name: Push to bitbucket upstream
+        run: git push -u bitbucket bitbucket-main:main

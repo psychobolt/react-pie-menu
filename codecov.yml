@@ -1,0 +1,13 @@
+flags:
+  html-ui:
+    carryforward: true
+  react-ui:
+    carryforward: true
+component_management:
+  individual_components:
+    - component_id: html-ui
+      paths:
+        - packages/html-ui/**
+    - component_id: react-ui
+      paths:
+        - packages/react-ui/**

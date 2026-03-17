@@ -1,0 +1,14 @@
+{
+	"name": "svelte-language-server",
+	"version": "0.17.28-sdk",
+	"type": "commonjs",
+	"exports": {
+		"./package.json": "./package.json",
+		".": "./dist/src/index.js",
+		"./bin/server.js": "./bin/server.js"
+	},
+	"main": "dist/src/index.js",
+	"bin": {
+		"svelteserver": "bin/server.js"
+	}
+}

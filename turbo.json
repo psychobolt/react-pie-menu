@@ -1,0 +1,52 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalEnv": ["RUNNER_OS"],
+  "tasks": {
+    "start": {
+      "cache": false,
+      "persistent": true
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true,
+      "dependsOn": ["^build"]
+    },
+    "watch": {
+      "cache": false,
+      "persistent": true,
+      "dependsOn": ["^build"]
+    },
+    "build": {
+      "dependsOn": ["^build"]
+    },
+    "build-storybook": {
+      "outputs": ["storybook-static/**"],
+      "dependsOn": ["^build"]
+    },
+    "//#lint": {
+      "dependsOn": ["^build"],
+      "outputs": ["*-report.json", "*-annotations.json"]
+    },
+    "lint": {
+      "dependsOn": ["^build"],
+      "outputs": ["*-report.json", "*-annotations.json"]
+    },
+    "test": {
+      "dependsOn": ["^build"]
+    },
+    "coverage": {
+      "dependsOn": ["^build"]
+    },
+    "//#format": {
+      "dependsOn": ["^build"]
+    },
+    "format": {
+      "dependsOn": ["^build"]
+    },
+    "chromatic": {
+      "env": ["DOTENV_PRIVATE_KEY_CI", "CHROMATIC_PROJECT_TOKEN"],
+      "inputs": ["storybook-static/**"],
+      "dependsOn": ["build-storybook"]
+    }
+  }
+}

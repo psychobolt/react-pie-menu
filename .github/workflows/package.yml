@@ -1,0 +1,185 @@
+on:
+  workflow_call:
+    inputs:
+      ref:
+        type: string
+      workspace:
+        required: true
+        type: string
+      path:
+        required: true
+        type: string
+      filter:
+        type: string
+      test-runner:
+        type: string
+      release:
+        type: string
+
+env:
+  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+  TURBO_TEAM: ${{ vars.TURBO_TEAM }}
+  TURBO_VERBOSITY: ${{ vars.TURBO_VERBOSITY || 0 }}
+  TURBO_ENV_MODE: ${{ vars.TURBO_ENV_MODE || 'strict' }}
+  TURBO_TELEMETRY_DISABLED: 1
+  YARN_ENABLE_HARDENED_MODE: 0
+
+jobs:
+  lint:
+    name: Run Linter
+    timeout-minutes: 7
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    environment: '${{ inputs.workspace }}/${{ matrix.os }}'
+    permissions:
+      contents: read
+    steps:
+      - name: Check out code
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          fetch-depth: 50
+          ref: ${{ inputs.ref || github.ref }}
+      - name: Set Yarn global folder
+        env:
+          YARN_GLOBAL_FOLDER: ${{ runner.temp }}/.yarn/berry
+        run: echo "YARN_GLOBAL_FOLDER=$YARN_GLOBAL_FOLDER" >> .env
+        shell: bash
+      - name: Setup Node.js environment
+        if: matrix.os == 'ubuntu-latest'
+        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6
+        with:
+          node-version: 22.x
+          cache: yarn
+          cache-dependency-path: yarn.lock
+      - name: Setup Node.js environment (Windows)
+        if: matrix.os == 'windows-latest'
+        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6
+        with:
+          node-version: 22.x
+          cache: yarn
+          cache-dependency-path: yarn.lock
+      - name: Start Turbo Cache Server
+        uses: rharkor/caching-for-turbo@a1c4079258ae08389be75b57d4d7a70f23c1c66d # v1.8
+        with:
+          cache-prefix: ${{ vars.TURBO_CACHE_PREFIX }}
+      - name: Install dependencies
+        run: yarn install
+      - name: Run Lint
+        run: yarn ${{ inputs.path }} turbo run lint --env-mode=${{ env.TURBO_ENV_MODE }} --verbosity=${{ env.TURBO_VERBOSITY }} ${{ inputs.filter }}
+  test:
+    name: Run Tests
+    timeout-minutes: 7
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    environment: '${{ inputs.workspace }}/${{ matrix.os }}'
+    permissions:
+      contents: read
+    steps:
+      - name: Check out code
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          fetch-depth: 50
+          ref: ${{ inputs.ref || github.ref }}
+      - name: Set Yarn global folder
+        env:
+          YARN_GLOBAL_FOLDER: ${{ runner.temp }}/.yarn/berry
+        run: echo "YARN_GLOBAL_FOLDER=$YARN_GLOBAL_FOLDER" >> .env
+        shell: bash
+      - name: Setup Node.js environment
+        if: matrix.os == 'ubuntu-latest'
+        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6
+        with:
+          node-version: 22.x
+          cache: yarn
+          cache-dependency-path: yarn.lock
+      - name: Setup Node.js environment (Windows)
+        if: matrix.os == 'windows-latest'
+        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6
+        with:
+          node-version: 22.x
+          cache: yarn
+          cache-dependency-path: yarn.lock
+      - name: Start Turbo Cache Server
+        uses: rharkor/caching-for-turbo@a1c4079258ae08389be75b57d4d7a70f23c1c66d # v1.8
+        with:
+          cache-prefix: ${{ vars.TURBO_CACHE_PREFIX }}
+      - name: Install dependencies
+        run: yarn install
+      - name: Install Playwright
+        run: yarn playwright install --with-deps chromium
+      - name: Run Coverage
+        if: inputs.test-runner != 'vitest'
+        env:
+          # Workaround for https://github.com/facebook/jest/issues/8536
+          TEMP: ${{ runner.temp }}
+        run: >-
+          yarn dlx concurrently -k -s first -n "SB,TEST"
+          "yarn ${{ inputs.path }} turbo run start --env-mode=${{ env.TURBO_ENV_MODE }} --verbosity=${{ env.TURBO_VERBOSITY }} ${{ inputs.filter }} -- --silent"
+          "yarn dlx wait-on $(yarn ${{ inputs.path }} g:dotenv-get SB_URL | tail -n1) -l && yarn ${{ inputs.path }} coverage"
+      - name: Run Coverage
+        if: inputs.test-runner == 'vitest'
+        run: yarn ${{ inputs.path }} turbo run coverage --env-mode=${{ env.TURBO_ENV_MODE }} --verbosity=${{ env.TURBO_VERBOSITY }} ${{ inputs.filter }}
+      - name: Upload Coverage Reports
+        uses: codecov/codecov-action@671740ac38dd9b0130fbe1cec585b89eea48d3de # v5
+        with:
+          files: ${{ inputs.path }}/coverage/${{ inputs.test-runner == 'vitest' &&  'coverage-final.json' || 'storybook/coverage-storybook.json'}}
+          flags: ${{ inputs.workspace }}
+          fail_ci_if_error: true
+          handle_no_reports_found: true
+          token: ${{ secrets.CODECOV_TOKEN }}
+  deploy:
+    name: Deploy
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    environment: '${{ inputs.workspace }}/ubuntu-latest'
+    permissions:
+      contents: read
+    steps:
+      - name: Check out code
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          fetch-depth: 50
+          ref: ${{ inputs.ref || github.ref }}
+      - name: Set Yarn global folder
+        env:
+          YARN_GLOBAL_FOLDER: ${{ runner.temp }}/.yarn/berry
+        run: echo "YARN_GLOBAL_FOLDER=$YARN_GLOBAL_FOLDER" >> .env
+        shell: bash
+      - name: Setup Node.js environment
+        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6
+        with:
+          node-version: 22.x
+          cache: yarn
+          cache-dependency-path: yarn.lock
+      - name: Start Turbo Cache Server
+        uses: rharkor/caching-for-turbo@a1c4079258ae08389be75b57d4d7a70f23c1c66d # v1.8
+        with:
+          cache-prefix: ${{ vars.TURBO_CACHE_PREFIX }}
+      - name: Install dependencies
+        run: yarn install
+      - name: Run Chromatic
+        run: >-
+          yarn ${{ inputs.path }} turbo run chromatic --env-mode=${{ env.TURBO_ENV_MODE }} --verbosity=${{ env.TURBO_VERBOSITY }} ${{ inputs.filter }}
+        env:
+          DOTENV_PRIVATE_KEY_CI: ${{ secrets.DOTENV_PRIVATE_KEY_CI }}
+          CHROMATIC_BRANCH: ${{ inputs.ref || github.ref_name }}
+          CHROMATIC_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+          CHROMATIC_SLUG: ${{ github.repository }}
+  cleanup:
+    name: Cleanup pre-release versions
+    if: inputs.release == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+    steps:
+      - uses: actions/delete-package-versions@e5bc658cc4c965c472efe991f8beea3981499c55 # v5
+        with:
+          package-name: ${{ inputs.workspace }}
+          package-type: npm
+          delete-only-pre-release-versions: true
+          min-versions-to-keep: 1
+        continue-on-error: true

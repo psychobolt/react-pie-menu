@@ -1,0 +1,58 @@
+on:
+  workflow_call:
+    inputs:
+      ref_name:
+        type: string
+      workspace:
+        required: true
+        type: string
+
+jobs:
+  test:
+    name: Run Tests
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    env:
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      TURBO_TEAM: ${{ vars.TURBO_TEAM }}
+      TURBO_VERBOSITY: ${{ vars.TURBO_VERBOSITY || 0 }}
+      TURBO_ENV_MODE: ${{ vars.TURBO_ENV_MODE || 'strict' }}
+      TURBO_TELEMETRY_DISABLED: 1
+      YARN_ENABLE_HARDENED_MODE: 0
+    steps:
+      - name: Check out code
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          ref: ${{ inputs.ref_name || github.ref }}
+      - name: Set Yarn global folder
+        env:
+          YARN_GLOBAL_FOLDER: ${{ runner.temp }}/.yarn/berry
+        run: echo "YARN_GLOBAL_FOLDER=$YARN_GLOBAL_FOLDER" >> .env
+        shell: bash
+      - name: Setup Node.js environment
+        if: matrix.os == 'ubuntu-latest'
+        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6
+        with:
+          node-version: 22.x
+          cache: yarn
+          cache-dependency-path: yarn.lock
+      - name: Setup Node.js environment (Windows)
+        if: matrix.os == 'windows-latest'
+        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6
+        with:
+          node-version: 22.x
+          cache: yarn
+          cache-dependency-path: yarn.lock
+      - name: Start Turbo Cache Server
+        uses: rharkor/caching-for-turbo@a1c4079258ae08389be75b57d4d7a70f23c1c66d # v1.8
+        with:
+          cache-prefix: ${{ vars.TURBO_CACHE_PREFIX }}
+      - name: Install dependencies
+        run: yarn install
+      - name: Run Lint
+        run: yarn workspace ${{ inputs.workspace }} turbo run lint --env-mode=${{ env.TURBO_ENV_MODE }} --verbosity=${{ env.TURBO_VERBOSITY }}
+      - name: Run Build
+        run: yarn workspace ${{ inputs.workspace }} turbo run build --env-mode=${{ env.TURBO_ENV_MODE }} --verbosity=${{ env.TURBO_VERBOSITY }}

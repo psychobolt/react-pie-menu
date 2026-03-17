@@ -1,0 +1,15 @@
+{
+	"$schema": "https://turbo.build/schema.json",
+	"extends": ["//"],
+	"tasks": {
+		"build": {
+			"inputs": ["$TURBO_DEFAULT$", "../../bin/bootstrap.ts"],
+			"outputs": [".svelte-kit/**", ".vercel/**"]
+		},
+		"start": {
+			"cache": false,
+			"persistent": true,
+			"dependsOn": ["build"]
+		}
+	}
+}

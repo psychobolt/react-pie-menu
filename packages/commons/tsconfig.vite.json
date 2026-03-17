@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.esm.json",
+  "compilerOptions": {
+    "types": ["vite/client"],
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "module": "Preserve",
+    "moduleResolution": "Bundler",
+    "useDefineForClassFields": true,
+    "erasableSyntaxOnly": false,
+    "noEmit": true,
+    "allowImportingTsExtensions": true
+  },
+  "include": [],
+  "exclude": []
+}

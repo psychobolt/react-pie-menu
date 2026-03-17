@@ -1,0 +1,37 @@
+name: Apps
+
+on:
+  workflow_call:
+    inputs:
+      ref_name:
+        type: string
+      base_ref:
+        type: string
+      package_names:
+        type: string
+        required: true
+    outputs:
+      release:
+        value: 'false'
+
+jobs:
+  next-app:
+    if: contains(fromJSON(inputs.package_names), 'next-app')
+    uses: ./.github/workflows/test-app.yml
+    with:
+      ref_name: ${{ inputs.ref_name }}
+      base_ref: ${{ inputs.base_ref }}
+      workspace: next-app
+      path: apps/next-app
+      pnp: false
+    secrets: inherit
+
+  svelte-app:
+    if: contains(fromJSON(inputs.package_names), 'svelte-app')
+    uses: ./.github/workflows/test-app.yml
+    with:
+      ref_name: ${{ inputs.ref_name }}
+      base_ref: ${{ inputs.base_ref }}
+      workspace: svelte-app
+      path: apps/svelte-app
+    secrets: inherit

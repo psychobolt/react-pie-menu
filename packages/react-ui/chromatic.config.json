@@ -1,0 +1,9 @@
+{
+  "$schema": "https://www.chromatic.com/config-file.schema.json",
+  "exitOnceUploaded": true,
+  "onlyChanged": true,
+  "storybookBuildDir": "storybook-static",
+  "projectId": "Project:642f33339c5eee1cdf95b318",
+  "storybookBaseDir": "packages/react-ui",
+  "zip": true
+}

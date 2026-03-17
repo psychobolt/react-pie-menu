@@ -1,0 +1,85 @@
+name: Launch
+
+on:
+  workflow_dispatch:
+    inputs:
+      ref_name:
+        description: The branch name you wish to create for the release
+        default: release-
+        type: string
+        required: true
+      base_ref_sha:
+        description: The ref that you wish to create a release for if different from workflow target
+
+concurrency:
+  group: ${{ github.workflow }}-${{ inputs.base_ref_sha || github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  launch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment: ${{ github.ref_name }}
+    env:
+      base_ref: ${{ inputs.base_ref_sha || github.ref_name }}
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      TURBO_TEAM: ${{ vars.TURBO_TEAM }}
+      TURBO_TELEMETRY_DISABLED: 1
+    steps:
+      - name: Get token
+        id: get_token
+        uses: actions/create-github-app-token@f8d387b68d61c58ab83c6c016672934102569859 # v3.0.0
+        with:
+          private-key: ${{ secrets.BOT_APP_PRIVATE_KEY }}
+          app-id: ${{ secrets.BOT_APP_ID }}
+      - name: Get GitHub App User ID
+        id: get_user_id
+        env:
+          GH_TOKEN: ${{ steps.get_token.outputs.token }}
+        run: echo "user-id=$(gh api "/users/${{ steps.get_token.outputs.app-slug }}[bot]" --jq .id)" >> "$GITHUB_OUTPUT"
+      - name: Configure git
+        run: |
+          git config --global user.name ${{ steps.get_token.outputs.app-slug }}[bot]
+          git config --global user.email ${{ steps.get_user_id.outputs.user-id }}+${{ steps.get_token.outputs.app-slug }}[bot]@users.noreply.github.com
+      - name: Check out code
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          fetch-depth: 0
+          ref: ${{ env.base_ref }}
+          token: ${{ steps.get_token.outputs.token }}
+      - name: Get branch name
+        id: base_ref
+        run: echo "name=$(git branch --show-current)" >> $GITHUB_OUTPUT
+      - name: Set Yarn global folder
+        env:
+          YARN_GLOBAL_FOLDER: ${{ runner.temp }}/.yarn/berry
+        run: echo "YARN_GLOBAL_FOLDER=$YARN_GLOBAL_FOLDER" >> .env
+      - name: Setup Node.js environment
+        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6
+        with:
+          node-version: 22.x
+          cache: yarn
+          cache-dependency-path: '**/yarn.lock'
+      - name: Override BASE_REF variable
+        run: echo "BASE_REF=${{ env.base_ref }}" >> .env
+      - name: Start Turbo Cache Server
+        uses: rharkor/caching-for-turbo@a1c4079258ae08389be75b57d4d7a70f23c1c66d # v1.8
+        with:
+          cache-prefix: ${{ vars.TURBO_CACHE_PREFIX }}
+      - name: Install dependencies
+        run: |
+          yarn install
+          yarn bootstrap
+      - name: 'Create and publish release: ${{ vars.RELEASE_TAG }}'
+        uses: ./.github/actions/release
+        with:
+          strategy: launch
+          tag: ${{ vars.RELEASE_TAG }}
+          dry_run_publish: ${{ vars.DRY_RUN_PUBLISH }}
+      - name: Push
+        if: steps.base_ref.outputs.name != ''
+        run: git push
+      - name: 'Create ${{ inputs.ref_name }}'
+        run: |
+          git checkout -b ${{ inputs.ref_name }}
+          git push --set-upstream origin ${{ inputs.ref_name }}

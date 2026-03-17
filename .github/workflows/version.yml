@@ -1,0 +1,115 @@
+name: Pull Request
+
+on:
+  pull_request:
+    branches:
+      - main
+      - next
+      - release-*
+
+concurrency:
+  group: pull-request-${{ github.head_ref }}
+  cancel-in-progress: true
+
+jobs:
+  check-release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    environment: ${{ github.base_ref }}
+    permissions: read-all
+    steps:
+      - name: Get release tag
+        run: echo 'tag=${{ env.RELEASE_TAG }}' >> $GITHUB_OUTPUT
+  check-version:
+    needs: check-release
+    if: needs.check-release.outputs.tag != ''
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      - name: Check out code
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          fetch-depth: 50
+      - name: Fetch ${{ github.base_ref }}
+        run: git fetch --depth=1 origin ${{ github.base_ref }}:base_branch
+      - name: Override BASE_REF variable
+        run: echo "BASE_REF=base_branch" >> .env
+      - name: Check versions
+        run: yarn version check
+
+  generate-version:
+    if: failure() && startsWith(github.head_ref, 'issue/') || startsWith(github.head_ref, 'feature/')
+    needs: check-version
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    env:
+      APPLY_STRATEGY: ${{ startsWith(github.head_ref, 'issue/') && 'patch' || 'minor' }}
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      TURBO_TEAM: ${{ vars.TURBO_TEAM }}
+      TURBO_TELEMETRY_DISABLED: 1
+      YARN_ENABLE_HARDENED_MODE: 0
+    steps:
+      - name: Get token
+        id: get_token
+        uses: actions/create-github-app-token@f8d387b68d61c58ab83c6c016672934102569859 # v3.0.0
+        with:
+          private-key: ${{ secrets.BOT_APP_PRIVATE_KEY }}
+          app-id: ${{ secrets.BOT_APP_ID }}
+      - name: Get GitHub App User ID
+        id: get_user_id
+        env:
+          GH_TOKEN: ${{ steps.get_token.outputs.token }}
+        run: echo "user-id=$(gh api "/users/${{ steps.get_token.outputs.app-slug }}[bot]" --jq .id)" >> "$GITHUB_OUTPUT"
+      - name: Configure git
+        run: |
+          git config --global user.name ${{ steps.get_token.outputs.app-slug }}[bot]
+          git config --global user.email ${{ steps.get_user_id.outputs.user-id }}+${{ steps.get_token.outputs.app-slug }}[bot]@users.noreply.github.com
+      - name: Check out code
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          fetch-depth: 50
+          ref: ${{ github.head_ref }}
+          token: ${{ steps.get_token.outputs.token }}
+      - name: Fetch ${{ github.base_ref }}
+        run: git fetch --depth=1 origin ${{ github.base_ref }}:base_branch
+      - name: Set Yarn global folder
+        env:
+          YARN_GLOBAL_FOLDER: ${{ runner.temp }}/.yarn/berry
+        run: echo "YARN_GLOBAL_FOLDER=$YARN_GLOBAL_FOLDER" >> .env
+      - name: Setup Node.js environment
+        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6
+        with:
+          node-version: 22.x
+          cache: yarn
+          cache-dependency-path: '**/yarn.lock'
+      - name: Override BASE_REF variable
+        run: echo "BASE_REF=base_branch" >> .env
+      - name: Start Turbo Cache Server
+        uses: rharkor/caching-for-turbo@a1c4079258ae08389be75b57d4d7a70f23c1c66d # v1.8
+        with:
+          cache-prefix: ${{ vars.TURBO_CACHE_PREFIX }}
+      - name: Install dependencies
+        run: |
+          yarn install
+          yarn bootstrap
+      - name: Remove existing version strategies
+        run: rm -rf .yarn/versions || true
+      - name: Immediately bump versions
+        id: versions
+        run: echo "semver=$(yarn apply-versions --strategy ${{ env.APPLY_STRATEGY }})" >> $GITHUB_OUTPUT
+      - name: Remove all changes
+        run: git stash
+      - name: Add version strategy to changed workspaces
+        run: yarn workspaces foreach -A --no-private exec 'test $(echo $SEMVER | jq .\"$npm_package_name\") = null || yarn version ${{ env.APPLY_STRATEGY }} --deferred'
+      - name: Push
+        if: env.SEMVER != '' && env.SEMVER != '{}'
+        run: |
+          git add .
+          git commit -m "chore(version): strategy"
+          git push
+        env:
+          SEMVER: ${{ steps.versions.outputs.semver }}

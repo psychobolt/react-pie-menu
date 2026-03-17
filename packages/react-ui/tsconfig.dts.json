@@ -1,0 +1,20 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "declaration": true,
+    "noEmit": false,
+    "emitDeclarationOnly": true,
+    "outDir": "dist",
+    "rootDir": "src"
+  },
+  "include": ["src"],
+  "exclude": [
+    "**/*.story.*",
+    "**/*.stories.*",
+    "**/*.variant.*",
+    "**/*.variants.*",
+    "**/decorators.*",
+    "**/test/*",
+    "**/*.test.*"
+  ]
+}

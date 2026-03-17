@@ -1,0 +1,29 @@
+{
+  "search.exclude": {
+    "**/.yarn": true,
+    "**/.pnp.*": true
+  },
+  "js/ts.tsdk.path": ".yarn/sdks/typescript/lib",
+  "editor.tabSize": 2,
+  "eslint.nodePath": ".yarn/sdks",
+  "eslint.runtime": "node",
+  "eslint.execArgv": ["${workspaceFolder}/bin/swc-node.js"],
+  "eslint.options": {
+    "flags": ["unstable_native_nodejs_ts_config"]
+  },
+  "eslint.validate": [
+    "json",
+    "jsonc",
+    "json5",
+    "markdown",
+    "mdx",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "svelte"
+  ],
+  "stylelint.validate": ["css", "scss"],
+  "svelte.language-server.ls-path": "apps/svelte-app/.yarn/sdks/svelte-language-server/bin/server.js",
+  "svelte.language-server.runtime-args": ["--loader", "./.pnp.loader.mjs"]
+}
