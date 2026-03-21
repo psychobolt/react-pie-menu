@@ -1,44 +1,9 @@
 {
-  // See issue: https://github.com/vitejs/vite/issues/21852
-  // "extends": [
-  //   "@tsconfig/vite-react/tsconfig.json",
-  //   "commons/tsconfig.vite.json"
-  // ],
-  // commons/tsconfig.json
+  "extends": [
+    "@tsconfig/vite-react/tsconfig.json",
+    "commons/tsconfig.vite.json"
+  ],
   "compilerOptions": {
-    // @tsconfig/vite-react/tsconfig.json
-    "lib": ["ES2022", "DOM", "DOM.Iterable"],
-    "verbatimModuleSyntax": true,
-    "moduleDetection": "force",
-    "jsx": "react-jsx",
-    "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true,
-
-    // commons/tsconfig.json
-    "declaration": true,
-    "target": "ESNext",
-    "allowSyntheticDefaultImports": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "sourceMap": true,
-    "strict": true,
-    "skipLibCheck": true,
-
-    // commons/tsconfig.esm.json
-    "composite": false,
-    "outDir": "esm",
-
-    // commons/tsconfig.vite.json
-    "types": ["vite/client"],
-    "esModuleInterop": true,
-    "isolatedModules": true,
-    "module": "Preserve",
-    "moduleResolution": "Bundler",
-    "useDefineForClassFields": true,
-    "erasableSyntaxOnly": false,
-    "noEmit": true,
-    "allowImportingTsExtensions": true,
-
     "plugins": [
       {
         "name": "typescript-plugin-css-modules",
@@ -49,6 +14,7 @@
       }
     ],
     "baseUrl": "src",
+    "outDir": "dist",
     "paths": {
       ".storybook/*": ["../.storybook/*"],
       "html-ui/*": [

@@ -57,7 +57,7 @@ export default defineConfig(
   ...json.configs['recommended-with-jsonc'],
   ...json.configs['recommended-with-json5'],
   {
-    files: ['**/tsconfig.json'],
+    files: ['**/tsconfig.json', '**/tsconfig.*.json'],
     plugins: {
       jsonc: json
     },
