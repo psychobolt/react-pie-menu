@@ -4,7 +4,6 @@
     "module": "CommonJS",
     "moduleResolution": "bundler",
     "esModuleInterop": true,
-    "composite": false,
     "outDir": "cjs",
     "rootDir": "."
   },

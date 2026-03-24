@@ -17,9 +17,9 @@
     "paths": {
       ".storybook/*": ["./.storybook/*"],
       "html-ui/*": [
-        "./src/html-ui/dist/*.css",
-        "./src/html-ui/dist/*",
-        "./src/html-ui/*"
+        "../html-ui/src/html-ui/dist/*.css",
+        "../html-ui/dist/*",
+        "../html-ui/*"
       ],
       "react-ui": ["./src/index.ts"],
       "react-ui/*": ["./src/*/index.ts"],
@@ -27,6 +27,5 @@
     }
   },
   "include": [".storybook/**/*", "**/*"],
-  "exclude": ["dist"],
-  "references": [{ "path": "../commons/tsconfig.json" }]
+  "exclude": ["dist"]
 }

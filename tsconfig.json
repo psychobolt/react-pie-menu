@@ -14,6 +14,5 @@
     "sourceMap": true
   },
   "include": ["**/*"],
-  "exclude": ["apps", "packages"],
-  "references": [{ "path": "./packages/commons/tsconfig.json" }]
+  "exclude": ["apps", "packages"]
 }
