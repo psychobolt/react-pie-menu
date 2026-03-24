@@ -13,17 +13,17 @@
         }
       }
     ],
-    "baseUrl": "src",
     "outDir": "dist",
     "paths": {
-      ".storybook/*": ["../.storybook/*"],
+      ".storybook/*": ["./.storybook/*"],
       "html-ui/*": [
-        "${configDir}/../html-ui/dist/*.css",
-        "${configDir}/../html-ui/dist/*",
-        "${configDir}/../html-ui/*"
+        "./src/html-ui/dist/*.css",
+        "./src/html-ui/dist/*",
+        "./src/html-ui/*"
       ],
-      "react-ui": ["index.ts"],
-      "react-ui/*": ["*/index.ts"]
+      "react-ui": ["./src/index.ts"],
+      "react-ui/*": ["./src/*/index.ts"],
+      "*": ["./src/*"]
     }
   },
   "include": [".storybook/**/*", "**/*"],

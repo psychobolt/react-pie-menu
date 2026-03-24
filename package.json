@@ -24,18 +24,18 @@
     "run-script": "yarn g:run-script"
   },
   "resolutions": {
-    "@storybook/addon-vitest@npm:10.3.1": "patch:@storybook/addon-vitest@npm%3A10.3.1#~/.yarn/patches/@storybook-addon-vitest-npm-10.3.1-e0ed4c7524.patch",
+    "@storybook/addon-vitest@npm:10.3.3": "patch:@storybook/addon-vitest@npm%3A10.3.3#~/.yarn/patches/@storybook-addon-vitest-npm-10.3.1-e0ed4c7524.patch",
     "storybook-zeplin@npm:3.0.0": "patch:storybook-zeplin@npm%3A3.0.0#~/.yarn/patches/storybook-zeplin-npm-3.0.0-1df848e72d.patch",
     "vite-plugin-sass-glob-import@npm:6.0.2": "patch:vite-plugin-sass-glob-import@npm%3A6.0.2#~/.yarn/patches/vite-plugin-sass-glob-import-npm-6.0.2-b079086a71.patch"
   },
   "devDependencies": {
-    "@dotenvx/dotenvx": "1.57.0",
+    "@dotenvx/dotenvx": "1.57.2",
     "@swc-node/register": "1.11.1",
-    "@swc/core": "1.15.18",
+    "@swc/core": "1.15.21",
     "@types/glob-to-regexp": "0.4.4",
     "@types/node": "24.12.0",
     "@types/semver": "7.7.1",
-    "@typescript-eslint/utils": "8.57.1",
+    "@typescript-eslint/utils": "8.57.2",
     "@yarnpkg/core": "4.6.0",
     "@yarnpkg/fslib": "3.1.5",
     "@yarnpkg/sdks": "3.2.3",
@@ -45,11 +45,11 @@
     "glob-to-regexp": "0.4.1",
     "husky": "9.1.7",
     "playwright": "1.58.2",
-    "renovate": "43.84.2",
+    "renovate": "43.89.3",
     "semver": "7.7.4",
     "svelte-language-server": "0.17.29",
     "turbo": "2.8.20",
-    "typescript": "5.9.3",
+    "typescript": "6.0.2",
     "yaml": "2.8.3"
   },
   "packageManager": "yarn@4.13.0",

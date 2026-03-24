@@ -1,6 +1,7 @@
 import { globSync } from 'glob';
-import { defineConfig, mergeConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+import { defineConfig, mergeConfig, esmExternalRequirePlugin } from 'vite';
+import react, { reactCompilerPreset } from '@vitejs/plugin-react';
+import babel from '@rolldown/plugin-babel';
 import commonConfig, {
   type ModulePattern,
   srcPattern,
@@ -20,7 +21,7 @@ const patterns: ModulePattern[] = [
 export default mergeConfig(
   commonConfig,
   defineConfig({
-    plugins: [react()],
+    plugins: [react(), babel({ presets: [reactCompilerPreset()] })],
     css: {
       modules: {
         exportGlobals: true,
@@ -35,9 +36,14 @@ export default mergeConfig(
         ])
       },
       rolldownOptions: {
+        plugins: [
+          esmExternalRequirePlugin({
+            external: ['react']
+          })
+        ],
         // make sure to externalize deps that shouldn't be bundled
         // into your library
-        external: ['prop-types', 'react', 'react/jsx-runtime', 'react-dom'],
+        external: ['prop-types', 'react/jsx-runtime', 'react-dom', 'html-ui'],
         output: {
           // chunkFileNames: '[name]', // name is handled in manualChunks
           manualChunks(id) {

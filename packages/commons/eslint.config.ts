@@ -28,7 +28,8 @@ export default defineConfig(
     ignores: tsCodeBlocks,
     languageOptions: {
       parserOptions: {
-        projectService: true
+        projectService: true,
+        warnOnUnsupportedTypeScriptVersion: false
       }
     },
     rules: {

@@ -10,10 +10,10 @@
         }
       }
     ],
-    "baseUrl": "src",
     "outDir": "dist",
     "paths": {
-      ".storybook/*": ["../.storybook/*"]
+      ".storybook/*": ["./.storybook/*"],
+      "*": ["./src/*"]
     }
   },
   "include": [".storybook/**/*", "**/*"],

@@ -1,11 +1,12 @@
 import eslint from '@eslint/js';
+import { defineConfig } from 'eslint/config';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import eslintPluginSvelte from 'eslint-plugin-svelte';
 import svelteParser from 'svelte-eslint-parser';
 import tseslint from 'typescript-eslint';
 import globals from 'globals';
 
-export default tseslint.config(
+export default defineConfig([
 	{
 		extends: [eslint.configs.recommended, ...tseslint.configs.recommended],
 		plugins: {
@@ -16,7 +17,8 @@ export default tseslint.config(
 			parserOptions: {
 				sourceType: 'module',
 				ecmaVersion: 2020,
-				extraFileExtensions: ['.svelte']
+				extraFileExtensions: ['.svelte'],
+				warnOnUnsupportedTypeScriptVersion: false
 			},
 			globals: {
 				...globals.browser,
@@ -66,4 +68,4 @@ export default tseslint.config(
 			'yarn.lock'
 		]
 	}
-);
+]);

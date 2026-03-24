@@ -22,10 +22,7 @@
     "javascript",
     "javascriptreact",
     "typescript",
-    "typescriptreact",
-    "svelte"
+    "typescriptreact"
   ],
-  "stylelint.validate": ["css", "scss"],
-  "svelte.language-server.ls-path": "apps/svelte-app/.yarn/sdks/svelte-language-server/bin/server.js",
-  "svelte.language-server.runtime-args": ["--loader", "./.pnp.loader.mjs"]
+  "stylelint.validate": ["css", "scss"]
 }
