@@ -111,15 +111,15 @@ function makeReplacement(
 async function main() {
   const args = arg(
     {
-      '--tsconfig': String,
-      '-t': '--tsconfig'
+      '--project': String,
+      '-p': '--project'
     },
     { argv: process.argv.slice(2) }
   );
 
-  const tsconfigPath = args['--tsconfig'];
+  const tsconfigPath = args['--project'];
   if (!tsconfigPath) {
-    console.error('Error: --tsconfig <path> is required');
+    console.error('Error: --project <path> is required');
     process.exit(1);
   }
   if (!fs.existsSync(tsconfigPath)) {

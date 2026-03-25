@@ -33,7 +33,7 @@
   ],
   "scripts": {
     "build": "yarn build-src && yarn build-dts",
-    "build-dts": "tsc --project tsconfig.dts.json && tsc-paths --tsconfig tsconfig.dts.json",
+    "build-dts": "tsc --project tsconfig.dts.json && tsc-paths --project tsconfig.dts.json",
     "build-src": "vite build",
     "build-storybook": "yarn g:storybook build --stats-json",
     "chromatic": "yarn g:chromatic",

@@ -52,8 +52,8 @@ npm tsc --project ./tsconfig.dts.json && tsc-paths [options]
 
 ### Options
 
-#### TS Config (Required)
+#### Project (Required)
 
 ```sh
---ts-config /path/to/tsconfig.json # shorthand (-t)
+--project /path/to/tsconfig.json # shorthand (-p)
 ```
