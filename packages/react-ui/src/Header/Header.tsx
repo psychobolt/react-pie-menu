@@ -2,6 +2,8 @@ import buttonStyles from 'Button/Button.module.scss';
 import { Button } from 'Button';
 import styles from './Header.module.scss';
 
+export { Button } from 'Button';
+
 interface User {
   name: string;
 }

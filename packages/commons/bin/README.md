@@ -6,8 +6,10 @@ Commons scripts, executables, and any runtimes for workspace or infrastructure r
 
 `lint.ts` ([Source](lint.ts))
 
+A suite that executes and outputs the results from supported runners ([ESLint](utils/README.md#eslint), [Stylelint](utils/README.md#eslint)).
+
 ```sh
-# For integrated workspace, runs type check before linter
+# For integrated workspace
 yarn g:run-script $PROJECT_CWD/bin/lint.ts [options]
 # Or
 yarn lint [options]
@@ -15,11 +17,9 @@ yarn lint [options]
 npm lint [options]
 ```
 
-A suite that executes and outputs the results from supported runners ([ESLint](utils/README.md#eslint), [Stylelint](utils/README.md#eslint)).
-
 ### Options
 
-### Runner
+#### Runner
 
 ```sh
 --runner [runner]
@@ -27,10 +27,33 @@ A suite that executes and outputs the results from supported runners ([ESLint](u
 
 Pass one or more runner to be executed and return results.
 
-### Formatter
+#### Formatter
 
 ```sh
 --formatter [formatter | reporter] # shorthand (-f)
 ```
 
 Pass one or more formatter or reporter flags.
+
+## TSC Paths
+
+`tsc-paths.ts` ([Source](./tsc-paths.ts))
+
+Remove alias and restore relative path for project modules in `*.d.ts` emitted files.
+
+```sh
+# For integrated workspace
+yarn tsc --project ./tsconfig.dts.json && yarn g:run-script $PROJECT_CWD/bin/lint.ts [options]
+# Or
+yarn tsc --project ./tsconfig.dts.json && tsc-paths [options]
+# Or
+npm tsc --project ./tsconfig.dts.json && tsc-paths [options]
+```
+
+### Options
+
+#### TS Config (Required)
+
+```sh
+--ts-config /path/to/tsconfig.json # shorthand (-t)
+```
