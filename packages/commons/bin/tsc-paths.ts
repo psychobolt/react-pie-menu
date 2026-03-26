@@ -1,4 +1,6 @@
 /*
+ * (Experimental) Remove alias and restore relative path for project modules in `*.d.ts` emitted files.
+ *
  * Co-authored-by:
  * @author GitHub Copilot
  */
@@ -6,10 +8,19 @@ import fs from 'node:fs';
 import path from 'node:path';
 import ts from 'typescript';
 import arg from 'arg';
+import chokidar from 'chokidar';
+import debounce from 'lodash/debounce.js';
 
 const fsp = fs.promises;
 
 type Paths = Record<string, string[]>;
+
+// Cache for filesystem existence checks and computed replacements
+const existsCache = new Map<string, boolean>();
+const replacementCache = new Map<string, string | null>();
+
+type CompiledPath = { key: string; regex: RegExp; targets: string[] };
+let compiledPaths: CompiledPath[] = [];
 
 function escapeForRegex(s: string) {
   return s.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
@@ -55,27 +66,35 @@ function resolveTargetExists(resolved: string): boolean {
     path.join(resolved, 'index.tsx'),
     path.join(resolved, 'index.js')
   ];
-  return candidates.some((p) => fs.existsSync(p));
+  return candidates.some((p) => {
+    const cached = existsCache.get(p);
+    if (cached !== undefined) return cached;
+    const exists = fs.existsSync(p);
+    existsCache.set(p, exists);
+    return exists;
+  });
 }
 
 function makeReplacement(
   specifier: string,
   fileDir: string,
   tsconfigDir: string,
-  paths: Paths | undefined,
   rootDir: string | undefined,
   outDir: string | undefined
 ): string | null {
-  if (!paths) return null;
+  if (!compiledPaths.length) return null;
   if (specifier.startsWith('.') || specifier.startsWith('/')) return null;
 
-  const keys = Object.keys(paths).sort((a, b) => b.length - a.length);
-  for (const key of keys) {
-    const regex = wildcardToRegex(key);
-    const m = specifier.match(regex);
+  const cacheKey = `${fileDir}::${specifier}`;
+  if (replacementCache.has(cacheKey)) {
+    return replacementCache.get(cacheKey) || null;
+  }
+
+  for (const entry of compiledPaths) {
+    const m = specifier.match(entry.regex);
     if (!m) continue;
 
-    const targets = paths[key];
+    const targets = entry.targets;
     for (const target of targets) {
       // substitute wildcard groups into target
       let replaced = target;
@@ -102,9 +121,11 @@ function makeReplacement(
       const withoutExt = resolvedOut.replace(/(\.(ts|tsx|js|jsx|d\.ts))$/i, '');
       let relSpec = ensurePosix(path.relative(fileDir, withoutExt));
       if (!relSpec.startsWith('.')) relSpec = './' + relSpec;
+      replacementCache.set(cacheKey, relSpec);
       return relSpec;
     }
   }
+  replacementCache.set(cacheKey, null);
   return null;
 }
 
@@ -112,7 +133,9 @@ async function main() {
   const args = arg(
     {
       '--project': String,
-      '-p': '--project'
+      '-p': '--project',
+      '--watch': Boolean,
+      '-w': '--watch'
     },
     { argv: process.argv.slice(2) }
   );
@@ -152,41 +175,85 @@ async function main() {
     process.exit(0);
   }
 
+  // Precompile path keys into regexes to avoid recompiling per-specifier
+  compiledPaths = Object.keys(paths)
+    .sort((a, b) => b.length - a.length)
+    .map((k) => ({ key: k, regex: wildcardToRegex(k), targets: paths[k] }));
+
   const targetDir = outDir || tsconfigDir;
   const files: string[] = [];
   await walk(targetDir, async (file) => {
     if (file.endsWith('.d.ts')) files.push(file);
   });
 
-  for (const file of files) {
-    const content = String(await fsp.readFile(file, 'utf8'));
-    const fileDir = path.dirname(file);
-    let changed = false;
+  const pattern =
+    /(from\s+['"]([^'"]+)['"])|(import\(\s*['"]([^'"]+)['"]\s*\))/g;
+  async function processFile(file: string) {
+    try {
+      const content = String(await fsp.readFile(file, 'utf8'));
+      const fileDir = path.dirname(file);
+      let changed = false;
+      const newContent = content.replace(pattern, (match, p1, p2, _, p4) => {
+        const spec = p2 || p4;
+        if (!spec) return match;
+        const replacement = makeReplacement(
+          spec,
+          fileDir,
+          tsconfigDir,
+          rootDir,
+          outDir
+        );
+        if (replacement) {
+          changed = true;
+          if (p1) return `from '${replacement}'`;
+          return `import('${replacement}')`;
+        }
+        return match;
+      });
+      if (changed) await fsp.writeFile(file, newContent, 'utf8');
+    } catch (e) {
+      console.error('Failed processing', file, e);
+    }
+  }
 
-    const pattern =
-      /(from\s+['"]([^'"]+)['"])|(import\(\s*['"]([^'"]+)['"]\s*\))/g;
-    const newContent = content.replace(pattern, (match, p1, p2, _, p4) => {
-      const spec = p2 || p4;
-      if (!spec) return match;
-      const replacement = makeReplacement(
-        spec,
-        fileDir,
-        tsconfigDir,
-        paths,
-        rootDir,
-        outDir
-      );
-      if (replacement) {
-        changed = true;
-        if (p1) return `from '${replacement}'`;
-        return `import('${replacement}')`;
-      }
-      return match;
+  // initial run
+  for (const file of files) await processFile(file);
+
+  if (args['--watch']) {
+    console.log('Watching', targetDir);
+    const changedFiles = new Set<string>();
+    const flush = debounce(async () => {
+      const toProcess = Array.from(changedFiles);
+      changedFiles.clear();
+      // clear replacement cache to be safe when files change
+      replacementCache.clear();
+      for (const f of toProcess) await processFile(f);
+    }, 100);
+
+    const watcher = chokidar.watch(targetDir, {
+      ignored: /node_modules/, // ignore node_modules
+      ignoreInitial: true,
+      awaitWriteFinish: { stabilityThreshold: 100, pollInterval: 10 }
     });
 
-    if (changed) {
-      await fsp.writeFile(file, newContent, 'utf8');
-    }
+    watcher.on('add', (p) => {
+      if (p.endsWith('.d.ts')) {
+        changedFiles.add(p);
+        flush();
+      }
+    });
+    watcher.on('change', (p) => {
+      if (p.endsWith('.d.ts')) {
+        changedFiles.add(p);
+        flush();
+      }
+    });
+    watcher.on('unlink', (p) => {
+      if (p.endsWith('.d.ts')) {
+        changedFiles.add(p);
+        flush();
+      }
+    });
   }
 }
 

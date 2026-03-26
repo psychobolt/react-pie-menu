@@ -94,7 +94,7 @@ Utility for applying version strategy targets from `.yarn/versions`. Before runn
 
 [ ] = optional tag that is used to prevent version conflicts. For instance, if 1.2.0 is the latest and there is a new a minor version strategy on 1.1.0, bump to preminor instead: 1.2.0-rc.1. \*Additional long releases will only increment prerelease.
 
-\<hash\> = 6 character hash from the package's build task
+\* = 6 character hash from the package's build task
 
 \*\* Applies all target workspaces and additionally apply bump. It will also bump changed workspaces.
 

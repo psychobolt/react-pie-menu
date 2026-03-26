@@ -6,7 +6,12 @@
         "name": "typescript-plugin-css-modules",
         "options": {
           "classnameTransform": "camelCase",
-          "goToDefinition": true
+          "goToDefinition": true,
+          "rendererOptions": {
+            "sass": {
+              "customImporters": "commons/cjs/node-sass-importers.cjs"
+            }
+          }
         }
       }
     ],

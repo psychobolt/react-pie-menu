@@ -1,11 +1,9 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "module": "CommonJS",
-    "moduleResolution": "bundler",
-    "esModuleInterop": true,
-    "outDir": "cjs",
-    "rootDir": "."
+    "types": ["node"],
+    "outDir": "cjs"
   },
-  "include": ["**/*.d.ts"]
+  "include": ["**/*.d.ts", "**/*.cts"],
+  "exclude": ["esm", "cjs"]
 }

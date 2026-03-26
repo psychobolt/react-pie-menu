@@ -9,18 +9,18 @@
         "name": "typescript-plugin-css-modules",
         "options": {
           "classnameTransform": "camelCase",
-          "goToDefinition": true
+          "goToDefinition": true,
+          "rendererOptions": {
+            "sass": {
+              "customImporters": "commons/cjs/node-sass-importers.cjs"
+            }
+          }
         }
       }
     ],
     "outDir": "dist",
     "paths": {
       ".storybook/*": ["./.storybook/*"],
-      "html-ui/*": [
-        "../html-ui/src/html-ui/dist/*.css",
-        "../html-ui/dist/*",
-        "../html-ui/*"
-      ],
       "react-ui": ["./src/index.ts"],
       "react-ui/*": ["./src/*/index.ts"],
       "*": ["./src/*"]

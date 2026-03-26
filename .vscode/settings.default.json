@@ -9,7 +9,7 @@
   "editor.tabSize": 2,
   "eslint.nodePath": ".yarn/sdks",
   "eslint.runtime": "node",
-  "eslint.execArgv": ["${workspaceFolder}/bin/swc-node.js"],
+  "eslint.execArgv": ["bin/swc-node.js"],
   "eslint.options": {
     "flags": ["unstable_native_nodejs_ts_config"]
   },

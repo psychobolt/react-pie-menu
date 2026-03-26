@@ -1,6 +1,0 @@
-@use 'sass:meta';
-@use 'html-ui/Button.css'; // required for typescript-plugin-css-modules
-
-:global {
-  @include meta.load-css('html-ui/Button.css');
-}

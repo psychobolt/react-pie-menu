@@ -25,7 +25,9 @@
   },
   "resolutions": {
     "@storybook/addon-vitest@npm:10.3.3": "patch:@storybook/addon-vitest@npm%3A10.3.3#~/.yarn/patches/@storybook-addon-vitest-npm-10.3.1-e0ed4c7524.patch",
+    "pnp-sass-importer@npm:2.0.0": "patch:pnp-sass-importer@npm%3A2.0.0#~/.yarn/patches/pnp-sass-importer-npm-2.0.0-ab79efb9df.patch",
     "storybook-zeplin@npm:3.0.0": "patch:storybook-zeplin@npm%3A3.0.0#~/.yarn/patches/storybook-zeplin-npm-3.0.0-1df848e72d.patch",
+    "typescript-plugin-css-modules@npm:5.2.0": "patch:typescript-plugin-css-modules@npm%3A5.2.0#~/.yarn/patches/typescript-plugin-css-modules-npm-5.2.0-2a105149d7.patch",
     "vite-plugin-sass-glob-import@npm:6.0.2": "patch:vite-plugin-sass-glob-import@npm%3A6.0.2#~/.yarn/patches/vite-plugin-sass-glob-import-npm-6.0.2-b079086a71.patch"
   },
   "devDependencies": {
@@ -45,7 +47,7 @@
     "glob-to-regexp": "0.4.1",
     "husky": "9.1.7",
     "playwright": "1.58.2",
-    "renovate": "43.89.5",
+    "renovate": "43.91.5",
     "semver": "7.7.4",
     "svelte-language-server": "0.17.29",
     "turbo": "2.8.20",

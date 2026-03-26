@@ -382,3 +382,11 @@ export const Default = stories.Primary.extend({
      }
    });
    ```
+
+### Plugins
+
+#### Sass
+
+##### Node Importers
+
+Add your importers to [node-sass-importers.cts](node-sass-importers.cts) and import the script (e.g. `const sassOptions = { importers: require('common/cjs/node-sass-importers.cjs') };`) as part of your tool config. You also create your own importers. See API [docs](https://sass-lang.com/documentation/js-api/).
