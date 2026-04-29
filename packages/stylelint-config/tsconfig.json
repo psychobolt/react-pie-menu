@@ -1,8 +1,4 @@
 {
   "extends": "commons/tsconfig.json",
-  "include": ["**/*"],
-  "compilerOptions": {
-    "sourceMap": false,
-    "inlineSourceMap": true
-  }
+  "include": ["**/*"]
 }

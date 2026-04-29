@@ -28,7 +28,7 @@ jobs:
     steps:
       - name: Get token
         id: get_token
-        uses: actions/create-github-app-token@f8d387b68d61c58ab83c6c016672934102569859 # v3.0.0
+        uses: actions/create-github-app-token@1b10c78c7865c340bc4f6099eb2f838309f1e8c3 # v3.1.1
         with:
           private-key: ${{ secrets.BOT_APP_PRIVATE_KEY }}
           app-id: ${{ secrets.BOT_APP_ID }}
@@ -55,7 +55,7 @@ jobs:
           YARN_GLOBAL_FOLDER: ${{ runner.temp }}/.yarn/berry
         run: echo "YARN_GLOBAL_FOLDER=$YARN_GLOBAL_FOLDER" >> .env
       - name: Setup Node.js environment
-        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
         with:
           node-version: 22.x
           cache: yarn
@@ -63,7 +63,7 @@ jobs:
       - name: Override BASE_REF variable
         run: echo "BASE_REF=${{ env.base_ref }}" >> .env
       - name: Start Turbo Cache Server
-        uses: rharkor/caching-for-turbo@a1c4079258ae08389be75b57d4d7a70f23c1c66d # v1.8
+        uses: rharkor/caching-for-turbo@56219402aacc0d06b650d898c222996dbc1191ec # v2.3.14
         with:
           cache-prefix: ${{ vars.TURBO_CACHE_PREFIX }}
       - name: Install dependencies

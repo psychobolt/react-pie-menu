@@ -12,7 +12,7 @@ index 6557d68a84382ad6af2dbfae4e1c13df96213330..a9f3ca8ff9606b9badb9ef3350904927
      }
      return urlToUse;
 diff --git a/dist/cjs/importer.js b/dist/cjs/importer.js
-index a538f248eae71d5bcb9b7180f2abc71b44c76264..0302371544a60d69625a9f469e7fd803b9607e68 100644
+index a538f248eae71d5bcb9b7180f2abc71b44c76264..a711873a43df746a4bbea5c8c1c19989cdf25faf 100644
 --- a/dist/cjs/importer.js
 +++ b/dist/cjs/importer.js
 @@ -46,7 +46,7 @@ const getValidatedUrl_js_1 = require("./getValidatedUrl.js");
@@ -33,7 +33,23 @@ index a538f248eae71d5bcb9b7180f2abc71b44c76264..0302371544a60d69625a9f469e7fd803
              }
              catch (error) {
                  console.log("pnpapi not found, pnp-sass-importer is not needed outside of a PnP context. Using require.resolve instead");
-@@ -108,7 +108,7 @@ function createImporter(dirname) {
+@@ -88,6 +88,7 @@ function createImporter(dirname) {
+             let res = null;
+             try {
+                 res = pnpapi.resolveRequest(validatedUrl, dirname);
++                res = pnpapi.resolveVirtual?.(res) ?? res;
+             }
+             catch (error) {
+                 try {
+@@ -95,6 +96,7 @@ function createImporter(dirname) {
+                     // In that case, we can see if the URL is simply missing a .scss extension and try again
+                     if (!url.toString().endsWith(".scss")) {
+                         res = pnpapi.resolveRequest(validatedUrl + ".scss", dirname);
++                        res = pnpapi.resolveVirtual?.(res) ?? res;
+                     }
+                 }
+                 catch {
+@@ -108,7 +110,7 @@ function createImporter(dirname) {
              return new URL(`file:///${res}`);
          },
          load: (url) => {

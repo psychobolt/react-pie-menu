@@ -42,7 +42,7 @@ export default mergeConfig(
         preserveEntrySignatures: 'strict',
         output: {
           entryFileNames: 'index.js', // disabling JS output is unsupported, use noEmit()
-          assetFileNames: ({ name }) => name || 'assets/[name]-[hash][extname]'
+          assetFileNames: '[name][extname]'
         }
       }
     }

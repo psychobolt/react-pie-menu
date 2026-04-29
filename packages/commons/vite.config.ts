@@ -50,6 +50,7 @@ export default defineConfig({
     }
   },
   css: {
-    postcss: postcssConfig
+    postcss: postcssConfig,
+    devSourcemap: true
   }
 });

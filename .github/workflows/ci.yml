@@ -57,13 +57,13 @@ jobs:
         run: echo "YARN_GLOBAL_FOLDER=$YARN_GLOBAL_FOLDER" >> .env
         shell: bash
       - name: Setup Node.js environment
-        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
         with:
           node-version: 22.x
           cache: yarn
           cache-dependency-path: yarn.lock
       - name: Start Turbo Cache Server
-        uses: rharkor/caching-for-turbo@a1c4079258ae08389be75b57d4d7a70f23c1c66d # v1.8
+        uses: rharkor/caching-for-turbo@56219402aacc0d06b650d898c222996dbc1191ec # v2.3.14
         with:
           cache-prefix: ${{ vars.TURBO_CACHE_PREFIX }}
       - name: Install dependencies
@@ -93,7 +93,7 @@ jobs:
         if: env.BASE_REF != ''
         run: git fetch --depth=1 origin ${{ env.BASE_REF }}:base_branch
       - name: Setup Node.js environment
-        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
         with:
           node-version: 22.x
           cache: npm
@@ -114,7 +114,7 @@ jobs:
           turbo bin
           turbo --version
       - name: Start Turbo Cache Server
-        uses: rharkor/caching-for-turbo@a1c4079258ae08389be75b57d4d7a70f23c1c66d # v1.8
+        uses: rharkor/caching-for-turbo@56219402aacc0d06b650d898c222996dbc1191ec # v2.3.14
         with:
           cache-prefix: ${{ vars.TURBO_CACHE_PREFIX }}
       - name: Collect Turborepo Changes

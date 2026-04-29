@@ -1,10 +1,7 @@
 import { execSync } from 'node:child_process';
 import { createRequire } from 'node:module';
 import { join, dirname } from 'node:path';
-import type {
-  StorybookConfig,
-  CoreCommon_ResolvedAddonVirtual as StorybookAddonConfig
-} from 'storybook/internal/types';
+import type { StorybookConfig } from 'storybook/internal/types';
 import type { StorybookConfigVite } from '@storybook/builder-vite';
 import * as sortAddon from 'storybook-multilevel-sort';
 import {
@@ -84,8 +81,7 @@ type Core = Pick<StorybookConfig, 'core'>['core'];
 type CoreConfig = Omit<NonNullable<Exclude<Core, Function>>, 'builder'>;
 
 export type StorybookViteCommonConfig = Omit<StorybookConfig, 'core'> &
-  Required<Pick<StorybookConfig, 'addons'>> &
-  Required<Pick<StorybookAddonConfig, 'managerEntries'>> & {
+  Required<Pick<StorybookConfig, 'addons'>> & {
     core?: CoreConfig | Exclude<Core, CoreConfig>;
   } & Required<StorybookConfigVite>;
 
@@ -97,9 +93,9 @@ export default {
     addonDocs,
     ...(new RegExp(`^origin/${gitBranch}$`).test(process.env.BASE_REF ?? '')
       ? []
-      : [getAbsolutePath('@chromatic-com/storybook')])
+      : [getAbsolutePath('@chromatic-com/storybook')]),
+    getAbsolutePath('storybook-zeplin')
   ],
-  managerEntries: [join(getAbsolutePath('storybook-zeplin'), 'register.js')],
   experimental_indexers: (existingIndexers = []) => [
     ...existingIndexers,
     storybookVariantsIndexer()

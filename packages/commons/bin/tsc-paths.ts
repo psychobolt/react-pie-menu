@@ -189,6 +189,7 @@ async function main() {
   const pattern =
     /(from\s+['"]([^'"]+)['"])|(import\(\s*['"]([^'"]+)['"]\s*\))/g;
   async function processFile(file: string) {
+    if (!fs.existsSync(file)) return;
     try {
       const content = String(await fsp.readFile(file, 'utf8'));
       const fileDir = path.dirname(file);

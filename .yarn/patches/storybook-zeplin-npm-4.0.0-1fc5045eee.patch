@@ -1,0 +1,1068 @@
+diff --git a/dist/components/HeaderButtons.d.ts b/dist/components/HeaderButtons.d.ts
+index 608a86326dc119b37d95da5872428416c4433999..1c1fb2a6792addc669d4d68b20b304a0e71a9359 100644
+--- a/dist/components/HeaderButtons.d.ts
++++ b/dist/components/HeaderButtons.d.ts
+@@ -1,3 +1,4 @@
++import React from "react";
+ interface HeaderButtonsProps {
+     username?: string;
+     onLogout(): void;
+@@ -5,5 +6,5 @@ interface HeaderButtonsProps {
+     onZoomOut(): void;
+     onZoomReset(): void;
+ }
+-export default function HeaderButtons({ username, onZoomIn, onZoomOut, onZoomReset, onLogout, }: HeaderButtonsProps): import("react/jsx-runtime").JSX.Element;
++export default function HeaderButtons({ username, onZoomIn, onZoomOut, onZoomReset, onLogout, }: HeaderButtonsProps): React.JSX.Element;
+ export {};
+diff --git a/dist/components/HeaderButtons.js b/dist/components/HeaderButtons.js
+old mode 100755
+new mode 100644
+index 739c81485b262173cc8ea489f9e3056ecd9f96e1..dfeaa575bb815d3361adfa093e3a0a0d3f52da8d
+--- a/dist/components/HeaderButtons.js
++++ b/dist/components/HeaderButtons.js
+@@ -1,10 +1,20 @@
+-import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
++import React from "react";
+ import { Button, TooltipMessage, WithTooltip, } from "storybook/internal/components";
+ import { UserIcon, ZoomIcon, ZoomOutIcon, ZoomResetIcon, } from "@storybook/icons";
+ import { styled } from "storybook/theming";
+-const ProfileTooltip = ({ username, onLogout, }) => (_jsx(TooltipWrapper, { children: _jsx(TooltipMessage, { title: username && _jsx(TooltipTitle, { children: username }), links: [{ onClick: onLogout, title: "Log out" }] }) }));
++const ProfileTooltip = ({ username, onLogout, }) => (React.createElement(TooltipWrapper, null,
++    React.createElement(TooltipMessage, { title: username && React.createElement(TooltipTitle, null, username), links: [{ onClick: onLogout, title: "Log out" }] })));
+ export default function HeaderButtons({ username, onZoomIn, onZoomOut, onZoomReset, onLogout, }) {
+-    return (_jsxs(Container, { children: [_jsx(Button, { onClick: onZoomIn, ariaLabel: "Zoom in", children: _jsx(ZoomIcon, {}) }), _jsx(Button, { onClick: onZoomOut, ariaLabel: "Zoom out", children: _jsx(ZoomOutIcon, {}) }), _jsx(Button, { onClick: onZoomReset, ariaLabel: "Reset zoom", children: _jsx(ZoomResetIcon, {}) }), _jsx(WithTooltip, { placement: "bottom", trigger: "click", tooltip: _jsx(ProfileTooltip, { username: username, onLogout: onLogout }), children: _jsx(Button, { ariaLabel: "Profile", children: _jsx(UserIcon, {}) }) })] }));
++    return (React.createElement(Container, null,
++        React.createElement(Button, { onClick: onZoomIn, ariaLabel: "Zoom in" },
++            React.createElement(ZoomIcon, null)),
++        React.createElement(Button, { onClick: onZoomOut, ariaLabel: "Zoom out" },
++            React.createElement(ZoomOutIcon, null)),
++        React.createElement(Button, { onClick: onZoomReset, ariaLabel: "Reset zoom" },
++            React.createElement(ZoomResetIcon, null)),
++        React.createElement(WithTooltip, { placement: "bottom", trigger: "click", tooltip: React.createElement(ProfileTooltip, { username: username, onLogout: onLogout }) },
++            React.createElement(Button, { ariaLabel: "Profile" },
++                React.createElement(UserIcon, null)))));
+ }
+ const TooltipTitle = styled.div `
+     text-align: center;
+diff --git a/dist/components/HeaderButtons.jsx b/dist/components/HeaderButtons.jsx
+new file mode 100644
+index 0000000000000000000000000000000000000000..c97f5ab659b6d78826535980dc3429e7b3090a3c
+--- /dev/null
++++ b/dist/components/HeaderButtons.jsx
+@@ -0,0 +1,37 @@
++import { Button, TooltipMessage, WithTooltip, } from "storybook/internal/components";
++import { UserIcon, ZoomIcon, ZoomOutIcon, ZoomResetIcon, } from "@storybook/icons";
++import { styled } from "storybook/theming";
++const ProfileTooltip = ({ username, onLogout, }) => (<TooltipWrapper>
++        <TooltipMessage title={username && <TooltipTitle>{username}</TooltipTitle>} links={[{ onClick: onLogout, title: "Log out" }]}/>
++    </TooltipWrapper>);
++export default function HeaderButtons({ username, onZoomIn, onZoomOut, onZoomReset, onLogout, }) {
++    return (<Container>
++            <Button onClick={onZoomIn} ariaLabel="Zoom in">
++                <ZoomIcon />
++            </Button>
++            <Button onClick={onZoomOut} ariaLabel="Zoom out">
++                <ZoomOutIcon />
++            </Button>
++            <Button onClick={onZoomReset} ariaLabel="Reset zoom">
++                <ZoomResetIcon />
++            </Button>
++            <WithTooltip placement="bottom" trigger="click" tooltip={<ProfileTooltip username={username} onLogout={onLogout}/>}>
++                <Button ariaLabel="Profile">
++                    <UserIcon />
++                </Button>
++            </WithTooltip>
++        </Container>);
++}
++const TooltipTitle = styled.div `
++    text-align: center;
++`;
++const Container = styled.div `
++    display: flex;
++    gap: 6px;
++    margin-left: 15px;
++`;
++const TooltipWrapper = styled.div `
++    & > div {
++        width: auto;
++    }
++`;
+diff --git a/dist/components/HeaderButtons.stories.d.ts b/dist/components/HeaderButtons.stories.d.ts
+index 8b70b062a77fc3949245bb92fe7686f8bbb707ea..32ddc013d217b27b23186e2c846253d42c44f3d3 100644
+--- a/dist/components/HeaderButtons.stories.d.ts
++++ b/dist/components/HeaderButtons.stories.d.ts
+@@ -1,5 +1,6 @@
++import React from 'react';
+ declare const _default: {
+     title: string;
+ };
+ export default _default;
+-export declare const Default: () => import("react/jsx-runtime").JSX.Element;
++export declare const Default: () => React.JSX.Element;
+diff --git a/dist/components/HeaderButtons.stories.js b/dist/components/HeaderButtons.stories.js
+old mode 100755
+new mode 100644
+index 48652ad3c7357238b1986bbdceeedc91f88b3768..73d2db6b6a8cfa1b678d656de019c0fe57b24128
+--- a/dist/components/HeaderButtons.stories.js
++++ b/dist/components/HeaderButtons.stories.js
+@@ -1,6 +1,6 @@
+-import { jsx as _jsx } from "react/jsx-runtime";
++import React from 'react';
+ import HeaderButtons from "./HeaderButtons";
+ export default {
+     title: "Addon/HeaderButtons",
+ };
+-export const Default = () => (_jsx(HeaderButtons, { onLogout: () => console.log("logout"), onZoomIn: () => console.log("zoom in"), onZoomOut: () => console.log("zoom out"), onZoomReset: () => console.log("zoom reset") }));
++export const Default = () => (React.createElement(HeaderButtons, { onLogout: () => console.log("logout"), onZoomIn: () => console.log("zoom in"), onZoomOut: () => console.log("zoom out"), onZoomReset: () => console.log("zoom reset") }));
+diff --git a/dist/components/HeaderButtons.stories.jsx b/dist/components/HeaderButtons.stories.jsx
+new file mode 100644
+index 0000000000000000000000000000000000000000..e1c8146694a4144e0e9386335caac39db0894a27
+--- /dev/null
++++ b/dist/components/HeaderButtons.stories.jsx
+@@ -0,0 +1,5 @@
++import HeaderButtons from "./HeaderButtons";
++export default {
++    title: "Addon/HeaderButtons",
++};
++export const Default = () => (<HeaderButtons onLogout={() => console.log("logout")} onZoomIn={() => console.log("zoom in")} onZoomOut={() => console.log("zoom out")} onZoomReset={() => console.log("zoom reset")}/>);
+diff --git a/dist/components/MainPanel.js b/dist/components/MainPanel.js
+old mode 100755
+new mode 100644
+index a05c3942b132f5db266f2e1e85f143e42f4a60ea..cd065f63613199ed8276906459080df2fa54743b
+--- a/dist/components/MainPanel.js
++++ b/dist/components/MainPanel.js
+@@ -1,18 +1,17 @@
+-import { jsx as _jsx } from "react/jsx-runtime";
+-import { useState } from "react";
++import React, { useState } from "react";
+ import { styled } from "storybook/theming";
+ import ZeplinPanel from "./ZeplinPanel";
+ import { PATForm } from "./PATForm";
+ import { isLoggedIn, login, logout } from "../utils/api";
+ export const MainPanel = ({ zeplinLink, }) => {
+     const [loggedIn, setLoggedIn] = useState(isLoggedIn());
+-    return (_jsx(Container, { children: loggedIn ? (_jsx(ZeplinPanel, { zeplinLink: zeplinLink, onLogout: () => {
+-                logout();
+-                setLoggedIn(false);
+-            } })) : (_jsx(PATForm, { onSubmit: (newToken) => {
+-                login(newToken);
+-                setLoggedIn(true);
+-            } })) }));
++    return (React.createElement(Container, null, loggedIn ? (React.createElement(ZeplinPanel, { zeplinLink: zeplinLink, onLogout: () => {
++            logout();
++            setLoggedIn(false);
++        } })) : (React.createElement(PATForm, { onSubmit: (newToken) => {
++            login(newToken);
++            setLoggedIn(true);
++        } }))));
+ };
+ const Container = styled.div `
+     display: flex;
+diff --git a/dist/components/MainPanel.jsx b/dist/components/MainPanel.jsx
+new file mode 100644
+index 0000000000000000000000000000000000000000..4fe0df6cc3830ffa5dae7652160be795f2851a5a
+--- /dev/null
++++ b/dist/components/MainPanel.jsx
+@@ -0,0 +1,23 @@
++import { useState } from "react";
++import { styled } from "storybook/theming";
++import ZeplinPanel from "./ZeplinPanel";
++import { PATForm } from "./PATForm";
++import { isLoggedIn, login, logout } from "../utils/api";
++export const MainPanel = ({ zeplinLink, }) => {
++    const [loggedIn, setLoggedIn] = useState(isLoggedIn());
++    return (<Container>
++            {loggedIn ? (<ZeplinPanel zeplinLink={zeplinLink} onLogout={() => {
++                logout();
++                setLoggedIn(false);
++            }}/>) : (<PATForm onSubmit={(newToken) => {
++                login(newToken);
++                setLoggedIn(true);
++            }}/>)}
++        </Container>);
++};
++const Container = styled.div `
++    display: flex;
++    flex-direction: column;
++    background: ${({ theme }) => theme.background.content};
++    height: 100%;
++`;
+diff --git a/dist/components/OverlayButtons.d.ts b/dist/components/OverlayButtons.d.ts
+index 6dff4483b6a19d13b23b1b1b2647337d5ba63276..0ec8c1c4fbec1ec2bcd6380bd83a64a4a43426ad 100644
+--- a/dist/components/OverlayButtons.d.ts
++++ b/dist/components/OverlayButtons.d.ts
+@@ -1,3 +1,4 @@
++import React from 'react';
+ interface OverlayButtonsProps {
+     overlayIsOpen: boolean;
+     overlayIsLocked: boolean;
+@@ -6,5 +7,5 @@ interface OverlayButtonsProps {
+     onToggleLock(): void;
+     onToggleDifference(): void;
+ }
+-export default function OverlayButtons(props: OverlayButtonsProps): import("react/jsx-runtime").JSX.Element;
++export default function OverlayButtons(props: OverlayButtonsProps): React.JSX.Element;
+ export {};
+diff --git a/dist/components/OverlayButtons.js b/dist/components/OverlayButtons.js
+old mode 100755
+new mode 100644
+index 51002842d2278834226c5583924f640439ca6b9b..f1f01cfa799b9c7280019986d5d7522dca6c090b
+--- a/dist/components/OverlayButtons.js
++++ b/dist/components/OverlayButtons.js
+@@ -1,11 +1,16 @@
+-import { jsx as _jsx, Fragment as _Fragment, jsxs as _jsxs } from "react/jsx-runtime";
++import React from 'react';
+ import { ToggleButton } from "storybook/internal/components";
+ import { EyeCloseIcon, EyeIcon, LockIcon, MirrorIcon, UnlockIcon, } from "@storybook/icons";
+ import { styled } from "storybook/theming";
+ export default function OverlayButtons(props) {
+     const { onToggleOverlay, onToggleLock, onToggleDifference, overlayIsOpen, overlayIsLocked, showDifference, } = props;
+-    const additionalOptions = overlayIsOpen && (_jsxs(_Fragment, { children: [_jsx(ToggleButton, { pressed: overlayIsLocked, ariaLabel: overlayIsLocked ? "Unlock overlay" : "Lock overlay", onClick: onToggleLock, children: overlayIsLocked ? _jsx(LockIcon, {}) : _jsx(UnlockIcon, {}) }), _jsx(ToggleButton, { pressed: showDifference, ariaLabel: "Show difference", onClick: onToggleDifference, children: _jsx(MirrorIcon, {}) })] }));
+-    return (_jsxs(Container, { children: [_jsx(ToggleButton, { pressed: overlayIsOpen, ariaLabel: overlayIsOpen ? "Hide overlay" : "Show overlay", onClick: onToggleOverlay, children: overlayIsOpen ? _jsx(EyeCloseIcon, {}) : _jsx(EyeIcon, {}) }), additionalOptions] }));
++    const additionalOptions = overlayIsOpen && (React.createElement(React.Fragment, null,
++        React.createElement(ToggleButton, { pressed: overlayIsLocked, ariaLabel: overlayIsLocked ? "Unlock overlay" : "Lock overlay", onClick: onToggleLock }, overlayIsLocked ? React.createElement(LockIcon, null) : React.createElement(UnlockIcon, null)),
++        React.createElement(ToggleButton, { pressed: showDifference, ariaLabel: "Show difference", onClick: onToggleDifference },
++            React.createElement(MirrorIcon, null))));
++    return (React.createElement(Container, null,
++        React.createElement(ToggleButton, { pressed: overlayIsOpen, ariaLabel: overlayIsOpen ? "Hide overlay" : "Show overlay", onClick: onToggleOverlay }, overlayIsOpen ? React.createElement(EyeCloseIcon, null) : React.createElement(EyeIcon, null)),
++        additionalOptions));
+ }
+ const Container = styled.div `
+     display: flex;
+diff --git a/dist/components/OverlayButtons.jsx b/dist/components/OverlayButtons.jsx
+new file mode 100644
+index 0000000000000000000000000000000000000000..d03ac51c0b7004127a3756144ad0c1845e59aa46
+--- /dev/null
++++ b/dist/components/OverlayButtons.jsx
+@@ -0,0 +1,24 @@
++import { ToggleButton } from "storybook/internal/components";
++import { EyeCloseIcon, EyeIcon, LockIcon, MirrorIcon, UnlockIcon, } from "@storybook/icons";
++import { styled } from "storybook/theming";
++export default function OverlayButtons(props) {
++    const { onToggleOverlay, onToggleLock, onToggleDifference, overlayIsOpen, overlayIsLocked, showDifference, } = props;
++    const additionalOptions = overlayIsOpen && (<>
++            <ToggleButton pressed={overlayIsLocked} ariaLabel={overlayIsLocked ? "Unlock overlay" : "Lock overlay"} onClick={onToggleLock}>
++                {overlayIsLocked ? <LockIcon /> : <UnlockIcon />}
++            </ToggleButton>
++            <ToggleButton pressed={showDifference} ariaLabel="Show difference" onClick={onToggleDifference}>
++                <MirrorIcon />
++            </ToggleButton>
++        </>);
++    return (<Container>
++            <ToggleButton pressed={overlayIsOpen} ariaLabel={overlayIsOpen ? "Hide overlay" : "Show overlay"} onClick={onToggleOverlay}>
++                {overlayIsOpen ? <EyeCloseIcon /> : <EyeIcon />}
++            </ToggleButton>
++            {additionalOptions}
++        </Container>);
++}
++const Container = styled.div `
++    display: flex;
++    gap: 15px;
++`;
+diff --git a/dist/components/OverlayImage.d.ts b/dist/components/OverlayImage.d.ts
+index 231b4e2394c00c384af0d8adfe7171879bbd0d34..dd56d143a7da45554a7e48f6ba1f1d03f4957ad3 100644
+--- a/dist/components/OverlayImage.d.ts
++++ b/dist/components/OverlayImage.d.ts
+@@ -1,3 +1,4 @@
++import React from "react";
+ interface OverlayImageProps {
+     url: string;
+     opacity: number;
+@@ -5,5 +6,5 @@ interface OverlayImageProps {
+     isLocked: boolean;
+     showDifference: boolean;
+ }
+-declare const OverlayImage: ({ url, opacity, scaling, isLocked, showDifference, }: OverlayImageProps) => import("react/jsx-runtime").JSX.Element;
++declare const OverlayImage: ({ url, opacity, scaling, isLocked, showDifference, }: OverlayImageProps) => React.JSX.Element;
+ export default OverlayImage;
+diff --git a/dist/components/OverlayImage.js b/dist/components/OverlayImage.js
+old mode 100755
+new mode 100644
+index 8ec716685f682cf19ffc6358f59254a300eddc62..ab75549f945f9703fa6e96c7c2d2c53e2aa970c7
+--- a/dist/components/OverlayImage.js
++++ b/dist/components/OverlayImage.js
+@@ -1,5 +1,4 @@
+-import { jsx as _jsx, Fragment as _Fragment, jsxs as _jsxs } from "react/jsx-runtime";
+-import { useState, useEffect, useReducer } from "react";
++import React, { useState, useEffect, useReducer } from "react";
+ import { useParameter } from "storybook/manager-api";
+ import { styled } from "storybook/theming";
+ const movementReducer = (state, offset) => {
+@@ -51,13 +50,15 @@ const OverlayImage = ({ url, opacity, scaling, isLocked, showDifference, }) => {
+         return () => window.removeEventListener("keydown", handleKeyDown);
+     }, [isLocked]);
+     const handleMouseDown = () => setMouseDown(true);
+-    return (_jsxs(_Fragment, { children: [mouseDown && _jsx(DraggableArea, {}), _jsx(OverlayElement, { src: url, draggable: false, onMouseDown: handleMouseDown, style: {
+-                    transform: `translate(${position.x}px, ${position.y}px) scale(${scaling})`,
+-                    // For the difference filter to work correctly, opacity needs to be locked to 1
+-                    opacity: showDifference ? 1 : opacity,
+-                    pointerEvents: isLocked ? "none" : "all",
+-                    mixBlendMode: showDifference ? "difference" : "normal",
+-                } })] }));
++    return (React.createElement(React.Fragment, null,
++        mouseDown && React.createElement(DraggableArea, null),
++        React.createElement(OverlayElement, { src: url, draggable: false, onMouseDown: handleMouseDown, style: {
++                transform: `translate(${position.x}px, ${position.y}px) scale(${scaling})`,
++                // For the difference filter to work correctly, opacity needs to be locked to 1
++                opacity: showDifference ? 1 : opacity,
++                pointerEvents: isLocked ? "none" : "all",
++                mixBlendMode: showDifference ? "difference" : "normal",
++            } })));
+ };
+ /**
+  * In order to not lose "focus" of the overlay when moving
+diff --git a/dist/components/OverlayImage.jsx b/dist/components/OverlayImage.jsx
+new file mode 100644
+index 0000000000000000000000000000000000000000..be2b68021b0e3c4a083f7311ff01adb0d6536aa2
+--- /dev/null
++++ b/dist/components/OverlayImage.jsx
+@@ -0,0 +1,83 @@
++import { useState, useEffect, useReducer } from "react";
++import { useParameter } from "storybook/manager-api";
++import { styled } from "storybook/theming";
++const movementReducer = (state, offset) => {
++    return {
++        x: state.x + offset.x,
++        y: state.y + offset.y,
++    };
++};
++const OverlayImage = ({ url, opacity, scaling, isLocked, showDifference, }) => {
++    const isPaddedLayout = useParameter("layout", "padded") === "padded";
++    const initialPosition = isPaddedLayout ? 16 : 0;
++    const [position, updatePosition] = useReducer(movementReducer, {
++        x: initialPosition,
++        y: initialPosition,
++    });
++    const [mouseDown, setMouseDown] = useState(false);
++    useEffect(() => {
++        const handleMouseUp = () => setMouseDown(false);
++        window.addEventListener("mouseup", handleMouseUp);
++        return () => window.removeEventListener("mouseup", handleMouseUp);
++    }, []);
++    useEffect(() => {
++        const handleMouseMove = (e) => {
++            updatePosition({ x: e.movementX, y: e.movementY });
++        };
++        if (mouseDown) {
++            window.addEventListener("mousemove", handleMouseMove);
++        }
++        return () => window.removeEventListener("mousemove", handleMouseMove);
++    }, [mouseDown]);
++    useEffect(() => {
++        const handleKeyDown = (event) => {
++            if (event.shiftKey && event.key === "ArrowUp") {
++                updatePosition({ x: 0, y: -1 });
++            }
++            if (event.shiftKey && event.key === "ArrowDown") {
++                updatePosition({ x: 0, y: 1 });
++            }
++            if (event.shiftKey && event.key === "ArrowRight") {
++                updatePosition({ x: 1, y: 0 });
++            }
++            if (event.shiftKey && event.key === "ArrowLeft") {
++                updatePosition({ x: -1, y: 0 });
++            }
++        };
++        if (!isLocked) {
++            window.addEventListener("keydown", handleKeyDown);
++        }
++        return () => window.removeEventListener("keydown", handleKeyDown);
++    }, [isLocked]);
++    const handleMouseDown = () => setMouseDown(true);
++    return (<>
++            {mouseDown && <DraggableArea />}
++            <OverlayElement src={url} draggable={false} onMouseDown={handleMouseDown} style={{
++            transform: `translate(${position.x}px, ${position.y}px) scale(${scaling})`,
++            // For the difference filter to work correctly, opacity needs to be locked to 1
++            opacity: showDifference ? 1 : opacity,
++            pointerEvents: isLocked ? "none" : "all",
++            mixBlendMode: showDifference ? "difference" : "normal",
++        }}/>
++        </>);
++};
++/**
++ * In order to not lose "focus" of the overlay when moving
++ * the mouse very fast, there needs to be another element
++ * above the iframe
++ */
++const DraggableArea = styled.div `
++    position: absolute;
++    top: 0;
++    left: 0;
++    right: 0;
++    bottom: 0;
++`;
++const OverlayElement = styled.img `
++    position: absolute;
++    left: 0;
++    top: 0;
++    cursor: move;
++    transform-origin: top left;
++`;
++export default OverlayImage;
+diff --git a/dist/components/OverlayPanel.d.ts b/dist/components/OverlayPanel.d.ts
+index 1961ff784065da5e7ecb3876f0c4526238ffdb02..bf61223c7f967e0a21bb7dd984eb775e6e80a8b9 100644
+--- a/dist/components/OverlayPanel.d.ts
++++ b/dist/components/OverlayPanel.d.ts
+@@ -1,3 +1,4 @@
++import React from "react";
+ interface OverlayPanelProps {
+     imageUrl: string;
+ }
+diff --git a/dist/components/OverlayPanel.js b/dist/components/OverlayPanel.js
+old mode 100755
+new mode 100644
+index e5b624516a823c19cbb67008374402db081c1a22..5504a1310b0ffd4c6fd1a2bc5ea5c80282c49dad
+--- a/dist/components/OverlayPanel.js
++++ b/dist/components/OverlayPanel.js
+@@ -1,5 +1,4 @@
+-import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
+-import { useCallback, useReducer } from "react";
++import React, { useCallback, useReducer } from "react";
+ import { Form } from "storybook/internal/components";
+ import { styled } from "storybook/theming";
+ import OverlayPortal from "./OverlayPortal";
+@@ -33,7 +32,20 @@ const OverlayPanel = ({ imageUrl }) => {
+     const updateOpacity = (event) => {
+         setState({ opacity: Number(event.currentTarget.value) });
+     };
+-    return (_jsxs(_Fragment, { children: [_jsx(OverlayButtons, { overlayIsOpen: showOverlay, overlayIsLocked: lockOverlay, showDifference: showDifference, onToggleOverlay: toggleOverlay, onToggleLock: toggleLock, onToggleDifference: toggleDifference }), showOverlay && (_jsxs(OverlayOptions, { children: ["Opacity", _jsx(Input, { type: "range", min: "0", max: "1", step: "0.01", value: opacity, onChange: updateOpacity }), "Scale", _jsxs(Select, { onChange: selectScaling, value: overlayScaling, children: [_jsx("option", { value: 0.25, children: "0.5\u00D7" }), _jsx("option", { value: 0.5, children: "1\u00D7" }), _jsx("option", { value: 1, children: "2\u00D7" }), _jsx("option", { value: 1.5, children: "3\u00D7" }), _jsx("option", { value: 2, children: "4\u00D7" })] })] })), showOverlay && (_jsx(OverlayPortal, { children: _jsx(OverlayImage, { url: imageUrl, opacity: opacity, isLocked: lockOverlay, scaling: overlayScaling, showDifference: showDifference }) }))] }));
++    return (React.createElement(React.Fragment, null,
++        React.createElement(OverlayButtons, { overlayIsOpen: showOverlay, overlayIsLocked: lockOverlay, showDifference: showDifference, onToggleOverlay: toggleOverlay, onToggleLock: toggleLock, onToggleDifference: toggleDifference }),
++        showOverlay && (React.createElement(OverlayOptions, null,
++            "Opacity",
++            React.createElement(Input, { type: "range", min: "0", max: "1", step: "0.01", value: opacity, onChange: updateOpacity }),
++            "Scale",
++            React.createElement(Select, { onChange: selectScaling, value: overlayScaling },
++                React.createElement("option", { value: 0.25 }, "0.5\u00D7"),
++                React.createElement("option", { value: 0.5 }, "1\u00D7"),
++                React.createElement("option", { value: 1 }, "2\u00D7"),
++                React.createElement("option", { value: 1.5 }, "3\u00D7"),
++                React.createElement("option", { value: 2 }, "4\u00D7")))),
++        showOverlay && (React.createElement(OverlayPortal, null,
++            React.createElement(OverlayImage, { url: imageUrl, opacity: opacity, isLocked: lockOverlay, scaling: overlayScaling, showDifference: showDifference })))));
+ };
+ export default OverlayPanel;
+ const Select = styled(Form.Select) `
+diff --git a/dist/components/OverlayPanel.jsx b/dist/components/OverlayPanel.jsx
+new file mode 100644
+index 0000000000000000000000000000000000000000..469fa47ae55695c279f3c5adcf7c7e573380bb14
+--- /dev/null
++++ b/dist/components/OverlayPanel.jsx
+@@ -0,0 +1,68 @@
++import { useCallback, useReducer } from "react";
++import { Form } from "storybook/internal/components";
++import { styled } from "storybook/theming";
++import OverlayPortal from "./OverlayPortal";
++import OverlayButtons from "./OverlayButtons";
++import OverlayImage from "./OverlayImage";
++const initialState = {
++    showOverlay: false,
++    lockOverlay: false,
++    showDifference: false,
++    overlayScaling: 0.5,
++    opacity: 0.75,
++};
++const OverlayPanel = ({ imageUrl }) => {
++    const [state, setState] = useReducer((state, newState) => ({
++        ...state,
++        ...newState,
++    }), initialState);
++    const { showOverlay, lockOverlay, showDifference, overlayScaling, opacity, } = state;
++    const selectScaling = useCallback((event) => {
++        setState({ overlayScaling: Number(event.target.value) });
++    }, []);
++    const toggleOverlay = () => {
++        setState({ showOverlay: !showOverlay });
++    };
++    const toggleLock = () => {
++        setState({ lockOverlay: !lockOverlay });
++    };
++    const toggleDifference = () => {
++        setState({ showDifference: !showDifference });
++    };
++    const updateOpacity = (event) => {
++        setState({ opacity: Number(event.currentTarget.value) });
++    };
++    return (<>
++            <OverlayButtons overlayIsOpen={showOverlay} overlayIsLocked={lockOverlay} showDifference={showDifference} onToggleOverlay={toggleOverlay} onToggleLock={toggleLock} onToggleDifference={toggleDifference}/>
++            {showOverlay && (<OverlayOptions>
++                    Opacity
++                    <Input type="range" min="0" max="1" step="0.01" value={opacity} onChange={updateOpacity}/>
++                    Scale
++                    {/* Values are halved because Zeplin exports images at 2× density. */}
++                    <Select onChange={selectScaling} value={overlayScaling}>
++                        <option value={0.25}>0.5×</option>
++                        <option value={0.5}>1×</option>
++                        <option value={1}>2×</option>
++                        <option value={1.5}>3×</option>
++                        <option value={2}>4×</option>
++                    </Select>
++                </OverlayOptions>)}
++            {showOverlay && (<OverlayPortal>
++                    <OverlayImage url={imageUrl} opacity={opacity} isLocked={lockOverlay} scaling={overlayScaling} showDifference={showDifference}/>
++                </OverlayPortal>)}
++        </>);
++};
++export default OverlayPanel;
++const Select = styled(Form.Select) `
++    margin-left: 15px;
++`;
++const Input = styled.input `
++    margin-right: 30px;
++    margin-left: 15px;
++    width: 100%;
++`;
++const OverlayOptions = styled.div `
++    margin-left: 15px;
++    display: flex;
++    align-items: center;
++`;
+diff --git a/dist/components/OverlayPortal.js b/dist/components/OverlayPortal.js
+old mode 100755
+new mode 100644
+diff --git a/dist/components/OverlayPortal.jsx b/dist/components/OverlayPortal.jsx
+new file mode 100644
+index 0000000000000000000000000000000000000000..92c801ea1bce31cecf86b7431385c78bb3c0dec2
+--- /dev/null
++++ b/dist/components/OverlayPortal.jsx
+@@ -0,0 +1,7 @@
++import { createPortal } from "react-dom";
++import { getOverlay } from "../utils/overlay";
++const OverlayPortal = ({ children }) => {
++    const overlay = getOverlay();
++    return createPortal(children, overlay);
++};
++export default OverlayPortal;
+diff --git a/dist/components/PATForm.js b/dist/components/PATForm.js
+old mode 100755
+new mode 100644
+index 32cc4ff79d6c685930828c3180b34a1c0ecd73d8..691590a04a7360929e27f2d06421a85392f86a82
+--- a/dist/components/PATForm.js
++++ b/dist/components/PATForm.js
+@@ -1,5 +1,4 @@
+-import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+-import { useState } from "react";
++import React, { useState } from "react";
+ import { Button, Form, Link } from "storybook/internal/components";
+ import { styled } from "storybook/theming";
+ export const PATForm = ({ onSubmit }) => {
+@@ -8,7 +7,19 @@ export const PATForm = ({ onSubmit }) => {
+         e.preventDefault();
+         onSubmit(token);
+     };
+-    return (_jsxs(Rows, { children: [_jsxs(StyledForm, { onSubmit: handleSubmit, children: [_jsx(StyledInput, { value: token, placeholder: "Personal access token", onChange: (event) => setToken(event.target.value) }), _jsx(Button, { type: "submit", variant: "solid", size: "small", children: "Save" })] }), _jsxs("div", { children: ["Create a personal access token on the", " ", _jsx(Link, { cancel: false, href: "https://app.zeplin.io/profile/developer", target: "_blank", rel: "noopener noreferrer", children: "Developer" }), " ", "page of your Zeplin profile."] }), _jsx(FillerRow, {}), _jsx("small", { children: _jsx("i", { children: "Your token is stored in your browser's local storage. Log out to remove it." }) })] }));
++    return (React.createElement(Rows, null,
++        React.createElement(StyledForm, { onSubmit: handleSubmit },
++            React.createElement(StyledInput, { value: token, placeholder: "Personal access token", onChange: (event) => setToken(event.target.value) }),
++            React.createElement(Button, { type: "submit", variant: "solid", size: "small" }, "Save")),
++        React.createElement("div", null,
++            "Create a personal access token on the",
++            " ",
++            React.createElement(Link, { cancel: false, href: "https://app.zeplin.io/profile/developer", target: "_blank", rel: "noopener noreferrer" }, "Developer"),
++            " ",
++            "page of your Zeplin profile."),
++        React.createElement(FillerRow, null),
++        React.createElement("small", null,
++            React.createElement("i", null, "Your token is stored in your browser's local storage. Log out to remove it."))));
+ };
+ const Rows = styled.div `
+     padding: 15px;
+diff --git a/dist/components/PATForm.jsx b/dist/components/PATForm.jsx
+new file mode 100644
+index 0000000000000000000000000000000000000000..35340e53ba9d608004796aab1ed5eaf8480bab3f
+--- /dev/null
++++ b/dist/components/PATForm.jsx
+@@ -0,0 +1,50 @@
++import { useState } from "react";
++import { Button, Form, Link } from "storybook/internal/components";
++import { styled } from "storybook/theming";
++export const PATForm = ({ onSubmit }) => {
++    const [token, setToken] = useState("");
++    const handleSubmit = (e) => {
++        e.preventDefault();
++        onSubmit(token);
++    };
++    return (<Rows>
++            <StyledForm onSubmit={handleSubmit}>
++                <StyledInput value={token} placeholder="Personal access token" onChange={(event) => setToken(event.target.value)}/>
++                <Button type="submit" variant="solid" size="small">
++                    Save
++                </Button>
++            </StyledForm>
++            <div>
++                Create a personal access token on the{" "}
++                <Link cancel={false} href={"https://app.zeplin.io/profile/developer"} target="_blank" rel="noopener noreferrer">
++                    Developer
++                </Link>{" "}
++                page of your Zeplin profile.
++            </div>
++            <FillerRow />
++            <small>
++                <i>
++                    Your token is stored in your browser's local storage. Log
++                    out to remove it.
++                </i>
++            </small>
++        </Rows>);
++};
++const Rows = styled.div `
++    padding: 15px;
++    display: flex;
++    flex-direction: column;
++    gap: 22px;
++    height: 100%;
++`;
++const StyledForm = styled(Form) `
++    display: flex;
++    flex-direction: row;
++    gap: 15px;
++`;
++const StyledInput = styled(Form.Input) `
++    flex: 1;
++`;
++const FillerRow = styled.div `
++    flex: 1;
++`;
+diff --git a/dist/components/ZeplinPanel.d.ts b/dist/components/ZeplinPanel.d.ts
+index 8be4b6cc5b3d4ffc7725b8c3d19351c4398af5c8..07729ed17989464ab6777a7025ad9ac46705adbc 100644
+--- a/dist/components/ZeplinPanel.d.ts
++++ b/dist/components/ZeplinPanel.d.ts
+@@ -1,3 +1,4 @@
++import React from "react";
+ import { ZeplinLink } from "../types/ZeplinLink";
+ interface ZeplinPanelProps {
+     zeplinLink: ZeplinLink[] | string;
+diff --git a/dist/components/ZeplinPanel.js b/dist/components/ZeplinPanel.js
+old mode 100755
+new mode 100644
+index 4e8bd1b6009333f725d9df54ce954ddf01d74147..0e0cd82b7971ea505d6d8cc3691ce7fc0fab2baa
+--- a/dist/components/ZeplinPanel.js
++++ b/dist/components/ZeplinPanel.js
+@@ -1,5 +1,4 @@
+-import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
+-import { useEffect, useCallback, useReducer } from "react";
++import React, { useEffect, useCallback, useReducer } from "react";
+ import { Form, Link } from "storybook/internal/components";
+ import { styled } from "storybook/theming";
+ import HeaderButtons from "./HeaderButtons";
+@@ -70,23 +69,51 @@ const ZeplinPanel = ({ zeplinLink, onLogout }) => {
+         setState({ zoomLevel: 1 });
+     };
+     if (loading || linksLoading) {
+-        return _jsx(Message, { children: "Loading\u2026" });
++        return React.createElement(Message, null, "Loading\u2026");
+     }
+     if (!designLink && !LinksError) {
+         if (zeplinLink) {
+-            return (_jsx(Message, { children: "There is no connected component for this story." }));
++            return (React.createElement(Message, null, "There is no connected component for this story."));
+         }
+-        return (_jsxs(Message, { children: [_jsx("strong", { children: "zeplinLink" }), " is not provided for this story."] }));
++        return (React.createElement(Message, null,
++            React.createElement("strong", null, "zeplinLink"),
++            " is not provided for this story."));
+     }
+     if (error || LinksError) {
+-        return (_jsxs(Rows, { children: [_jsx("p", { children: error || LinksError }), _jsxs("p", { children: [user?.username && (_jsxs(_Fragment, { children: ["You are currently logged in as ", _jsx("strong", { children: user?.username }), ". "] })), "If you prefer using another account, you can ", _jsx(Link, { onClick: onLogout, children: "log out" }), " first."] })] }));
++        return (React.createElement(Rows, null,
++            React.createElement("p", null, error || LinksError),
++            React.createElement("p", null,
++                user?.username && (React.createElement(React.Fragment, null,
++                    "You are currently logged in as ",
++                    React.createElement("strong", null, user?.username),
++                    ". ")),
++                "If you prefer using another account, you can ",
++                React.createElement(Link, { onClick: onLogout }, "log out"),
++                " first.")));
+     }
+     if (!zeplinData) {
+-        return (_jsxs(Message, { children: [_jsx("strong", { children: "zeplinData" }), " is not provided for this story."] }));
++        return (React.createElement(Message, null,
++            React.createElement("strong", null, "zeplinData"),
++            " is not provided for this story."));
+     }
+     const { name, image: { originalUrl, width, height }, description, updated, } = zeplinData;
+-    const LinksSection = links.length > 1 && (_jsx(Select, { onChange: selectZeplinLink, value: designLink, children: links.map(({ name, link }) => (_jsx("option", { value: link, children: name }, name))) }));
+-    return (_jsxs(Container, { children: [_jsxs(Header, { children: [LinksSection, _jsx(ResourceName, { title: name, children: name }), updated && _jsxs("i", { children: ["Updated ", relativeDate(updated * 1000)] }), _jsx(HeaderButtons, { username: user?.username, onLogout: onLogout, onZoomIn: handleZoomIn, onZoomOut: handleZoomOut, onZoomReset: handleZoomReset })] }), _jsx(Divider, {}), _jsx(Header, { children: _jsx(OverlayPanel, { imageUrl: originalUrl }) }), _jsx(Divider, {}), _jsx(ImageContainer, { children: _jsx("a", { href: designLink, rel: "noopener noreferrer", target: "_blank", title: name, children: _jsx("img", { style: { transform: `scale(${zoomLevel})` }, src: originalUrl, alt: name, width: width, height: height }) }) }), description && _jsx(Footer, { children: description })] }));
++    const LinksSection = links.length > 1 && (React.createElement(Select, { onChange: selectZeplinLink, value: designLink }, links.map(({ name, link }) => (React.createElement("option", { key: name, value: link }, name)))));
++    return (React.createElement(Container, null,
++        React.createElement(Header, null,
++            LinksSection,
++            React.createElement(ResourceName, { title: name }, name),
++            updated && React.createElement("i", null,
++                "Updated ",
++                relativeDate(updated * 1000)),
++            React.createElement(HeaderButtons, { username: user?.username, onLogout: onLogout, onZoomIn: handleZoomIn, onZoomOut: handleZoomOut, onZoomReset: handleZoomReset })),
++        React.createElement(Divider, null),
++        React.createElement(Header, null,
++            React.createElement(OverlayPanel, { imageUrl: originalUrl })),
++        React.createElement(Divider, null),
++        React.createElement(ImageContainer, null,
++            React.createElement("a", { href: designLink, rel: "noopener noreferrer", target: "_blank", title: name },
++                React.createElement("img", { style: { transform: `scale(${zoomLevel})` }, src: originalUrl, alt: name, width: width, height: height }))),
++        description && React.createElement(Footer, null, description)));
+ };
+ export default ZeplinPanel;
+ const Container = styled.div `
+diff --git a/dist/components/ZeplinPanel.jsx b/dist/components/ZeplinPanel.jsx
+new file mode 100644
+index 0000000000000000000000000000000000000000..a7ce4aceb6391f9708f8016a5437c8731b4a5ec0
+--- /dev/null
++++ b/dist/components/ZeplinPanel.jsx
+@@ -0,0 +1,189 @@
++import { useEffect, useCallback, useReducer } from "react";
++import { Form, Link } from "storybook/internal/components";
++import { styled } from "storybook/theming";
++import HeaderButtons from "./HeaderButtons";
++import { getUser, getZeplinResource } from "../utils/api";
++import { relativeDate } from "../utils/date";
++import OverlayPanel from "./OverlayPanel";
++import { useLinks } from "./hooks";
++const initialState = {
++    selectedLink: "",
++    zeplinData: null,
++    user: null,
++    zoomLevel: 1,
++    loading: true,
++    error: null,
++    linksFromConnectedComponents: null,
++};
++const ZeplinPanel = ({ zeplinLink, onLogout }) => {
++    const [state, setState] = useReducer((state, newState) => ({
++        ...state,
++        ...newState,
++    }), initialState);
++    const { links, linksLoading, error: LinksError } = useLinks(zeplinLink);
++    const { selectedLink, zeplinData, zoomLevel, loading, error, user } = state;
++    let shouldUseMultiLink = false;
++    if (selectedLink) {
++        shouldUseMultiLink = !!links.find(({ link }) => link === selectedLink);
++    }
++    const designLink = shouldUseMultiLink ? selectedLink : links[0]?.link;
++    const fetchZeplinResource = async () => {
++        // If the connected components are not loaded yet, we need to load them first
++        if (linksLoading) {
++            return;
++        }
++        if (!designLink) {
++            setState({ loading: false });
++            return;
++        }
++        setState({ loading: true });
++        const data = await getZeplinResource(designLink);
++        setState({
++            loading: false,
++            error: "error" in data ? data.error : null,
++            zeplinData: "error" in data ? null : data,
++        });
++    };
++    const fetchUser = async () => {
++        const data = await getUser();
++        setState({
++            user: "error" in data ? null : data,
++        });
++    };
++    useEffect(() => {
++        fetchZeplinResource();
++    }, [designLink, linksLoading]);
++    useEffect(() => {
++        fetchUser();
++    }, []);
++    const selectZeplinLink = useCallback((event) => {
++        setState({ selectedLink: event.target.value });
++    }, []);
++    const handleZoomIn = () => {
++        setState({ zoomLevel: zoomLevel * 1.25 });
++    };
++    const handleZoomOut = () => {
++        setState({ zoomLevel: zoomLevel * 0.75 });
++    };
++    const handleZoomReset = () => {
++        setState({ zoomLevel: 1 });
++    };
++    if (loading || linksLoading) {
++        return <Message>Loading…</Message>;
++    }
++    if (!designLink && !LinksError) {
++        if (zeplinLink) {
++            return (<Message>
++                    There is no connected component for this story.
++                </Message>);
++        }
++        return (<Message>
++                <strong>zeplinLink</strong> is not provided for this story.
++            </Message>);
++    }
++    if (error || LinksError) {
++        return (<Rows>
++                <p>{error || LinksError}</p>
++                <p>
++                    {user?.username && (<>
++                            {"You are currently logged in as "}
++                            <strong>{user?.username}</strong>
++                            {". "}
++                        </>)}
++                    {"If you prefer using another account, you can "}
++                    <Link onClick={onLogout}>log out</Link>
++                    {" first."}
++                </p>
++            </Rows>);
++    }
++    if (!zeplinData) {
++        return (<Message>
++                <strong>zeplinData</strong> is not provided for this story.
++            </Message>);
++    }
++    const { name, image: { originalUrl, width, height }, description, updated, } = zeplinData;
++    const LinksSection = links.length > 1 && (<Select onChange={selectZeplinLink} value={designLink}>
++            {links.map(({ name, link }) => (<option key={name} value={link}>
++                    {name}
++                </option>))}
++        </Select>);
++    return (<Container>
++            <Header>
++                {LinksSection}
++                <ResourceName title={name}>{name}</ResourceName>
++                {updated && <i>Updated {relativeDate(updated * 1000)}</i>}
++                <HeaderButtons username={user?.username} onLogout={onLogout} onZoomIn={handleZoomIn} onZoomOut={handleZoomOut} onZoomReset={handleZoomReset}/>
++            </Header>
++
++            <Divider />
++
++            <Header>
++                <OverlayPanel imageUrl={originalUrl}/>
++            </Header>
++
++            <Divider />
++
++            <ImageContainer>
++                <a href={designLink} rel="noopener noreferrer" target="_blank" title={name}>
++                    <img style={{ transform: `scale(${zoomLevel})` }} src={originalUrl} alt={name} width={width} height={height}/>
++                </a>
++            </ImageContainer>
++            {description && <Footer>{description}</Footer>}
++        </Container>);
++};
++export default ZeplinPanel;
++const Container = styled.div `
++    display: flex;
++    flex-direction: column;
++    height: 100%;
++`;
++const Header = styled.div `
++    height: 40px;
++    display: flex;
++    justify-content: space-between;
++    align-items: center;
++    padding: 0 15px;
++`;
++const ResourceName = styled.strong `
++    overflow: hidden;
++    white-space: nowrap;
++    text-overflow: ellipsis;
++    flex: 1;
++    margin-right: 15px;
++`;
++const ImageContainer = styled.div `
++    overflow: auto;
++    flex: 1;
++    padding: 0 15px 15px;
++    img {
++        transform-origin: left top 0px;
++    }
++`;
++const Divider = styled.hr `
++    margin: 0 0 1px 0;
++    &:last-of-type {
++        margin-bottom: 15px;
++    }
++`;
++const Message = styled.p `
++    margin: 15px;
++`;
++const Rows = styled.div `
++    margin: 15px;
++    display: flex;
++    flex-direction: column;
++    gap: 12px;
++    p {
++        margin: 0;
++    }
++    p:first-of-type {
++        color: red;
++    }
++`;
++const Select = styled(Form.Select) `
++    margin-right: 15px;
++`;
++const Footer = styled.footer `
++    padding: 12px 15px;
++    background-color: #f6f9fc;
++`;
+diff --git a/dist/components/hooks/index.js b/dist/components/hooks/index.js
+old mode 100755
+new mode 100644
+diff --git a/dist/components/hooks/useLinks.js b/dist/components/hooks/useLinks.js
+old mode 100755
+new mode 100644
+diff --git a/dist/constants.js b/dist/constants.js
+old mode 100755
+new mode 100644
+diff --git a/dist/index.js b/dist/index.js
+old mode 100755
+new mode 100644
+diff --git a/dist/manager.js b/dist/manager.js
+index 33d5e5ee8c328f41eaeef87822936c32149263b4..6b825ba5509eafea3d380a4f39420008bba39eb6 100644
+--- a/dist/manager.js
++++ b/dist/manager.js
+@@ -1,4 +1,4 @@
+-import { jsx as _jsx } from "react/jsx-runtime";
++import React from 'react';
+ import { addons, types, useParameter } from "storybook/manager-api";
+ import { AddonPanel } from "storybook/internal/components";
+ import { TITLE, ADDON_ID, PARAM_KEY, PANEL_ID } from "./constants";
+@@ -10,7 +10,8 @@ addons.register(ADDON_ID, () => {
+         paramKey: PARAM_KEY,
+         render: ({ active }) => {
+             const zeplinLink = useParameter(PARAM_KEY, null);
+-            return (_jsx(AddonPanel, { active: active ?? false, children: _jsx(MainPanel, { zeplinLink: zeplinLink ?? "" }) }));
++            return (React.createElement(AddonPanel, { active: active ?? false },
++                React.createElement(MainPanel, { zeplinLink: zeplinLink ?? "" })));
+         },
+     });
+ });
+diff --git a/dist/manager.jsx b/dist/manager.jsx
+new file mode 100644
+index 0000000000000000000000000000000000000000..0e7fbf3ca83c8dfc606fbcf36662f71ff85053d7
+--- /dev/null
++++ b/dist/manager.jsx
+@@ -0,0 +1,17 @@
++import { addons, types, useParameter } from "storybook/manager-api";
++import { AddonPanel } from "storybook/internal/components";
++import { TITLE, ADDON_ID, PARAM_KEY, PANEL_ID } from "./constants";
++import { MainPanel } from "./components/MainPanel";
++addons.register(ADDON_ID, () => {
++    addons.add(PANEL_ID, {
++        type: types.PANEL,
++        title: TITLE,
++        paramKey: PARAM_KEY,
++        render: ({ active }) => {
++            const zeplinLink = useParameter(PARAM_KEY, null);
++            return (<AddonPanel active={active ?? false}>
++                    <MainPanel zeplinLink={zeplinLink ?? ""}/>
++                </AddonPanel>);
++        },
++    });
++});
+diff --git a/dist/register.js b/dist/register.js
+deleted file mode 100755
+index 335031ece09f8fb9468367ad0c5b4f95d9c87ecd..0000000000000000000000000000000000000000
+--- a/dist/register.js
++++ /dev/null
+@@ -1,35 +0,0 @@
+-import React from "react";
+-import lt from "semver/functions/lt";
+-import { addons, types, useParameter } from "@storybook/manager-api";
+-import { AddonPanel } from "@storybook/components";
+-import { getStoryDetail, getStories, getGlobalContext } from "@zeplin/storybook-inspector";
+-import { TITLE, ADDON_ID, PARAM_KEY, PANEL_ID, ZEPLIN_WEB_BASE, ZEPLIN_APP_BASE } from "./constants";
+-import { messenger } from "./utils/messenger";
+-import { MainPanel } from "./components/MainPanel";
+-addons.register(ADDON_ID, async (api) => {
+-    const render = ({ active }) => {
+-        const zeplinLink = useParameter(PARAM_KEY, null);
+-        return (React.createElement(AddonPanel, { active: active },
+-            React.createElement(MainPanel, { zeplinLink: zeplinLink })));
+-    };
+-    addons.add(PANEL_ID, {
+-        type: types.PANEL,
+-        title: TITLE,
+-        paramKey: PARAM_KEY,
+-        render,
+-    });
+-    const globalContextPromise = getGlobalContext(window, {
+-        web: ZEPLIN_WEB_BASE,
+-        app: ZEPLIN_APP_BASE
+-    }, Infinity);
+-    if (lt(api.getCurrentVersion().version, "5.0.0")) {
+-        messenger.postError("ready", {
+-            message: "version is less than 5.0.0",
+-            extra: api.getCurrentVersion()
+-        });
+-        return;
+-    }
+-    messenger.respondOnMessage("stories", async () => getStories(await globalContextPromise));
+-    messenger.respondOnMessage("story-detail", async (data) => { var _a; return getStoryDetail((_a = data.payload) === null || _a === void 0 ? void 0 : _a.id, await globalContextPromise); });
+-    messenger.postMessage("ready");
+-});
+diff --git a/dist/types/ZeplinLink.js b/dist/types/ZeplinLink.js
+old mode 100755
+new mode 100644
+diff --git a/dist/utils/api.js b/dist/utils/api.js
+old mode 100755
+new mode 100644
+diff --git a/dist/utils/date.js b/dist/utils/date.js
+old mode 100755
+new mode 100644
+diff --git a/dist/utils/messenger.js b/dist/utils/messenger.js
+deleted file mode 100755
+index 02e29d0f83bff7e82d1b6b4d0bbb5ecbf5cccbc2..0000000000000000000000000000000000000000
+--- a/dist/utils/messenger.js
++++ /dev/null
+@@ -1,39 +0,0 @@
+-import { PARENT_ORIGIN } from "../constants";
+-const ADDON_SOURCE_NAME = "storybook-zeplin-addon";
+-class Messenger {
+-    constructor() {
+-        this.responderMap = new Map();
+-        window.addEventListener("message", async ({ data, origin }) => {
+-            const action = data === null || data === void 0 ? void 0 : data.action;
+-            if (origin === PARENT_ORIGIN && (data === null || data === void 0 ? void 0 : data.to) === ADDON_SOURCE_NAME && this.responderMap.has(action)) {
+-                try {
+-                    const response = await this.responderMap.get(action)(data);
+-                    this.postMessage(action, response);
+-                }
+-                catch (e) {
+-                    this.postError(action, {
+-                        message: (e === null || e === void 0 ? void 0 : e.message) || e || "Unknown error"
+-                    });
+-                }
+-            }
+-        });
+-    }
+-    postMessage(action, payload) {
+-        window.parent.postMessage({
+-            source: ADDON_SOURCE_NAME,
+-            action,
+-            payload
+-        }, PARENT_ORIGIN);
+-    }
+-    postError(action, error) {
+-        window.parent.postMessage({
+-            source: ADDON_SOURCE_NAME,
+-            action,
+-            error
+-        }, PARENT_ORIGIN);
+-    }
+-    respondOnMessage(action, responder) {
+-        this.responderMap.set(action, responder);
+-    }
+-}
+-export const messenger = new Messenger();
+diff --git a/dist/utils/overlay.js b/dist/utils/overlay.js
+old mode 100755
+new mode 100644
+diff --git a/package.json b/package.json
+index 529dfa104b57b45b2281ffa76bcc4d6d3b53bf89..44657345fba7d5e11b2cf5b9e7abbfbecd934033 100644
+--- a/package.json
++++ b/package.json
+@@ -47,7 +47,7 @@
+     },
+     "homepage": "https://github.com/zeplin/storybook-zeplin#readme",
+     "dependencies": {
+-        "@storybook/icons": "^1.2.9",
++        "@storybook/icons": "^2.0.1",
+         "@zeplin/sdk": "^1.9.0",
+         "query-string": "^6.12.1"
+     },

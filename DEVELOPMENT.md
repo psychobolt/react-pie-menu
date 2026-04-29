@@ -5,7 +5,7 @@
 ### Local environment setup
 
 1. Install the latest v22 (Jod) node (https://nodejs.org/en/download) from a package manager or installer
-2. Setup Yarn (https://yarnpkg.com/getting-started/install)
+2. Enable corepack `corepack enable` or setup Yarn manually (https://yarnpkg.com/getting-started/install)
 3. Run command `yarn install && yarn bootstrap` in the your project directory to bootstrap your workspace
 4. Download and install [Visual Studio Code](https://code.visualstudio.com/)
 5. Open your project in VSCode with latest v22 (Jod) node (e.g. `nvm use 22 && code ./vite-storybook-boilerplate`)

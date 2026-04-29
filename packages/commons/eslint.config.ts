@@ -6,7 +6,9 @@ import packageJson from 'eslint-plugin-package-json';
 import neostandard from 'neostandard';
 
 const tsFiles = ['**/*.{ts,tsx}'];
-const tsCodeBlocks = ['**/*.{md,mdx}'].map((pattern) => `${pattern}/*.ts`);
+const tsCodeBlocks = ['**/*.{md,mdx}'].map(
+  (pattern) => `${pattern}/*.{ts,tsx}`
+);
 
 export default defineConfig(
   ...neostandard({

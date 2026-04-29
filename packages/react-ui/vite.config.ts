@@ -8,13 +8,12 @@ import commonConfig, {
   getInputMap
 } from 'commons/esm/vite.config.js';
 
-const extPattern = /\.tsx?$/;
 const patterns: ModulePattern[] = [
   {
     pattern: /^src[/\\](index)\.ts/
   },
   {
-    pattern: /^src[/\\](.+[/\\].+)\.tsx?/
+    pattern: /^src[/\\](.+[/\\]index)\.tsx?/
   }
 ];
 
@@ -32,8 +31,9 @@ export default mergeConfig(
       lib: {
         entry: getInputMap(patterns, [
           'src/index.ts',
-          ...globSync('src/**/*[!@(.story|.stories)].{ts,tsx}')
-        ])
+          ...globSync('src/*/index.{ts,tsx}')
+        ]),
+        cssFileName: 'style'
       },
       rolldownOptions: {
         plugins: [
@@ -41,14 +41,22 @@ export default mergeConfig(
             external: ['react']
           })
         ],
+        experimental: {
+          lazyBarrel: true
+        },
         // make sure to externalize deps that shouldn't be bundled
         // into your library
-        external: ['prop-types', 'react/jsx-runtime', 'react-dom', 'html-ui'],
+        external: [
+          'prop-types',
+          'react/jsx-runtime',
+          'react-dom',
+          /^html-ui\/?/
+        ],
         output: {
           // chunkFileNames: '[name]', // name is handled in manualChunks
           manualChunks(id) {
             if (!srcPattern.test(id)) return 'vendor';
-            return id.replace(srcPattern, '').replace(extPattern, '');
+            return null;
           }
         }
       }
