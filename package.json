@@ -33,7 +33,7 @@
   "devDependencies": {
     "@dotenvx/dotenvx": "1.64.0",
     "@swc-node/register": "1.11.1",
-    "@swc/core": "1.15.32",
+    "@swc/core": "1.15.33",
     "@types/glob-to-regexp": "0.4.4",
     "@types/node": "24.12.2",
     "@types/semver": "7.7.1",
@@ -43,16 +43,16 @@
     "@yarnpkg/sdks": "3.2.3",
     "arg": "5.0.2",
     "commons": "workspace:*",
-    "eslint": "10.2.1",
+    "eslint": "10.3.0",
     "glob-to-regexp": "0.4.1",
     "husky": "9.1.7",
     "playwright": "1.59.1",
     "renovate": "43.150.0",
     "semver": "7.7.4",
-    "svelte-language-server": "0.17.30",
-    "turbo": "2.9.6",
+    "svelte-language-server": "0.17.31",
+    "turbo": "2.9.8",
     "typescript": "6.0.3",
-    "yaml": "2.8.3"
+    "yaml": "2.8.4"
   },
   "packageManager": "yarn@4.14.1",
   "engines": {

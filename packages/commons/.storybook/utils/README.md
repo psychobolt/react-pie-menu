@@ -83,7 +83,7 @@ const meta = preview.meta({
 
 const Template = meta.story();
 
-export const stories = (template: {} = Template) =>
+export const stories = (template = Template) =>
   generatePseudoStateStories(template, {
     pseudoClasses: MyPseudoClsEnum,
     stateAttributes: MyStateAttrEnum

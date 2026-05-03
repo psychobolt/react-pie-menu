@@ -10,6 +10,15 @@ import _ from 'lodash';
 
 import type { VariantStory } from '../addons/addon-variants.js';
 
+export type VariantStoryObj<
+  TArgs,
+  TRenderer extends Renderer = Renderer & { args: TArgs }
+> = StoryAnnotations<TRenderer, TArgs> & {
+  exportName: string;
+};
+
+type PartialProperty<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
+
 export type TemplateStoryObj<
   TArgs,
   TRenderer extends Renderer = Renderer & { args: TArgs }
@@ -17,15 +26,11 @@ export type TemplateStoryObj<
   | VariantStoryObj<TArgs, TRenderer>
   | Story<
       TRenderer & { args: TArgs },
-      VariantStoryObj<TRenderer['args'] & TArgs, TRenderer & { args: TArgs }>
+      PartialProperty<
+        VariantStoryObj<TRenderer['args'] & TArgs, TRenderer & { args: TArgs }>,
+        'exportName'
+      >
     >;
-
-export type VariantStoryObj<
-  TArgs,
-  TRenderer extends Renderer = Renderer & { args: TArgs }
-> = StoryAnnotations<TRenderer, TArgs> & {
-  exportName?: string;
-};
 
 function generateStory<TRenderer extends Renderer, TArgs>(
   Template: TemplateStoryObj<TArgs, TRenderer>,
