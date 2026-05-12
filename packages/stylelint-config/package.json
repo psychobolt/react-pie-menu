@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "flat": "6.0.1",
-    "postcss": "8.5.12",
+    "postcss": "8.5.14",
     "stylelint-config-hudochenkov": "13.0.2",
     "stylelint-config-prettier-scss": "1.0.0",
     "stylelint-config-standard-scss": "17.0.0",
@@ -19,8 +19,8 @@
     "arg": "5.0.2",
     "commons": "workspace:*",
     "eslint": "10.3.0",
-    "stylelint": "17.10.0",
-    "turbo": "2.9.8",
+    "stylelint": "17.11.0",
+    "turbo": "2.9.12",
     "typescript": "6.0.3"
   },
   "peerDependencies": {

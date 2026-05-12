@@ -10,11 +10,11 @@ const config: Config = {
   ],
   rules: {
     ...orderRules,
-    // See https://github.com/stylelint-scss/stylelint-config-recommended-scss/pull/373
-    'no-invalid-position-declaration': [
-      true,
+    'selector-class-pattern': [
+      '^([a-z][a-z0-9]*)(--?[a-z0-9]+)*$',
       {
-        ignoreAtRules: ['mixin']
+        message: (selector: string) =>
+          `Expected class selector "${selector}" to be kebab-case`
       }
     ],
     'selector-pseudo-class-no-unknown': [
