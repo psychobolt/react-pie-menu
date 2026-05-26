@@ -105,8 +105,7 @@ const getSourceTemplate = (meta: VariantsMeta): Template => {
 
           const [templateStory] =
             Object.entries(csfExports).find(
-              ([, declaration]) =>
-                'exportName' in declaration && declaration === _template
+              ([, declaration]) => (declaration as unknown) === _template
             ) ?? [];
           const {
             args: _args,

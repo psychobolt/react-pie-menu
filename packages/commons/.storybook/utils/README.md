@@ -81,7 +81,7 @@ const meta = preview.meta({
   render: MyComponent
 });
 
-const Template = meta.story();
+const Template = meta.story().extend({}); // `.extend` is required for type inference on `stories` export
 
 export const stories = (template = Template) =>
   generatePseudoStateStories(template, {
