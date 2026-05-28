@@ -5015,6 +5015,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@rollup/plugin-terser@npm:0.1.0":
+  version: 0.1.0
+  resolution: "@rollup/plugin-terser@npm:0.1.0"
+  dependencies:
+    terser: ^5.15.1
+  peerDependencies:
+    rollup: ^2.x || ^3.x
+  peerDependenciesMeta:
+    rollup:
+      optional: true
+  checksum: 53d86ff78121e77c9200c84d021b1a16f8974aff9738cd7ec845ad540f267427d7753f688d2aa70cfc8f6011d5c93cda6d744e5b1c427a7afa5a630d88c15418
+  languageName: node
+  linkType: hard
+
 "@rollup/pluginutils@npm:^5.0.1":
   version: 5.0.2
   resolution: "@rollup/pluginutils@npm:5.0.2"
@@ -8028,6 +8042,15 @@ __metadata:
   bin:
     acorn: bin/acorn
   checksum: 1860f23c2107c910c6177b7b7be71be350db9e1080d814493fae143ae37605189504152d1ba8743ba3178d0b37269ce1ffc42b101547fdc1827078f82671e407
+  languageName: node
+  linkType: hard
+
+"acorn@npm:^8.15.0":
+  version: 8.16.0
+  resolution: "acorn@npm:8.16.0"
+  bin:
+    acorn: bin/acorn
+  checksum: bbfa466cd0dbd18b4460a85e9d0fc2f35db999380892403c573261beda91f23836db2aa71fd3ae65e94424ad14ff8e2b7bd37c7a2624278fd89137cd6e448c41
   languageName: node
   linkType: hard
 
@@ -16214,7 +16237,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-worker@npm:^26.2.1, jest-worker@npm:^26.5.0, jest-worker@npm:^26.6.2":
+"jest-worker@npm:^26.5.0, jest-worker@npm:^26.6.2":
   version: 26.6.2
   resolution: "jest-worker@npm:26.6.2"
   dependencies:
@@ -19745,6 +19768,7 @@ __metadata:
     "@rollup/plugin-commonjs": 25.0.4
     "@rollup/plugin-node-resolve": 15.2.1
     "@rollup/plugin-replace": 5.0.2
+    "@rollup/plugin-terser": 0.1.0
     "@storybook/addon-actions": 6.5.16
     "@storybook/addon-console": 2.0.0
     "@storybook/addon-docs": 6.5.16
@@ -19813,7 +19837,6 @@ __metadata:
     rollup: 3.28.1
     rollup-plugin-flow-entry: 0.3.6
     rollup-plugin-mjs-entry: 0.1.1
-    rollup-plugin-terser: 7.0.2
     slash: 3.0.0
     source-map-loader: 4.0.1
     styled-components: 5.3.11
@@ -20648,20 +20671,6 @@ __metadata:
   version: 0.1.1
   resolution: "rollup-plugin-mjs-entry@npm:0.1.1"
   checksum: 82c397297ea9f31320673d5ef0e2ae5e7c9326ef6f18b8013ba2959268b549412ea7918e184227496b154308f1f38810a33c840010954fb85f093525d33d4438
-  languageName: node
-  linkType: hard
-
-"rollup-plugin-terser@npm:7.0.2":
-  version: 7.0.2
-  resolution: "rollup-plugin-terser@npm:7.0.2"
-  dependencies:
-    "@babel/code-frame": ^7.10.4
-    jest-worker: ^26.2.1
-    serialize-javascript: ^4.0.0
-    terser: ^5.0.0
-  peerDependencies:
-    rollup: ^2.0.0
-  checksum: af84bb7a7a894cd00852b6486528dfb8653cf94df4c126f95f389a346f401d054b08c46bee519a2ab6a22b33804d1d6ac6d8c90b1b2bf8fffb097eed73fc3c72
   languageName: node
   linkType: hard
 
@@ -22371,7 +22380,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"terser@npm:^5.0.0, terser@npm:^5.10.0, terser@npm:^5.3.4, terser@npm:^5.7.2":
+"terser@npm:^5.10.0, terser@npm:^5.3.4, terser@npm:^5.7.2":
   version: 5.12.1
   resolution: "terser@npm:5.12.1"
   dependencies:
@@ -22382,6 +22391,20 @@ __metadata:
   bin:
     terser: bin/terser
   checksum: dd33af5d87a1159bcc38f354707505f1449a33d1491c512e9536f11fea7c3474cdc40e2e5fdf75f58658cfaab8ef47cb7454acd6406b2ce487675cb1978c6275
+  languageName: node
+  linkType: hard
+
+"terser@npm:^5.15.1":
+  version: 5.48.0
+  resolution: "terser@npm:5.48.0"
+  dependencies:
+    "@jridgewell/source-map": ^0.3.3
+    acorn: ^8.15.0
+    commander: ^2.20.0
+    source-map-support: ~0.5.20
+  bin:
+    terser: bin/terser
+  checksum: ae4f3216af2c2abf145de7fbc212c0559ae61c66abc97cc63faec49e5da82ca79d551eb69c05717dfbe87c5a3c8960f47b52d26a73f077edf9f2e38b03fdeeef
   languageName: node
   linkType: hard
 
