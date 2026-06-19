@@ -25,37 +25,39 @@
   },
   "resolutions": {
     "@storybook/addon-vitest@npm:10.3.3": "patch:@storybook/addon-vitest@npm%3A10.3.3#~/.yarn/patches/@storybook-addon-vitest-npm-10.3.1-e0ed4c7524.patch",
+    "@storybook/test-runner/playwright": "*",
+    "@storybook/test-runner/playwright-core": "*",
     "pnp-sass-importer@npm:2.0.0": "patch:pnp-sass-importer@npm%3A2.0.0#~/.yarn/patches/pnp-sass-importer-npm-2.0.0-ab79efb9df.patch",
     "storybook-zeplin@npm:4.0.0": "patch:storybook-zeplin@npm%3A4.0.0#~/.yarn/patches/storybook-zeplin-npm-4.0.0-1fc5045eee.patch",
     "typescript-plugin-css-modules@npm:5.2.0": "patch:typescript-plugin-css-modules@npm%3A5.2.0#~/.yarn/patches/typescript-plugin-css-modules-npm-5.2.0-2a105149d7.patch",
     "vite-plugin-sass-glob-import@npm:6.0.3": "patch:vite-plugin-sass-glob-import@npm%3A6.0.3#~/.yarn/patches/vite-plugin-sass-glob-import-npm-6.0.3-718e64ce42.patch"
   },
   "devDependencies": {
-    "@dotenvx/dotenvx": "1.69.1",
+    "@dotenvx/dotenvx": "1.74.3",
     "@swc-node/register": "1.11.1",
-    "@swc/core": "1.15.40",
+    "@swc/core": "1.15.41",
     "@types/glob-to-regexp": "0.4.4",
-    "@types/node": "24.12.4",
+    "@types/node": "24.13.2",
     "@types/semver": "7.7.1",
-    "@typescript-eslint/utils": "8.60.0",
-    "@yarnpkg/core": "4.8.0",
+    "@typescript-eslint/utils": "8.61.1",
+    "@yarnpkg/core": "4.9.0",
     "@yarnpkg/fslib": "3.1.5",
-    "@yarnpkg/sdks": "3.2.3",
+    "@yarnpkg/sdks": "3.3.0",
     "arg": "5.0.2",
     "commons": "workspace:*",
-    "eslint": "10.4.0",
+    "eslint": "10.5.0",
     "glob-to-regexp": "0.4.1",
     "husky": "9.1.7",
-    "playwright": "1.60.0",
-    "renovate": "43.150.0",
-    "semver": "7.8.1",
-    "svelte-language-server": "0.18.0",
-    "turbo": "2.9.14",
+    "playwright": "1.61.0",
+    "renovate": "43.233.3",
+    "semver": "7.8.5",
+    "svelte-language-server": "0.18.2",
+    "turbo": "2.9.18",
     "typescript": "6.0.3",
     "yaml": "2.9.0"
   },
-  "packageManager": "yarn@4.15.0",
+  "packageManager": "yarn@4.17.0",
   "engines": {
-    "node": ">= 22"
+    "node": ">= 24"
   }
 }

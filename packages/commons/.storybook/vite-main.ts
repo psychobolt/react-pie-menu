@@ -3,7 +3,10 @@ import { createRequire } from 'node:module';
 import { join, dirname } from 'node:path';
 import type { StorybookConfig } from 'storybook/internal/types';
 import type { StorybookConfigVite } from '@storybook/builder-vite';
-import * as sortAddon from 'storybook-multilevel-sort';
+import {
+  type CompareResult,
+  configureSort as _configureSort
+} from 'storybook-multilevel-sort';
 import {
   type ResolveOptions,
   type Alias,
@@ -41,15 +44,15 @@ export function getAbsolutePath(
   return absolutePath;
 }
 
-export const configureSort: typeof sortAddon.configureSort = (config) =>
-  sortAddon.configureSort({
+export const configureSort: typeof _configureSort = (config) =>
+  _configureSort({
     compareNames(name1, name2, context) {
       if (context.path1.pop() === name1 && context.path2.pop() === name2) {
         return 0;
       }
       return name1.localeCompare(name2, undefined, {
         numeric: true
-      }) as sortAddon.CompareResult;
+      }) as CompareResult;
     },
     typeOrder: [],
     ...config
@@ -106,6 +109,10 @@ export default {
     }
   },
   viteFinal(config, { configType }) {
+    if (configType === 'DEVELOPMENT') {
+      process.env.VITE_COVERAGE = 'false';
+    }
+
     let finalConfig = mergeConfig(
       config,
       defineConfig({
@@ -126,13 +133,17 @@ export default {
         },
         css: {
           postcss: postcssConfig
+        },
+        build: {
+          rolldownOptions: {
+            checks: {
+              // TODO optimize build
+              invalidAnnotation: process.env.VITE_COVERAGE === 'false'
+            }
+          }
         }
       })
     );
-
-    if (configType === 'DEVELOPMENT') {
-      process.env.VITE_COVERAGE = 'false';
-    }
 
     if (configType !== 'PRODUCTION') {
       finalConfig = mergeConfig(

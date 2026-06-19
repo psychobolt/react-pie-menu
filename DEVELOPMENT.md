@@ -4,11 +4,11 @@
 
 ### Local environment setup
 
-1. Install the latest v22 (Jod) node (https://nodejs.org/en/download) from a package manager or installer
+1. Install the latest v24 (Krypton) node (https://nodejs.org/en/download) from a package manager or installer
 2. Enable corepack `corepack enable` or setup Yarn manually (https://yarnpkg.com/getting-started/install)
 3. Run command `yarn install && yarn bootstrap` in the your project directory to bootstrap your workspace
 4. Download and install [Visual Studio Code](https://code.visualstudio.com/)
-5. Open your project in VSCode with latest v22 (Jod) node (e.g. `nvm use 22 && code ./vite-storybook-boilerplate`)
+5. Open your project in VSCode with latest v24 (Krypton) node (e.g. `nvm use 24 && code ./vite-storybook-boilerplate`)
 6. Check notifications (bottom right of VSCode status bar) and install all recommended extensions
 7. Follow Yarn's [Editor SDKs guide](https://yarnpkg.com/getting-started/editor-sdks#vscode) (step 3) to set VSCode's TypeScript version to workspace's
 8. Copy `.vscode/settings.default.json` to `.vscode/settings.json`

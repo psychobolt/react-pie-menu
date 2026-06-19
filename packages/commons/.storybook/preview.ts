@@ -1,24 +1,35 @@
 import {
-  type Renderer,
+  type Args,
+  type Renderer as _Renderer,
   type InferTypes,
-  type ProjectAnnotations,
-  type PreviewAddon,
-  definePreview
+  type ProjectAnnotations as _ProjectAnnotations,
+  definePreview as _definePreview
 } from 'storybook/internal/csf';
 import addonDocs from '@storybook/addon-docs';
+import type { Except, Merge as _Merge } from 'type-fest';
 
-import type { Preview, PreviewBase } from './types.ts';
+import { MetaProxy, type Meta } from './meta.js';
+import Proxy from './utils/proxy.js';
+import type {
+  ConfigFn,
+  InferArgs as _InferArgs,
+  Use,
+  SetProperty
+} from './types.d.ts';
 
 const addons = [addonDocs()];
 
 type Addons = typeof addons;
 
-type DefaultRenderer = InferTypes<Addons>;
+type ProjectAnnotations = _ProjectAnnotations<
+  InferTypes<Addons> & _Renderer
+> & {
+  addons: Addons;
+};
 
-export const input = {
+const input = {
   addons,
   parameters: {
-    actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
       matchers: {
         color: /(background|color)$/i,
@@ -32,35 +43,81 @@ export const input = {
       }
     }
   }
-} satisfies ProjectAnnotations<DefaultRenderer & Renderer> & {
-  addons: Addons;
+} satisfies ProjectAnnotations;
+
+declare const genericKey: unique symbol;
+
+type Subtype<T extends object> = {
+  readonly [genericKey]?: T;
 };
 
-export function withDefaults<
-  TRenderer extends Renderer,
-  TAddons extends PreviewAddon<never>[] = Addons,
-  TPreviewBase extends PreviewBase<
-    DefaultRenderer & TRenderer & InferTypes<TAddons>
-  > = PreviewBase<TRenderer & DefaultRenderer & InferTypes<TAddons>>,
-  TPreview extends Preview<DefaultRenderer & TRenderer & InferTypes<TAddons>> =
-    Preview<TRenderer & DefaultRenderer & InferTypes<TAddons>>
->(preview: (defaults: typeof input) => TPreviewBase) {
-  const _preview = preview(input);
-  const { meta, ...rest } = _preview;
+type Type<TPreview> = TPreview extends {
+  input: _ProjectAnnotations<infer TRenderer>;
+}
+  ? TPreview extends Subtype<infer T>
+    ? _Merge<TRenderer, T>
+    : TRenderer
+  : never;
 
-  const metaToExtend: typeof meta = (input) => {
-    return {
-      ..._preview.meta(input),
-      type() {
-        return this;
-      }
-    };
-  };
+export type PreviewApi = {
+  meta: ConfigFn;
+  type<T>(): Use<T>;
+};
 
-  return {
-    ...rest,
-    meta: metaToExtend
-  } as unknown as TPreview;
+export class ProxyProvider<
+  TPreview extends PreviewApi,
+  TOutput extends object = Preview<TPreview>,
+  TMetaInput extends object = object
+> extends Proxy<TPreview, TOutput> {
+  get instance() {
+    return this.value;
+  }
+
+  constructor(protected readonly preview: TPreview) {
+    super(preview);
+    this.register('meta', this.meta);
+    this.register('type', this.type);
+  }
+
+  protected type<T extends object>() {
+    return this.instance as unknown as Preview<TPreview, T> & Use<T>;
+  }
+
+  protected meta<TInput extends TMetaInput>(input: TInput) {
+    return new MetaProxy(this.preview.meta(input), input).value as ReturnType<
+      Preview<TPreview>['meta']
+    >;
+  }
 }
 
-export default withDefaults((defaults) => definePreview(defaults));
+export type InferArgs<TPreview> = _InferArgs<Type<TPreview>>;
+
+export type Renderer<
+  TPreview,
+  TArgs extends Args = _InferArgs<Type<TPreview>>
+> =
+  Type<TPreview> extends _Renderer
+    ? SetProperty<Type<TPreview>, 'args', 'required', TArgs>
+    : _Renderer;
+
+export type Preview<
+  TPreview extends PreviewApi,
+  T extends object = {}
+> = Except<TPreview, 'meta' | 'type'> &
+  Subtype<T> & {
+    meta: <TInput extends object>(
+      input: TInput
+    ) => ReturnType<TPreview['meta']> extends infer TMeta extends object
+      ? Meta<TMeta, TInput>
+      : never;
+
+    type<U extends object>(): Preview<TPreview, _Merge<T, U>>;
+  };
+
+export const withDefaults = <TPreview extends object>(
+  definePreview: (defaults: ProjectAnnotations) => TPreview
+) => definePreview(input);
+
+export default withDefaults(
+  (defaults) => new ProxyProvider(_definePreview(defaults)).instance
+);

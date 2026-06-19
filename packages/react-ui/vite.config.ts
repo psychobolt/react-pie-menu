@@ -1,4 +1,5 @@
 import { globSync } from 'glob';
+import type { OutputOptions, ChunkFileNamesFunction } from 'rolldown';
 import { defineConfig, mergeConfig, esmExternalRequirePlugin } from 'vite';
 import react, { reactCompilerPreset } from '@vitejs/plugin-react';
 import babel from '@rolldown/plugin-babel';
@@ -16,6 +17,27 @@ const patterns: ModulePattern[] = [
     pattern: /^src[/\\](.+[/\\]index)\.tsx?/
   }
 ];
+
+const output: OutputOptions = {
+  keepNames: true,
+  codeSplitting: {
+    groups: [
+      {
+        name: 'vendor',
+        test: (id) => !srcPattern.test(id)
+      },
+      {
+        name: 'styles',
+        test: (id) => id.endsWith('.scss')
+      }
+    ]
+  }
+};
+
+const chunkfileNames =
+  (ext: 'cjs' | 'js'): ChunkFileNamesFunction =>
+  (chunk) =>
+    `${chunk.moduleIds.find((id) => id.endsWith('index.ts')) ? '[name]/' : ''}[name].${ext}`;
 
 export default mergeConfig(
   commonConfig,
@@ -52,13 +74,10 @@ export default mergeConfig(
           'react-dom',
           /^html-ui\/?/
         ],
-        output: {
-          // chunkFileNames: '[name]', // name is handled in manualChunks
-          manualChunks(id) {
-            if (!srcPattern.test(id)) return 'vendor';
-            return null;
-          }
-        }
+        output: [
+          { ...output, format: 'es', chunkFileNames: chunkfileNames('js') },
+          { ...output, format: 'cjs', chunkFileNames: chunkfileNames('cjs') }
+        ]
       }
     }
   }),

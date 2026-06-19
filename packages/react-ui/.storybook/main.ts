@@ -24,5 +24,14 @@ export default defineMain({
   framework: {
     name: getAbsolutePath('@storybook/react-vite', require),
     options: {}
+  },
+  typescript: {
+    reactDocgen: 'react-docgen-typescript',
+    reactDocgenTypescriptOptions: {
+      shouldExtractLiteralValuesFromEnum: true,
+      shouldRemoveUndefinedFromOptional: true,
+      skipChildrenPropWithoutDoc: false,
+      propFilter: () => true
+    }
   }
 });

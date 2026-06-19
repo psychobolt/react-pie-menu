@@ -18,13 +18,13 @@
   "devDependencies": {
     "arg": "5.0.2",
     "commons": "workspace:*",
-    "eslint": "10.4.0",
-    "stylelint": "17.12.0",
-    "turbo": "2.9.14",
+    "eslint": "10.5.0",
+    "stylelint": "17.13.0",
+    "turbo": "2.9.18",
     "typescript": "6.0.3"
   },
   "peerDependencies": {
     "stylelint": "*"
   },
-  "packageManager": "yarn@4.15.0"
+  "packageManager": "yarn@4.17.0"
 }

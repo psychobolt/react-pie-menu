@@ -22,7 +22,7 @@ export default defineMain({
   ...commonConfig,
   addons: [
     ...commonConfig.addons,
-    getAbsolutePath('@storybook/addon-coverage', require)
+    getAbsolutePath('@storybook/addon-coverage', require) // TODO optimize build
   ],
   framework: {
     name: getAbsolutePath('@storybook/web-components-vite', require),

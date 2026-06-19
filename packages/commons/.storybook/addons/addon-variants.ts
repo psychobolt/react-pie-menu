@@ -249,6 +249,8 @@ const DEFAULT_ASSETS_RE = new RegExp(
 );
 const RAW_ASSET_RE = /\?raw$/;
 const STORYBOOK_PREVIEW_RE = /\.storybook\/preview(\.[cm]?[tj]s|[tj]sx)?$/;
+const STORYBOOK_FUNCTIONS_RE =
+  /\.storybook\/utils\/functions(\.[cm]?[tj]s|[tj]sx)?$/;
 
 const importModule = (fileName: string) => {
   const hook = registerHooks({
@@ -259,6 +261,13 @@ const importModule = (fileName: string) => {
           format: 'module',
           shortCircuit: true,
           url: require.resolve('../mock-api.js')
+        };
+      }
+      if (STORYBOOK_FUNCTIONS_RE.test(specifier)) {
+        return {
+          format: 'module',
+          shortCircuit: true,
+          url: require.resolve('../utils/functions.js')
         };
       }
       const [cssExension] = CSS_LANGS_RE.exec(specifier) ?? [];

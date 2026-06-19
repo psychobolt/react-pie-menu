@@ -219,58 +219,36 @@ export default defineConfig(storybookConfig, {
 
 See [source](.storybook/preview.ts)
 
-/your/project.storybook/preview.ts
-
-```ts
-import { definePreview } from '@storybook/react-vite';
-import { input } from 'commons/esm/.storybook/preview.js';
-
-const preview = definePreview({
-  ...input,
-  parameters: {
-    ...input.parameters,
-    options: {
-      // @ts-expect-error See issue: https://github.com/storybookjs/storybook/issues/30429
-      storySort: (a, b) =>
-        globalThis['storybook-multilevel-sort:storySort'](a, b)
-    }
-  }
-  // ...
-});
-
-export default preview;
-```
-
 ###### With Defaults
 
-Resolves the preview to the base annotations so you can forward `meta` and `story` input(s) without `extend()`. In addition, enhances the `meta` API with [.type<T>()](https://storybook.js.org/docs/api/csf/csf-next#previewtypemeta).
-
-/your/project.storybook/preview.ts
+/your/project/.storybook/preview.ts
 
 ```ts
 import { definePreview } from '@storybook/web-components';
+import { withDefaults } from 'commons/esm/.storybook/preview.js';
+import { mergeConfig } from 'commons/esm/.storybook/utils/functions.js';
 
-import { withDefaults } from '.storybook/preview';
+const parameters = {
+  options: {
+    // @ts-expect-error See issue: https://github.com/storybookjs/storybook/issues/30429
+    storySort: (a, b) => globalThis['storybook-multilevel-sort:storySort'](a, b)
+  }
+};
 
-const preview = withDefaults((defaults) =>
-  definePreview({
-    ...defaults,
-    parameters: {
-      ...defaults.parameters,
-      options: {
-        // @ts-expect-error See issue: https://github.com/storybookjs/storybook/issues/30429
-        storySort: (a, b) =>
-          globalThis['storybook-multilevel-sort:storySort'](a, b)
-      }
-    }
-    // ...
-  })
-);
-
-export default preview;
+export default {
+  parameters,
+  ...withDefaults((defaults) =>
+    definePreview(
+      mergeConfig(defaults, {
+        parameters
+        // ...
+      })
+    )
+  )
+};
 ```
 
-/your/project.storybook/src/MyComponent/Primary.story.ts
+/your/project/src/MyComponent/Primary.story.ts
 
 ```ts
 import preview from '.storybook/preview';
@@ -287,19 +265,100 @@ export const Default = meta.story({
 });
 ```
 
-/your/project.storybook/src/MyComponent/Secondary.story.ts
+###### Meta Proxy / Proxy Provider
+
+By defaults enhances [type()](https://storybook.js.org/docs/api/csf/csf-next#previewtypemeta) and [extend()](https://storybook.js.org/docs/api/csf/csf-next#storyextend) for meta. (Optional) You can extend the meta with your own properties:
+
+/your/project/.storybook/meta.ts
+
+```ts
+import { MetaProxy as _MetaProxy } from 'commons/esm/.storybook/meta.js';
+
+export class MetaProxy<
+  TMeta extends object,
+  TInput extends object
+> extends _MetaProxy<TMeta, TInput> {
+  /*
+  constructor(meta, input) {
+    super(meta, input);
+    // this.register('method', this.method);
+  }
+
+  method() {
+   // ...
+  }
+
+  // ...
+  */
+}
+```
+
+/your/project/.storybook/preview.ts
+
+```ts
+import {
+  type WebComponentsPreview,
+  definePreview
+} from '@storybook/web-components';
+import { withDefaults, ProxyProvider } from 'commons/esm/.storybook/preview.js';
+import { mergeConfig } from 'commons/esm/.storybook/utils/functions.js';
+
+// Optionally extend with your own implementation:
+import { MetaProxy } from './meta.ts';
+
+class WebComponentsProxyProvider<
+  TPreview extends PreviewApi
+> extends ProxyProvider<TPreview, WebComponentsPreview<TPreview>> {
+  /*
+  constructor(meta, input) {
+    super(meta, input);
+    // this.register('method', this.method);
+  }
+
+  protected override meta<TInput>(input: TInput) {
+    return new MetaProxy(this.preview.meta(input), input);
+  }
+
+  method() {
+   // ...
+  }
+
+  // ...
+  */
+}
+
+export default {
+  ...withDefaults((defaults) => {
+    const preview = definePreview(
+      mergeConfig(defaults, {
+        // ...
+      })
+    );
+    return WebComponentsProxyProvider(preview).instance;
+  })
+};
+```
+
+/your/project/src/MyComponent/Secondary.story.ts
 
 ```ts
 import preview from '.storybook/preview';
+import type { Props } from './MyComponent';
 import primaryMeta from './Primary.story';
-import * as stories from './Primary.story';
 
-const meta = preview.meta({
-  ...primaryMeta.input,
+const meta = preview.type<{ args: Props }>().meta({
+  ...primaryMeta.extend({
+    // ...overrides
+  }),
   title: 'Component/MyComponent/Secondary'
 });
 
-export const Default = stories.Primary.extend({
+interface Args extends Props {
+  // overrides
+}
+
+export const Default = meta.type<{ args: Args }>;
+story({
   // ...
 });
 ```

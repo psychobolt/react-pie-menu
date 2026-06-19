@@ -39,7 +39,7 @@ export const MyComponent = ({ storyPseudo, storyAttr, ...props }: Props) =>
 ##### CSF3
 
 ```ts
-// my-component.story.ts
+// my-component.variant.ts
 import type { Meta } from '@storybook/web-components-vite';
 import type { VariantStoryObj } from 'commons/esm/.storybook/utils/story-generators.js';
 
@@ -71,7 +71,7 @@ export const stories = (template: Story = Template) =>
 #### CSF4 (Experimental)
 
 ```ts
-// my-component.story.ts
+// my-component.variant.ts
 import preview from '.storybook/preivew';
 
 import { MyComponent } from './my-component';
@@ -168,3 +168,24 @@ export const Default = meta.type<{ args: Args }>().story({
   }
 });
 ```
+
+### Merge Config
+
+```ts
+mergeConfig(config1, config2 /*, options */);
+```
+
+Performs a deep merge of two config objects. For merging array types, both arrays are concatenated.
+
+> Note: Some types can be too complicated for TypeScript to compute. In that case, provide a simplier type intersection of `config1 & config2` e.g. `options = { typings: 'intersection' }`. The runtime deep merge is not affected.
+
+## [Proxy](proxy.ts)
+
+```ts
+const proxy = new Proxy(target);
+
+proxy.register('foo', () => console.log('foo'));
+proxy.register('bar', () => console.log('bar'));
+```
+
+Wraps an object instance with registered method overrides while forwarding all other property access to the original instance.

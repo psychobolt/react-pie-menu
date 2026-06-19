@@ -9,6 +9,8 @@ import { $enum } from 'ts-enum-util';
 import _ from 'lodash';
 
 import type { VariantStory } from '../addons/addon-variants.js';
+import type { SetProperty } from '../types.d.ts';
+import { mergeConfig } from '../utils/functions.js';
 
 export type VariantStoryObj<
   TArgs,
@@ -17,8 +19,6 @@ export type VariantStoryObj<
   exportName: string;
 };
 
-type PartialProperty<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
-
 export type TemplateStoryObj<
   TArgs,
   TRenderer extends Renderer = Renderer & { args: TArgs }
@@ -26,9 +26,10 @@ export type TemplateStoryObj<
   | VariantStoryObj<TArgs, TRenderer>
   | Story<
       TRenderer & { args: TArgs },
-      PartialProperty<
+      SetProperty<
         VariantStoryObj<TRenderer['args'] & TArgs, TRenderer & { args: TArgs }>,
-        'exportName'
+        'exportName',
+        'optional'
       >
     >;
 
@@ -36,14 +37,12 @@ function generateStory<TRenderer extends Renderer, TArgs>(
   Template: TemplateStoryObj<TArgs, TRenderer>,
   input: StoryAnnotations<TRenderer & { args: TArgs }, TArgs>
 ) {
-  return isStory<TRenderer & { args: TArgs }>(Template)
-    ? { ...Template.extend(input).input, _template: Template }
-    : {
-        ...Template,
-        ...input,
-        args: { ...Template.args, ...input.args },
-        _template: Template
-      };
+  return {
+    ...(isStory<TRenderer & { args: TArgs }>(Template)
+      ? Template.extend(input).input
+      : mergeConfig(Template, input, { typings: 'intersection' })),
+    _template: Template
+  };
 }
 
 export type EnumLike<E> = Record<StringKeyOf<E>, string | number>;

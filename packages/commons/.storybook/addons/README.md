@@ -184,8 +184,8 @@ export enum SizeEnum {
 
 // required
 export const stories = () =>
-  generateStoriesByEnum<Props, typeof SizeEnum>(
-    [MyComponent.input, MyComponentDisabled.input],
+  generateStoriesByEnum(
+    [MyComponent, MyComponentDisabled],
     'size', // prop name
     SizeEnum
   );

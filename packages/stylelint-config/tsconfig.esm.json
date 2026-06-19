@@ -1,6 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "declaration": true,
     "outDir": "esm"
   },
   "include": ["modules.d.ts", "*/*", "stylelint-*.config.ts"]

@@ -2,6 +2,7 @@
   "extends": "./tsconfig.esm.json",
   "compilerOptions": {
     "types": ["vite/client"],
+    "declaration": false,
     "esModuleInterop": true,
     "isolatedModules": true,
     "module": "Preserve",
