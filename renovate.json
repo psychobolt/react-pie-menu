@@ -5,7 +5,7 @@
   "packageRules": [
     {
       "matchPackageNames": ["actions/node-versions"],
-      "allowedVersions": "< 23"
+      "allowedVersions": "< 25"
     }
   ]
 }

@@ -4,7 +4,6 @@
     "target": "ESNext",
     "moduleResolution": "NodeNext",
     "allowSyntheticDefaultImports": true,
-    "allowImportingTsExtensions": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "sourceMap": true,

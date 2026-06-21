@@ -81,7 +81,7 @@ import {
   generateStoriesByEnum
 } from 'commons/esm/.storybook/utils/story-generators.js';
 
-import { type Props, MyComponent as Component } from './MyComponent.ts';
+import { type Props, MyComponent as Component } from './MyComponent';
 
 const meta = {
   title: 'Components/MyComponent',
@@ -154,7 +154,7 @@ import {
 } from 'commons/esm/.storybook/utils/story-generators.js';
 
 import preview from '.storybook/preview';
-import { MyComponent as Component } from './MyComponent.ts';
+import { MyComponent as Component } from './MyComponent';
 
 const meta = preview.meta({
   title: 'Components/MyComponent',
