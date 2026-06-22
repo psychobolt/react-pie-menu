@@ -22,6 +22,11 @@
       "import": "./dist/*/index.js",
       "require": "./dist/*/index.cjs"
     },
+    "./esm/*.d.ts": "./esm/*.d.ts",
+    "./esm/*.js": {
+      "types": "./esm/*.d.ts",
+      "default": "./esm/*.js"
+    },
     "./package.json": "./package.json"
   },
   "main": "./dist/index.cjs",
@@ -32,8 +37,9 @@
     "!**/*.css"
   ],
   "scripts": {
-    "build": "yarn build-src && yarn build-dts",
+    "build": "yarn build-src && yarn build-dts && yarn build-esm",
     "build-dts": "tsc -p tsconfig.dts.json && tsc-paths -p tsconfig.dts.json",
+    "build-esm": "rimraf esm/ && tsc -p tsconfig.esm.json",
     "build-src": "vite build",
     "build-storybook": "yarn g:storybook build --stats-json",
     "chromatic": "yarn g:chromatic",
@@ -75,6 +81,7 @@
     "react": "19.2.7",
     "react-docgen-typescript": "2.4.0",
     "react-dom": "19.2.7",
+    "rimraf": "6.1.3",
     "rolldown": "1.1.2",
     "sass": "1.101.0",
     "storybook": "10.4.6",

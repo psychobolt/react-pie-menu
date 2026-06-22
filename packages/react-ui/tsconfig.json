@@ -18,7 +18,6 @@
         }
       }
     ],
-    "outDir": "dist",
     "paths": {
       ".storybook/*": ["./.storybook/*"],
       "react-ui": ["./src/index.ts"],

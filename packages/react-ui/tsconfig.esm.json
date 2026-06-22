@@ -1,0 +1,14 @@
+{
+  "extends": "commons/tsconfig.esm.json",
+  "compilerOptions": {
+    "module": "Preserve",
+    "moduleResolution": "Bundler",
+    "declaration": true,
+    "rewriteRelativeImportExtensions": true,
+    "outDir": "esm",
+    "paths": {
+      "utils/*": ["./dist/utils/*"]
+    }
+  },
+  "include": [".storybook/**/*"]
+}

@@ -4,18 +4,18 @@ import type { ProjectAnnotations as _ProjectAnnotations } from 'storybook/intern
 import type { Merge as _Merge } from 'type-fest';
 import {
   ProxyProvider as _ProxyProvider,
-  type Preview,
+  type Preview as _Preview,
   type PreviewApi,
   withDefaults
 } from 'commons/esm/.storybook/preview.js';
 import { mergeConfig } from 'commons/esm/.storybook/utils/functions.js';
 
-import type { DefineMeta } from './meta';
+import type { DefineMeta } from './meta.d.ts';
 import {
   enhanceArgTypes,
   extractArgTypes,
   withoutPropTypes
-} from './utils/functions';
+} from './utils/functions.js';
 
 type ComponentAnnotations = object & {
   component?: ComponentType<any>;
@@ -30,10 +30,10 @@ type ProjectAnnotations<TDefaults extends object> = Partial<TDefaults> & {
 };
 
 type ReactPreview<TPreview extends PreviewApi, T extends object = {}> = Omit<
-  Preview<TPreview, T>,
+  _Preview<TPreview, T>,
   'meta' | 'type'
 > & {
-  meta: DefineMeta<Preview<TPreview, T>>;
+  meta: DefineMeta<_Preview<TPreview, T>>;
 
   type<U extends object>(): ReactPreview<TPreview, _Merge<T, U>>;
 };
@@ -55,20 +55,26 @@ class ProxyProvider<TPreview extends PreviewApi> extends _ProxyProvider<
   }
 }
 
-const defineParameters = (
-  parameters: NonNullable<
-    _ProjectAnnotations<ReactTypes & { csf4: true }>['parameters']
-  >
-) => parameters;
+type Parameters = NonNullable<
+  _ProjectAnnotations<ReactTypes & { csf4: true }>['parameters']
+>;
 
-const parameters = defineParameters({
+const defineParameters = (parameters: Parameters) => parameters;
+
+const parameters: Parameters = defineParameters({
   options: {
     // @ts-expect-error See issue: https://github.com/storybookjs/storybook/issues/30429
     storySort: (a, b) => globalThis['storybook-multilevel-sort:storySort'](a, b)
   }
 });
 
-export default {
+export type Preview = {
+  parameters: Parameters;
+  meta: ReactPreview<PreviewApi>['meta'];
+  type: ReactPreview<PreviewApi>['type'];
+};
+
+const preview: Preview = {
   parameters,
 
   ...withDefaults((defaults) => {
@@ -91,3 +97,5 @@ export default {
     return new ProxyProvider(preview).instance;
   })
 };
+
+export default preview;

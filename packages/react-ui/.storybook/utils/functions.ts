@@ -13,7 +13,7 @@ import type {
 } from 'storybook/internal/types';
 import { mergeConfig as _mergeConfig } from 'commons/esm/.storybook/utils/functions.js';
 
-import { isClassComponent } from 'utils/functions';
+import { isClassComponent } from 'utils/functions.js';
 
 type ExtractedProp = _ExtractedProp & {
   docgenInfo?: _ExtractedProp['docgenInfo'] & {

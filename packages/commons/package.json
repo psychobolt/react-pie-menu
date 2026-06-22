@@ -60,7 +60,7 @@
     "@storybook/addon-vitest": "10.4.6",
     "@storybook/global": "5.0.0",
     "@types/node": "24.13.2",
-    "@typescript-eslint/utils": "8.61.1",
+    "@typescript-eslint/utils": "8.62.0",
     "chromatic": "17.5.0",
     "eslint": "10.5.0",
     "eslint-plugin-jsonc": "3.2.0",
