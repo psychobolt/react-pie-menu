@@ -1,20 +1,20 @@
 import type { ComponentType } from 'react';
 import type {
-  ReactMeta as _ReactMeta,
   ReactStory as _ReactStory,
   ReactTypes
 } from '@storybook/react-vite';
 import type {
   Args as _Args,
-  ArgsStoryFn as _ArgsStoryFn,
-  DecoratorFunction
+  ArgsStoryFn as _ArgsStoryFn
 } from 'storybook/internal/csf';
 import type { PreviewApi, Renderer } from 'commons/esm/.storybook/preview.js';
 import type {
   ComponentAnnotations as _ComponentAnnotations,
   IfNever,
   InferArgs,
+  IntrinsicShape,
   Merge,
+  SetProperty,
   StoryAnnotations
 } from 'commons/esm/.storybook/types.d.ts';
 
@@ -22,93 +22,132 @@ type ComponentAnnotations<
   TRenderer extends ReactTypes,
   TComponentArgs extends object,
   TArgs extends object,
-  TDecorators extends DecoratorFunction<TRenderer, any>,
   TArgTypes extends object,
   TInput extends object
 > = Omit<TInput, 'args' | 'argTypes' | 'component' | 'decorators' | 'render'> &
   _ComponentAnnotations<
     TRenderer,
-    NoInfer<TArgs> & _Args,
-    TDecorators,
+    NoInfer<TArgs>,
     _ArgsStoryFn<TRenderer, NoInfer<TArgs> & _Args>,
     Partial<NoInfer<TArgs>>,
     TArgTypes & _Args,
     ComponentType<TComponentArgs>
   >;
 
-type ReactMeta<
-  TArgs extends object,
-  TRenderer extends ReactTypes & { args: TArgs & _Args },
-  TInput extends object
-> = Omit<_ReactMeta<TRenderer, TInput>, 'extend' | 'story' | 'type'> & {
+type MetaInput<TArgs extends object, TInput extends object> = Omit<
+  TInput,
+  'args'
+> &
+  Omit<
+    _ComponentAnnotations<
+      any,
+      NoInfer<TArgs>,
+      _ArgsStoryFn<any, NoInfer<TArgs> & _Args>
+    >,
+    'args' | 'render'
+  > & {
+    render?: _ArgsStoryFn<any, TArgs & _Args>;
+    args?: Partial<TArgs>;
+  };
+
+type ReactMeta<TArgs extends object, TInput extends object> = {
+  input: TInput & IntrinsicShape<TArgs>;
+
   extend<
     TComponentArgs extends object = TArgs,
-    TDecorators extends DecoratorFunction<TRenderer, any> = DecoratorFunction<
-      TRenderer,
-      any
-    >,
     TArgTypes extends object = TArgs,
     const TOverride extends object = {}
   >(
     overrides?: ComponentAnnotations<
-      TRenderer,
+      ReactTypes & { args: TArgs & _Args },
       TComponentArgs,
       TArgs,
-      TDecorators,
       TArgTypes,
       TOverride
     >
-  ): Merge<TInput, TOverride>;
+  ): Merge<TInput, TOverride> & IntrinsicShape<TArgs>;
 
   story(
-    input?: StoryAnnotations<TRenderer, TRenderer['args']>
-  ): _ReactStory<TRenderer, StoryAnnotations<TRenderer, TRenderer['args']>>;
+    input?: StoryAnnotations<ReactTypes & { args: TArgs & _Args }, TArgs>
+  ): _ReactStory<
+    any,
+    SetProperty<
+      StoryAnnotations<any, any>,
+      'args',
+      'optional',
+      Partial<TArgs & _Args>
+    >
+  >;
 
   type<T extends object>(): ReactMeta<
     InferArgs<T, TArgs, object>,
-    Omit<TRenderer, 'args'> & T & { args: InferArgs<T, TArgs, object> & _Args },
-    TInput
+    MetaInput<InferArgs<T, TArgs, object>, TInput>
   >;
 };
 
-export type DefineMeta<TPreview extends PreviewApi> = <
-  TComponentArgs extends object = {},
-  TArgs extends object = TComponentArgs &
-    IfNever<
+export type DefineMeta<TPreview extends PreviewApi> = {
+  <
+    TArgs extends object = InferArgs<Renderer<TPreview>, {}, object>,
+    TComponentArgs extends object = TArgs,
+    TRenderer extends ReactTypes & { args: TArgs & _Args } = ReactTypes & {
+      args: TArgs & _Args;
+    },
+    TArgTypes extends object = TArgs,
+    const TInput extends object = {}
+  >(
+    input: IfNever<
       InferArgs<Renderer<TPreview>>,
-      {},
-      InferArgs<Renderer<TPreview>, {}, object>
-    >,
-  TRenderer extends ReactTypes & { args: TArgs & _Args } = ReactTypes & {
-    args: TArgs & _Args;
-  },
-  TDecorators extends DecoratorFunction<TRenderer, any> = DecoratorFunction<
-    TRenderer,
-    any
-  >,
-  TArgTypes extends object = TArgs,
-  const TInput extends object = {}
->(
-  input: ComponentAnnotations<
-    TRenderer,
-    TComponentArgs,
-    TArgs,
-    TDecorators,
-    TArgTypes,
-    TInput
-  >
-) => ReactMeta<
-  TArgs,
-  TRenderer,
-  Omit<TInput, 'args'> &
-    Omit<
-      _ComponentAnnotations<
+      never,
+      IntrinsicShape<any> &
+        ComponentAnnotations<
+          TRenderer,
+          TComponentArgs,
+          TArgs,
+          TArgTypes,
+          TInput
+        >
+    >
+  ): ReactMeta<TArgs, MetaInput<TArgs, TInput>>;
+
+  <
+    TArgs extends object,
+    TComponentArgs extends object = TArgs,
+    TRenderer extends ReactTypes & { args: TArgs & _Args } = ReactTypes & {
+      args: TArgs & _Args;
+    },
+    TArgTypes extends object = TArgs,
+    const TInput extends object = {}
+  >(
+    input: IntrinsicShape<TArgs> &
+      ComponentAnnotations<
         TRenderer,
-        NoInfer<TArgs> & _Args,
-        DecoratorFunction<TRenderer, NoInfer<TArgs> & _Args>
+        TComponentArgs,
+        NoInfer<TArgs>,
+        TArgTypes,
+        TInput
+      >
+  ): ReactMeta<TArgs, MetaInput<TArgs, TInput>>;
+
+  <
+    TComponentArgs extends object = {},
+    TArgs extends object = TComponentArgs &
+      IfNever<
+        InferArgs<Renderer<TPreview>>,
+        {},
+        InferArgs<Renderer<TPreview>, {}, object>
       >,
-      'args'
-    > & {
-      args?: Partial<TArgs>;
-    }
->;
+    TRenderer extends ReactTypes & { args: TArgs & _Args } = ReactTypes & {
+      args: TArgs & _Args;
+    },
+    TArgTypes extends object = TArgs,
+    const TInput extends object = {}
+  >(
+    input: ComponentAnnotations<
+      TRenderer,
+      TComponentArgs,
+      TArgs,
+      TArgTypes,
+      TInput
+    >
+  ): ReactMeta<TArgs, MetaInput<TArgs, TInput>>;
+};

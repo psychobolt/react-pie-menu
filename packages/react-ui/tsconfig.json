@@ -22,6 +22,7 @@
       ".storybook/*": ["./.storybook/*"],
       "react-ui": ["./src/index.ts"],
       "react-ui/*": ["./src/*/index.ts"],
+      "react-ui/utils/*.js": ["./src/utils/*.ts"],
       "*": ["./src/*"]
     }
   },

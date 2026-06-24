@@ -32,26 +32,26 @@ export type InferArgs<
 
 declare const intrinsicKey: unique symbol;
 
-type IntrinsicType = {
-  readonly [intrinsicKey]: never;
+export type IntrinsicShape<T = never> = {
+  readonly [intrinsicKey]: T;
 };
 
 export type SetProperty<
   TInput extends object,
   TKey extends PropertyKey,
   TMode extends 'optional' | 'required' = 'optional',
-  T = IntrinsicType
+  T = IntrinsicShape
 > = Omit<TInput, TKey> &
   (TMode extends 'required'
     ? {
-        [Key in TKey]: T extends IntrinsicType
+        [Key in TKey]: T extends IntrinsicShape
           ? Key extends keyof TInput
             ? TInput[Key]
             : never
           : T;
       }
     : {
-        [Key in TKey]?: T extends IntrinsicType
+        [Key in TKey]?: T extends IntrinsicShape
           ? Key extends keyof TInput
             ? TInput[Key]
             : never
@@ -66,7 +66,7 @@ export type Merge<TInput, TOverride> = Omit<TInput, 'args'> &
       ? { args?: InferArgs<TInput> & InferArgs<TOverride> }
       : {});
 
-export type ArgsStoryFn<TArgs extends Args = Args> = (
+export type ArgsStoryFn<TArgs extends object = Args> = (
   args: TArgs,
   ...rest: any[]
 ) => any;
@@ -79,30 +79,31 @@ export type Input<TInput extends object, TOverride extends object> = Omit<
 
 export type ComponentAnnotations<
   TRenderer extends _Renderer,
-  TArgs extends Args,
-  TDecorator extends DecoratorFunction<TRenderer, TArgs>,
-  StoryFn extends ArgsStoryFn<TArgs> = ArgsStoryFn<TArgs>,
+  TArgs extends object,
+  StoryFn extends ArgsStoryFn<TArgs & Args> = ArgsStoryFn<TArgs & Args>,
   TArgsInput = Partial<NoInfer<TArgs>>,
-  TArgTypes extends Args = TArgs,
-  TComponent = _ComponentAnnotations<TRenderer, TArgs>['component']
+  TArgTypes extends Args = TArgs & Args,
+  TComponent = _ComponentAnnotations<TRenderer, TArgs & Args>['component']
 > = {
   component?: TComponent;
   render?: StoryFn;
   args?: TArgsInput;
   argTypes?: _ComponentAnnotations<TRenderer, TArgTypes>['argTypes'];
-  decorators?: TDecorator | TDecorator[];
+  decorators?:
+    | DecoratorFunction<TRenderer, TArgs & Args>
+    | DecoratorFunction<TRenderer, TArgs & Args>[];
 } & Except<
-  _ComponentAnnotations<TRenderer, TArgs>,
+  _ComponentAnnotations<TRenderer, TArgs & Args>,
   'args' | 'argTypes' | 'component' | 'decorators' | 'render'
 >;
 
 export type StoryAnnotations<
   TRenderer extends _Renderer,
-  TArgs extends Args
+  TArgs extends object
 > = SetProperty<
   {
-    render?: _ArgsStoryFn<TRenderer, TArgs>;
-  } & Except<_StoryAnnotations<TRenderer, TArgs>, 'args' | 'render'>,
+    render?: _ArgsStoryFn<TRenderer, TArgs & Args>;
+  } & Except<_StoryAnnotations<TRenderer, TArgs & Args>, 'args' | 'render'>,
   'args',
   'optional',
   Partial<TArgs>

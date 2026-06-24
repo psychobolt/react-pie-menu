@@ -79,7 +79,7 @@ jobs:
       - name: Prune deleted files
         run: git status | grep 'deleted by us' | awk '{print $4}' | (xargs git rm || true)
       - name: Start Turbo Cache Server
-        uses: rharkor/caching-for-turbo@5d14fba18e450c09393333cfd4242e8b3cb455a6 # v2.4.2
+        uses: rharkor/caching-for-turbo@75f8ebf4a43d2c60b23bc2a27082cfea94ffdad9 # v2.5.0
         with:
           cache-prefix: ${{ vars.TURBO_CACHE_PREFIX }}
       - name: Install dependencies

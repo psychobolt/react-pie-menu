@@ -57,7 +57,9 @@ type Type<TPreview> = TPreview extends {
   ? TPreview extends Subtype<infer T>
     ? _Merge<TRenderer, T>
     : TRenderer
-  : never;
+  : TPreview extends Subtype<infer T>
+    ? T
+    : never;
 
 export type PreviewApi = {
   meta: ConfigFn;
@@ -95,10 +97,12 @@ export type InferArgs<TPreview> = _InferArgs<Type<TPreview>>;
 export type Renderer<
   TPreview,
   TArgs extends Args = _InferArgs<Type<TPreview>>
-> =
-  Type<TPreview> extends _Renderer
-    ? SetProperty<Type<TPreview>, 'args', 'required', TArgs>
-    : _Renderer;
+> = SetProperty<
+  Type<TPreview> extends _Renderer ? Type<TPreview> : _Renderer,
+  'args',
+  'required',
+  TArgs
+>;
 
 export type Preview<
   TPreview extends PreviewApi,

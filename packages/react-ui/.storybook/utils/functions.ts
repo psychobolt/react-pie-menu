@@ -12,8 +12,7 @@ import type {
   StrictArgTypes
 } from 'storybook/internal/types';
 import { mergeConfig as _mergeConfig } from 'commons/esm/.storybook/utils/functions.js';
-
-import { isClassComponent } from 'utils/functions.js';
+import { isClassComponent } from 'react-ui/utils/functions.js';
 
 type ExtractedProp = _ExtractedProp & {
   docgenInfo?: _ExtractedProp['docgenInfo'] & {

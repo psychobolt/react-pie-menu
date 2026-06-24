@@ -6,9 +6,8 @@
     "declaration": true,
     "rewriteRelativeImportExtensions": true,
     "outDir": "esm",
-    "paths": {
-      "utils/*": ["./dist/utils/*"]
-    }
+    "rootDir": "."
   },
-  "include": [".storybook/**/*"]
+  "include": [".storybook/**/*"],
+  "exclude": [".storybook/vitest.config.ts"]
 }

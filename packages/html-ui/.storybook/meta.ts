@@ -1,10 +1,9 @@
 import type {
   Args as _Args,
-  ComponentAnnotations as _ComponentAnnotations,
-  DecoratorFunction,
-  Renderer as _Renderer
+  Renderer as _Renderer,
+  Story
 } from 'storybook/internal/csf';
-import type { WebComponentsMeta as _WebComponentsMeta } from '@storybook/web-components-vite';
+import type { WebComponentsRenderer } from '@storybook/web-components-vite';
 import type { Merge as _Merge } from 'type-fest';
 import type { PreviewApi, Renderer } from 'commons/esm/.storybook/preview.js';
 import type {
@@ -12,81 +11,75 @@ import type {
   ComponentAnnotations,
   IfNever,
   InferArgs,
+  IntrinsicShape,
   Merge,
   SetProperty,
   StoryAnnotations
 } from 'commons/esm/.storybook/types.d.ts';
 
-type DecoratorFn<
-  TPreview extends PreviewApi,
-  TArgs extends object
-> = DecoratorFunction<Renderer<TPreview, TArgs & _Args>, TArgs & _Args>;
-
-type WebComponentsAnnotations<
-  TPreview extends PreviewApi,
-  TArgs extends object,
-  TDecorator extends DecoratorFn<TPreview, TArgs> = DecoratorFn<
-    TPreview,
-    TArgs
-  >,
-  StoryFn extends ArgsStoryFn<TArgs & _Args> = ArgsStoryFn<TArgs & _Args>
-> = ComponentAnnotations<
-  Renderer<TPreview, TArgs & _Args>,
-  TArgs & _Args,
-  TDecorator,
-  StoryFn,
-  Partial<NoInfer<TArgs>>,
-  TArgs & _Args
+type Args<TPreview extends PreviewApi> = InferArgs<
+  Renderer<TPreview>,
+  {},
+  object
 >;
+
+type MetaInput<TArgs extends object, TInput extends object> = Omit<
+  TInput,
+  'args' | 'argTypes' | 'component' | 'decorators' | 'render'
+> &
+  IntrinsicShape<TArgs>;
 
 type WebComponentsMeta<
   TPreview extends PreviewApi,
   TArgs extends object,
   TRenderer extends _Renderer = Renderer<TPreview, TArgs & _Args>,
-  TInput extends object = _ComponentAnnotations<TRenderer, TArgs & _Args>
-> = Omit<
-  _WebComponentsMeta<TRenderer, _ComponentAnnotations<TRenderer, _Args>>,
-  'extend' | 'input' | 'story' | 'type'
-> & {
+  TInput extends object = MetaInput<TArgs, object>
+> = {
   input: TInput;
 
-  story(input?: StoryAnnotations<TRenderer, TArgs & _Args>): _WebComponentsMeta<
-    TRenderer,
-    _ComponentAnnotations<TRenderer, _Args>
-  > extends {
-    story(): infer TReturn;
-  }
-    ? TReturn
-    : never;
+  story(
+    input?: StoryAnnotations<
+      WebComponentsRenderer & { args: TArgs & _Args },
+      TArgs
+    >
+  ): Story<
+    any,
+    SetProperty<
+      StoryAnnotations<any, any>,
+      'args',
+      'optional',
+      Partial<TArgs & _Args>
+    >
+  >;
 
   type<T extends object>(): WebComponentsMeta<
     TPreview,
     InferArgs<T, TArgs, object>,
     _Merge<TRenderer, T & { args: InferArgs<T, TArgs, object> & _Args }>,
-    _ComponentAnnotations<
-      _Merge<TRenderer, T & { args: InferArgs<T, TArgs, object> & _Args }>,
-      InferArgs<T, TArgs, object> & _Args
-    >
+    MetaInput<InferArgs<T, TArgs, object>, TInput>
   >;
 
   extend<
     StoryFn extends ArgsStoryFn,
-    UArgs extends object = InferArgs<StoryFn, {}, object>,
+    UArgs extends object = InferArgs<StoryFn, TArgs, object>,
+    UArgTypes extends object = UArgs,
     UInput extends SetProperty<
-      WebComponentsAnnotations<
-        TPreview,
+      ComponentAnnotations<
+        WebComponentsRenderer & { args: UArgs & _Args },
         UArgs,
-        DecoratorFn<TPreview, UArgs>,
-        StoryFn
+        StoryFn,
+        Partial<NoInfer<UArgs>>,
+        UArgTypes & _Args
       >,
       'render',
       'required'
     > = SetProperty<
-      WebComponentsAnnotations<
-        TPreview,
+      ComponentAnnotations<
+        WebComponentsRenderer & { args: UArgs & _Args },
         UArgs,
-        DecoratorFn<TPreview, UArgs>,
-        StoryFn
+        StoryFn,
+        Partial<NoInfer<UArgs>>,
+        UArgTypes & _Args
       >,
       'render',
       'required'
@@ -98,12 +91,24 @@ type WebComponentsMeta<
       'args' | 'argTypes' | 'component' | 'decorators' | 'render'
     > &
       UInput
-  ): Merge<TInput, TOverride>;
+  ): Merge<TInput, TOverride> & IntrinsicShape<UArgs>;
 
   extend<
     UArgs extends object = TArgs,
-    UInput extends WebComponentsAnnotations<TPreview, UArgs> =
-      WebComponentsAnnotations<TPreview, UArgs>,
+    UArgTypes extends object = UArgs,
+    UInput extends ComponentAnnotations<
+      WebComponentsRenderer & { args: UArgs & _Args },
+      UArgs,
+      ArgsStoryFn<UArgs & _Args>,
+      Partial<NoInfer<UArgs>>,
+      UArgTypes & _Args
+    > = ComponentAnnotations<
+      WebComponentsRenderer & { args: UArgs & _Args },
+      UArgs,
+      ArgsStoryFn<UArgs & _Args>,
+      Partial<NoInfer<UArgs>>,
+      UArgTypes & _Args
+    >,
     const TOverride extends object = {}
   >(
     overrides?: Omit<
@@ -111,27 +116,58 @@ type WebComponentsMeta<
       'args' | 'argTypes' | 'component' | 'decorators' | 'render'
     > &
       UInput
-  ): Merge<TInput, TOverride>;
+  ): Merge<TInput, TOverride> & IntrinsicShape<UArgs>;
 };
 
 export type DefineMeta<TPreview extends PreviewApi> = IfNever<
   InferArgs<Renderer<TPreview>>,
   {
     <
-      StoryFn extends ArgsStoryFn,
-      TArgs extends object = InferArgs<StoryFn, {}, object>,
-      TDecorator extends DecoratorFn<TPreview, TArgs> = DecoratorFn<
-        TPreview,
-        TArgs
-      >,
+      TArgs extends object,
+      TArgTypes extends object = TArgs,
       const TInput extends object = {}
+    >(
+      input: IntrinsicShape<TArgs> &
+        Omit<
+          TInput,
+          'args' | 'argTypes' | 'component' | 'decorators' | 'render'
+        > &
+        ComponentAnnotations<
+          WebComponentsRenderer & { args: NoInfer<TArgs> & _Args },
+          NoInfer<TArgs>,
+          ArgsStoryFn<NoInfer<TArgs> & _Args>,
+          Partial<NoInfer<TArgs>>,
+          TArgTypes & _Args
+        >
+    ): WebComponentsMeta<
+      TPreview,
+      TArgs,
+      Renderer<TPreview, TArgs & _Args>,
+      MetaInput<TArgs, TInput>
+    >;
+
+    <
+      const TInput extends object = {},
+      StoryFn extends ArgsStoryFn = ArgsStoryFn,
+      TArgs extends object = TInput extends IntrinsicShape<
+        infer TIntrinsicArgs extends object
+      >
+        ? TIntrinsicArgs
+        : InferArgs<StoryFn, {}, object>,
+      TArgTypes extends object = TArgs
     >(
       input: Omit<
         TInput,
         'args' | 'argTypes' | 'component' | 'decorators' | 'render'
       > &
         SetProperty<
-          WebComponentsAnnotations<TPreview, TArgs, TDecorator, StoryFn>,
+          ComponentAnnotations<
+            WebComponentsRenderer & { args: TArgs & _Args },
+            TArgs,
+            StoryFn,
+            Partial<NoInfer<TArgs>>,
+            TArgTypes & _Args
+          >,
           'render',
           'required'
         >
@@ -139,46 +175,52 @@ export type DefineMeta<TPreview extends PreviewApi> = IfNever<
       TPreview,
       TArgs,
       Renderer<TPreview, TArgs & _Args>,
-      TInput
+      MetaInput<TArgs, TInput>
     >;
 
     <
-      TArgs extends object = {},
-      TDecorator extends DecoratorFn<TPreview, TArgs> = DecoratorFn<
-        TPreview,
-        TArgs
-      >,
-      const TInput extends object = {}
+      const TInput extends object = {},
+      TArgs extends object = TInput extends IntrinsicShape<
+        infer TIntrinsicArgs extends object
+      >
+        ? TIntrinsicArgs
+        : {},
+      TArgTypes extends object = TArgs
     >(
       input: Omit<
         TInput,
         'args' | 'argTypes' | 'component' | 'decorators' | 'render'
       > &
-        WebComponentsAnnotations<TPreview, TArgs, TDecorator>
+        ComponentAnnotations<
+          WebComponentsRenderer & { args: TArgs & _Args },
+          TArgs,
+          ArgsStoryFn<TArgs & _Args>,
+          Partial<NoInfer<TArgs>>,
+          TArgTypes & _Args
+        >
     ): WebComponentsMeta<
       TPreview,
       TArgs,
       Renderer<TPreview, TArgs & _Args>,
-      TInput
+      MetaInput<TArgs, TInput>
     >;
   },
-  <
-    TArgs extends object = InferArgs<Renderer<TPreview>, {}, object>,
-    TDecorator extends DecoratorFn<TPreview, TArgs> = DecoratorFn<
-      TPreview,
-      TArgs
-    >,
-    const TInput extends object = {}
-  >(
+  <const TInput extends object = {}, TArgTypes extends object = Args<TPreview>>(
     input: Omit<
       TInput,
       'args' | 'argTypes' | 'component' | 'decorators' | 'render'
     > &
-      WebComponentsAnnotations<TPreview, NoInfer<TArgs>, TDecorator>
+      ComponentAnnotations<
+        WebComponentsRenderer & { args: NoInfer<Args<TPreview>> & _Args },
+        NoInfer<Args<TPreview>>,
+        ArgsStoryFn<NoInfer<Args<TPreview>> & _Args>,
+        Partial<NoInfer<Args<TPreview>>>,
+        TArgTypes & _Args
+      >
   ) => WebComponentsMeta<
     TPreview,
-    TArgs,
-    Renderer<TPreview, TArgs & _Args>,
-    TInput
+    Args<TPreview>,
+    Renderer<TPreview, Args<TPreview> & _Args>,
+    MetaInput<Args<TPreview>, TInput>
   >
 >;
