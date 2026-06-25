@@ -2,7 +2,6 @@
   "extends": "./tsconfig.esm.json",
   "compilerOptions": {
     "types": ["vite/client"],
-    "allowImportingTsExtensions": true,
     "declaration": false,
     "esModuleInterop": true,
     "isolatedModules": true,

@@ -1305,7 +1305,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/css-syntax-patches-for-csstree@npm:^1.1.4":
+"@csstools/css-syntax-patches-for-csstree@npm:^1.1.5":
   version: 1.1.5
   resolution: "@csstools/css-syntax-patches-for-csstree@npm:1.1.5"
   peerDependencies:
@@ -7301,9 +7301,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chromatic@npm:17.6.0":
-  version: 17.6.0
-  resolution: "chromatic@npm:17.6.0"
+"chromatic@npm:17.7.0":
+  version: 17.7.0
+  resolution: "chromatic@npm:17.7.0"
   dependencies:
     semver: "npm:^7.3.5"
   peerDependencies:
@@ -7321,7 +7321,7 @@ __metadata:
     chroma: dist/bin.cjs
     chromatic: dist/bin.cjs
     chromatic-cli: dist/bin.cjs
-  checksum: 10c0/9cc8b0530f69e705c6b0f269b314195d7ffab10ea7b1daeca8335a65faf7468e459d49853a964b84593c62a295fb9d0e822e56ec0a9d237b9dbee7bd03afe804
+  checksum: 10c0/26820480ddb9fd19057a828d96c9ad101b2d80cacd9d5364b2445af785d561e9bd8215e26356709d001424f0e565b4869ad031334c393cde133715b6baef0129
   languageName: node
   linkType: hard
 
@@ -7592,7 +7592,7 @@ __metadata:
     arg: "npm:5.0.2"
     autoprefixer: "npm:10.5.2"
     chokidar: "npm:5.0.0"
-    chromatic: "npm:17.6.0"
+    chromatic: "npm:17.7.0"
     eslint: "npm:10.5.0"
     eslint-plugin-jsonc: "npm:3.2.0"
     eslint-plugin-mdx: "npm:3.8.1"
@@ -7619,7 +7619,7 @@ __metadata:
     storybook: "npm:10.4.6"
     storybook-multilevel-sort: "npm:2.1.0"
     storybook-zeplin: "npm:4.0.1"
-    stylelint: "npm:17.13.0"
+    stylelint: "npm:17.14.0"
     ts-enum-util: "npm:4.1.0"
     turbo: "npm:2.10.0"
     type-fest: "npm:5.7.0"
@@ -7721,9 +7721,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cosmiconfig@npm:^9.0.1":
-  version: 9.0.1
-  resolution: "cosmiconfig@npm:9.0.1"
+"cosmiconfig@npm:^9.0.2":
+  version: 9.0.2
+  resolution: "cosmiconfig@npm:9.0.2"
   dependencies:
     env-paths: "npm:^2.2.1"
     import-fresh: "npm:^3.3.0"
@@ -7734,7 +7734,7 @@ __metadata:
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 10c0/a5d4d95599687532ee072bca60170133c24d4e08cd795529e0f22c6ce5fde9409eaf4f26e36e3d671f43270ef858fc68f3c7b0ec28e58fac7ddebda5b7725306
+  checksum: 10c0/132d32863c0b3d9ace7010a10011e09089532b36e3b11e02004d671dcbd8b8f2f16293b82d510d9c15890f30358baf8722127c7b1c011449c90b6a178f9c6594
   languageName: node
   linkType: hard
 
@@ -10680,7 +10680,7 @@ __metadata:
     rollup-plugin-no-emit: "npm:1.3.0"
     sass: "npm:1.101.0"
     storybook: "npm:10.4.6"
-    stylelint: "npm:17.13.0"
+    stylelint: "npm:17.14.0"
     stylelint-config: "workspace:*"
     turbo: "npm:2.10.0"
     type-fest: "npm:5.7.0"
@@ -15739,6 +15739,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"postcss-selector-parser@npm:^7.1.4":
+  version: 7.1.4
+  resolution: "postcss-selector-parser@npm:7.1.4"
+  dependencies:
+    cssesc: "npm:^3.0.0"
+    util-deprecate: "npm:^1.0.2"
+  checksum: 10c0/3d533d25bab83592e7134be0435e6cb1e2865f5e7d9fde65f1e7e1c75ccc5905168c9f55b05d2a3e10d01914a178433d3a54eab003f5ef6aa9a9d6816926caa2
+  languageName: node
+  linkType: hard
+
 "postcss-sorting@npm:^10.0.0":
   version: 10.0.0
   resolution: "postcss-sorting@npm:10.0.0"
@@ -16194,11 +16204,10 @@ __metadata:
     react: "npm:19.2.7"
     react-docgen-typescript: "npm:2.4.0"
     react-dom: "npm:19.2.7"
-    rimraf: "npm:6.1.3"
     rolldown: "npm:1.1.3"
     sass: "npm:1.101.0"
     storybook: "npm:10.4.6"
-    stylelint: "npm:17.13.0"
+    stylelint: "npm:17.14.0"
     stylelint-config: "workspace:*"
     turbo: "npm:2.10.0"
     type-fest: "npm:5.7.0"
@@ -16426,9 +16435,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"renovate@npm:43.242.0":
-  version: 43.242.0
-  resolution: "renovate@npm:43.242.0"
+"renovate@npm:43.242.2":
+  version: 43.242.2
+  resolution: "renovate@npm:43.242.2"
   dependencies:
     "@aws-sdk/client-codecommit": "npm:3.1053.0"
     "@aws-sdk/client-ec2": "npm:3.1053.0"
@@ -16557,7 +16566,7 @@ __metadata:
   bin:
     renovate: dist/renovate.js
     renovate-config-validator: dist/config-validator.js
-  checksum: 10c0/8582da4d6aecd5afd88c5fbf8f3be202901cfe5bd68237e8ee0d1cb708c0ddeaef48ec143892ffcaf635726102ee4af291a34fe715ebf37eca4097a1a78a22e9
+  checksum: 10c0/18d5c5ff542aa849df981d81af574d4581de8f03e23e05d47d945e42ea2597993b740c0b393f2dd07f3577fa44b0135ef297cbb172dc6992fdf4edecd8bac5cb
   languageName: node
   linkType: hard
 
@@ -18106,7 +18115,7 @@ __metadata:
     eslint: "npm:10.5.0"
     flat: "npm:6.0.1"
     postcss: "npm:8.5.15"
-    stylelint: "npm:17.13.0"
+    stylelint: "npm:17.14.0"
     stylelint-config-hudochenkov: "npm:13.0.2"
     stylelint-config-prettier-scss: "npm:1.0.0"
     stylelint-config-standard-scss: "npm:17.0.0"
@@ -18148,19 +18157,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stylelint@npm:17.13.0":
-  version: 17.13.0
-  resolution: "stylelint@npm:17.13.0"
+"stylelint@npm:17.14.0":
+  version: 17.14.0
+  resolution: "stylelint@npm:17.14.0"
   dependencies:
     "@csstools/css-calc": "npm:^3.2.1"
     "@csstools/css-parser-algorithms": "npm:^4.0.0"
-    "@csstools/css-syntax-patches-for-csstree": "npm:^1.1.4"
+    "@csstools/css-syntax-patches-for-csstree": "npm:^1.1.5"
     "@csstools/css-tokenizer": "npm:^4.0.0"
     "@csstools/media-query-list-parser": "npm:^5.0.0"
     "@csstools/selector-resolve-nested": "npm:^4.0.0"
     "@csstools/selector-specificity": "npm:^6.0.0"
     colord: "npm:^2.9.3"
-    cosmiconfig: "npm:^9.0.1"
+    cosmiconfig: "npm:^9.0.2"
     css-functions-list: "npm:^3.3.3"
     css-tree: "npm:^3.2.1"
     debug: "npm:^4.4.3"
@@ -18180,7 +18189,7 @@ __metadata:
     picocolors: "npm:^1.1.1"
     postcss: "npm:^8.5.15"
     postcss-safe-parser: "npm:^7.0.1"
-    postcss-selector-parser: "npm:^7.1.1"
+    postcss-selector-parser: "npm:^7.1.4"
     postcss-value-parser: "npm:^4.2.0"
     string-width: "npm:^8.2.1"
     supports-hyperlinks: "npm:^4.4.0"
@@ -18189,7 +18198,7 @@ __metadata:
     write-file-atomic: "npm:^7.0.1"
   bin:
     stylelint: bin/stylelint.mjs
-  checksum: 10c0/07b8e640099c042a5ee807303f79d065998304410ec94e18c419a22e5695bebfe9b2ca10a760630eff9d71f108b2404da8ab7eaba2559686ba99f688b747820b
+  checksum: 10c0/7be23db5c66eba4d4b540bcf9b94e42daf40b1f52b089792dcb8e7d951f81fbec342a458f692fb5156848d6073ce6c36065ba9ec71e86d1c68360dbc3c251a00
   languageName: node
   linkType: hard
 
@@ -19432,7 +19441,7 @@ __metadata:
     glob-to-regexp: "npm:0.4.1"
     husky: "npm:9.1.7"
     playwright: "npm:1.61.1"
-    renovate: "npm:43.242.0"
+    renovate: "npm:43.242.2"
     semver: "npm:7.8.5"
     svelte-language-server: "npm:0.18.3"
     turbo: "npm:2.10.0"

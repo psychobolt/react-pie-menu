@@ -1,13 +1,17 @@
 import type { ComponentType } from 'react';
-import { type ReactTypes, definePreview } from '@storybook/react-vite';
+import {
+  type ReactTypes,
+  definePreview as _definePreview
+} from '@storybook/react-vite';
 import type { ProjectAnnotations as _ProjectAnnotations } from 'storybook/internal/csf';
-import type { Merge } from 'type-fest';
 import {
   ProxyProvider as _ProxyProvider,
-  type Preview as _Preview,
-  type PreviewApi,
-  withDefaults
+  withDefaults as _withDefaults
 } from 'commons/esm/.storybook/preview.js';
+import type {
+  Preview as _Preview,
+  PreviewApi
+} from 'commons/esm/.storybook/preview.d.ts';
 
 import type { DefineMeta } from './meta.d.ts';
 import {
@@ -17,7 +21,7 @@ import {
   withoutPropTypes
 } from './utils/functions.js';
 
-type ComponentAnnotations = object & {
+type ComponentAnnotations = {
   component?: ComponentType<any>;
 };
 
@@ -35,7 +39,7 @@ type ReactPreview<TPreview extends PreviewApi, T extends object = {}> = Omit<
 > & {
   meta: DefineMeta<_Preview<TPreview, T>>;
 
-  type<U extends object>(): ReactPreview<TPreview, Merge<T, U>>;
+  type<U extends object>(): ReactPreview<TPreview, T & U>;
 };
 
 class ProxyProvider<TPreview extends PreviewApi> extends _ProxyProvider<
@@ -55,27 +59,25 @@ class ProxyProvider<TPreview extends PreviewApi> extends _ProxyProvider<
   }
 }
 
-type Parameters = NonNullable<
+export type Parameters = NonNullable<
   _ProjectAnnotations<ReactTypes & { csf4: true }>['parameters']
 >;
 
-const defineParameters = (parameters: Parameters) => parameters;
-
-const parameters = defineParameters({
+const parameters = {
   options: {
     // @ts-expect-error See issue: https://github.com/storybookjs/storybook/issues/30429
     storySort: (a, b) => globalThis['storybook-multilevel-sort:storySort'](a, b)
   }
-});
+} satisfies Parameters;
 
 export type Preview = {
   parameters: Parameters;
 } & ReactPreview<PreviewApi>;
 
-const preview: Preview = {
-  parameters,
-
-  ...withDefaults((defaults) => {
+export const withDefaults = (
+  definePreview: typeof _definePreview
+): ReactPreview<PreviewApi> =>
+  _withDefaults((defaults) => {
     const preview = definePreview(
       mergeConfig(defaults, {
         argTypesEnhancers: [
@@ -93,7 +95,11 @@ const preview: Preview = {
     );
 
     return new ProxyProvider(preview).instance;
-  })
+  });
+
+const preview: Preview = {
+  parameters,
+  ...withDefaults(_definePreview)
 };
 
 export default preview;

@@ -1,17 +1,11 @@
 {
+  "extends": "commons/tsconfig.json",
   "compilerOptions": {
     "module": "NodeNext",
     "target": "ESNext",
     "moduleResolution": "NodeNext",
-    "allowSyntheticDefaultImports": true,
-    "allowImportingTsExtensions": true,
     "noEmit": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "sourceMap": true
+    "resolveJsonModule": true
   },
   "include": ["**/*"],
   "exclude": ["apps", "packages"]

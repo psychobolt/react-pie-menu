@@ -19,7 +19,7 @@
     "arg": "5.0.2",
     "commons": "workspace:*",
     "eslint": "10.5.0",
-    "stylelint": "17.13.0",
+    "stylelint": "17.14.0",
     "turbo": "2.10.0",
     "typescript": "6.0.3"
   },

@@ -8,5 +8,5 @@
     "rootDir": "."
   },
   "include": [".storybook/**/*"],
-  "exclude": [".storybook/vitest.config.ts"]
+  "exclude": [".storybook/test-runner-jest.config.ts"]
 }
