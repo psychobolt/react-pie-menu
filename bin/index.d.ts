@@ -3,8 +3,7 @@ interface Tester {
 }
 
 type Matcher =
-  | ((value: any, options?: any) => Tester)
-  | ((value?: any[]) => Tester);
+  ((value: any, options?: any) => Tester) | ((value?: any[]) => Tester);
 
 interface Spec {
   alias?: string;

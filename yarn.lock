@@ -1740,10 +1740,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fortawesome/fontawesome-free@npm:7.2.0":
-  version: 7.2.0
-  resolution: "@fortawesome/fontawesome-free@npm:7.2.0"
-  checksum: 10c0/fc95989739857a2622c993929c6748c8c7eac3b490b0de6beb843b0b6a5de99f1e99c92901706c73e4da6be9413853a7382dfe82d2313c217489210a5b9965ed
+"@fortawesome/fontawesome-free@npm:7.3.0":
+  version: 7.3.0
+  resolution: "@fortawesome/fontawesome-free@npm:7.3.0"
+  checksum: 10c0/f7f401e4736fcff1ace455f83d16b3c5fe97f3daaa8ca48710649dbae7b6aeaee5f2fda6a66e4675475e68b1241541638c5ca0ad65ca148a69df8bd5cdb229c3
   languageName: node
   linkType: hard
 
@@ -7301,9 +7301,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chromatic@npm:17.7.0":
-  version: 17.7.0
-  resolution: "chromatic@npm:17.7.0"
+"chromatic@npm:17.7.2":
+  version: 17.7.2
+  resolution: "chromatic@npm:17.7.2"
   dependencies:
     semver: "npm:^7.3.5"
   peerDependencies:
@@ -7321,7 +7321,7 @@ __metadata:
     chroma: dist/bin.cjs
     chromatic: dist/bin.cjs
     chromatic-cli: dist/bin.cjs
-  checksum: 10c0/26820480ddb9fd19057a828d96c9ad101b2d80cacd9d5364b2445af785d561e9bd8215e26356709d001424f0e565b4869ad031334c393cde133715b6baef0129
+  checksum: 10c0/6fcbb27833a2abd775658e6f59d6325adb6b20baf8c108e961b39c81da222964fc1568d86d9eec8d703319e0eb9b0254b2cb815d8629410c147b1c6ff9b89351
   languageName: node
   linkType: hard
 
@@ -7592,8 +7592,8 @@ __metadata:
     arg: "npm:5.0.2"
     autoprefixer: "npm:10.5.2"
     chokidar: "npm:5.0.0"
-    chromatic: "npm:17.7.0"
-    eslint: "npm:10.5.0"
+    chromatic: "npm:17.7.2"
+    eslint: "npm:10.6.0"
     eslint-plugin-jsonc: "npm:3.2.0"
     eslint-plugin-mdx: "npm:3.8.1"
     eslint-plugin-package-json: "npm:1.5.0"
@@ -7608,7 +7608,7 @@ __metadata:
     postcss: "npm:8.5.15"
     postcss-pseudo-classes: "npm:0.4.0"
     postcss-scss: "npm:4.0.9"
-    prettier: "npm:3.8.4"
+    prettier: "npm:3.9.0"
     prettier-config-standard: "npm:7.0.0"
     prettier-plugin-packagejson: "npm:3.0.2"
     prettier-plugin-sh: "npm:0.18.1"
@@ -7745,12 +7745,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cronstrue@npm:3.14.0":
-  version: 3.14.0
-  resolution: "cronstrue@npm:3.14.0"
+"cronstrue@npm:3.20.0":
+  version: 3.20.0
+  resolution: "cronstrue@npm:3.20.0"
   bin:
     cronstrue: bin/cli.js
-  checksum: 10c0/6a45a60a5ba6ef8c3f686ee213f0a5a989ad4123da8175d2892c92615bbb8abfd83d06e2f8d64e4097c03e4d4abd94650f4f58aa1255da435bba3f69ff5a79aa
+  checksum: 10c0/0ba16bd4f416aedef6f1477cceb0137f2408dfce041386fe189c76b9454ae213542f8a29d657a73039ee77d83ce120511994bd77cf09e691a9edc8c055351122
   languageName: node
   linkType: hard
 
@@ -9126,9 +9126,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:10.5.0":
-  version: 10.5.0
-  resolution: "eslint@npm:10.5.0"
+"eslint@npm:10.6.0":
+  version: 10.6.0
+  resolution: "eslint@npm:10.6.0"
   dependencies:
     "@eslint-community/eslint-utils": "npm:^4.8.0"
     "@eslint-community/regexpp": "npm:^4.12.2"
@@ -9167,7 +9167,7 @@ __metadata:
       optional: true
   bin:
     eslint: bin/eslint.js
-  checksum: 10c0/e1f7a1d442027e5478945cb07b6a382adc3f149fbfd3dbc14951a7a9fa312546b27fb35b0556897ca1d04539ad16ee85bda75ad9f724873e1153d1fbca0d6145
+  checksum: 10c0/ebe0261fc750afb7f1a0c5a14f5288e57b971e0bee9754b1620132d22ad0c23690183977b0c9514ffa7ad460768d689d3fb9792ad9267b6c6205e2e0c17d8563
   languageName: node
   linkType: hard
 
@@ -10660,7 +10660,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "html-ui@workspace:packages/html-ui"
   dependencies:
-    "@fortawesome/fontawesome-free": "npm:7.2.0"
+    "@fortawesome/fontawesome-free": "npm:7.3.0"
     "@open-wc/lit-helpers": "npm:0.7.0"
     "@storybook/addon-coverage": "npm:3.0.1"
     "@storybook/addon-docs": "npm:10.4.6"
@@ -10668,12 +10668,12 @@ __metadata:
     "@types/react-syntax-highlighter": "npm:15.5.13"
     classnames: "npm:2.5.1"
     commons: "workspace:*"
-    eslint: "npm:10.5.0"
+    eslint: "npm:10.6.0"
     glob: "npm:13.0.6"
     http-server: "npm:14.1.1"
     lit: "npm:3.3.3"
     nyc: "npm:18.0.0"
-    prettier: "npm:3.8.4"
+    prettier: "npm:3.9.0"
     react: "npm:19.2.7"
     react-dom: "npm:19.2.7"
     react-syntax-highlighter: "npm:16.1.1"
@@ -15848,12 +15848,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:3.8.4":
-  version: 3.8.4
-  resolution: "prettier@npm:3.8.4"
+"prettier@npm:3.9.0":
+  version: 3.9.0
+  resolution: "prettier@npm:3.9.0"
   bin:
     prettier: bin/prettier.cjs
-  checksum: 10c0/b90a0cbe75b88ac0af9c13fe0f359bd19926fabccd88483227b21f71f0c1cc42da056fc1ac3a361e665577c568371d5ccfb2c62c31c8a1186f8d1bd531a063e9
+  checksum: 10c0/f3d8395e0b61f61895d11e14c144bd450ec752ddbda49895590f1038c74ae06cb013ae498da326663c4dfb7ef38d7ec9d43d9b87251c98b5c27c7da8ed0d6e6c
   languageName: node
   linkType: hard
 
@@ -16194,7 +16194,7 @@ __metadata:
     babel-plugin-react-compiler: "npm:1.0.0"
     classnames: "npm:2.5.1"
     commons: "workspace:*"
-    eslint: "npm:10.5.0"
+    eslint: "npm:10.6.0"
     eslint-plugin-react-hooks: "npm:7.1.1"
     glob: "npm:13.0.6"
     html-ui: "workspace:*"
@@ -16435,9 +16435,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"renovate@npm:43.242.2":
-  version: 43.242.2
-  resolution: "renovate@npm:43.242.2"
+"renovate@npm:43.245.0":
+  version: 43.245.0
+  resolution: "renovate@npm:43.245.0"
   dependencies:
     "@aws-sdk/client-codecommit": "npm:3.1053.0"
     "@aws-sdk/client-ec2": "npm:3.1053.0"
@@ -16488,7 +16488,7 @@ __metadata:
     clean-git-ref: "npm:2.0.1"
     commander: "npm:14.0.3"
     croner: "npm:10.0.1"
-    cronstrue: "npm:3.14.0"
+    cronstrue: "npm:3.20.0"
     deepmerge: "npm:4.3.1"
     dequal: "npm:2.0.3"
     detect-indent: "npm:7.0.2"
@@ -16542,7 +16542,7 @@ __metadata:
     remark-github: "npm:12.0.0"
     safe-stable-stringify: "npm:2.5.0"
     sax: "npm:1.6.0"
-    semver: "npm:7.8.4"
+    semver: "npm:7.8.5"
     semver-stable: "npm:3.0.0"
     semver-utils: "npm:1.1.4"
     shlex: "npm:3.0.0"
@@ -16566,7 +16566,7 @@ __metadata:
   bin:
     renovate: dist/renovate.js
     renovate-config-validator: dist/config-validator.js
-  checksum: 10c0/18d5c5ff542aa849df981d81af574d4581de8f03e23e05d47d945e42ea2597993b740c0b393f2dd07f3577fa44b0135ef297cbb172dc6992fdf4edecd8bac5cb
+  checksum: 10c0/9444c42a8e23da119688a4c6578f7890f9a737b2b1665cb1795df67d3e43043cee051be4eea9df80e28bcbee1fd5f34605f5c375d5be332c88b11b6d384460f9
   languageName: node
   linkType: hard
 
@@ -17159,15 +17159,6 @@ __metadata:
   version: 1.1.4
   resolution: "semver-utils@npm:1.1.4"
   checksum: 10c0/8ad42a93b8640f0e3fdec67187b84ec396c180d37caaa40291a413f5cc82ebd7ffdf055c38824f1749506027f9fed78e230a262e7cc8bcb84ddbcd6f16c918c0
-  languageName: node
-  linkType: hard
-
-"semver@npm:7.8.4":
-  version: 7.8.4
-  resolution: "semver@npm:7.8.4"
-  bin:
-    semver: bin/semver.js
-  checksum: 10c0/81b7c296fd7927b80f67fa516b75fa1017caac8167795320de28e76ccbc6f7f01763c30ecd10d6a0d8fd089708ab0548a5aebb94b0870e99c2a2b4600a46389b
   languageName: node
   linkType: hard
 
@@ -18112,7 +18103,7 @@ __metadata:
   dependencies:
     arg: "npm:5.0.2"
     commons: "workspace:*"
-    eslint: "npm:10.5.0"
+    eslint: "npm:10.6.0"
     flat: "npm:6.0.1"
     postcss: "npm:8.5.15"
     stylelint: "npm:17.14.0"
@@ -19437,11 +19428,11 @@ __metadata:
     "@yarnpkg/sdks": "npm:3.3.0"
     arg: "npm:5.0.2"
     commons: "workspace:*"
-    eslint: "npm:10.5.0"
+    eslint: "npm:10.6.0"
     glob-to-regexp: "npm:0.4.1"
     husky: "npm:9.1.7"
     playwright: "npm:1.61.1"
-    renovate: "npm:43.242.2"
+    renovate: "npm:43.245.0"
     semver: "npm:7.8.5"
     svelte-language-server: "npm:0.18.3"
     turbo: "npm:2.10.0"

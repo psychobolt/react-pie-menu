@@ -1,13 +1,7 @@
 import type { ComponentType } from 'react';
-import type {
-  ReactStory as _ReactStory,
-  ReactTypes
-} from '@storybook/react-vite';
-import type {
-  Args as _Args,
-  ArgsStoryFn as _ArgsStoryFn
-} from 'storybook/internal/csf';
-import type { PreviewApi, Renderer } from 'commons/esm/.storybook/preview.js';
+import type { ReactStory, ReactTypes } from '@storybook/react-vite';
+import type { Args, ArgsStoryFn } from 'storybook/internal/csf';
+import type { PreviewApi, Renderer } from 'commons/esm/.storybook/preview.d.ts';
 import type {
   ComponentAnnotations as _ComponentAnnotations,
   IfNever,
@@ -28,9 +22,9 @@ type ComponentAnnotations<
   _ComponentAnnotations<
     TRenderer,
     NoInfer<TArgs>,
-    _ArgsStoryFn<TRenderer, NoInfer<TArgs> & _Args>,
+    ArgsStoryFn<TRenderer, NoInfer<TArgs> & Args>,
     Partial<NoInfer<TArgs>>,
-    TArgTypes & _Args,
+    TArgTypes & Args,
     ComponentType<TComponentArgs>
   >;
 
@@ -42,11 +36,11 @@ type MetaInput<TArgs extends object, TInput extends object> = Omit<
     _ComponentAnnotations<
       any,
       NoInfer<TArgs>,
-      _ArgsStoryFn<any, NoInfer<TArgs> & _Args>
+      ArgsStoryFn<any, NoInfer<TArgs> & Args>
     >,
     'args' | 'render'
   > & {
-    render?: _ArgsStoryFn<any, TArgs & _Args>;
+    render?: ArgsStoryFn<any, TArgs & Args>;
     args?: Partial<TArgs>;
   };
 
@@ -59,7 +53,7 @@ type ReactMeta<TArgs extends object, TInput extends object> = {
     const TOverride extends object = {}
   >(
     overrides?: ComponentAnnotations<
-      ReactTypes & { args: TArgs & _Args },
+      ReactTypes & { args: TArgs & Args },
       TComponentArgs,
       TArgs,
       TArgTypes,
@@ -68,14 +62,14 @@ type ReactMeta<TArgs extends object, TInput extends object> = {
   ): Merge<TInput, TOverride> & IntrinsicShape<TArgs>;
 
   story(
-    input?: StoryAnnotations<ReactTypes & { args: TArgs & _Args }, TArgs>
-  ): _ReactStory<
+    input?: StoryAnnotations<ReactTypes & { args: TArgs & Args }, TArgs>
+  ): ReactStory<
     any,
     SetProperty<
       StoryAnnotations<any, any>,
       'args',
       'optional',
-      Partial<TArgs & _Args>
+      Partial<TArgs & Args>
     >
   >;
 
@@ -89,8 +83,8 @@ export type DefineMeta<TPreview extends PreviewApi> = {
   <
     TArgs extends object = InferArgs<Renderer<TPreview>, {}, object>,
     TComponentArgs extends object = TArgs,
-    TRenderer extends ReactTypes & { args: TArgs & _Args } = ReactTypes & {
-      args: TArgs & _Args;
+    TRenderer extends ReactTypes & { args: TArgs & Args } = ReactTypes & {
+      args: TArgs & Args;
     },
     TArgTypes extends object = TArgs,
     const TInput extends object = {}
@@ -112,8 +106,8 @@ export type DefineMeta<TPreview extends PreviewApi> = {
   <
     TArgs extends object,
     TComponentArgs extends object = TArgs,
-    TRenderer extends ReactTypes & { args: TArgs & _Args } = ReactTypes & {
-      args: TArgs & _Args;
+    TRenderer extends ReactTypes & { args: TArgs & Args } = ReactTypes & {
+      args: TArgs & Args;
     },
     TArgTypes extends object = TArgs,
     const TInput extends object = {}
@@ -136,8 +130,8 @@ export type DefineMeta<TPreview extends PreviewApi> = {
         {},
         InferArgs<Renderer<TPreview>, {}, object>
       >,
-    TRenderer extends ReactTypes & { args: TArgs & _Args } = ReactTypes & {
-      args: TArgs & _Args;
+    TRenderer extends ReactTypes & { args: TArgs & Args } = ReactTypes & {
+      args: TArgs & Args;
     },
     TArgTypes extends object = TArgs,
     const TInput extends object = {}

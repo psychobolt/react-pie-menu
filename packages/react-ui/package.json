@@ -79,7 +79,7 @@
     "babel-plugin-react-compiler": "1.0.0",
     "classnames": "2.5.1",
     "commons": "workspace:*",
-    "eslint": "10.5.0",
+    "eslint": "10.6.0",
     "eslint-plugin-react-hooks": "7.1.1",
     "glob": "13.0.6",
     "html-ui": "workspace:*",

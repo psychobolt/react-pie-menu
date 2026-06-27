@@ -172,9 +172,7 @@ See [source](.storybook/eslint-config.ts)
 import { defineConfig } from 'eslint/config';
 import storybookConfig from 'commons/esm/.storybook/eslint-config.js';
 
-export default defineConfig(storybookConfig, {
-  /* ... */
-});
+export default defineConfig(storybookConfig, {/* ... */});
 ```
 
 ##### Vite

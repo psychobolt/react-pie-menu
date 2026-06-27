@@ -25,8 +25,7 @@ import { UNKOWN_CSS_SELECTOR } from './css-proxy.js';
 const require = createRequire(import.meta.url);
 
 type VariantsMeta<TRenderer extends Renderer = Renderer> =
-  | ComponentAnnotations<TRenderer>
-  | Meta<TRenderer>;
+  ComponentAnnotations<TRenderer> | Meta<TRenderer>;
 
 export type VariantStory<
   TRenderer extends Renderer = Renderer,

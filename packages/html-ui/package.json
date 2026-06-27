@@ -37,7 +37,7 @@
     "watch": "yarn build-src -w"
   },
   "devDependencies": {
-    "@fortawesome/fontawesome-free": "7.2.0",
+    "@fortawesome/fontawesome-free": "7.3.0",
     "@open-wc/lit-helpers": "0.7.0",
     "@storybook/addon-coverage": "3.0.1",
     "@storybook/addon-docs": "10.4.6",
@@ -45,12 +45,12 @@
     "@types/react-syntax-highlighter": "15.5.13",
     "classnames": "2.5.1",
     "commons": "workspace:*",
-    "eslint": "10.5.0",
+    "eslint": "10.6.0",
     "glob": "13.0.6",
     "http-server": "14.1.1",
     "lit": "3.3.3",
     "nyc": "18.0.0",
-    "prettier": "3.8.4",
+    "prettier": "3.9.0",
     "react": "19.2.7",
     "react-dom": "19.2.7",
     "react-syntax-highlighter": "16.1.1",

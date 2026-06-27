@@ -194,10 +194,11 @@ export const stories = () =>
 ### Motivation
 
 For example, let's say you want to map a Story `arg` to your component prop `state` to support a matrix of UI states:
-| |Open|Closed|
-|---------|----|------|
-|Active |t1 |t2 |
-|Disabled |t3 |t4 |
+
+|          | Open | Closed |
+| -------- | ---- | ------ |
+| Active   | t1   | t2     |
+| Disabled | t3   | t4     |
 
 To test each variant, traditionally, you would need to export 4 total stories imperatively:
 

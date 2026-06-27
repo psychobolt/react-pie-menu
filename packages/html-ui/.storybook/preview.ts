@@ -8,13 +8,11 @@ import { SyntaxHighlighter } from 'storybook/internal/components';
 import type { ProjectAnnotations as _ProjectAnnotations } from 'storybook/internal/csf';
 import scss from 'react-syntax-highlighter/dist/esm/languages/prism/scss';
 import {
+  type Preview as _Preview,
+  type PreviewApi,
   ProxyProvider,
   withDefaults as _withDefaults
 } from 'commons/esm/.storybook/preview.js';
-import type {
-  Preview as _Preview,
-  PreviewApi
-} from 'commons/esm/.storybook/preview.d.ts';
 import { mergeConfig } from 'commons/esm/.storybook/utils/functions.js';
 
 import type { DefineMeta } from './meta.d.ts';
