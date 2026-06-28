@@ -16,12 +16,44 @@ Powered by:
 - [@psychobolt/circle-ui-react](https://next--69a6607dcf15c4da3159cfcb.chromatic.com)
 - [Storybook React Docs](https://storybook.js.org/docs/writing-docs/introduction) with CSS Module support [typescript-plugin-css-modules](https://github.com/mrmckeb/typescript-plugin-css-modules)
 
-## Development
+## Installation (Preview)
+
+This package is currently published to GitHub Packages as a preview release.
+
+Create or update a project-level `.npmrc` file:
+
+```ini
+@psychobolt:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
+```
+
+Then install the package:
 
 ```sh
-npm install --save react-pie-menu@next
+npm install @psychobolt/react-pie-menu
 # or
-yarn add react-pie-menu@next
+yarn add @psychobolt/react-pie-menu
+```
+
+`GITHUB_TOKEN` must be a GitHub token with access to the package. For private packages, use a personal access token with `read:packages` access.
+
+Do not commit a real token to `.npmrc`.
+
+### Yarn Berry
+
+For Yarn 2+, you can use `.yarnrc.yml` instead:
+
+```yml
+npmScopes:
+  psychobolt:
+    npmRegistryServer: 'https://npm.pkg.github.com'
+    npmAuthToken: '${GITHUB_TOKEN}'
+```
+
+Then install the package:
+
+```sh
+yarn add @psychobolt/react-pie-menu
 ```
 
 ## API (Experimental)

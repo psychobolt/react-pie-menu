@@ -35,20 +35,20 @@ jobs:
 
   circle-ui-elements:
     uses: ./.github/workflows/package.yml
-    if: contains(fromJSON(inputs.package_names), 'circle-ui-elements')
+    if: contains(fromJSON(inputs.package_names), '@psychobolt/circle-ui-elements')
     with:
       ref: ${{ inputs.ref }}
-      workspace: html-ui
+      workspace: circle-ui-elements
       path: packages/circle-ui-elements
       release: ${{ inputs.release }}
     secrets: inherit
 
   circle-ui-react:
-    if: contains(fromJSON(inputs.package_names), 'circle-ui-react')
+    if: contains(fromJSON(inputs.package_names), '@psychobolt/circle-ui-react')
     uses: ./.github/workflows/package.yml
     with:
       ref: ${{ inputs.ref }}
-      workspace: react-ui
+      workspace: circle-ui-react
       path: packages/circle-ui-react
       test-runner: vitest
       release: ${{ inputs.release }}

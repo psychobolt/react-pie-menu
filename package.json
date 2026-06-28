@@ -1,7 +1,6 @@
 {
-  "name": "react-pie-menu",
-  "version": "1.0.0-alpha.4",
-  "private": true,
+  "name": "@psychobolt/react-pie-menu",
+  "version": "2.0.0-alpha.1",
   "type": "module",
   "exports": {
     ".": {

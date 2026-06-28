@@ -46,12 +46,7 @@ export default defineConfig((env) =>
           },
           // make sure to externalize deps that shouldn't be bundled
           // into your library
-          external: [
-            'prop-types',
-            'react/jsx-runtime',
-            'react-dom',
-            /^@psychobolt\//
-          ],
+          external: ['prop-types', 'react/jsx-runtime', 'react-dom'],
           output: {
             keepNames: true,
             manualChunks(id) {
