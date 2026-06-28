@@ -8,5 +8,13 @@
     "resolveJsonModule": true
   },
   "include": ["**/*"],
-  "exclude": ["apps", "packages"]
+  "exclude": [
+    ".storybook",
+    "packages",
+    "src",
+    "stories",
+    "vite.config.ts",
+    "vitest.config.ts"
+  ],
+  "references": [{ "path": "./tsconfig.vite.json" }]
 }

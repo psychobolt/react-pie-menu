@@ -1,0 +1,7 @@
+@use 'sass:meta';
+@use 'utilities.module';
+
+@layer element {
+  @include meta.load-css('Sector/Sector.module');
+  @include meta.load-css('Circle/Circle.module');
+}

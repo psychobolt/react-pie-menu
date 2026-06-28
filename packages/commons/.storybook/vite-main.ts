@@ -135,7 +135,7 @@ export default {
           postcss: postcssConfig
         },
         build: {
-          minify: configType !== 'DEVELOPMENT',
+          minify: false,
           cssMinify: configType !== 'DEVELOPMENT',
           rolldownOptions: {
             checks: {

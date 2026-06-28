@@ -1,0 +1,19 @@
+{
+  "extends": "./tsconfig.vite.json",
+  "compilerOptions": {
+    "composite": false,
+    "emitDeclarationOnly": true,
+    "outDir": "dist",
+    "rootDir": "src"
+  },
+  "include": ["src"],
+  "exclude": [
+    "**/*.story.*",
+    "**/*.stories.*",
+    "**/*.variant.*",
+    "**/*.variants.*",
+    "**/decorators.*",
+    "**/test/*",
+    "**/*.test.*"
+  ]
+}

@@ -4,7 +4,8 @@
   "tasks": {
     "start": {
       "cache": false,
-      "persistent": true
+      "persistent": true,
+      "dependsOn": ["build-storybook"]
     },
     "dev": {
       "cache": false,
@@ -17,28 +18,22 @@
       "dependsOn": ["^build"]
     },
     "build": {
-      "dependsOn": ["^build"]
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"]
     },
     "build-storybook": {
       "outputs": ["storybook-static/**"],
       "dependsOn": ["^build"]
     },
-    "//#lint": {
-      "dependsOn": ["^build"],
-      "outputs": ["*-report.json", "*-annotations.json"]
-    },
     "lint": {
-      "dependsOn": ["^build"],
-      "outputs": ["*-report.json", "*-annotations.json"]
+      "dependsOn": ["^build"]
     },
     "test": {
       "dependsOn": ["^build"]
     },
     "coverage": {
-      "dependsOn": ["^build"]
-    },
-    "//#format": {
-      "dependsOn": ["^build"]
+      "dependsOn": ["^build"],
+      "outputs": ["test-reports/junit.xml", "coverage/**"]
     },
     "format": {
       "dependsOn": ["^build"]

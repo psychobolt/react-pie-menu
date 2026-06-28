@@ -30,47 +30,6 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  test:
-    name: Test
-    timeout-minutes: 15
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest]
-    runs-on: ${{ matrix.os }}
-    permissions:
-      contents: read
-    env:
-      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-      TURBO_TEAM: ${{ vars.TURBO_TEAM }}
-      TURBO_VERBOSITY: ${{ vars.TURBO_VERBOSITY || 0 }}
-      TURBO_ENV_MODE: ${{ vars.TURBO_ENV_MODE || 'strict' }}
-      TURBO_TELEMETRY_DISABLED: 1
-      YARN_ENABLE_HARDENED_MODE: 0
-    steps:
-      - name: Check out code
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
-        with:
-          ref: ${{ inputs.ref_name || github.ref }}
-      - name: Set Yarn global folder
-        env:
-          YARN_GLOBAL_FOLDER: ${{ runner.temp }}/.yarn/berry
-        run: echo "YARN_GLOBAL_FOLDER=$YARN_GLOBAL_FOLDER" >> .env
-        shell: bash
-      - name: Setup Node.js environment
-        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
-        with:
-          node-version: 24.x
-          cache: yarn
-          cache-dependency-path: yarn.lock
-      - name: Start Turbo Cache Server
-        uses: rharkor/caching-for-turbo@75f8ebf4a43d2c60b23bc2a27082cfea94ffdad9 # v2.5.0
-        with:
-          cache-prefix: ${{ vars.TURBO_CACHE_PREFIX }}
-      - name: Install dependencies
-        run: yarn install
-      - name: Lint
-        run: yarn turbo run //#lint --env-mode=${{ env.TURBO_ENV_MODE }} --verbosity=${{ env.TURBO_VERBOSITY }}
-
   diff:
     name: List Updated Packages
     timeout-minutes: 15
@@ -125,15 +84,6 @@ jobs:
         with:
           from: ${{ inputs.head_ref || (env.BASE_REF && 'base_branch') || 'HEAD~1' }}
 
-  apps:
-    needs: diff
-    uses: ./.github/workflows/apps.yml
-    secrets: inherit
-    with:
-      ref_name: ${{ inputs.ref_name }}
-      base_ref: ${{ inputs.base_ref || github.base_ref }}
-      package_names: ${{ needs.diff.outputs.package_names }}
-
   packages:
     needs: diff
     uses: ./.github/workflows/packages.yml
@@ -145,7 +95,7 @@ jobs:
       release: ${{ needs.diff.outputs.release }}
 
   release:
-    needs: [diff, test, apps, packages]
+    needs: [diff, packages]
     if: always() && !contains(needs.*.result, 'cancelled') && !contains(needs.*.result, 'failure') && contains(needs.*.outputs.release, 'true')
     uses: ./.github/workflows/release.yml
     secrets: inherit

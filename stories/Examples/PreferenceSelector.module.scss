@@ -1,0 +1,42 @@
+.preference-selector-example {
+  @layer component {
+    .menu {
+      $bg-color: #eee3ef;
+      $neutral-color: white;
+
+      border: 20px solid #ecd3ee;
+      background-color: $bg-color;
+
+      .item {
+        background-color: $neutral-color;
+
+        &:not(.active, .selected) {
+          color: grey;
+        }
+
+        &.active {
+          background-color: $bg-color;
+          color: black;
+        }
+      }
+
+      > .center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 60px;
+        background-color: $bg-color;
+        transform: translate(-50%, -50%);
+      }
+
+      .item,
+      > .center {
+        cursor: pointer;
+      }
+
+      &:has(> .center:only-child) {
+        background-color: $neutral-color;
+      }
+    }
+  }
+}

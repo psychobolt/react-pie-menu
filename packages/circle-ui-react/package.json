@@ -1,0 +1,110 @@
+{
+  "name": "@psychobolt/circle-ui-react",
+  "version": "0.0.0",
+  "description": "Components for creating Circular UI",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/psychobolt/react-pie-menu.git",
+    "directory": "packages/circle-ui-react"
+  },
+  "license": "MIT",
+  "author": "psychobolt",
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./*": {
+      "types": "./dist/*/index.d.ts",
+      "import": "./dist/*/index.js",
+      "require": "./dist/*/index.cjs"
+    },
+    "./esm/*.d.ts": "./esm/*.d.ts",
+    "./esm/*.js": {
+      "types": "./esm/*.d.ts",
+      "import": "./esm/*.js"
+    },
+    "./package.json": "./package.json",
+    "./utils/*.cjs": {
+      "types": "./dist/utils/*.d.ts",
+      "require": "./dist/utils/*.cjs"
+    },
+    "./utils/*.js": {
+      "types": "./dist/utils/*.d.ts",
+      "import": "./dist/utils/*.js"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "!**/*.css"
+  ],
+  "scripts": {
+    "build": "yarn build-src && yarn build-dts && yarn build-esm",
+    "build-dts": "tsc -p tsconfig.dts.json && tsc-paths -p tsconfig.dts.json",
+    "build-esm": "yarn g:rimraf esm/ && tsc -p tsconfig.esm.json",
+    "build-src": "vite build",
+    "build-storybook": "yarn g:storybook build --stats-json",
+    "chromatic": "yarn g:chromatic",
+    "coverage": "yarn test run --coverage",
+    "dev": "yarn watch & yarn g:storybook dev -p $(yarn g:dotenv-get PORT)",
+    "format": "yarn g:format",
+    "lint": "yarn g:prettier --check . && yarn g:lint --runner stylelint --runner eslint",
+    "prepack": "turbo run build",
+    "start": "yarn g:dotenv-run -- http-server storybook-static",
+    "test": "yarn g:vitest",
+    "watch": "yarn build-src -w --mode development & yarn watch-dts",
+    "watch-dts": "tsc -p tsconfig.dts.json -w & tsc-paths -p tsconfig.dts.json -w"
+  },
+  "devDependencies": {
+    "@babel/core": "8.0.1",
+    "@psychobolt/circle-ui-elements": "workspace:*",
+    "@rolldown/plugin-babel": "0.2.3",
+    "@storybook/addon-docs": "10.4.6",
+    "@storybook/addon-vitest": "10.4.6",
+    "@storybook/react": "10.4.6",
+    "@storybook/react-vite": "10.4.6",
+    "@tsconfig/vite-react": "8.0.6",
+    "@types/babel__core": "7.20.5",
+    "@types/lodash": "4.17.24",
+    "@types/prop-types": "15.7.15",
+    "@types/react": "19.2.17",
+    "@types/react-dom": "19.2.3",
+    "@vitejs/plugin-react": "6.0.3",
+    "@vitest/coverage-v8": "4.1.9",
+    "babel-plugin-react-compiler": "1.0.0",
+    "classnames": "2.5.1",
+    "commons": "workspace:*",
+    "eslint": "10.6.0",
+    "eslint-plugin-react-hooks": "7.1.1",
+    "glob": "13.0.6",
+    "http-server": "14.1.1",
+    "lodash": "4.18.1",
+    "prop-types": "15.8.1",
+    "react": "19.2.7",
+    "react-docgen-typescript": "2.4.0",
+    "react-dom": "19.2.7",
+    "rolldown": "1.1.3",
+    "sass": "1.101.0",
+    "storybook": "10.4.6",
+    "stylelint": "17.14.0",
+    "stylelint-config": "workspace:*",
+    "turbo": "2.10.0",
+    "type-fest": "5.7.0",
+    "typescript": "6.0.3",
+    "typescript-plugin-css-modules": "5.2.0",
+    "vite": "8.1.0",
+    "vitest": "4.1.9"
+  },
+  "peerDependencies": {
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0 || ^19.0.0",
+    "react-dom": "^18.2.0 || ^19.0.0"
+  },
+  "packageManager": "yarn@4.17.0"
+}

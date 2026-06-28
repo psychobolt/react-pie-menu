@@ -33,23 +33,34 @@ jobs:
       workspace: stylelint-config
     secrets: inherit
 
-  html-ui:
+  circle-ui-elements:
     uses: ./.github/workflows/package.yml
-    if: contains(fromJSON(inputs.package_names), 'html-ui')
+    if: contains(fromJSON(inputs.package_names), 'circle-ui-elements')
     with:
       ref: ${{ inputs.ref }}
       workspace: html-ui
-      path: packages/html-ui
+      path: packages/circle-ui-elements
       release: ${{ inputs.release }}
     secrets: inherit
 
-  react-ui:
-    if: contains(fromJSON(inputs.package_names), 'react-ui')
+  circle-ui-react:
+    if: contains(fromJSON(inputs.package_names), 'circle-ui-react')
     uses: ./.github/workflows/package.yml
     with:
       ref: ${{ inputs.ref }}
       workspace: react-ui
-      path: packages/react-ui
+      path: packages/circle-ui-react
+      test-runner: vitest
+      release: ${{ inputs.release }}
+    secrets: inherit
+
+  react-pie-menu:
+    if: contains(fromJSON(inputs.package_names), 'react-pie-menu')
+    uses: ./.github/workflows/package.yml
+    with:
+      workspace: react-pie-menu
+      path: ./
+      filter: --filter=react-pie-menu
       test-runner: vitest
       release: ${{ inputs.release }}
     secrets: inherit

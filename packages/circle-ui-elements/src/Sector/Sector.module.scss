@@ -1,0 +1,28 @@
+@use '../Circle/variables' as *;
+
+.sector {
+  overflow: hidden;
+  width: $default-size;
+  aspect-ratio: 1 !important;
+  background: rgb(109 109 109 / 92.5%);
+  line-height: normal;
+  text-align: center;
+  text-overflow: ellipsis;
+
+  > .center {
+    position: absolute;
+    top: var(--slice-offset-top, 50%);
+    left: var(--slice-offset-left, 50%);
+    transform: translate(-50%, -50%);
+  }
+
+  &.active {
+    background-color: #424242;
+    color: white;
+  }
+
+  &.top {
+    position: absolute;
+    top: 0;
+  }
+}

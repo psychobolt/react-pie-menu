@@ -1,0 +1,49 @@
+.context-menu-example {
+  height: 600px;
+  user-select: none;
+  touch-action: none;
+
+  @layer component {
+    .menu {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 250px;
+
+      .item {
+        width: inherit;
+      }
+    }
+
+    .logo {
+      width: 400px;
+      height: 300px;
+      background: url('./logo.svg');
+    }
+
+    .full-height,
+    &.full-height {
+      height: 100vh;
+    }
+
+    @layer utilities {
+      .flex-column {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .flex-align-center {
+        display: flex;
+        align-items: center;
+      }
+
+      .sans-serif {
+        font-family: sans-serif;
+      }
+
+      .font-large {
+        font-size: large;
+      }
+    }
+  }
+}

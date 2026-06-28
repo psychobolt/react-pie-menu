@@ -1,35 +1,34 @@
-# Vite Storybook Boilerplate
+# React Pie Menu
 
-[<img src="https://codecov.io/gh/psychobolt/vite-storybook-boilerplate/branch/main/graph/badge.svg">](https://codecov.io/gh/psychobolt/vite-storybook-boilerplate/tree/main) [<img src="https://github.com/psychobolt/vite-storybook-boilerplate/actions/workflows/status.yml/badge.svg">](https://github.com/psychobolt/vite-storybook-boilerplate/actions/workflows/status.yml?query=branch%3Amain)
+[<img src="https://img.shields.io/npm/v/react-pie-menu.svg">](https://www.npmjs.com/package/react-pie-menu)
+[<img src="https://github.com/psychobolt/react-pie-menu/actions/workflows/status.yml/badge.svg">](https://github.com/psychobolt/react-pie-menu/actions/workflows/main.yml)
+[<img src="https://codecov.io/gh/psychobolt/react-pie-menu/branch/next/graph/badge.svg">](https://codecov.io/gh/psychobolt/react-pie-menu/tree/next/src)
+
+> This README is for the next release 2.x. Please see [v1](https://github.com/psychobolt/react-pie-menu/tree/react-pie-menu%401.0.0-alpha.4) for the previous release docs.
 
 A modern starter plate for building front-end components
 
 ## Features
 
-- [Monorepo](https://monorepo.tools/) support ready
-  - Utilizes Yarn's [default PnP strategy](https://yarnpkg.com/features/pnp) to hoist and map workspace dependencies
-  - Speed up tasks and script runs with [SWC](https://swc.rs/), [Turborepo](https://turbo.build/repo) and [remote caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-  - [Workspace scripts](https://github.com/psychobolt/vite-storybook-boilerplate/tree/main/bin) for handling various workflows such as [release versioning](WORKFLOWS.md), [hybrid PnP and node_modules](https://yarnpkg.com/getting-started/recipes#hybrid-pnp--node_modules-mono-repo) support
-  - [Common configs and plugins](https://github.com/psychobolt/vite-storybook-boilerplate/tree/main/packages/commons) for your project needs: [Vite](https://vitejs.dev/), [TypeScript](https://www.typescriptlang.org/), [Storybook](https://storybook.js.org), [ESLint](https://eslint.org/), [Stylelint](https://stylelint.io/), [Prettier](https://prettier.io/) and more...
-- [ES Module enabled](https://nodejs.org/api/esm.html#enabling)
-- Pre-commit formatting hook configured with [Husky](https://typicode.github.io/husky/) and [lint-staged](https://github.com/lint-staged/lint-staged)
-- Load and store environment variables using [dotenvx](https://dotenvx.com/)
-- Continous upgrades with [Renovate Bot](https://docs.renovatebot.com/). Learn how to [setup](DEVELOPMENT.md#managing-dependencies).
+Powered by:
+
+- [@psychobolt/circle-ui-elements](https://next--69a65f257a10176f943035ff.chromatic.com/)
+- [@psychobolt/circle-ui-react](https://next--69a6607dcf15c4da3159cfcb.chromatic.com)
+- [Storybook React Docs](https://storybook.js.org/docs/writing-docs/introduction) with CSS Module support [typescript-plugin-css-modules](https://github.com/mrmckeb/typescript-plugin-css-modules)
 
 ## Development
 
-See [development guide](DEVELOPMENT.md) for details
+```sh
+npm install --save react-pie-menu@next
+# or
+yarn add react-pie-menu@next
+```
 
-## Demos
+## API (Experimental)
 
-Sample web application integrations with UI packages and Storyboook tests.
+See [docs](https://next--62646041abdb4b004aab3fdf.chromatic.com)
 
-### Apps
+## References
 
-- [svelte-app](apps/svelte-app/)
-- [next-app](apps/next-app/)
-
-### Packages
-
-- [html-ui](packages/html-ui/)
-- [react-ui](packages/react-ui/)
+1. "Building a Circular Navigation with CSS Clip-paths" by Chris Coyier, CSS-Tricks. Available at: https://css-tricks.com/building-a-circular-navigation-with-css-clip-paths/ (Accessed: 10 June 2024)
+2. "A Simple Pie Chart in SVG" by David Gilbertson, Medium. Available at: https://david-gilbertson.medium.com/a-simple-pie-chart-in-svg-dbdd653b6936 (Accessed: 10 June 2024)
