@@ -2,10 +2,20 @@
   "$schema": "https://turbo.build/schema.json",
   "globalEnv": ["RUNNER_OS"],
   "tasks": {
+    "//#start": {
+      "cache": false,
+      "persistent": true,
+      "dependsOn": ["build-storybook"]
+    },
     "start": {
       "cache": false,
       "persistent": true,
       "dependsOn": ["build-storybook"]
+    },
+    "//#dev": {
+      "cache": false,
+      "persistent": true,
+      "dependsOn": ["^build"]
     },
     "dev": {
       "cache": false,
@@ -17,9 +27,17 @@
       "persistent": true,
       "dependsOn": ["^build"]
     },
+    "//#build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"]
+    },
     "build": {
       "dependsOn": ["^build"],
       "outputs": ["dist/**"]
+    },
+    "//#+build-storybook": {
+      "outputs": ["storybook-static/**"],
+      "dependsOn": ["^build"]
     },
     "build-storybook": {
       "outputs": ["storybook-static/**"],
@@ -31,8 +49,15 @@
     "lint": {
       "dependsOn": ["^build"]
     },
+    "//#test": {
+      "dependsOn": ["^build"]
+    },
     "test": {
       "dependsOn": ["^build"]
+    },
+    "//#coverage": {
+      "dependsOn": ["^build"],
+      "outputs": ["test-reports/junit.xml", "coverage/**"]
     },
     "coverage": {
       "dependsOn": ["^build"],
@@ -43,6 +68,11 @@
     },
     "format": {
       "dependsOn": ["^build"]
+    },
+    "//#chromatic": {
+      "env": ["DOTENV_PRIVATE_KEY_CI", "CHROMATIC_PROJECT_TOKEN"],
+      "inputs": ["storybook-static/**"],
+      "dependsOn": ["build-storybook"]
     },
     "chromatic": {
       "env": ["DOTENV_PRIVATE_KEY_CI", "CHROMATIC_PROJECT_TOKEN"],

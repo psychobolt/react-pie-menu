@@ -8,7 +8,7 @@ const require = createRequire(import.meta.url);
 
 export default defineConfig((env) =>
   mergeConfig(
-    mergeConfig(viteConfig(env), commonConfig),
+    mergeConfig(commonConfig, viteConfig(env)),
     defineConfig({
       test: {
         coverage: {
