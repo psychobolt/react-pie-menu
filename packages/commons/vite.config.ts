@@ -35,11 +35,13 @@ export const getInputMap = (
     };
   }, {});
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   base: '',
   plugins: [tsconfigPaths({ root })],
   build: {
     emptyOutDir: !isWatch,
+    minify: mode !== 'development',
+    cssMinify: mode !== 'development',
     sourcemap: true,
     lib: {
       // Could also be a dictionary or array of multiple entry points
@@ -53,4 +55,4 @@ export default defineConfig({
     postcss: postcssConfig,
     devSourcemap: true
   }
-});
+}));

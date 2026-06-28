@@ -20,11 +20,13 @@ See [source](vite.config.ts)
 import { defineConfig, mergeConfig } from 'vite';
 import commonConfig from 'commons/esm/vite.config.js';
 
-export default mergeConfig(
-  commonConfig,
-  defineConfig({
-    // your overrides
-  })
+export default defineConfig((env) =>
+  mergeConfig(
+    commonConfig(env),
+    defineConfig({
+      // your overrides
+    })
+  )
 );
 ```
 

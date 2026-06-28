@@ -20,32 +20,34 @@ const patterns: ModulePattern[] = [
 
 const mainEntryJs = /^index.+\.js(?:\.map)?/;
 
-export default mergeConfig(
-  commonConfig,
-  defineConfig({
-    plugins: [
-      sassGlobImport(),
-      noEmit({ match: (file) => mainEntryJs.test(file) })
-    ],
-    css: {
-      modules: {
-        scopeBehaviour: 'global'
-      }
-    },
-    build: {
-      lib: false,
-      rolldownOptions: {
-        input: getInputMap(patterns, [
-          'src/style.scss',
-          ...globSync('src/*/*.module.scss')
-        ]),
-        preserveEntrySignatures: 'strict',
-        output: {
-          entryFileNames: 'index.js', // disabling JS output is unsupported, use noEmit()
-          assetFileNames: '[name][extname]'
+export default defineConfig((env) =>
+  mergeConfig(
+    commonConfig(env),
+    defineConfig({
+      plugins: [
+        sassGlobImport(),
+        noEmit({ match: (file) => mainEntryJs.test(file) })
+      ],
+      css: {
+        modules: {
+          scopeBehaviour: 'global'
+        }
+      },
+      build: {
+        lib: false,
+        rolldownOptions: {
+          input: getInputMap(patterns, [
+            'src/style.scss',
+            ...globSync('src/*/*.module.scss')
+          ]),
+          preserveEntrySignatures: 'strict',
+          output: {
+            entryFileNames: 'index.js', // disabling JS output is unsupported, use noEmit()
+            assetFileNames: '[name][extname]'
+          }
         }
       }
-    }
-  }),
-  false
+    }),
+    false
+  )
 );

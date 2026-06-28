@@ -42,48 +42,50 @@ const chunkfileNames =
   (chunk) =>
     `${chunk.moduleIds.find((id) => id.endsWith('index.ts')) ? '[name]/' : ''}[name].${ext}`;
 
-export default mergeConfig(
-  commonConfig,
-  defineConfig({
-    plugins: [react(), babel({ presets: [reactCompilerPreset()] })],
-    css: {
-      modules: {
-        exportGlobals: true,
-        localsConvention: 'camelCase'
-      }
-    },
-    build: {
-      lib: {
-        entry: getInputMap(patterns, [
-          'src/index.ts',
-          ...globSync('src/utils/**/*.ts'),
-          ...globSync('src/*/index.ts')
-        ]),
-        cssFileName: 'style'
+export default defineConfig((env) =>
+  mergeConfig(
+    commonConfig(env),
+    defineConfig({
+      plugins: [react(), babel({ presets: [reactCompilerPreset()] })],
+      css: {
+        modules: {
+          exportGlobals: true,
+          localsConvention: 'camelCase'
+        }
       },
-      rolldownOptions: {
-        plugins: [
-          esmExternalRequirePlugin({
-            external: ['react']
-          })
-        ],
-        experimental: {
-          lazyBarrel: true
+      build: {
+        lib: {
+          entry: getInputMap(patterns, [
+            'src/index.ts',
+            ...globSync('src/utils/**/*.ts'),
+            ...globSync('src/*/index.ts')
+          ]),
+          cssFileName: 'style'
         },
-        // make sure to externalize deps that shouldn't be bundled
-        // into your library
-        external: [
-          'prop-types',
-          'react/jsx-runtime',
-          'react-dom',
-          /^html-ui\/?/
-        ],
-        output: [
-          { ...output, format: 'es', chunkFileNames: chunkfileNames('js') },
-          { ...output, format: 'cjs', chunkFileNames: chunkfileNames('cjs') }
-        ]
+        rolldownOptions: {
+          plugins: [
+            esmExternalRequirePlugin({
+              external: ['react']
+            })
+          ],
+          experimental: {
+            lazyBarrel: true
+          },
+          // make sure to externalize deps that shouldn't be bundled
+          // into your library
+          external: [
+            'prop-types',
+            'react/jsx-runtime',
+            'react-dom',
+            /^html-ui\/?/
+          ],
+          output: [
+            { ...output, format: 'es', chunkFileNames: chunkfileNames('js') },
+            { ...output, format: 'cjs', chunkFileNames: chunkfileNames('cjs') }
+          ]
+        }
       }
-    }
-  }),
-  false
+    }),
+    false
+  )
 );

@@ -58,7 +58,7 @@
     "prepack": "turbo run build",
     "start": "yarn g:dotenv-run -- http-server storybook-static",
     "test": "yarn g:vitest",
-    "watch": "yarn build-src -w & yarn watch-dts",
+    "watch": "yarn build-src -w --mode development & yarn watch-dts",
     "watch-dts": "tsc -p tsconfig.dts.json -w & tsc-paths -p tsconfig.dts.json -w"
   },
   "devDependencies": {

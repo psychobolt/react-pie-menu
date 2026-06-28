@@ -34,7 +34,7 @@
     "prepack": "turbo run build",
     "start": "yarn g:dotenv-run -- http-server storybook-static",
     "test": "yarn g:test-storybook --index-json",
-    "watch": "yarn build-src -w"
+    "watch": "yarn build-src -w --mode development"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "7.3.0",
@@ -50,7 +50,7 @@
     "http-server": "14.1.1",
     "lit": "3.3.3",
     "nyc": "18.0.0",
-    "prettier": "3.9.0",
+    "prettier": "3.9.1",
     "react": "19.2.7",
     "react-dom": "19.2.7",
     "react-syntax-highlighter": "16.1.1",
