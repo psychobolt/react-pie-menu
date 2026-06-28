@@ -3632,26 +3632,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@renovatebot/osv-offline-db@npm:3.0.3":
-  version: 3.0.3
-  resolution: "@renovatebot/osv-offline-db@npm:3.0.3"
+"@renovatebot/osv-offline-db@npm:3.0.4":
+  version: 3.0.4
+  resolution: "@renovatebot/osv-offline-db@npm:3.0.4"
   dependencies:
     debug: "npm:^4.4.3"
-  checksum: 10c0/04c896864c4024260dfd2047f586f3dde3e20f4942fa12d5cb3d8b769070444137d06d8c717177986e11adb1c92dcda9423a421979cd308235961a214da90545
+  checksum: 10c0/2ccd20bf97d557104904f8ebae2d8639c6706ad97bb209658b7f9e156e5d182601ee08ba84dd327b67754b834f827033324904445dfbc361e108994d761ea881
   languageName: node
   linkType: hard
 
-"@renovatebot/osv-offline@npm:3.0.3":
-  version: 3.0.3
-  resolution: "@renovatebot/osv-offline@npm:3.0.3"
+"@renovatebot/osv-offline@npm:3.0.4":
+  version: 3.0.4
+  resolution: "@renovatebot/osv-offline@npm:3.0.4"
   dependencies:
-    "@renovatebot/osv-offline-db": "npm:3.0.3"
+    "@renovatebot/osv-offline-db": "npm:3.0.4"
     adm-zip: "npm:~0.5.17"
     debug: "npm:^4.4.3"
     fs-extra: "npm:^11.3.5"
-    got: "npm:^15.0.5"
+    got: "npm:^15.0.6"
     luxon: "npm:^3.7.2"
-  checksum: 10c0/3fda57170eefe5e16c7145f24a8ba0912a5aa5dc2da5d537a240cdc53a8f4832084ed8a08eaeb19045a8a81ecf8845694a7e4b2bb3888841774f9bbcb3ee05ef
+  checksum: 10c0/89a13bdb65986b28e5916dbc3e1ea81e0a85ad9a3ba7608af5aa83bba769ff642b71ffe8d68f6a072c92b403fd92b3a75c816cd78252910671d094a427abc999
   languageName: node
   linkType: hard
 
@@ -10225,9 +10225,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"got@npm:^15.0.5":
-  version: 15.0.5
-  resolution: "got@npm:15.0.5"
+"got@npm:^15.0.6":
+  version: 15.0.7
+  resolution: "got@npm:15.0.7"
   dependencies:
     "@sindresorhus/is": "npm:^8.0.0"
     byte-counter: "npm:^0.1.0"
@@ -10241,7 +10241,7 @@ __metadata:
     responselike: "npm:^4.0.2"
     type-fest: "npm:^5.6.0"
     uint8array-extras: "npm:^1.5.0"
-  checksum: 10c0/fd5d1e0e402013e8bcb27322657ad9ee0919ce83522e556a5060214fd5e2ba6aa6ca51080bb88f915cae6524102fdee1e52e1627a22329338b332e11d9f350ff
+  checksum: 10c0/d9fee7259a47dc2dbc4c57f9ce8013cfd8ad74bc2f6b4e07c2bf1c801ffeb4d71a9e352e6e0163cc223965d47115463b413dd6aec1f71d28ecfe69a75cf900cc
   languageName: node
   linkType: hard
 
@@ -15961,7 +15961,7 @@ __metadata:
     prop-types: "npm:15.8.1"
     react: "npm:19.2.7"
     react-dom: "npm:19.2.7"
-    renovate: "npm:43.246.0"
+    renovate: "npm:43.246.1"
     sass: "npm:1.101.0"
     semver: "npm:7.8.5"
     storybook: "npm:10.4.6"
@@ -16209,9 +16209,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"renovate@npm:43.246.0":
-  version: 43.246.0
-  resolution: "renovate@npm:43.246.0"
+"renovate@npm:43.246.1":
+  version: 43.246.1
+  resolution: "renovate@npm:43.246.1"
   dependencies:
     "@aws-sdk/client-codecommit": "npm:3.1053.0"
     "@aws-sdk/client-ec2": "npm:3.1053.0"
@@ -16243,7 +16243,7 @@ __metadata:
     "@redis/client": "npm:5.12.1"
     "@renovatebot/detect-tools": "npm:4.0.8"
     "@renovatebot/good-enough-parser": "npm:2.0.1"
-    "@renovatebot/osv-offline": "npm:3.0.3"
+    "@renovatebot/osv-offline": "npm:3.0.4"
     "@renovatebot/pep440": "npm:5.0.0"
     "@renovatebot/pgp": "npm:1.3.14"
     "@renovatebot/ruby-semver": "npm:5.0.0"
@@ -16340,7 +16340,7 @@ __metadata:
   bin:
     renovate: dist/renovate.js
     renovate-config-validator: dist/config-validator.js
-  checksum: 10c0/92952cfb39b4fe3f34ace8cbdb3bad0395c2e5a354f5008cc46041aee9a13577a3a40e3eb964a071cad14c4eab89a58cdeea910ffbf89318fb59074382e989cd
+  checksum: 10c0/7f31acc9ce6ada7ff699774ba2c012add48ad304b3652aff1c6d8250fdebd31eaba0a9c7b2fe2c49b470a17680d88b10e123cd5d522fa6775926d329d494a407
   languageName: node
   linkType: hard
 
