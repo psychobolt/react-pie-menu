@@ -6,25 +6,27 @@ import viteConfig from './vite.config.js';
 
 const require = createRequire(import.meta.url);
 
-export default mergeConfig(
-  mergeConfig(viteConfig, commonConfig),
-  defineConfig({
-    test: {
-      coverage: {
-        include: ['src/**/*.{ts,tsx}']
-      },
-      projects: [
-        '.storybook/vitest.config.ts',
-        {
-          extends: true,
-          test: {
-            name: 'react (jsdom)',
-            environment: 'jsdom',
-            setupFiles: [require.resolve('commons/esm/vitest.setup')]
+export default defineConfig((env) =>
+  mergeConfig(
+    mergeConfig(commonConfig, viteConfig(env)),
+    defineConfig({
+      test: {
+        coverage: {
+          include: ['src/**/*.{ts,tsx}']
+        },
+        projects: [
+          '.storybook/vitest.config.ts',
+          {
+            extends: true,
+            test: {
+              name: 'react (jsdom)',
+              environment: 'jsdom',
+              setupFiles: [require.resolve('commons/esm/vitest.setup')]
+            }
           }
-        }
-      ],
-      passWithNoTests: true
-    }
-  })
+        ],
+        passWithNoTests: true
+      }
+    })
+  )
 );

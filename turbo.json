@@ -25,6 +25,9 @@
       "outputs": ["storybook-static/**"],
       "dependsOn": ["^build"]
     },
+    "//#lint": {
+      "dependsOn": ["^build"]
+    },
     "lint": {
       "dependsOn": ["^build"]
     },
@@ -34,6 +37,9 @@
     "coverage": {
       "dependsOn": ["^build"],
       "outputs": ["test-reports/junit.xml", "coverage/**"]
+    },
+    "//#format": {
+      "dependsOn": ["^build"]
     },
     "format": {
       "dependsOn": ["^build"]
