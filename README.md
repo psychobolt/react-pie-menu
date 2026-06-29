@@ -6,7 +6,7 @@
 
 > This README is for the next release 2.x. Please see [v1](https://github.com/psychobolt/react-pie-menu/tree/react-pie-menu%401.0.0-alpha.4) for the previous release docs.
 
-A modern starter plate for building front-end components
+A configurable radial menu for React.
 
 ## Features
 

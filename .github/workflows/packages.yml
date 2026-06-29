@@ -55,12 +55,12 @@ jobs:
     secrets: inherit
 
   react-pie-menu:
-    if: contains(fromJSON(inputs.package_names), 'react-pie-menu')
+    if: contains(fromJSON(inputs.package_names), '@psychobolt/react-pie-menu')
     uses: ./.github/workflows/package.yml
     with:
       workspace: react-pie-menu
       path: ./
-      filter: --filter=react-pie-menu
+      filter: --filter=@psychobolt/react-pie-menu
       test-runner: vitest
       release: ${{ inputs.release }}
     secrets: inherit

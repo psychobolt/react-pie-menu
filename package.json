@@ -1,6 +1,14 @@
 {
   "name": "@psychobolt/react-pie-menu",
   "version": "2.0.0-alpha.1",
+  "description": "A configurable radial menu for React",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/psychobolt/react-pie-menu.git"
+  },
+  "license": "MIT",
+  "author": "psychobolt",
+  "sideEffects": false,
   "type": "module",
   "exports": {
     ".": {
@@ -18,6 +26,9 @@
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "workspaces": [
     ".",
     "packages/*"

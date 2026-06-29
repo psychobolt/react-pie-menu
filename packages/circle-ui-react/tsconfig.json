@@ -20,7 +20,7 @@
     ],
     "paths": {
       ".storybook/*": ["./.storybook/*"],
-      "@psychobolt/circle-react-ui/utils/*.js": ["./src/utils/*.ts"],
+      "@psychobolt/circle-ui-react/utils/*.js": ["./src/utils/*.ts"],
       "*": ["./src/*"]
     }
   },
