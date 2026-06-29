@@ -94,7 +94,7 @@
     "storybook": "10.4.6",
     "stylelint": "17.14.0",
     "stylelint-config": "workspace:*",
-    "turbo": "2.10.0",
+    "turbo": "2.10.1",
     "type-fest": "5.7.0",
     "typescript": "6.0.3",
     "typescript-plugin-css-modules": "5.2.0",
