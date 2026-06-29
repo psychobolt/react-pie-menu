@@ -1,24 +1,28 @@
 # React Pie Menu
 
+A configurable radial menu for React.
+
 [<img src="https://img.shields.io/npm/v/react-pie-menu.svg">](https://www.npmjs.com/package/react-pie-menu)
-[<img src="https://github.com/psychobolt/react-pie-menu/actions/workflows/status.yml/badge.svg">](https://github.com/psychobolt/react-pie-menu/actions/workflows/main.yml)
+[<img src="https://github.com/psychobolt/react-pie-menu/actions/workflows/status.yml/badge.svg">](https://github.com/psychobolt/react-pie-menu/actions/workflows/status.yml)
 [<img src="https://codecov.io/gh/psychobolt/react-pie-menu/branch/next/graph/badge.svg">](https://codecov.io/gh/psychobolt/react-pie-menu/tree/next/src)
 
-> This README is for the next release 2.x. Please see [v1](https://github.com/psychobolt/react-pie-menu/tree/react-pie-menu%401.0.0-alpha.4) for the previous release docs.
+> This README is for the next 2.x release. Please see [v1](https://github.com/psychobolt/react-pie-menu/tree/react-pie-menu%401.0.0-alpha.4) for the previous release docs.
 
-A configurable radial menu for React.
+The v2 rewrite preview is available on the [`next`](https://github.com/psychobolt/react-pie-menu/tree/next) branch.
+
+Feedback, ideas, and suggestions are welcome in the [v2 preview discussion](https://github.com/psychobolt/react-pie-menu/discussions/133).
 
 ## Features
 
-Powered by:
+Built with:
 
 - [@psychobolt/circle-ui-elements](https://next--69a65f257a10176f943035ff.chromatic.com/)
 - [@psychobolt/circle-ui-react](https://next--69a6607dcf15c4da3159cfcb.chromatic.com)
-- [Storybook React Docs](https://storybook.js.org/docs/writing-docs/introduction) with CSS Module support [typescript-plugin-css-modules](https://github.com/mrmckeb/typescript-plugin-css-modules)
+- [Storybook React Docs](https://storybook.js.org/docs/writing-docs/introduction) with CSS Module support via [typescript-plugin-css-modules](https://github.com/mrmckeb/typescript-plugin-css-modules)
 
 ## Installation (Preview)
 
-This package is currently published to GitHub Packages as a preview release.
+This package is currently published to [GitHub Packages](https://github.com/psychobolt?tab=packages&repo_name=react-pie-menu) as a preview release.
 
 Create or update a project-level `.npmrc` file:
 
@@ -48,6 +52,7 @@ npmScopes:
   psychobolt:
     npmRegistryServer: 'https://npm.pkg.github.com'
     npmAuthToken: '${GITHUB_TOKEN}'
+    npmAlwaysAuth: true
 ```
 
 Then install the package:
@@ -58,7 +63,7 @@ yarn add @psychobolt/react-pie-menu
 
 ## API (Experimental)
 
-See [docs](https://next--62646041abdb4b004aab3fdf.chromatic.com)
+See the [Storybook docs](https://next--62646041abdb4b004aab3fdf.chromatic.com).
 
 ## References
 
