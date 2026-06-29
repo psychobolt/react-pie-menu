@@ -59,7 +59,7 @@
     "vite-plugin-sass-glob-import@npm:6.0.3": "patch:vite-plugin-sass-glob-import@npm%3A6.0.3#~/.yarn/patches/vite-plugin-sass-glob-import-npm-6.0.3-718e64ce42.patch"
   },
   "devDependencies": {
-    "@babel/core": "7.29.7",
+    "@babel/core": "8.0.1",
     "@dotenvx/dotenvx": "1.75.1",
     "@fortawesome/fontawesome-free": "7.3.0",
     "@psychobolt/circle-ui-elements": "workspace:*",
