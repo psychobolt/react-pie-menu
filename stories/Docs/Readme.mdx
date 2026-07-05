@@ -1,0 +1,10 @@
+import { Meta, Markdown } from '@storybook/addon-docs/blocks';
+import { convert, ThemeProvider, themes } from 'storybook/theming';
+
+import README from '../../README.md?raw';
+
+<Meta title='Readme' />
+
+<ThemeProvider theme={convert(themes.normal)}>
+  <Markdown>{README}</Markdown>
+</ThemeProvider>

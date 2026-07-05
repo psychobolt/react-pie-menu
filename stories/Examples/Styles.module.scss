@@ -1,0 +1,8 @@
+@use 'sass:meta';
+@use '@psychobolt/circle-ui-elements/style.css';
+
+:global {
+  @at-root {
+    @include meta.load-css('@psychobolt/circle-ui-elements/style.css');
+  }
+}

@@ -1,0 +1,19 @@
+flags:
+  circle-ui-elements:
+    carryforward: true
+  circle-ui-react:
+    carryforward: true
+  react-pie-menu:
+    carryforward: true
+component_management:
+  individual_components:
+    - component_id: circle-ui-elements
+      paths:
+        - packages/circle-ui-elements/**
+    - component_id: circle-ui-react
+      paths:
+        - packages/circle-ui-react/**
+    - component_id: react-pie-menu
+      paths:
+        - src/**
+        - stories/**

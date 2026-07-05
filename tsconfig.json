@@ -1,0 +1,20 @@
+{
+  "extends": "commons/tsconfig.json",
+  "compilerOptions": {
+    "module": "NodeNext",
+    "target": "ESNext",
+    "moduleResolution": "NodeNext",
+    "noEmit": true,
+    "resolveJsonModule": true
+  },
+  "include": ["**/*"],
+  "exclude": [
+    ".storybook",
+    "packages",
+    "src",
+    "stories",
+    "vite.config.ts",
+    "vitest.config.ts"
+  ],
+  "references": [{ "path": "./tsconfig.vite.json" }]
+}

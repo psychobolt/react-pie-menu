@@ -1,0 +1,66 @@
+name: Packages
+
+on:
+  workflow_call:
+    inputs:
+      ref:
+        type: string
+      ref_name:
+        type: string
+      package_names:
+        type: string
+        required: true
+      release:
+        type: string
+    outputs:
+      release:
+        value: 'true'
+
+jobs:
+  commons:
+    uses: ./.github/workflows/test-commons.yml
+    if: contains(fromJSON(inputs.package_names), 'commons')
+    with:
+      ref_name: ${{ inputs.ref_name }}
+      workspace: commons
+    secrets: inherit
+
+  stylelint-config:
+    uses: './.github/workflows/test-commons.yml'
+    if: contains(fromJSON(inputs.package_names), 'stylelint-config')
+    with:
+      ref_name: ${{ inputs.ref_name }}
+      workspace: stylelint-config
+    secrets: inherit
+
+  circle-ui-elements:
+    uses: ./.github/workflows/package.yml
+    if: contains(fromJSON(inputs.package_names), '@psychobolt/circle-ui-elements')
+    with:
+      ref: ${{ inputs.ref }}
+      workspace: circle-ui-elements
+      path: packages/circle-ui-elements
+      release: ${{ inputs.release }}
+    secrets: inherit
+
+  circle-ui-react:
+    if: contains(fromJSON(inputs.package_names), '@psychobolt/circle-ui-react')
+    uses: ./.github/workflows/package.yml
+    with:
+      ref: ${{ inputs.ref }}
+      workspace: circle-ui-react
+      path: packages/circle-ui-react
+      test-runner: vitest
+      release: ${{ inputs.release }}
+    secrets: inherit
+
+  react-pie-menu:
+    if: contains(fromJSON(inputs.package_names), '@psychobolt/react-pie-menu')
+    uses: ./.github/workflows/package.yml
+    with:
+      workspace: react-pie-menu
+      path: ./
+      filter: --filter=@psychobolt/react-pie-menu
+      test-runner: vitest
+      release: ${{ inputs.release }}
+    secrets: inherit

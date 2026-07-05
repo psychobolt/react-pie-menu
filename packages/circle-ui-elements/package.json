@@ -1,0 +1,82 @@
+{
+  "name": "@psychobolt/circle-ui-elements",
+  "version": "0.0.0",
+  "description": "Circular UI building blocks",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/psychobolt/react-pie-menu.git",
+    "directory": "packages/circle-ui-elements"
+  },
+  "license": "MIT",
+  "author": "psychobolt",
+  "sideEffects": [
+    "*.css"
+  ],
+  "type": "module",
+  "exports": {
+    "./*": "./css/*",
+    "./package.json": "./package.json",
+    "./utils/*": {
+      "types": {
+        "import": "./esm/utils/*.d.ts",
+        "require": "./cjs/utils/*.d.ts"
+      },
+      "import": "./esm/utils/*",
+      "require": "./cjs/utils/*"
+    }
+  },
+  "files": [
+    "css",
+    "cjs",
+    "esm"
+  ],
+  "scripts": {
+    "build": "yarn g:rimraf css/ && yarn build-src && yarn g:rimraf esm/ && yarn build-esm && yarn g:rimraf cjs/ && yarn build-cjs",
+    "build-cjs": "tsc -p tsconfig.cjs.json",
+    "build-esm": "tsc -p tsconfig.esm.json",
+    "build-src": "vite build",
+    "build-storybook": "yarn g:storybook build --stats-json",
+    "chromatic": "yarn g:chromatic",
+    "coverage": "yarn g:rimraf coverage/ && yarn test --coverage",
+    "dev": "yarn watch & yarn g:storybook dev -p $(yarn g:dotenv-get PORT)",
+    "format": "yarn g:format",
+    "lcov": "nyc report --reporter=lcov -t coverage/storybook --report-dir coverage/storybook",
+    "lint": "yarn g:prettier --check . && yarn g:lint --runner stylelint --runner eslint",
+    "prepack": "yarn turbo run build",
+    "start": "yarn g:dotenv-run -- http-server storybook-static",
+    "test": "yarn g:test-storybook --index-json",
+    "watch": "yarn build-src -w --mode development & yarn build-esm -w & yarn build-cjs -w"
+  },
+  "devDependencies": {
+    "@open-wc/lit-helpers": "0.7.0",
+    "@storybook/addon-coverage": "3.0.1",
+    "@storybook/addon-docs": "10.4.6",
+    "@storybook/web-components-vite": "10.4.6",
+    "@types/react-syntax-highlighter": "15.5.13",
+    "classnames": "2.5.1",
+    "commons": "workspace:*",
+    "eslint": "10.6.0",
+    "glob": "13.0.6",
+    "http-server": "14.1.1",
+    "lit": "3.3.3",
+    "nyc": "18.0.0",
+    "postcss": "8.5.16",
+    "postcss-assign-layer": "0.4.0",
+    "prettier": "3.9.1",
+    "react": "19.2.7",
+    "react-dom": "19.2.7",
+    "react-syntax-highlighter": "16.1.1",
+    "rollup-plugin-no-emit": "1.3.0",
+    "sass": "1.101.0",
+    "storybook": "10.4.6",
+    "stylelint": "17.14.0",
+    "stylelint-config": "workspace:*",
+    "turbo": "2.10.0",
+    "type-fest": "5.7.0",
+    "typescript": "6.0.3",
+    "typescript-plugin-css-modules": "5.2.0",
+    "vite": "8.1.0",
+    "vite-plugin-sass-glob-import": "6.0.3"
+  },
+  "packageManager": "yarn@4.17.0"
+}

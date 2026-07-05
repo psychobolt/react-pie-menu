@@ -1,0 +1,58 @@
+name: Release
+description: Create a release commit and publish
+
+inputs:
+  strategy:
+    default: build
+    description: The version strategy to run
+  tag:
+    default: ''
+    description: The distribute tag
+  push_tag:
+    default: 'true'
+    description: If "true", tag is pushed when there is a new version
+  dry_run_publish:
+    description: If "true", publish is disabled
+  npm_registry_url:
+    description: The NPM publish registry URL
+  npm_auth_token:
+    description: The NPM authentication token
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Apply versions
+      id: versions
+      run: echo "semver=$(yarn apply-versions --strategy ${{ inputs.strategy }})" >> $GITHUB_OUTPUT
+      shell: bash
+    - name: Build
+      if: steps.versions.outputs.semver != '{}'
+      run: |
+        echo ${{ steps.versions.outputs.semver }}
+        yarn turbo run build
+      shell: bash
+    - name: Prepare commit
+      if: inputs.strategy != '' && inputs.strategy != 'build'
+      run: |
+        git add .
+        git commit -m "chore(version): ${{ inputs.strategy }} release" || true
+      shell: bash
+    - name: Tag the HEAD
+      if: inputs.push_tag == 'true' && inputs.tag != '' && steps.versions.outputs.semver != '{}'
+      run: |
+        git tag -d ${{ inputs.tag }} || true
+        git push --delete origin tag ${{ inputs.tag }} || true
+        git tag ${{ inputs.tag }} -am '${{ steps.versions.outputs.semver }}'
+        git push origin tag ${{ inputs.tag }}
+        git push
+      shell: bash
+    - name: Publish
+      if: inputs.tag != ''
+      env:
+        NPM_REGISTRY_URL: ${{ inputs.npm_registry_url }}
+        NPM_AUTH_TOKEN: ${{ inputs.npm_auth_token }}
+      run: >-
+        yarn workspaces foreach -A --no-private ${{ inputs.dry_run_publish != '' && '-n' || '' }}
+        npm publish --tolerate-republish
+        ${{ inputs.tag != '' && format('--tag {0}', inputs.tag) || '' }}
+      shell: bash

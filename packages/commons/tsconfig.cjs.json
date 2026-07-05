@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "declaration": true,
+    "types": ["node"],
+    "outDir": "cjs"
+  },
+  "include": ["**/*.d.ts", "**/*.cts"],
+  "exclude": ["esm", "cjs"]
+}

@@ -1,0 +1,12 @@
+@use 'sass:meta';
+@use '@fortawesome/fontawesome-free/css/fontawesome.css';
+@use '@fortawesome/fontawesome-free/css/solid.css';
+@use '@fortawesome/fontawesome-free/css/brands.css';
+
+:global {
+  @at-root {
+    @include meta.load-css('@fortawesome/fontawesome-free/css/fontawesome.css');
+    @include meta.load-css('@fortawesome/fontawesome-free/css/solid.css');
+    @include meta.load-css('@fortawesome/fontawesome-free/css/brands.css');
+  }
+}

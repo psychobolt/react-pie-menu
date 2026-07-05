@@ -1,0 +1,39 @@
+diff --git a/dist/helpers/getCssExports.js b/dist/helpers/getCssExports.js
+index c55e03315fa26c946616021c4ef9168701a18916..fff6adcd1dff45a959f00cefad97b964d190498f 100644
+--- a/dist/helpers/getCssExports.js
++++ b/dist/helpers/getCssExports.js
+@@ -101,7 +101,7 @@ var getCssExports = function (_a) {
+                 case "scss" /* FileType.scss */:
+                 case "sass" /* FileType.sass */: {
+                     var filePath = getFilePath(fileName);
+-                    var _f = (_d = rendererOptions.sass) !== null && _d !== void 0 ? _d : {}, loadPaths = _f.loadPaths, sassOptions = __rest(_f, ["loadPaths"]);
++                    var _f = (_d = rendererOptions.sass) !== null && _d !== void 0 ? _d : {}, loadPaths = _f.loadPaths, customImporters = _f.customImporters, sassOptions = __rest(_f, ["loadPaths", "customImporters"]);
+                     var _g = compilerOptions.baseUrl, baseUrl = _g === void 0 ? directory : _g, paths = compilerOptions.paths;
+                     var matchPath_1 = baseUrl && paths
+                         ? (0, tsconfig_paths_1.createMatchPath)(path_1.default.resolve(baseUrl), paths)
+@@ -146,7 +146,11 @@ var getCssExports = function (_a) {
+                             return indexFileUrl ? new URL("file://".concat(indexFileUrl)) : null;
+                         },
+                     };
+-                    var importers = [aliasImporter, sassTildeImporter_1.sassTildeImporter];
++                    var additionalImporters = [];
++                    if (typeof customImporters === 'string') {
++                        additionalImporters = __importDefault(require(customImporters)).default || [];
++                    }
++                    var importers = [aliasImporter, sassTildeImporter_1.sassTildeImporter].concat(additionalImporters);
+                     var result = sass_1.default.compileString(rawCss, __assign({ importers: importers, loadPaths: __spreadArray([filePath, 'node_modules'], (loadPaths !== null && loadPaths !== void 0 ? loadPaths : []), true), sourceMap: true, syntax: fileType === "sass" /* FileType.sass */ ? 'indented' : 'scss', url: new URL("file://".concat(fileName)) }, sassOptions));
+                     sourceMap = result.sourceMap;
+                     transformedCss = result.css.toString();
+diff --git a/dist/index.js b/dist/index.js
+index 54e3c31da616899a3b5a0677cdb6c59419bbbf0f..20cdb50d56f113952fc38d7495c6fc5bda74757f 100644
+--- a/dist/index.js
++++ b/dist/index.js
+@@ -123,7 +123,7 @@ var init = function (_a) {
+                 if (isRelativeCSS(moduleName)) {
+                     return {
+                         extension: ts.Extension.Dts,
+-                        isExternalLibraryImport: false,
++                        isExternalLibraryImport: true,
+                         resolvedFileName: path_1.default.resolve(path_1.default.dirname(containingFile), moduleName),
+                     };
+                 }

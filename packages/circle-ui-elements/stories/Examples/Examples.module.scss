@@ -1,0 +1,47 @@
+.pie-example {
+  .slice {
+    overflow: hidden;
+    line-height: 1;
+    text-overflow: ellipsis;
+  }
+
+  .slice-outside {
+    width: 50%;
+    height: 50%;
+  }
+
+  .slice-outside.top,
+  .slice-outside.left {
+    float: left;
+  }
+
+  .slice-outside.right {
+    float: right;
+  }
+
+  @layer utilities {
+    .bg-yellow {
+      background: yellow;
+    }
+
+    .bg-orange {
+      background: orange;
+    }
+
+    .bg-pink {
+      background: pink;
+    }
+
+    .bg-blue {
+      background: blue;
+    }
+
+    .bg-white {
+      background: white;
+    }
+
+    .white {
+      color: white;
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "extends": [
+    "@tsconfig/vite-react/tsconfig.json",
+    "commons/tsconfig.vite.json"
+  ],
+  "compilerOptions": {
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules",
+        "options": {
+          "classnameTransform": "camelCase",
+          "goToDefinition": true,
+          "rendererOptions": {
+            "sass": {
+              "customImporters": "commons/cjs/node-sass-importers.cjs"
+            }
+          }
+        }
+      }
+    ],
+    "composite": true,
+    "noEmit": false,
+    "declaration": true,
+    "outDir": "dist",
+    "paths": {
+      ".storybook/*": ["./.storybook/*"],
+      "*": ["./src/*"]
+    }
+  },
+  "include": [
+    ".storybook/**/*",
+    "src",
+    "stories",
+    "vite.config.ts",
+    "vitest.config.ts"
+  ]
+}

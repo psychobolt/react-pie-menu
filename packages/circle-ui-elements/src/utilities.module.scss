@@ -1,0 +1,12 @@
+@layer base, elements, components, utilities;
+
+@layer utilities {
+  .object-fill {
+    width: 100%;
+    height: 100%;
+  }
+
+  .radius-round {
+    border-radius: 50%;
+  }
+}

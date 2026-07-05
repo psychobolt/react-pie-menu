@@ -1,0 +1,4 @@
+releases:
+  "@psychobolt/circle-ui-elements": minor
+  "@psychobolt/circle-ui-react": minor
+  "@psychobolt/react-pie-menu": major

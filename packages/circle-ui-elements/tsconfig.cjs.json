@@ -1,0 +1,9 @@
+{
+  "extends": "commons/tsconfig.cjs.json",
+  "compilerOptions": {
+    "types": null,
+    "outDir": "cjs",
+    "rootDir": "src"
+  },
+  "include": ["src/utils"]
+}

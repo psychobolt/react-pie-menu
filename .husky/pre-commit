@@ -1,0 +1,1 @@
+yarn packages/commons turbo run build && yarn g:lint-staged

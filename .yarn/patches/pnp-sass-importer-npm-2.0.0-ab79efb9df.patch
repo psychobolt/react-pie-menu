@@ -1,0 +1,60 @@
+diff --git a/dist/cjs/getValidatedUrl.js b/dist/cjs/getValidatedUrl.js
+index 6557d68a84382ad6af2dbfae4e1c13df96213330..a9f3ca8ff9606b9badb9ef33509049272c639d58 100644
+--- a/dist/cjs/getValidatedUrl.js
++++ b/dist/cjs/getValidatedUrl.js
+@@ -60,7 +60,7 @@ function getValidatedUrl(url) {
+     if (urlToUse.startsWith(".") ||
+         urlToUse.includes("\\") ||
+         urlToUse.includes("%") ||
+-        (urlToUse.startsWith("@") && !urlToUse.includes(path_1.default.sep))) {
++        (urlToUse.startsWith("@") && !urlToUse.includes('/'))) {
+         return null;
+     }
+     return urlToUse;
+diff --git a/dist/cjs/importer.js b/dist/cjs/importer.js
+index a538f248eae71d5bcb9b7180f2abc71b44c76264..a711873a43df746a4bbea5c8c1c19989cdf25faf 100644
+--- a/dist/cjs/importer.js
++++ b/dist/cjs/importer.js
+@@ -46,7 +46,7 @@ const getValidatedUrl_js_1 = require("./getValidatedUrl.js");
+  */
+ function createImporter(dirname) {
+     const importer = {
+-        canonicalize: async (url, _context) => {
++        canonicalize: (url, _context) => {
+             const validatedUrl = (0, getValidatedUrl_js_1.getValidatedUrl)(url);
+             if (validatedUrl == null) {
+                 return null;
+@@ -56,7 +56,7 @@ function createImporter(dirname) {
+                 // If this plugin is not actually run in a PnP context (e.g. nodeLinker is set to node-modules),
+                 // this import statement will throw. In that scenario, we fallback to require.resolve because
+                 // there will be node_modules to traverse
+-                pnpapi = (await Promise.resolve().then(() => __importStar(require("pnpapi")))).default;
++                pnpapi = __importStar(require("pnpapi")).default;
+             }
+             catch (error) {
+                 console.log("pnpapi not found, pnp-sass-importer is not needed outside of a PnP context. Using require.resolve instead");
+@@ -88,6 +88,7 @@ function createImporter(dirname) {
+             let res = null;
+             try {
+                 res = pnpapi.resolveRequest(validatedUrl, dirname);
++                res = pnpapi.resolveVirtual?.(res) ?? res;
+             }
+             catch (error) {
+                 try {
+@@ -95,6 +96,7 @@ function createImporter(dirname) {
+                     // In that case, we can see if the URL is simply missing a .scss extension and try again
+                     if (!url.toString().endsWith(".scss")) {
+                         res = pnpapi.resolveRequest(validatedUrl + ".scss", dirname);
++                        res = pnpapi.resolveVirtual?.(res) ?? res;
+                     }
+                 }
+                 catch {
+@@ -108,7 +110,7 @@ function createImporter(dirname) {
+             return new URL(`file:///${res}`);
+         },
+         load: (url) => {
+-            const zipOpenFs = new libzip_1.ZipOpenFS({ libzip: libzip_1.default.getLibzipSync() });
++            const zipOpenFs = new libzip_1.ZipOpenFS({ libzip: libzip_1.getLibzipSync() });
+             const crossFs = new fslib_1.PosixFS(zipOpenFs);
+             const file = crossFs.readFileSync((0, node_url_1.fileURLToPath)(url.toString()));
+             const syntax = url.toString().endsWith(".css") ? "css" : "scss";

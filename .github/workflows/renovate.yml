@@ -1,0 +1,76 @@
+name: Renovate
+on:
+  workflow_dispatch:
+  # schedule:
+  # The "*" (#42, asterisk) character has special semantics in YAML, so this
+  # string has to be quoted.
+  # - cron: '0/10 * * * *' # Every 10 minutes
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    outputs:
+      should_skip: ${{ steps.skip_check.outputs.should_skip }}
+    steps:
+      - id: skip_check
+        uses: fkirc/skip-duplicate-actions@f75f66ce1886f00957d99748a42c724f4330bdcf # v5
+        with:
+          concurrent_skipping: always
+          skip_after_successful_duplicate: false
+          do_not_skip: '[]'
+  renovate:
+    needs: check
+    if: needs.check.outputs.should_skip != 'true'
+    runs-on: ubuntu-latest
+    env:
+      DOCKER_USER: root
+      DOCKER_USER_HOME: /home/ubuntu
+    steps:
+      - name: Get token
+        id: get_token
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        with:
+          private-key: ${{ secrets.BOT_APP_PRIVATE_KEY }}
+          client-id: ${{ secrets.BOT_APP_ID }}
+      - name: Checkout
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+      - name: Set Yarn global folder
+        id: yarn_global_folder
+        env:
+          YARN_GLOBAL_FOLDER: ${{ runner.temp }}/.yarn/berry
+        run: |
+          echo "YARN_GLOBAL_FOLDER=$YARN_GLOBAL_FOLDER" >> .env
+          echo "YARN_GLOBAL_FOLDER=$YARN_GLOBAL_FOLDER" >> $GITHUB_OUTPUT
+        shell: bash
+      - name: Setup Node.js environment
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
+        with:
+          node-version: 24.x
+          cache: yarn
+          cache-dependency-path: yarn.lock
+      - name: Start Turbo Cache Server
+        uses: rharkor/caching-for-turbo@75f8ebf4a43d2c60b23bc2a27082cfea94ffdad9 # v2.5.0
+        with:
+          cache-prefix: ${{ vars.TURBO_CACHE_PREFIX }}
+      - name: Install dependencies
+        run: yarn install
+      - name: Build renovate config
+        run: yarn run-script renovate.config.ts > renovate.config.json
+      - name: Self-hosted Renovate
+        uses: renovatebot/github-action@6d859fc95779be83a0335ca704879b47e5d79641 # v46.1.16
+        env:
+          RENOVATE_REPOSITORIES: ${{ github.repository }}
+          RENOVATE_BASE_DIR: ${{ env.DOCKER_USER_HOME }}
+          RENOVATE_PRINT_CONFIG: true
+          LOG_LEVEL: debug
+          YARN_ENABLE_IMMUTABLE_INSTALLS: false
+        with:
+          configurationFile: renovate.config.json
+          token: ${{ steps.get_token.outputs.token }}
+          docker-user: ${{ env.DOCKER_USER }}
+          docker-volumes: |
+            ${{ steps.yarn_global_folder.outputs.YARN_GLOBAL_FOLDER }}:${{ env.DOCKER_USER_HOME }}/.yarn/berry
+          env-regex: "^(?:(RENOVATE_|YARN_)\\w+|LOG_LEVEL)$"

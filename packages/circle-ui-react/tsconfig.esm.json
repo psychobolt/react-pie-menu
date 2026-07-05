@@ -1,0 +1,12 @@
+{
+  "extends": "commons/tsconfig.esm.json",
+  "compilerOptions": {
+    "module": "Preserve",
+    "moduleResolution": "Bundler",
+    "declaration": true,
+    "outDir": "esm",
+    "rootDir": "."
+  },
+  "include": [".storybook/**/*"],
+  "exclude": [".storybook/vitest.config.ts"]
+}

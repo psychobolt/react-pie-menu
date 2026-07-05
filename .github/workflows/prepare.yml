@@ -1,0 +1,104 @@
+name: Prepare
+
+on:
+  workflow_dispatch:
+    inputs:
+      commits:
+        description: One or more commits that you wish to cherry-pick into base_ref
+        type: string
+        required: true
+
+jobs:
+  unmerged_commits:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      ref: ${{ steps.unmerged.outputs.ref }}
+      head: ${{ steps.unmerged.outputs.head_ref }}
+      short: ${{ steps.unmerged.outputs.commits }}
+      count: ${{ steps.unmerged.outputs.count }}
+    steps:
+      - name: Check out code
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+        with:
+          fetch-depth: 50
+      - name: Filter commits not found in ${{ github.ref_name }}
+        id: unmerged
+        run: |
+          source ./bin/git-ls-unmerged.sh
+          echo "ref=$REF" >> $GITHUB_OUTPUT
+          echo "head_ref=HEAD~$COUNT" >> $GITHUB_OUTPUT
+          echo "count=$(($COUNT+1))" >> $GITHUB_OUTPUT
+          echo "commits=$OUTPUT" >> $GITHUB_OUTPUT
+        env:
+          COMMITS: ${{ inputs.commits }}
+          BASE_REF: ${{ github.ref_name }}
+
+  create_branch:
+    needs: unmerged_commits
+    if: needs.unmerged_commits.outputs.ref != ''
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      base_ref: ${{ github.ref_name }}
+      ref_name: ${{ env.REF_NAME }}
+    env:
+      REF_NAME: cherry-pick-${{ needs.unmerged_commits.outputs.short }}
+    steps:
+      - name: Configure git
+        run: |
+          git config --global user.name github-actions[bot]
+          git config --global user.email 41898282+github-actions[bot]@users.noreply.github.com
+      - name: Check out code
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+      - name: Fetch commits
+        run: git fetch --depth=2 origin ${{ needs.unmerged_commits.outputs.ref }}
+      - name: Cherry pick
+        run: git cherry-pick -x ${{ needs.unmerged_commits.outputs.ref }}
+      - name: Branch
+        run: git checkout -b ${{ env.REF_NAME }}
+      - name: Push
+        run: git push -u origin ${{ env.REF_NAME }}
+
+  ci:
+    needs: [unmerged_commits, create_branch]
+    uses: ./.github/workflows/ci.yml
+    with:
+      ref_name: ${{ needs.create_branch.outputs.ref_name }}
+      base_ref: ${{ needs.create_branch.outputs.base_ref }}
+      head_ref: ${{ needs.unmerged_commits.outputs.head }}
+      diff_count: ${{ needs.unmerged_commits.outputs.count }}
+    secrets: inherit
+
+  merge_branch:
+    needs: [create_branch, ci]
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Get token
+        id: get_token
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        with:
+          private-key: ${{ secrets.BOT_APP_PRIVATE_KEY }}
+          app-id: ${{ secrets.BOT_APP_ID }}
+      - name: Get GitHub App User ID
+        id: get_user_id
+        env:
+          GH_TOKEN: ${{ steps.get_token.outputs.token }}
+        run: echo "user-id=$(gh api "/users/${{ steps.get_token.outputs.app-slug }}[bot]" --jq .id)" >> "$GITHUB_OUTPUT"
+      - name: Configure git
+        run: |
+          git config --global user.name ${{ steps.get_token.outputs.app-slug }}[bot]
+          git config --global user.email ${{ steps.get_user_id.outputs.user-id }}+${{ steps.get_token.outputs.app-slug }}[bot]@users.noreply.github.com
+      - name: Check out code
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+        with:
+          token: ${{ steps.get_token.outputs.token }}
+      - name: Fetch branch
+        run: git fetch --depth=50 origin ${{ needs.create_branch.outputs.ref_name }}:${{ needs.create_branch.outputs.ref_name }}
+      - name: Merge
+        run: git merge ${{ needs.create_branch.outputs.ref_name }}
+      - name: Push
+        run: git push
+      - name: Delete branch
+        run: git push -d origin ${{ needs.create_branch.outputs.ref_name }}

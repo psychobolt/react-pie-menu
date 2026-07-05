@@ -1,0 +1,92 @@
+name: Sync Lastest Changes
+
+on:
+  workflow_call:
+    inputs:
+      ref_name:
+        type: string
+        default: main
+      squash:
+        type: boolean
+  workflow_dispatch:
+    inputs:
+      ref_name:
+        type: string
+        default: main
+      squash:
+        type: boolean
+
+concurrency:
+  group: sync-${{ inputs.ref_name}}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    env:
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      TURBO_TEAM: ${{ vars.TURBO_TEAM }}
+      TURBO_VERBOSITY: ${{ vars.TURBO_VERBOSITY || 0 }}
+      TURBO_ENV_MODE: ${{ vars.TURBO_ENV_MODE || 'strict' }}
+      TURBO_TELEMETRY_DISABLED: 1
+      YARN_CHECKSUM_BEHAVIOR: update
+      YARN_ENABLE_IMMUTABLE_INSTALLS: false
+    steps:
+      - name: Get token
+        id: get_token
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        with:
+          private-key: ${{ secrets.BOT_APP_PRIVATE_KEY }}
+          app-id: ${{ secrets.BOT_APP_ID }}
+      - name: Get GitHub App User ID
+        id: get_user_id
+        env:
+          GH_TOKEN: ${{ steps.get_token.outputs.token }}
+        run: echo "user-id=$(gh api "/users/${{ steps.get_token.outputs.app-slug }}[bot]" --jq .id)" >> "$GITHUB_OUTPUT"
+      - name: Configure git
+        run: |
+          git config --global user.name ${{ steps.get_token.outputs.app-slug }}[bot]
+          git config --global user.email ${{ steps.get_user_id.outputs.user-id }}+${{ steps.get_token.outputs.app-slug }}[bot]@users.noreply.github.com
+      - name: Check out code
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+        with:
+          fetch-depth: 0
+          token: ${{ steps.get_token.outputs.token }}
+          ref: ${{ inputs.ref_name }}
+      - name: Set Yarn global folder
+        env:
+          YARN_GLOBAL_FOLDER: ${{ runner.temp }}/.yarn/berry
+        run: echo "YARN_GLOBAL_FOLDER=$YARN_GLOBAL_FOLDER" >> .env
+      - name: Setup Node.js environment
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
+        with:
+          node-version: 24.x
+          cache: yarn
+          cache-dependency-path: '**/yarn.lock'
+      - name: Merge with base branch
+        run: |
+          git remote add base https://github.com/psychobolt/vite-storybook-boilerplate.git
+          git fetch base main
+          if [[ "${{ inputs.squash }}" == "true" ]]; then
+            git merge base/main --allow-unrelated-histories --squash -X ours || true
+          else
+            git merge base/main --allow-unrelated-histories --no-commit --ff -X ours || true
+          fi
+      - name: Prune deleted files
+        run: git status | grep 'deleted by us' | awk '{print $4}' | (xargs git rm || true)
+      - name: Start Turbo Cache Server
+        uses: rharkor/caching-for-turbo@75f8ebf4a43d2c60b23bc2a27082cfea94ffdad9 # v2.5.0
+        with:
+          cache-prefix: ${{ vars.TURBO_CACHE_PREFIX }}
+      - name: Install dependencies
+        run: |
+          yarn install
+          yarn bootstrap
+      - name: Amend Merge
+        run: git diff-index --quiet HEAD || (git add . && git commit --no-edit) || true
+      - name: Update ${{ inputs.ref_name }} branch
+        run: git push origin

@@ -1,0 +1,104 @@
+name: ci
+
+on:
+  workflow_call:
+    inputs:
+      ref:
+        type: string
+      ref_name:
+        type: string
+      base_ref:
+        type: string
+      head_ref:
+        type: string
+      diff_count:
+        type: string
+  workflow_dispatch:
+    inputs:
+      base_ref:
+        type: string
+        description: The base ref to compare against for changes.
+      head_ref:
+        type: string
+        description: The head ref to compare changes against for changes. If specified, it overrides the base_ref.
+      diff_count:
+        type: string
+        description: The number of commits to consider for the diff.
+
+concurrency:
+  group: ${{ github.workflow }}-${{ inputs.ref_name || github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  diff:
+    name: List Updated Packages
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    env:
+      BASE_REF: ${{ inputs.base_ref || github.base_ref }}
+      TURBO_GLOBAL_WARNING_DISABLED: 1
+    outputs:
+      package_names: ${{ steps.changes.outputs.package_names }}
+      release: ${{ steps.filter.outputs.release }}
+    steps:
+      - name: Check out code
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+        with:
+          fetch-depth: ${{ inputs.diff_count || 2 }}
+          ref: ${{ inputs.ref_name || github.ref }}
+      - name: Fetch base branch
+        if: env.BASE_REF != ''
+        run: git fetch --depth=1 origin ${{ env.BASE_REF }}:base_branch
+      - name: Setup Node.js environment
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
+        with:
+          node-version: 24.x
+          cache: npm
+      - uses: dorny/paths-filter@fbd0ab8f3e69293af611ebaee6363fc25e6d187d # v4
+        id: filter
+        with:
+          filters: |
+            release:
+              - '.yarn/versions/**'
+          base: ${{ inputs.head_ref || (env.BASE_REF && 'base_branch') || '' }}
+          ref: ${{ inputs.ref_name }}
+          initial-fetch-depth: ${{ inputs.diff_count || 2 }}
+      - name: Install Turbo
+        run: |
+          TURBO_VERSION=$(jq -r .devDependencies.turbo package.json)
+          echo "Installing $TURBO_VERSION"
+          npm install -g turbo@$TURBO_VERSION
+          turbo bin
+          turbo --version
+      - name: Start Turbo Cache Server
+        uses: rharkor/caching-for-turbo@75f8ebf4a43d2c60b23bc2a27082cfea94ffdad9 # v2.5.0
+        with:
+          cache-prefix: ${{ vars.TURBO_CACHE_PREFIX }}
+      - name: Collect Turborepo Changes
+        id: changes
+        uses: 94726/action-turborepo-changes@6bb75425be5455ba39431196f12e246a2f37d375 # v1.1.1
+        env:
+          TURBO_TELEMETRY_DISABLED: 1
+        with:
+          from: ${{ inputs.head_ref || (env.BASE_REF && 'base_branch') || 'HEAD~1' }}
+
+  packages:
+    needs: diff
+    uses: ./.github/workflows/packages.yml
+    secrets: inherit
+    with:
+      ref: ${{ inputs.ref }}
+      ref_name: ${{ inputs.ref_name }}
+      package_names: ${{ needs.diff.outputs.package_names }}
+      release: ${{ needs.diff.outputs.release }}
+
+  release:
+    needs: [diff, packages]
+    if: always() && !contains(needs.*.result, 'cancelled') && !contains(needs.*.result, 'failure') && contains(needs.*.outputs.release, 'true')
+    uses: ./.github/workflows/release.yml
+    secrets: inherit
+    with:
+      ref_name: ${{ inputs.ref_name }}
+      head_ref: ${{ inputs.head_ref }}

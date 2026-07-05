@@ -1,0 +1,35 @@
+diff --git a/dist/index.mjs b/dist/index.mjs
+index 7a17a646c95136e4d2c95ba10ee5d4df8e9273cf..6e2cf68ec77697012065c20c36c7a5c3384f3eb2 100644
+--- a/dist/index.mjs
++++ b/dist/index.mjs
+@@ -6,7 +6,7 @@ import { minimatch } from "minimatch";
+ import c from "ansi-colors";
+ function sassGlobImports(options = {}) {
+   const FILE_REGEX = /\.s[c|a]ss(\?direct)?$/;
+-  const IMPORT_REGEX = /^([ \t]*(?:\/\*.*)?)@(import|use)\s+["']([^"']+\*[^"']*(?:\.scss|\.sass)?)["'];?([ \t]*(?:\/[/*].*)?)$/gm;
++  const IMPORT_REGEX = /^([ \t]*(?:\/\*.*\*\/)?)@(import|use|include)\s+(meta\.load-css\()?["']([^"']+\*[^"']*(?:\.scss|\.sass)?)["']\)?;?([ \t]*(?:\/[/*].*)?)$/gm;
+   let filePath = "";
+   let fileName = "";
+   function isSassOrScss(filename) {
+@@ -21,7 +21,7 @@ function sassGlobImports(options = {}) {
+     for (let i = 0; i < contentLinesCount; i++) {
+       result = [...src.matchAll(IMPORT_REGEX)];
+       if (result.length) {
+-        const [importRule, startComment, importType, globPattern, endComment] = result[0];
++        const [importRule, startComment, importType, metaLoadException, globPattern, endComment] = result[0];
+         let files = [];
+         let basePath = "";
+         for (let i2 = 0; i2 < searchBases.length; i2++) {
+@@ -49,7 +49,11 @@ function sassGlobImports(options = {}) {
+             if (!ignorePaths.some((ignorePath) => {
+               return minimatch(filename, ignorePath);
+             })) {
+-              imports.push(`@${importType} "` + filename + '"' + (isSass ? "" : ";"));
++              if (importType === 'include' && metaLoadException) {
++                imports.push(`@${importType} meta.load-css("${filename}")${isSass ? '' : ';'}`)
++              } else {
++                imports.push(`@${importType} "${filename}" ${isSass ? '' : ';'}`)
++              }
+             }
+           }
+         });
