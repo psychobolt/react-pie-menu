@@ -61,7 +61,7 @@
     "@storybook/global": "5.0.0",
     "@types/node": "24.13.2",
     "@typescript-eslint/utils": "8.62.0",
-    "chromatic": "17.7.2",
+    "chromatic": "17.8.0",
     "eslint": "10.6.0",
     "eslint-plugin-jsonc": "3.2.0",
     "eslint-plugin-package-json": "1.5.0",
